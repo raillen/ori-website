@@ -1,7 +1,9 @@
 :root {
   --sl-font: "Inter", system-ui, sans-serif;
   --sl-font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
 
+:root[data-theme="dark"] {
   /* Modern Premium Dark Palette (Slate/Blue) */
   --sl-color-bg: #090d16;
   --sl-color-bg-nav: rgba(15, 23, 42, 0.75);
@@ -17,6 +19,36 @@
   --sl-color-gray-2: #94a3b8;
   --sl-color-gray-1: #cbd5e1;
   --sl-color-text: #f8fafc;
+
+  /* Custom extra helper vars for dark theme */
+  --custom-card-bg: #0f172a;
+  --custom-table-th-bg: #0f172a;
+  --custom-search-panel-bg: #0f172a;
+  --custom-glow-color: rgba(59, 130, 246, 0.04);
+}
+
+:root[data-theme="light"] {
+  /* Modern Premium Light Palette (Slate/Blue) */
+  --sl-color-bg: #f8fafc; 
+  --sl-color-bg-nav: rgba(241, 245, 249, 0.75);
+  --sl-color-bg-sidebar: #f1f5f9;
+  --sl-color-accent: #2563eb; 
+  --sl-color-accent-low: rgba(37, 99, 235, 0.08);
+  --sl-color-accent-high: #1d4ed8; 
+  --sl-color-border: #e2e8f0; 
+  --sl-color-gray-6: #f1f5f9;
+  --sl-color-gray-5: #e2e8f0;
+  --sl-color-gray-4: #cbd5e1;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-2: #64748b;
+  --sl-color-gray-1: #334155;
+  --sl-color-text: #0f172a;
+
+  /* Custom extra helper vars for light theme */
+  --custom-card-bg: #ffffff;
+  --custom-table-th-bg: #f1f5f9;
+  --custom-search-panel-bg: #ffffff;
+  --custom-glow-color: rgba(37, 99, 235, 0.02);
 }
 
 :lang(ja) {
@@ -48,9 +80,9 @@ header.header {
 /* Clean Card Designs */
 .card {
   border: 1px solid var(--sl-color-border) !important;
-  background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(59, 130, 246, 0.04), transparent 40%), #0f172a !important;
+  background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), var(--custom-glow-color), transparent 40%), var(--custom-card-bg) !important;
   border-radius: 12px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .card:hover {
@@ -65,17 +97,17 @@ table {
   margin: 1.5rem 0;
 }
 th {
-  background-color: #0f172a;
+  background-color: var(--custom-table-th-bg);
   border-bottom: 2px solid var(--sl-color-border) !important;
   font-weight: 600;
-  color: var(--sl-color-gray-1);
+  color: var(--sl-color-text);
 }
 td, th {
   padding: 0.75rem 1rem !important;
   border: 1px solid var(--sl-color-border) !important;
 }
 tr:nth-child(even) {
-  background-color: rgba(15, 23, 42, 0.3);
+  background-color: rgba(15, 23, 42, 0.03);
 }
 
 /* Search Dialog Glassmorphism */
@@ -87,7 +119,7 @@ tr:nth-child(even) {
   align-items: flex-start;
   justify-content: center;
   padding: 10vh 1rem 1rem;
-  background: rgba(4, 6, 12, 0.7);
+  background: rgba(4, 6, 12, 0.4);
   backdrop-filter: blur(8px);
 }
 
@@ -97,10 +129,10 @@ tr:nth-child(even) {
 
 .ori-search-panel {
   width: min(640px, 100%);
-  background: #0f172a;
+  background: var(--custom-search-panel-bg);
   border: 1px solid var(--sl-color-border);
   border-radius: 12px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
 
@@ -166,7 +198,7 @@ tr:nth-child(even) {
 
 .ori-search-sig {
   font-size: 0.82rem;
-  color: var(--sl-color-gray-3);
+  color: var(--sl-color-gray-2);
   margin-top: 0.25rem;
 }
 
@@ -177,7 +209,7 @@ tr:nth-child(even) {
   border: 1px solid var(--sl-color-border);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
-  background: #0f172a;
+  background: var(--custom-search-panel-bg);
   cursor: pointer;
   transition: all 0.15s ease;
 }
