@@ -3,51 +3,34 @@ title: Manifesto da Linguagem
 description: Os princípios fundamentais, motivação e visão por trás da linguagem de programação Ori.
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+A **Ori Language** nasce com uma proposta clara: colocar a leitura, a compreensão e a previsibilidade no centro da experiência de programação.
 
-A Ori foi criada pelo desejo de ter uma linguagem de programação que prioriza a compreensão humana acima de tudo. No cenário de desenvolvimento atual, o código é lido muito mais vezes do que é escrito, mas muitas linguagens são otimizadas para velocidade de digitação ou sintaxe curta em vez de legibilidade.
+Em um cenário onde muitas linguagens privilegiam atalhos, sintaxes compactas e comportamentos implícitos, a Ori Language segue outro caminho. Seu princípio fundamental é simples: **código deve ser escrito para ser entendido**.
 
-A Ori muda essa equação. É uma linguagem **focada na leitura** e de **tipagem explícita**, projetada para construir sistemas limpos, fáceis de manter e robustos para jogos, automação, ferramentas desktop e aplicações de sistema.
+A Ori Language é uma linguagem **reading-first**, criada para valorizar quem lê o código tanto quanto quem o escreve. Isso significa que clareza, intenção explícita e estrutura previsível não são apenas escolhas estéticas, mas fundamentos da própria linguagem.
 
----
+Seu objetivo é reduzir o ruído mental, evitar ambiguidades desnecessárias e tornar o código mais acessível, especialmente em projetos que precisam ser mantidos, revisados, ensinados e evoluídos ao longo do tempo.
 
-## Pilares da Ori
+A Ori Language acredita que um bom código não deve depender de truques escondidos, inferências excessivas ou comportamentos mágicos. Cada decisão importante deve estar visível no próprio código-fonte. O que acontece deve ser compreensível, rastreável e previsível.
 
-<CardGrid>
-  <Card title="1. Sintaxe Focada na Leitura" icon="open-book">
-    O código deve ser lido como literatura estruturada. Ori rejeita chaves `{}` e usa delimitadores textuais claros como `if ... then ... end` e `func ... end`. Isso reduz a fadiga visual e acelera a leitura de código.
-  </Card>
-  <Card title="2. Explícito é Melhor que Implícito" icon="approve-check-circle">
-    Conversões implícitas e comportamentos mágicos escondem bugs. Ori exige tipos explícitos para todas as declarações de variáveis e não permite coerção automática. O que você vê é o que o compilador valida.
-  </Card>
-  <Card title="3. Tratamento Seguro de Erros" icon="warning">
-    Exceções quebram o fluxo de execução e tornam o código difícil de rastrear. Ori modela falhas usando `result<T, E>` e a ausência de valor usando `optional<T>`. Os caminhos de erro são tipados e tratados explicitamente por pattern matching.
-  </Card>
-  <Card title="4. Performance Nativa Leve" icon="rocket">
-    A Ori compila diretamente para código de máquina nativo via Cranelift, ignorando runtimes pesados ou máquinas virtuais, gerando tempos de inicialização instantâneos. Também suporta execução in-process via JIT.
-  </Card>
-</CardGrid>
+Por isso, a linguagem valoriza:
 
----
+* leitura antes de digitação curta;
+* clareza acima de esperteza;
+* comportamento explícito acima de magia;
+* previsibilidade acima de flexibilidade caótica;
+* composição acima de herança rígida;
+* segurança acima de conveniência perigosa.
 
-## O Ímpeto: Por que Ori?
+Na Ori Language, conceitos como ausência de valor e tratamento de erros devem ser expressos de forma clara. Em vez de depender de `null`, `undefined` ou exceções ocultas, a linguagem incentiva modelos explícitos, onde possibilidades de falha ou ausência aparecem diretamente na assinatura e no fluxo do programa.
 
-Muitas linguagens modernas evoluíram para se tornar ecossistemas complexos com dezenas de funcionalidades redundantes. Os desenvolvedores muitas vezes passam mais tempo discutindo guias de estilo, linters e regras de formatação do que escrevendo software.
+A Ori Language também defende uma abordagem mais acessível para diferentes formas de pensar. Sua sintaxe, seus diagnósticos e sua organização visual devem favorecer a leitura, a concentração e a compreensão progressiva, tornando a programação menos opaca e mais humana.
 
-A Ori foi construída para resolver pontos de dor específicos do nosso fluxo de trabalho:
+A Ori Language não busca ser uma linguagem de atalhos extremos, nem uma cópia de linguagens já existentes. Ela não pretende sacrificar legibilidade em nome de brevidade, nem transformar simplicidade em limitação.
 
-1. **Bases de Código Auto-Documentadas**: Ao exigir anotações de tipo no local de definição, o código Ori serve como sua própria documentação. O leitor nunca precisa adivinhar o que uma função aceita ou retorna.
-2. **Foco em Ferramental (Tooling)**: Projetada desde o primeiro dia com um LSP integrado e um catálogo de diagnósticos. O compilador não gera apenas erros abstratos; ele explica *por que* o erro ocorreu através de códigos de erro estruturados e catalogados.
-3. **Sem Gargalos de Garbage Collection**: A Ori utiliza contagem de referências automáticas (ARC) e coleta de ciclos cooperativa, oferecendo uso de memória previsível e adequado para sistemas em tempo real (como loops de jogos e aplicações interativas de UI).
-4. **Fácil de Compilar e Linkar**: O compilador gerencia nativamente sua própria etapa de linkagem através do `rust-lld` ou linkers locais, eliminando a dor de configurar cadeias de ferramentas externas.
+Seu propósito é ser uma linguagem clara, forte, composicional e confiável, capaz de ensinar, estruturar e sustentar sistemas reais com menos ambiguidade e mais intenção.
 
----
+**A Ori Language existe para provar que uma linguagem de programação pode ser técnica sem ser obscura, poderosa sem ser confusa e expressiva sem deixar de ser legível.**
 
-## Manifesto da Linguagem
-
-> *"Escolhemos a clareza em vez da brevidade. Escolhemos a previsibilidade em vez da magia. Acreditamos que os erros do compilador devem ensinar e guiar, não punir."*
-
-A Ori defende:
-- **Consistência**: Uma única forma canônica de escrever loops, condicionais e funções.
-- **Prevenção de Erros**: Forçar o programador a tratar caminhos nulos (`none`) e caminhos de erro (`error(e)`) durante o desenvolvimento.
-- **Eficiência de Execução**: Uso de memória mínimo, sem cold starts e binários standalone que rodam imediatamente em qualquer máquina.
+Mais do que uma ferramenta para escrever código, a Ori Language é uma defesa de uma ideia:
+**programar deve ser um ato de comunicação clara entre pessoas, máquinas e o futuro.**
