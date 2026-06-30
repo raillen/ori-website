@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Ori",
-      tagline: "A reading-first, explicitly typed programming language",
+      tagline: "An evolving language to study compilers, runtimes, AI, and language design.",
       defaultLocale: "root",
       locales: {
         root: {
