@@ -57,9 +57,21 @@
 
 /* Glassmorphism for Header */
 header.header {
+  position: relative;
   backdrop-filter: blur(12px);
   background-color: var(--sl-color-bg-nav) !important;
   border-bottom: 1px solid var(--sl-color-border);
+}
+
+/* Centraliza a barra de pesquisa global no Navbar (Desktop) */
+@media (min-width: 50rem) {
+  site-search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(380px, 100%);
+    z-index: 10;
+  }
 }
 
 /* Clean sidebar noise */
