@@ -1,0 +1,96 @@
+---
+title: Organizar código
+description: Estrutura prática para namespaces, imports, funções e exemplos em projetos Ori.
+---
+
+Boa organização faz um arquivo Ori ser lido de cima para baixo.
+
+Use uma ordem previsível:
+
+1. `namespace`
+2. `import`
+3. tipos do domínio
+4. funções auxiliares pequenas
+5. funções de orquestração
+6. `main`
+
+## Comece com um namespace claro
+
+Escolha um namespace que diz onde o código pertence:
+
+```ori
+namespace app.invoice
+```
+
+Para exemplos, prefira nomes simples:
+
+```ori
+namespace examples.queue_demo
+```
+
+Evite namespaces genéricos como `app.test` quando o exemplo já tem um assunto real.
+
+## Agrupe imports por papel
+
+Coloque imports perto do topo e use aliases que já são familiares na documentação:
+
+```ori
+import ori.io as io
+import ori.queue as queue
+```
+
+Se um alias tem só uma letra, ele precisa ser óbvio pela convenção local. Caso contrário, use um alias legível.
+
+## Separe regras de domínio de I/O
+
+Código de cálculo não deve depender de saída no terminal:
+
+```ori
+func calculate_total(subtotal: int, shipping_cost: int) -> int
+    return subtotal + shipping_cost
+end
+
+func main()
+    const total: int = calculate_total(120, 15)
+    io.println("total: " + string(total))
+end
+```
+
+Isso mantém a regra do domínio reutilizável. Também deixa o exemplo mais fácil de testar depois.
+
+## Deixe `main` por último
+
+Normalmente, a pessoa leitora entende melhor quando a entrada do programa aparece depois das peças de apoio:
+
+```ori
+func build_message(name: string) -> string
+    return "Hello, " + name + "!"
+end
+
+func main()
+    const message: string = build_message("Ori")
+    io.println(message)
+end
+```
+
+## Mantenha exemplos pequenos
+
+Um bom exemplo de tutorial deve caber em uma tela quando possível.
+
+Se o exemplo precisa de mais código, divida em seções:
+
+- uma seção para o código completo;
+- uma seção para a ideia principal;
+- uma seção para casos de borda;
+- uma seção para validação.
+
+## Checklist de revisão
+
+Antes de adicionar um novo exemplo:
+
+- O arquivo tem um único assunto.
+- O namespace combina com esse assunto.
+- Os imports são mínimos.
+- Funções auxiliares têm nomes claros.
+- `main` parece uma história curta do fluxo do programa.
+- Caminhos de erro estão visíveis.

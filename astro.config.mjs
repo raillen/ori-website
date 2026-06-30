@@ -55,7 +55,7 @@ export default defineConfig({
         {
           label: "Start",
           translations: {
-            pt: "Começar",
+            "pt-BR": "Começar",
             es: "Empezar",
             ja: "はじめる",
           },
@@ -64,7 +64,7 @@ export default defineConfig({
               label: "Introduction",
               link: "/",
               translations: {
-                pt: "Introdução",
+                "pt-BR": "Introdução",
                 es: "Introducción",
                 ja: "イントロダクション",
               },
@@ -73,7 +73,7 @@ export default defineConfig({
               label: "Language Manifesto",
               link: "/manifesto/",
               translations: {
-                pt: "Manifesto da Linguagem",
+                "pt-BR": "Manifesto da Linguagem",
                 es: "Manifesto del Lenguaje",
                 ja: "言語マニフェスト",
               },
@@ -82,7 +82,7 @@ export default defineConfig({
               label: "Getting started",
               link: "/getting-started/",
               translations: {
-                pt: "Primeiros passos",
+                "pt-BR": "Primeiros passos",
                 es: "Primeros pasos",
                 ja: "はじめに",
               },
@@ -91,7 +91,7 @@ export default defineConfig({
               label: "Hello world",
               link: "/examples/hello-world/",
               translations: {
-                pt: "Hello world",
+                "pt-BR": "Hello world",
                 es: "Hello world",
                 ja: "Hello world",
               },
@@ -101,7 +101,7 @@ export default defineConfig({
         {
           label: "Language",
           translations: {
-            pt: "Linguagem",
+            "pt-BR": "Linguagem",
             es: "Lenguaje",
             ja: "言語",
           },
@@ -114,7 +114,7 @@ export default defineConfig({
               label: "Errors, null, void",
               link: "/language/errors-null-void/",
               translations: {
-                pt: "Erros, null, void",
+                "pt-BR": "Erros, null, void",
                 es: "Errores, null, void",
                 ja: "エラーと null/void",
               },
@@ -126,9 +126,46 @@ export default defineConfig({
           ],
         },
         {
+          label: "Cookbook",
+          translations: {
+            "pt-BR": "Guias práticos",
+            es: "Recetario",
+            ja: "クックブック",
+          },
+          items: [
+            {
+              label: "Overview",
+              link: "/cookbook/",
+              translations: {
+                "pt-BR": "Visão geral",
+                es: "Vista general",
+                ja: "概要",
+              },
+            },
+            {
+              label: "Write clean Ori",
+              link: "/cookbook/write-clean-ori/",
+              translations: {
+                "pt-BR": "Escrever Ori limpo",
+                es: "Escribir Ori limpio",
+                ja: "読みやすい Ori",
+              },
+            },
+            {
+              label: "Organize code",
+              link: "/cookbook/organize-code/",
+              translations: {
+                "pt-BR": "Organizar código",
+                es: "Organizar código",
+                ja: "コード構成",
+              },
+            },
+          ],
+        },
+        {
           label: "Technical Details",
           translations: {
-            pt: "Detalhes Técnicos",
+            "pt-BR": "Detalhes Técnicos",
             es: "Detalles Técnicos",
             ja: "技術的な詳細",
           },
@@ -137,7 +174,7 @@ export default defineConfig({
               label: "Compiler & Dev",
               link: "/development/",
               translations: {
-                pt: "Compilador & Dev",
+                "pt-BR": "Compilador & Dev",
                 es: "Compilador y Dev",
                 ja: "コンパイラと開発",
               },
@@ -146,7 +183,7 @@ export default defineConfig({
               label: "CLI Overview",
               link: "/cli/overview/",
               translations: {
-                pt: "Visão Geral da CLI",
+                "pt-BR": "Visão Geral da CLI",
                 es: "Descripción de CLI",
                 ja: "CLIの概要",
               },
@@ -159,7 +196,7 @@ export default defineConfig({
           label: "Reference",
           autogenerate: { directory: "reference" },
           translations: {
-            pt: "Referência",
+            "pt-BR": "Referência",
             es: "Referencia",
             ja: "リファレンス",
           },

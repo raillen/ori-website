@@ -1,0 +1,108 @@
+---
+title: Write clean Ori
+description: Naming, functions, types, and error handling patterns for readable Ori code.
+---
+
+Clean Ori code is explicit, small, and easy to scan.
+
+The goal is not to write the fewest lines. The goal is to make the next reader understand the program without guessing.
+
+## Prefer domain names
+
+Use names that describe the role of the value:
+
+```ori
+const subtotal: int = 120
+const shipping_cost: int = 15
+const total: int = subtotal + shipping_cost
+```
+
+Avoid names that hide meaning:
+
+```ori
+const x: int = 120
+const y: int = 15
+const z: int = x + y
+```
+
+Short names are fine for tiny loops, but public examples should teach clear names first.
+
+## Keep functions focused
+
+A function should usually do one job:
+
+```ori
+func calculate_total(subtotal: int, shipping_cost: int) -> int
+    return subtotal + shipping_cost
+end
+
+func print_total(total: int)
+    io.println("total: " + string(total))
+end
+```
+
+This is easier to test and easier to change than mixing calculation, formatting, and output in the same block.
+
+## Put types at the boundary
+
+Ori requires explicit type annotations for bindings. Use that as a reading aid:
+
+```ori
+func apply_discount(total: int, discount: int) -> int
+    const discounted_total: int = total - discount
+    return discounted_total
+end
+```
+
+The type tells the reader what kind of value enters and leaves the function.
+
+## Handle errors where they happen
+
+When a function returns `result<T, E>`, decide what the caller should do:
+
+```ori
+func divide(total: int, count: int) -> result<int, string>
+    if count == 0
+        return error("count must not be zero")
+    end
+
+    return success(total / count)
+end
+
+func main()
+    match divide(100, 4)
+        case success(value):
+            io.println("average: " + string(value))
+        case error(message):
+            io.println("error: " + message)
+    end
+end
+```
+
+Do not hide the error path in tutorial code. Show it clearly.
+
+## Use comments for intent
+
+Prefer code that explains itself. Add comments only when the reason is not obvious:
+
+```ori
+-- Keep this limit small while the runtime examples are used in docs.
+const max_retry_count: int = 3
+```
+
+Avoid comments that repeat the next line:
+
+```ori
+-- Set max_retry_count to 3.
+const max_retry_count: int = 3
+```
+
+## Tutorial rule
+
+When adding a new tutorial, use this order:
+
+1. Goal.
+2. Complete example.
+3. Explanation in small sections.
+4. Common mistake.
+5. Next step.

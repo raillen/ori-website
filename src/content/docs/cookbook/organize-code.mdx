@@ -1,0 +1,96 @@
+---
+title: Organize code
+description: Practical structure for namespaces, imports, functions, and examples in Ori projects.
+---
+
+Good organization makes an Ori file easy to read from top to bottom.
+
+Use a predictable order:
+
+1. `namespace`
+2. `import`
+3. domain types
+4. small helper functions
+5. orchestration functions
+6. `main`
+
+## Start with a clear namespace
+
+Choose a namespace that says where the code belongs:
+
+```ori
+namespace app.invoice
+```
+
+For examples, prefer simple names like:
+
+```ori
+namespace examples.queue_demo
+```
+
+Avoid generic namespaces such as `app.test` when the example already has a real topic.
+
+## Group imports by role
+
+Put imports near the top and use aliases that are already familiar in the docs:
+
+```ori
+import ori.io as io
+import ori.queue as queue
+```
+
+If an alias is only one letter, it should be obvious from local convention. Otherwise, use a readable alias.
+
+## Keep domain rules separate from I/O
+
+Calculation code should not need terminal output:
+
+```ori
+func calculate_total(subtotal: int, shipping_cost: int) -> int
+    return subtotal + shipping_cost
+end
+
+func main()
+    const total: int = calculate_total(120, 15)
+    io.println("total: " + string(total))
+end
+```
+
+This keeps the domain rule reusable. It also makes the example easier to test later.
+
+## Put `main` last
+
+Readers usually want to see the program entry point after the supporting pieces:
+
+```ori
+func build_message(name: string) -> string
+    return "Hello, " + name + "!"
+end
+
+func main()
+    const message: string = build_message("Ori")
+    io.println(message)
+end
+```
+
+## Keep examples small
+
+A good tutorial example should fit on one screen when possible.
+
+If the example needs more code, split it into sections:
+
+- one section for the complete code;
+- one section for the core idea;
+- one section for edge cases;
+- one section for validation.
+
+## Review checklist
+
+Before adding a new example:
+
+- The file has one topic.
+- The namespace matches that topic.
+- Imports are minimal.
+- Helper functions have clear names.
+- `main` reads like a short story of the program flow.
+- Error paths are visible.

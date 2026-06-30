@@ -1,0 +1,108 @@
+---
+title: Escrever Ori limpo
+description: Padrões de nomes, funções, tipos e tratamento de erros para código Ori legível.
+---
+
+Código Ori limpo é explícito, pequeno e fácil de escanear com os olhos.
+
+O objetivo não é escrever o menor número de linhas. O objetivo é fazer a próxima pessoa entender o programa sem adivinhar.
+
+## Prefira nomes do domínio
+
+Use nomes que descrevem o papel do valor:
+
+```ori
+const subtotal: int = 120
+const shipping_cost: int = 15
+const total: int = subtotal + shipping_cost
+```
+
+Evite nomes que escondem significado:
+
+```ori
+const x: int = 120
+const y: int = 15
+const z: int = x + y
+```
+
+Nomes curtos podem funcionar em laços pequenos, mas exemplos públicos devem ensinar nomes claros primeiro.
+
+## Mantenha funções focadas
+
+Uma função normalmente deve ter um trabalho:
+
+```ori
+func calculate_total(subtotal: int, shipping_cost: int) -> int
+    return subtotal + shipping_cost
+end
+
+func print_total(total: int)
+    io.println("total: " + string(total))
+end
+```
+
+Isso é mais fácil de testar e mudar do que misturar cálculo, formatação e saída no mesmo bloco.
+
+## Use tipos nas bordas
+
+Ori exige anotações de tipo explícitas em valores declarados. Use isso como ajuda de leitura:
+
+```ori
+func apply_discount(total: int, discount: int) -> int
+    const discounted_total: int = total - discount
+    return discounted_total
+end
+```
+
+O tipo mostra qual valor entra e qual valor sai da função.
+
+## Trate erros onde eles aparecem
+
+Quando uma função retorna `result<T, E>`, decida o que a chamada deve fazer:
+
+```ori
+func divide(total: int, count: int) -> result<int, string>
+    if count == 0
+        return error("count must not be zero")
+    end
+
+    return success(total / count)
+end
+
+func main()
+    match divide(100, 4)
+        case success(value):
+            io.println("average: " + string(value))
+        case error(message):
+            io.println("error: " + message)
+    end
+end
+```
+
+Não esconda o caminho de erro em tutoriais. Mostre esse caminho com clareza.
+
+## Use comentários para intenção
+
+Prefira código que se explica por nomes e estrutura. Adicione comentários só quando o motivo não é óbvio:
+
+```ori
+-- Mantém este limite baixo enquanto os exemplos de runtime são usados na documentação.
+const max_retry_count: int = 3
+```
+
+Evite comentários que repetem a próxima linha:
+
+```ori
+-- Define max_retry_count como 3.
+const max_retry_count: int = 3
+```
+
+## Regra para tutorial
+
+Ao criar um novo tutorial, use esta ordem:
+
+1. Objetivo.
+2. Exemplo completo.
+3. Explicação em seções pequenas.
+4. Erro comum.
+5. Próximo passo.

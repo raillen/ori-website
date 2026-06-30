@@ -47,6 +47,8 @@ To refresh stdlib data in CI, add a prebuild step that clones `ori-lang` and run
 
 ```
 src/content/docs/     # Guides (i18n)
+src/content/docs/cookbook/ # Practical clean-code recipes (EN)
+src/content/docs/pt/cookbook/ # Practical clean-code recipes (PT-BR)
 src/content/docs/reference/  # Generated stdlib + errors (EN)
 src/data/symbols.json # Compiler export
 public/symbols.json   # Copy for client search index
