@@ -1,0 +1,53 @@
+---
+title: Manifesto da Linguagem
+description: Os princípios fundamentais, motivação e visão por trás da linguagem de programação Ori.
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+A Ori foi criada pelo desejo de ter uma linguagem de programação que prioriza a compreensão humana acima de tudo. No cenário de desenvolvimento atual, o código é lido muito mais vezes do que é escrito, mas muitas linguagens são otimizadas para velocidade de digitação ou sintaxe curta em vez de legibilidade.
+
+A Ori muda essa equação. É uma linguagem **focada na leitura** e de **tipagem explícita**, projetada para construir sistemas limpos, fáceis de manter e robustos para jogos, automação, ferramentas desktop e aplicações de sistema.
+
+---
+
+## Pilares da Ori
+
+<CardGrid>
+  <Card title="1. Sintaxe Focada na Leitura" icon="open-book">
+    O código deve ser lido como literatura estruturada. Ori rejeita chaves `{}` e usa delimitadores textuais claros como `if ... then ... end` e `func ... end`. Isso reduz a fadiga visual e acelera a leitura de código.
+  </Card>
+  <Card title="2. Explícito é Melhor que Implícito" icon="approve-check-circle">
+    Conversões implícitas e comportamentos mágicos escondem bugs. Ori exige tipos explícitos para todas as declarações de variáveis e não permite coerção automática. O que você vê é o que o compilador valida.
+  </Card>
+  <Card title="3. Tratamento Seguro de Erros" icon="warning">
+    Exceções quebram o fluxo de execução e tornam o código difícil de rastrear. Ori modela falhas usando `result<T, E>` e a ausência de valor usando `optional<T>`. Os caminhos de erro são tipados e tratados explicitamente por pattern matching.
+  </Card>
+  <Card title="4. Performance Nativa Leve" icon="rocket">
+    A Ori compila diretamente para código de máquina nativo via Cranelift, ignorando runtimes pesados ou máquinas virtuais, gerando tempos de inicialização instantâneos. Também suporta execução in-process via JIT.
+  </Card>
+</CardGrid>
+
+---
+
+## O Ímpeto: Por que Ori?
+
+Muitas linguagens modernas evoluíram para se tornar ecossistemas complexos com dezenas de funcionalidades redundantes. Os desenvolvedores muitas vezes passam mais tempo discutindo guias de estilo, linters e regras de formatação do que escrevendo software.
+
+A Ori foi construída para resolver pontos de dor específicos do nosso fluxo de trabalho:
+
+1. **Bases de Código Auto-Documentadas**: Ao exigir anotações de tipo no local de definição, o código Ori serve como sua própria documentação. O leitor nunca precisa adivinhar o que uma função aceita ou retorna.
+2. **Foco em Ferramental (Tooling)**: Projetada desde o primeiro dia com um LSP integrado e um catálogo de diagnósticos. O compilador não gera apenas erros abstratos; ele explica *por que* o erro ocorreu através de códigos de erro estruturados e catalogados.
+3. **Sem Gargalos de Garbage Collection**: A Ori utiliza contagem de referências automáticas (ARC) e coleta de ciclos cooperativa, oferecendo uso de memória previsível e adequado para sistemas em tempo real (como loops de jogos e aplicações interativas de UI).
+4. **Fácil de Compilar e Linkar**: O compilador gerencia nativamente sua própria etapa de linkagem através do `rust-lld` ou linkers locais, eliminando a dor de configurar cadeias de ferramentas externas.
+
+---
+
+## Manifesto da Linguagem
+
+> *"Escolhemos a clareza em vez da brevidade. Escolhemos a previsibilidade em vez da magia. Acreditamos que os erros do compilador devem ensinar e guiar, não punir."*
+
+A Ori defende:
+- **Consistência**: Uma única forma canônica de escrever loops, condicionais e funções.
+- **Prevenção de Erros**: Forçar o programador a tratar caminhos nulos (`none`) e caminhos de erro (`error(e)`) durante o desenvolvimento.
+- **Eficiência de Execução**: Uso de memória mínimo, sem cold starts e binários standalone que rodam imediatamente em qualquer máquina.

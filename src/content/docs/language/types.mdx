@@ -16,6 +16,31 @@ Ori is **explicitly typed**: bindings require type annotations at the point of d
 | `bytes` | Raw byte buffers |
 | `void` | No value (statements only) |
 
+## Numeric Suffixes
+
+You can define the explicit bit-width of numeric literals by appending a type suffix directly to the digits. This is useful when calling native FFI interfaces or optimising memory layouts:
+
+- **Signed Integers**: `i8`, `i16`, `i32`, `i64` (e.g., `42i8`, `-123i64`)
+- **Unsigned Integers**: `u8`, `u16`, `u32`, `u64` (e.g., `255u8`, `1000u32`)
+- **Floats**: `f32`, `f64` (e.g., `3.14f32`, `1.0f64`)
+
+Without a suffix, integer literals default to `int` and float literals default to `float`.
+
+## Type Coercion & Casting
+
+Ori does not support implicit type coercion to avoid subtle programmer errors. Instead, type conversions are performed explicitly by invoking the target primitive type name as a conversion function:
+
+```ori
+const x: float = 3.14
+const rounded: int = int(x) // Cast float to int
+
+const active: bool = true
+const active_str: string = string(active) // Cast bool to "true"
+
+const byte_list: list<int> = [72, 101, 108, 108, 111]
+const hello_bytes: bytes = bytes(byte_list) // Convert lists to raw bytes
+```
+
 ## `result` and `optional`
 
 - **`result<T, E>`** — success or error (`match` with `success` / `error` arms)

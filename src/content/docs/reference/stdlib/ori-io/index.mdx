@@ -29,6 +29,19 @@ description: Standard library module ori.io
 
 - Layer 1 · runtime
 
+Writes a string to the standard output without appending a newline.
+
+**Applicability:**
+Used for printing prompt messages, building progress indicators, or custom formatted output.
+
+```ori
+import ori.io as io
+
+func main()
+    io.print("Enter value: ")
+end
+```
+
 ### `ori.io.println`
 
 ```ori
@@ -36,6 +49,19 @@ description: Standard library module ori.io
 ```
 
 - Layer 1 · runtime
+
+Writes a string to the standard output, followed by a newline.
+
+**Applicability:**
+Used for printing log messages, general command line outputs, and standard debugging text.
+
+```ori
+import ori.io as io
+
+func main()
+    io.println("Application started successfully.")
+end
+```
 
 ### `ori.io.read_line`
 

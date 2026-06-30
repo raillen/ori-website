@@ -1,0 +1,83 @@
+---
+title: Compilador & Desenvolvimento
+description: Arquitetura técnica, pipeline do compilador, estratégias de descoberta de linker e implementação de runtime da linguagem Ori.
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+O compilador da Ori é escrito em Rust e projetado para ser rápido, portátil e autocontido. Ele compila o código diretamente para binários nativos de máquina usando **Cranelift** e gerencia a etapa de linkagem automaticamente, eliminando a necessidade de ter uma toolchain de C ou Rust instalada no computador do usuário final.
+
+---
+
+## Pipeline do Compilador
+
+O processo de compilação é estruturado como um pipeline modular e linear:
+
+<Steps>
+
+1.  **Análise Léxica (`ori-lexer`)**
+    Converte arquivos-fonte `.orl` brutos em uma sequência de tokens estruturados usando um lexer de alta performance baseado na biblioteca `logos`.
+
+2.  **Análise Sintática (`ori-parser`)**
+    Estrutura a Árvore de Sintaxe Abstrata (AST) através de um parser de descida recursiva. Os blocos são delimitados claramente pela palavra-chave `end`.
+
+3.  **Resolução de Nomes & Simplificação (`ori-hir`)**
+    Resolve caminhos de variáveis, funções e imports de namespaces. Traduz a AST em uma representação intermediária simplificada (HIR) e realiza a monomorfização de tipos genéricos.
+
+4.  **Verificação de Tipos (`ori-types`)**
+    Realiza inferência de tipos, checagem de contratos e restrições, e gera erros estruturados integrados ao [Catálogo de Diagnósticos](/reference/errors/).
+
+5.  **Geração de Código (`ori-codegen`)**
+    Suporta dois alvos de compilação principais:
+    *   **Backend Nativo**: Tradução direta de HIR para IR do Cranelift, que é compilado para código de máquina nativo (`.o`/`.obj`).
+    *   **Transpilador C Debug**: Traduz o código Ori para código C equivalente, facilitando a depuração e testes de portabilidade.
+
+</Steps>
+
+---
+
+## Gerenciamento de Memória & Runtime
+
+A Ori possui uma biblioteca de runtime leve (`ori-runtime`) escrita em Rust. Ela fornece:
+
+*   **Contagem de Referência Automática (ARC)**: Gerenciamento de memória sem os gargalos e pausas de um Garbage Collector tradicional.
+*   **Coletor de Ciclos (Cycle Collector)**: Um coletor cooperativo que identifica e libera referências cíclicas mantidas pelo ARC.
+*   **Executor Cooperativo**: O executor de tarefas assíncronas gerencia a coleta de ciclos de forma cooperativa após atingir um limite de alocações (ajustável via `ORI_COOPERATIVE_COLLECT_THRESHOLD`).
+*   **Integração com o Sudoeste do Sistema**: Funções nativas para E/S de arquivos, rede, chamadas de sistema e processos.
+
+---
+
+## Remoção de Dependência de Cadeias de Ferramentas (Toolchain)
+
+Um dos principais objetivos de arquitetura da Ori é remover a dependência de compiladores externos instalados (como o MSVC ou GCC) para gerar executáveis nativos. Isso é feito por três estratégias principais:
+
+### 1. Linker LLD Embutido (`BundledRustLld`)
+Invocamos o linkador `rust-lld` diretamente (sem o wrapper do compilador `rustc`). O compilador realiza a **descoberta de bibliotecas de tempo de execução C (CRT)** do sistema:
+*   **Windows (MSVC)**: Localiza automaticamente as pastas do MSVC e SDKs do Windows através do `vswhere.exe`.
+*   **Linux (GNU)**: Encontra `crt1.o`, `crti.o`, e `crtn.o` usando `cc -print-file-name` e caminhos padrões.
+*   **macOS (Darwin)**: Resolve o caminho dos SDKs via `xcrun --show-sdk-path` e configura os argumentos específicos do linkador `-flavor darwin`.
+
+### 2. Linker Nativo do Sistema (`SystemLinker`)
+Ignora tanto o compilador de Rust quanto o `rust-lld`, chamando o linker do sistema (`link.exe` no Windows, `ld` em Unix/macOS) diretamente, usando a mesma lógica de descoberta das bibliotecas de tempo de execução C. Ativado via `ORI_USE_SYSTEM_LINKER=1`.
+
+### 3. Compilação JIT com Cranelift (`JITModule`)
+Para o comando `ori run`, a Ori suporta compilação em tempo de execução (JIT). O compilador monta a representação Cranelift diretamente na memória do processo e resolve os símbolos da runtime carregando dinamicamente a biblioteca cdylib (`ori_runtime.dll` / `.so`) com `libloading`. Isso elimina a necessidade de invocar processos de linkagem ou gerar arquivos temporários no disco.
+
+---
+
+## Estrutura do Workspace do Compilador
+
+O compilador é organizado em um workspace do Cargo com 10 crates:
+
+| Crate | Propósito |
+|-------|-----------|
+| `ori-lexer` | Lexer e definições de tokens |
+| `ori-ast` | Definições da Árvore de Sintaxe Abstrata (AST) |
+| `ori-parser` | Parser de descida recursiva |
+| `ori-types` | Sistema de tipos, inferência e validações |
+| `ori-hir` | HIR, resolução de nomes e monomorfização |
+| `ori-codegen` | Geração de código Cranelift (JIT/AOT) e C |
+| `ori-runtime` | Runtime nativa (staticlib e cdylib) |
+| `ori-diagnostics` | Catálogo e renderização de mensagens de diagnóstico |
+| `ori-lsp` | Servidor de linguagem (LSP) para editores como VS Code |
+| `ori-driver` | CLI, interpretador, empacotador e driver de compilação AOT |

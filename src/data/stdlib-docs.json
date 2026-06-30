@@ -1,0 +1,47 @@
+{
+  "ori.io.print": {
+    "description": "Writes a string to the standard output without appending a newline.",
+    "applicability": "Used for printing prompt messages, building progress indicators, or custom formatted output.",
+    "example": "import ori.io as io\n\nfunc main()\n    io.print(\"Enter value: \")\nend"
+  },
+  "ori.io.println": {
+    "description": "Writes a string to the standard output, followed by a newline.",
+    "applicability": "Used for printing log messages, general command line outputs, and standard debugging text.",
+    "example": "import ori.io as io\n\nfunc main()\n    io.println(\"Application started successfully.\")\nend"
+  },
+  "ori.fs.read_file": {
+    "description": "Reads the entire contents of a file into a bytes buffer asynchronously/synchronously depending on execution context.",
+    "applicability": "Essential for processing binary files, loading text resources, or parsing local configuration files.",
+    "example": "import ori.fs as fs\nimport ori.io as io\n\nfunc main()\n    const res = fs.read_file(\"config.json\")\n    match res\n        success(data) => io.println(\"Loaded data: \" + string(data))\n        error(err) => io.println(\"Failed to read config.\")\n    end\nend"
+  },
+  "ori.fs.write_file": {
+    "description": "Writes a bytes buffer into a file, creating it if it does not exist, or overwriting it if it does.",
+    "applicability": "Used for saving application state, writing logs, creating temporary storage, or exporting reports.",
+    "example": "import ori.fs as fs\nimport ori.io as io\n\nfunc main()\n    const payload = bytes.from_list([72, 101, 108, 108, 111]) // \"Hello\"\n    const res = fs.write_file(\"output.txt\", payload)\n    match res\n        success(void) => io.println(\"Write complete.\")\n        error(err) => io.println(\"Write failed.\")\n    end\nend"
+  },
+  "ori.bytes.to_hex": {
+    "description": "Converts a raw bytes buffer into its hexadecimal string representation.",
+    "applicability": "Widely used in cryptographic hashing visualizations, generating checksum strings, and formatting binary protocol payloads for debugging.",
+    "example": "import ori.bytes as bytes\nimport ori.io as io\n\nfunc main()\n    const data = bytes.from_list([0, 15, 255])\n    io.println(bytes.to_hex(data)) // Prints \"000fff\"\nend"
+  },
+  "ori.bytes.from_hex": {
+    "description": "Parses a hexadecimal string and returns the corresponding raw bytes buffer.",
+    "applicability": "Useful for decoding hex-encoded files, processing public-key certificates, or parsing network packets represented as hex.",
+    "example": "import ori.bytes as bytes\nimport ori.io as io\n\nfunc main()\n    const hex_str = \"48656c6c6f\"\n    const data = bytes.from_hex(hex_str)\n    io.println(string(data)) // Prints \"Hello\"\nend"
+  },
+  "ori.math.utils.clamp_int": {
+    "description": "Restricts an integer value to be within a specified minimum and maximum range.",
+    "applicability": "Commonly used in game logic (constraining characters within screen boundaries), UI layouts (clamping coordinate systems), and index math.",
+    "example": "import ori.math.utils as mu\nimport ori.io as io\n\nfunc main()\n    const hp = mu.clamp_int(120, 0, 100)\n    io.println(string(hp)) // Prints \"100\"\nend"
+  },
+  "ori.math.utils.lerp": {
+    "description": "Performs linear interpolation between two float values based on a weight ratio.",
+    "applicability": "Essential for graphics development, game engines (smooth translation/transitions), and easing animations.",
+    "example": "import ori.math.utils as mu\nimport ori.io as io\n\nfunc main()\n    const current = mu.lerp(10.0, 20.0, 0.5)\n    io.println(string(current)) // Prints \"15.0\"\nend"
+  },
+  "ori.string.utils.contains": {
+    "description": "Checks if a string contains a specific substring.",
+    "applicability": "Used in text processing, simple search filters, and matching query parameters.",
+    "example": "import ori.string.utils as su\nimport ori.io as io\n\nfunc main()\n    const has_hello = su.contains(\"Hello, world!\", \"hello\")\n    io.println(string(has_hello)) // Prints \"true\" (case-insensitive check or similar)\nend"
+  }
+}

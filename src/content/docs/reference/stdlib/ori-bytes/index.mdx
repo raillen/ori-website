@@ -32,6 +32,22 @@ description: Standard library module ori.bytes
 - Layer 1 · runtime
   - Aliases: `bytes.from_hex`
 
+Parses a hexadecimal string and returns the corresponding raw bytes buffer.
+
+**Applicability:**
+Useful for decoding hex-encoded files, processing public-key certificates, or parsing network packets represented as hex.
+
+```ori
+import ori.bytes as bytes
+import ori.io as io
+
+func main()
+    const hex_str = "48656c6c6f"
+    const data = bytes.from_hex(hex_str)
+    io.println(string(data)) // Prints "Hello"
+end
+```
+
 ### `ori.bytes.from_list`
 
 ```ori
@@ -76,6 +92,21 @@ description: Standard library module ori.bytes
 
 - Layer 1 · runtime
   - Aliases: `bytes.to_hex`
+
+Converts a raw bytes buffer into its hexadecimal string representation.
+
+**Applicability:**
+Widely used in cryptographic hashing visualizations, generating checksum strings, and formatting binary protocol payloads for debugging.
+
+```ori
+import ori.bytes as bytes
+import ori.io as io
+
+func main()
+    const data = bytes.from_list([0, 15, 255])
+    io.println(bytes.to_hex(data)) // Prints "000fff"
+end
+```
 
 ### `ori.bytes.to_list`
 

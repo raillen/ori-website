@@ -32,6 +32,21 @@ func clamp_int(value: int, min_val: int, max_val: int) -> int
 - Layer 2 · .orl
   - Source: `math/utils.orl`
 
+Restricts an integer value to be within a specified minimum and maximum range.
+
+**Applicability:**
+Commonly used in game logic (constraining characters within screen boundaries), UI layouts (clamping coordinate systems), and index math.
+
+```ori
+import ori.math.utils as mu
+import ori.io as io
+
+func main()
+    const hp = mu.clamp_int(120, 0, 100)
+    io.println(string(hp)) // Prints "100"
+end
+```
+
 ### `ori.math.utils.deg_to_rad`
 
 ```ori
@@ -49,6 +64,21 @@ func lerp(a: float, b: float, t: float) -> float
 
 - Layer 2 · .orl
   - Source: `math/utils.orl`
+
+Performs linear interpolation between two float values based on a weight ratio.
+
+**Applicability:**
+Essential for graphics development, game engines (smooth translation/transitions), and easing animations.
+
+```ori
+import ori.math.utils as mu
+import ori.io as io
+
+func main()
+    const current = mu.lerp(10.0, 20.0, 0.5)
+    io.println(string(current)) // Prints "15.0"
+end
+```
 
 ### `ori.math.utils.log10`
 

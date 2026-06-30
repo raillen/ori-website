@@ -1,0 +1,84 @@
+---
+title: Compiler & Development
+description: Technical architecture, compiler pipeline, linker discovery strategies, and runtime implementation of the Ori programming language.
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+Ori's compiler is built in Rust and designed for speed, portability, and self-containment. It compiles code directly to machine code using **Cranelift** and manages native linking automatically, eliminating the requirement of an installed C or Rust development toolchain for the end-user.
+
+---
+
+## Compiler Pipeline
+
+The compilation process is structured as a linear, modular pipeline:
+
+<Steps>
+
+1.  **Lexical Analysis (`ori-lexer`)**
+    Converts raw `.orl` source files into a stream of structured tokens using a high-performance lexer powered by the `logos` crate.
+
+2.  **Parsing (`ori-parser`)**
+    Constructs a concrete Abstract Syntax Tree (AST) using a recursive descent parser. Blocks are delimited by `end` keywords.
+
+3.  **Name Resolution & Lowering (`ori-hir`)**
+    Resolves variables, function bindings, and namespace imports. Lowers the AST into a simplified High-Level Intermediate Representation (HIR) and performs monomorphisation of generics.
+
+4.  **Type Checking (`ori-types`)**
+    Performs type inference, checks annotations, ensures contract validations, and generates structured errors linked directly to the [Diagnostic Catalog](/reference/errors/).
+
+5.  **Code Generation (`ori-codegen`)**
+    Supports two main codegen targets:
+    *   **Native Backend**: Direct translation of HIR into Cranelift IR, compiled to native `.o`/`.obj` machine code.
+    *   **C Debug Transpiler**: Translates Ori code into equivalent C code for debugging purposes and alternative compilation checks.
+
+</Steps>
+
+---
+
+## Runtime & Memory Management
+
+Ori has a slim, native runtime library (`ori-runtime`) written in Rust. It provides:
+
+*   **Automatic Reference Counting (ARC)**: Garbage-collection-free memory management with predictable reclamation.
+*   **Cycle Collection**: A cooperative cycle collector designed to scan and free cyclical ARC references.
+*   **Cooperative Executor**: An async task executor that triggers cycle collections cooperatively after a threshold of allocations (configurable via `ORI_COOPERATIVE_COLLECT_THRESHOLD`).
+*   **Stdlib Bindings**: Low-level integration for File I/O, Networking, Operating System calls, and processes.
+
+---
+
+## Technical Features: Rust Toolchain Removal
+
+One of Ori's primary design goals is to eliminate dependencies on the Rust toolchain for end-users when compiling binaries. This is achieved through three strategies:
+
+### 1. Bundled LLD Linker (`BundledRustLld`)
+Bypasses the `rustc` driver by invoking `rust-lld` directly. The compiler includes platform-specific **CRT (C Runtime) Discovery**:
+*   **Windows (MSVC)**: Discovers MSVC tools and Windows SDK directories via `vswhere.exe`.
+*   **Linux (GNU)**: Discovers `crt1.o`, `crti.o`, and `crtn.o` via `cc -print-file-name` and common paths.
+*   **macOS (Darwin)**: Resolves SDK paths via `xcrun --show-sdk-path` and structures `-flavor darwin` link arguments.
+
+### 2. Direct System Linker (`SystemLinker`)
+Bypasses both `rustc` and `rust-lld` by invoking the native system linker (`link.exe` on Windows, `ld` on Unix) directly, using the same CRT discovery logic. Opt-in via `ORI_USE_SYSTEM_LINKER=1`.
+
+### 3. Cranelift JIT Compilation (`JITModule`)
+For the `ori run` command, Ori supports Just-In-Time (JIT) execution. It builds and runs Cranelift IR in-memory, loading runtime symbols dynamically from a cdylib (`ori_runtime.dll` / `.so`) via `libloading`.
+This hybrid model avoids creating temporary object files or invoking subprocess linkers entirely.
+
+---
+
+## Workspace Layout
+
+The compiler is organized inside a Cargo workspace containing 10 crates:
+
+| Crate | Purpose |
+|-------|---------|
+| `ori-lexer` | Lexer, token definitions |
+| `ori-ast` | AST definitions (all nodes) |
+| `ori-parser` | Recursive descent parser |
+| `ori-types` | Type system, inference, checks |
+| `ori-hir` | High-level IR, name resolver, monomorphizer |
+| `ori-codegen` | Cranelift JIT/AOT + C debug generation |
+| `ori-runtime` | Native runtime library (Rust staticlib/cdylib) |
+| `ori-diagnostics` | Diagnostic code registry & printer |
+| `ori-lsp` | Language Server Protocol (LSP) server |
+| `ori-driver` | CLI entrypoint, runner, and AOT compiler driver |

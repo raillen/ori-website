@@ -1,0 +1,53 @@
+---
+title: Language Manifesto
+description: The core principles, motivation, and vision behind the Ori programming language.
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+Ori was created out of a desire for a programming language that prioritizes human understanding above all else. In the modern software landscape, code is read far more often than it is written, yet many languages are optimized for typing speed or brief syntax rather than readability. 
+
+Ori changes this equation. It is a **reading-first**, **explicitly typed** language designed to build clean, maintainable, and robust systems for games, automation, desktop tooling, and system-level applications.
+
+---
+
+## Core Pillars of Ori
+
+<CardGrid>
+  <Card title="1. Reading-First Syntax" icon="open-book">
+    Code should read like structured literature. Ori rejects curly braces `{}` and uses clear, readable keyword boundaries like `if ... then ... end` and `func ... end`. This reduces visual fatigue and increases scanning speed.
+  </Card>
+  <Card title="2. Explicit Over Implicit" icon="approve-check-circle">
+    Implicit conversions and magic behaviors hide bugs. Ori requires explicit types for all variable declarations and does not allow implicit coercions. What you see is exactly what the compiler checks.
+  </Card>
+  <Card title="3. Fearless Errors" icon="warning">
+    Exceptions break the control flow and make code hard to reason about. Ori models failure using `result<T, E>` and absence using `optional<T>`. Error paths are typed and handled explicitly using pattern matching.
+  </Card>
+  <Card title="4. Lightweight Native Performance" icon="rocket">
+    Ori compiles directly to native machine code via Cranelift, bypasses heavy runtimes or virtual machines, and features instant startup times. It also supports direct in-process execution via JIT.
+  </Card>
+</CardGrid>
+
+---
+
+## The Impulse: Why Ori?
+
+Many modern languages have evolved into complex beasts with hundreds of overlapping features. Developers are often left debating coding styles, formatting configurations, and implicit rule configurations.
+
+Ori was built to solve specific pain points in developer workflow:
+
+1. **Self-Documenting Code bases**: By mandating type annotations at the definition site, Ori codebases act as their own source of truth. A reader never has to guess what a function accepts or returns.
+2. **First-Class Focus on Tooling**: Designed from day one to have a fast, built-in LSP and diagnostic catalog. The compiler doesn't just error; it explains *why* with structured diagnostic codes.
+3. **No Garbage Collection Bottlenecks**: Ori leverages reference counting (ARC) and cycle collection, providing predictable memory usage suited for real-time systems like game loops, interactive UI applications, and low-latency automation scripts.
+4. **An Escape from the Linker Nightmare**: The compiler natively orchestrates its own linking via `rust-lld` or platform linkers, bypassing complex build toolchains.
+
+---
+
+## Language Manifesto
+
+> *"We choose clarity over brevity. We choose predictability over magic. We believe compiler diagnostics should teach rather than punish."*
+
+Ori stands for:
+- **Consistency**: One canonical way to write loops, conditionals, and functions.
+- **Friction against Bugs**: Forcing the programmer to think about empty states (`none`) and error paths (`error(e)`) at design time.
+- **Eco-friendly Runtime**: Minimal memory overhead, zero cold starts, and standalone binaries that execute immediately.

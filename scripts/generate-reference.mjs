@@ -25,6 +25,11 @@ function layerBadge(layer) {
   return layer === "runtime" ? "Layer 1 · runtime" : "Layer 2 · .orl";
 }
 
+const stdlibDocsPath = path.join(root, "src", "data", "stdlib-docs.json");
+const stdlibDocs = fs.existsSync(stdlibDocsPath)
+  ? JSON.parse(fs.readFileSync(stdlibDocsPath, "utf8"))
+  : {};
+
 // Clean generated dirs
 for (const sub of ["stdlib", "errors"]) {
   const p = path.join(refDir, sub);
@@ -79,13 +84,20 @@ for (const [module, symbols] of [...byModule.entries()].sort()) {
           `\n  - Aliases: ${s.aliases.map((a) => `\`${a}\``).join(", ")}`
         : "";
       const src = s.source ? `\n  - Source: \`${s.source}\`` : "";
+      
+      let docBlock = "";
+      if (stdlibDocs[s.id]) {
+        const d = stdlibDocs[s.id];
+        docBlock = `\n\n${d.description}\n\n**Applicability:**\n${d.applicability}\n\n\`\`\`ori\n${d.example}\n\`\`\``;
+      }
+
       return `### \`${s.id}\`
 
 \`\`\`ori
 ${s.signature}
 \`\`\`
 
-- ${layerBadge(s.layer)}${aliases}${src}
+- ${layerBadge(s.layer)}${aliases}${src}${docBlock}
 `;
     })
     .join("\n");

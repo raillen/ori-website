@@ -1,32 +1,70 @@
 ---
-title: Linguagem Ori
-description: Documentação da linguagem Ori — guias, referência da stdlib e toolchain.
+title: A Linguagem de Programação Ori
+description: Linguagem nativa explicitamente tipada e focada na leitura de código. Otimizada para jogos, tooling e automação leve de desktop.
 template: splash
 hero:
-  tagline: Leitura em primeiro lugar · tipagem explícita · runtime nativo
+  tagline: Focada na leitura · Tipagem explícita · Compilação nativa com Cranelift
   actions:
-    - text: Começar
+    - text: Leia o Manifesto
+      link: /pt/manifesto/
+      icon: open-book
+      variant: primary
+    - text: Primeiros passos
       link: /pt/getting-started/
       icon: right-arrow
-      variant: primary
-    - text: Referência stdlib
+      variant: secondary
+    - text: Referência da Stdlib
       link: /reference/
       icon: document
       variant: minimal
 ---
 
-## Por que Ori?
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
-Ori prioriza **código legível** com anotações de tipo obrigatórias, `result` / `optional` para erros, e backend nativo Cranelift.
+## O Ímpeto por trás da Ori
 
-- [Primeiros passos](/pt/getting-started/)
-- [Referência (EN)](/reference/) — gerada a partir do compilador
-- [Erros, null, void](/pt/language/errors-null-void/)
+A Ori nasceu de uma frustração específica: **a crise de legibilidade no software moderno**. Conforme as bases de código crescem, elas passam 90% do seu ciclo de vida sendo lidas por humanos. No entanto, linguagens modernas trazem ruído visual excessivo, coerções automáticas implícitas mágicas e fluxos de controle imprevisíveis.
+
+A Ori é uma linguagem explícita e leve que gera código de máquina nativo diretamente através do Cranelift. Ela introduz uma sintaxe limpa e delimitada por palavras-chave, projetada para manter códigos legíveis, tipados e auto-documentados.
+
+---
+
+## Pilares da Linguagem
+
+<CardGrid>
+  <Card title="Leitura em Primeiro Lugar" icon="open-book">
+    Sem chaves confusas ou ruídos de símbolos. Os blocos são estruturados usando delimitadores textuais claros como `end`.
+  </Card>
+  <Card title="Tipagem Estritamente Explícita" icon="approve-check-circle">
+    Anotações de tipo obrigatórias na declaração. Coerção de tipos é 100% explícita por funções primitivas (ex: `int(val)`).
+  </Card>
+  <Card title="Linker Sem Complicação" icon="setting">
+    O compilador localiza nativamente as dependências CRT e orquestra a linkagem via `rust-lld` ou linkers do sistema.
+  </Card>
+  <Card title="Compilação JIT e AOT" icon="rocket">
+    Compila AOT para binários standalone estáveis ou roda imediatamente via JIT in-process no Cranelift, resolvendo dependências em tempo real.
+  </Card>
+</CardGrid>
+
+---
+
+## Demonstração Rápida
+
+Um arquivo de código Ori começa com a declaração de um namespace, importa dependências e possui fluxos lógicos claros e limpos:
 
 ```ori
 namespace app.main
+
 import ori.io as io
+
 func main()
-    io.println("Olá, Ori!")
+    const label: string = if true then "Ori" else "mundo"
+    io.println("Olá, " + label + "!")
 end
+```
+
+Para rodar este código imediatamente na memória através do JIT:
+
+```bash
+ori run main.orl
 ```

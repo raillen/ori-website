@@ -72,6 +72,15 @@ export default defineConfig({
               },
             },
             {
+              label: "Language Manifesto",
+              link: "/manifesto/",
+              translations: {
+                pt: "Manifesto da Linguagem",
+                es: "Manifesto del Lenguaje",
+                ja: "言語マニフェスト",
+              },
+            },
+            {
               label: "Getting started",
               link: "/getting-started/",
               translations: {
@@ -119,6 +128,36 @@ export default defineConfig({
           ],
         },
         {
+          label: "Technical Details",
+          translations: {
+            pt: "Detalhes Técnicos",
+            es: "Detalles Técnicos",
+            ja: "技術的な詳細",
+          },
+          items: [
+            {
+              label: "Compiler & Dev",
+              link: "/development/",
+              translations: {
+                pt: "Compilador & Dev",
+                es: "Compilador y Dev",
+                ja: "コンパイラと開発",
+              },
+            },
+            {
+              label: "CLI Overview",
+              link: "/cli/overview/",
+              translations: {
+                pt: "Visão Geral da CLI",
+                es: "Descripción de CLI",
+                ja: "CLIの概要",
+              },
+            },
+            { label: "doctor", link: "/cli/doctor/" },
+            { label: "explain", link: "/cli/explain/" },
+          ],
+        },
+        {
           label: "Reference",
           autogenerate: { directory: "reference" },
           translations: {
@@ -126,14 +165,6 @@ export default defineConfig({
             es: "Referencia",
             ja: "リファレンス",
           },
-        },
-        {
-          label: "CLI",
-          items: [
-            { label: "Overview", link: "/cli/overview/" },
-            { label: "doctor", link: "/cli/doctor/" },
-            { label: "explain", link: "/cli/explain/" },
-          ],
         },
       ],
     }),
