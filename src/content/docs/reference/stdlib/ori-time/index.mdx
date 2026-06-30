@@ -1,9 +1,11 @@
 ---
 title: ori.time
-description: Standard library module ori.time
+description: Time measurement, clock manipulation, and thread execution suspension routines.
 ---
 
 # ori.time
+
+Time measurement, clock manipulation, and thread execution suspension routines.
 
 ### `ori.time.duration_ms`
 
@@ -23,6 +25,23 @@ description: Standard library module ori.time
 - Layer 1 · runtime
   - Aliases: `time.now`
 
+Returns the current system timestamp in UNIX epoch seconds or milliseconds.
+
+**Applicability:**
+Used for benchmarks, logging date metrics, calculating task durations, and generating unique ID seeds.
+
+```ori
+import ori.time as time
+import ori.io as io
+
+func main()
+    const start = time.now()
+    // run task
+    const elapsed = time.now() - start
+    io.println("Elapsed: " + string(elapsed) + "s")
+end
+```
+
 ### `ori.time.sleep`
 
 ```ori
@@ -31,4 +50,20 @@ description: Standard library module ori.time
 
 - Layer 1 · runtime
   - Aliases: `time.sleep`
+
+Suspends execution of the current thread/task for a given duration in milliseconds.
+
+**Applicability:**
+Used in loops to set intervals, rate-limiting requests, implementing game cycles, or delays in automation.
+
+```ori
+import ori.time as time
+import ori.io as io
+
+func main()
+    io.println("Waiting...")
+    time.sleep(1000) // Delay 1 second
+    io.println("Finished.")
+end
+```
 

@@ -1,9 +1,11 @@
 ---
 title: ori.string
-description: Standard library module ori.string
+description: String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays.
 ---
 
 # ori.string
+
+String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays.
 
 ### `ori.string.chars`
 
@@ -140,6 +142,21 @@ description: Standard library module ori.string
 ```
 
 - Layer 1 · runtime
+
+Splits a string by a delimiter substring, returning a list of segments.
+
+**Applicability:**
+Useful for CSV processing, parsing command arguments, and text segment extraction.
+
+```ori
+import ori.string as str
+import ori.io as io
+
+func main()
+    const items = str.split("apple,banana,cherry", ",")
+    // items contains ["apple", "banana", "cherry"]
+end
+```
 
 ### `ori.string.starts_with`
 

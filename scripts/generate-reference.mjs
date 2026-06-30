@@ -102,14 +102,21 @@ ${s.signature}
     })
     .join("\n");
 
+  let moduleDesc = `Standard library module \`${module}\`.`;
+  if (stdlibDocs[module] && typeof stdlibDocs[module] === "object" && stdlibDocs[module].description) {
+    moduleDesc = stdlibDocs[module].description;
+  }
+
   fs.writeFileSync(
     path.join(dir, "index.mdx"),
     `---
 title: ${module}
-description: Standard library module ${module}
+description: ${moduleDesc.split("\n")[0]}
 ---
 
 # ${module}
+
+${moduleDesc}
 
 ${rows}
 `,

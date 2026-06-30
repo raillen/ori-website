@@ -1,9 +1,11 @@
 ---
 title: ori.path
-description: Standard library module ori.path
+description: File system path parser. Allows joining segments, resolving absolute paths, and extracting filenames or extensions.
 ---
 
 # ori.path
+
+File system path parser. Allows joining segments, resolving absolute paths, and extracting filenames or extensions.
 
 ### `ori.path.absolute`
 
@@ -76,6 +78,21 @@ func join(parts: list<string>) -> string
 
 - Layer 2 · .orl
   - Source: `path.orl`
+
+Combines list segments into a unified file system path, automatically resolving separator slashes.
+
+**Applicability:**
+Used to dynamically build local paths cross-platform without worrying about '/' vs '\' differences.
+
+```ori
+import ori.path as path
+import ori.io as io
+
+func main()
+    const target = path.join("docs", "spec", "errors.md")
+    io.println(target) // Prints "docs/spec/errors.md" (or system equivalent)
+end
+```
 
 ### `ori.path.name_without_extension`
 

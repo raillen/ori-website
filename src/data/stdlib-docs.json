@@ -1,4 +1,43 @@
 {
+  "ori.io": {
+    "description": "Standard Input/Output utilities. Provides functions to read from and write to the terminal console."
+  },
+  "ori.fs": {
+    "description": "File system access and management module. Provides synchronous and asynchronous options to check, read, write, and manipulate files and directories on the local machine."
+  },
+  "ori.bytes": {
+    "description": "Raw byte buffers utilities. Allows operations such as hex conversions, slice manipulation, and list conversions."
+  },
+  "ori.string": {
+    "description": "String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays."
+  },
+  "ori.math": {
+    "description": "General mathematical constants and helper routines. Contains basic arithmetic bounds checking, rounding, trigonometry, and logarithms."
+  },
+  "ori.net": {
+    "description": "Networking module. Provides interfaces for launching TCP/UDP servers and establishing network connection streams."
+  },
+  "ori.time": {
+    "description": "Time measurement, clock manipulation, and thread execution suspension routines."
+  },
+  "ori.json": {
+    "description": "JSON (JavaScript Object Notation) parser and encoder. Allows serializing Ori values into strings and deserializing JSON payloads back to language structures."
+  },
+  "ori.random": {
+    "description": "Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges."
+  },
+  "ori.path": {
+    "description": "File system path parser. Allows joining segments, resolving absolute paths, and extracting filenames or extensions."
+  },
+  "ori.list": {
+    "description": "List manipulation core module. Houses size checks, indexing operations, pushing, popping, and slice manipulations."
+  },
+  "ori.map": {
+    "description": "Hash map (key-value dictionary) utilities for storing, retrieving, and checking keys."
+  },
+  "ori.set": {
+    "description": "Unique set collection helpers for set arithmetic, values membership tests, inserts, and removes."
+  },
   "ori.io.print": {
     "description": "Writes a string to the standard output without appending a newline.",
     "applicability": "Used for printing prompt messages, building progress indicators, or custom formatted output.",
@@ -43,5 +82,45 @@
     "description": "Checks if a string contains a specific substring.",
     "applicability": "Used in text processing, simple search filters, and matching query parameters.",
     "example": "import ori.string.utils as su\nimport ori.io as io\n\nfunc main()\n    const has_hello = su.contains(\"Hello, world!\", \"hello\")\n    io.println(string(has_hello)) // Prints \"true\" (case-insensitive check or similar)\nend"
+  },
+  "ori.random.int_range": {
+    "description": "Generates a pseudorandom integer between the specified min and max bounds (inclusive of min, exclusive of max).",
+    "applicability": "Commonly used in gaming (rolling dice, picking indexes), generating unique IDs, and random selection algorithms.",
+    "example": "import ori.random as rnd\nimport ori.io as io\n\nfunc main()\n    const choice = rnd.int_range(1, 7)\n    io.println(string(choice)) // Prints random number between 1 and 6\nend"
+  },
+  "ori.random.float": {
+    "description": "Generates a pseudorandom floating-point number between 0.0 and 1.0.",
+    "applicability": "Useful for generating percentages, probability weights, random noise multipliers, and easing variations.",
+    "example": "import ori.random as rnd\nimport ori.io as io\n\nfunc main()\n    const weight = rnd.float()\n    io.println(string(weight)) // Prints random float between 0.0 and 1.0\nend"
+  },
+  "ori.time.sleep": {
+    "description": "Suspends execution of the current thread/task for a given duration in milliseconds.",
+    "applicability": "Used in loops to set intervals, rate-limiting requests, implementing game cycles, or delays in automation.",
+    "example": "import ori.time as time\nimport ori.io as io\n\nfunc main()\n    io.println(\"Waiting...\")\n    time.sleep(1000) // Delay 1 second\n    io.println(\"Finished.\")\nend"
+  },
+  "ori.time.now": {
+    "description": "Returns the current system timestamp in UNIX epoch seconds or milliseconds.",
+    "applicability": "Used for benchmarks, logging date metrics, calculating task durations, and generating unique ID seeds.",
+    "example": "import ori.time as time\nimport ori.io as io\n\nfunc main()\n    const start = time.now()\n    // run task\n    const elapsed = time.now() - start\n    io.println(\"Elapsed: \" + string(elapsed) + \"s\")\nend"
+  },
+  "ori.json.encode": {
+    "description": "Serializes supported Ori data structures (like maps, lists, and structs) into a JSON formatted string.",
+    "applicability": "Used for exporting application configs, communicating with REST APIs, and storing structured logs.",
+    "example": "import ori.json as json\nimport ori.io as io\n\nfunc main()\n    const config = {\"active\": true, \"id\": 42}\n    const raw_json = json.encode(config)\n    io.println(raw_json) // Prints '{\"active\":true,\"id\":42}'\nend"
+  },
+  "ori.json.decode": {
+    "description": "Deserializes a JSON string payload back into dynamic Ori objects or types.",
+    "applicability": "Required for parsing API responses, loading configuration files, or handling JSON log structures.",
+    "example": "import ori.json as json\nimport ori.io as io\n\nfunc main()\n    const payload = \"{\\\"active\\\":true}\"\n    const config = json.decode(payload)\n    match config\n        success(obj) => io.println(\"Decoded successfully\")\n        error(err) => io.println(\"Failed to decode JSON\")\n    end\nend"
+  },
+  "ori.path.join": {
+    "description": "Combines list segments into a unified file system path, automatically resolving separator slashes.",
+    "applicability": "Used to dynamically build local paths cross-platform without worrying about '/' vs '\\' differences.",
+    "example": "import ori.path as path\nimport ori.io as io\n\nfunc main()\n    const target = path.join(\"docs\", \"spec\", \"errors.md\")\n    io.println(target) // Prints \"docs/spec/errors.md\" (or system equivalent)\nend"
+  },
+  "ori.string.split": {
+    "description": "Splits a string by a delimiter substring, returning a list of segments.",
+    "applicability": "Useful for CSV processing, parsing command arguments, and text segment extraction.",
+    "example": "import ori.string as str\nimport ori.io as io\n\nfunc main()\n    const items = str.split(\"apple,banana,cherry\", \",\")\n    // items contains [\"apple\", \"banana\", \"cherry\"]\nend"
   }
 }

@@ -1,9 +1,11 @@
 ---
 title: ori.random
-description: Standard library module ori.random
+description: Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges.
 ---
 
 # ori.random
+
+Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges.
 
 ### `ori.random.bool`
 
@@ -31,6 +33,21 @@ description: Standard library module ori.random
 
 - Layer 1 · runtime
   - Aliases: `random.float`
+
+Generates a pseudorandom floating-point number between 0.0 and 1.0.
+
+**Applicability:**
+Useful for generating percentages, probability weights, random noise multipliers, and easing variations.
+
+```ori
+import ori.random as rnd
+import ori.io as io
+
+func main()
+    const weight = rnd.float()
+    io.println(string(weight)) // Prints random float between 0.0 and 1.0
+end
+```
 
 ### `ori.random.int`
 
