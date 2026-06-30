@@ -1,0 +1,50 @@
+---
+title: Ori Language
+description: Reading-first, explicitly typed programming language — documentation, stdlib reference, and guides.
+template: splash
+hero:
+  tagline: Reading-first · explicitly typed · native runtime
+  actions:
+    - text: Get started
+      link: /getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Stdlib reference
+      link: /reference/
+      icon: document
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Why Ori?
+
+Ori prioritizes **readable code** with mandatory type annotations, `result` / `optional` for errors, and a native Cranelift backend. The standard library spans **Layer 1** (Rust runtime) and **Layer 2** (`.orl` wrappers).
+
+<CardGrid>
+  <Card title="Language" icon="open-book">
+    Learn types, control flow, and the `if cond then a else b` expression model.
+    [Types →](/language/types/)
+  </Card>
+  <Card title="Reference" icon="information">
+    Search **⌘K** for any stdlib function. Modules generated from the compiler manifest.
+    [Browse →](/reference/)
+  </Card>
+  <Card title="Toolchain" icon="setting">
+    `ori check`, `compile`, `run`, `doctor`, `explain`, and VS Code extension.
+    [CLI →](/cli/overview/)
+  </Card>
+</CardGrid>
+
+## Quick example
+
+```ori
+namespace app.main
+
+import ori.io as io
+
+func main()
+    const label: string = if true then "Ori" else "world"
+    io.println("Hello, " + label + "!")
+end
+```

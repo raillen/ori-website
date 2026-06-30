@@ -1,0 +1,111 @@
+:root {
+  --sl-font: "Inter", system-ui, sans-serif;
+  --sl-font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:lang(ja) {
+  --sl-font: "Noto Sans JP", "Inter", system-ui, sans-serif;
+}
+
+.ori-search-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 1rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.ori-search-dialog[data-open="true"] {
+  display: flex;
+}
+
+.ori-search-panel {
+  width: min(640px, 100%);
+  background: var(--sl-color-bg-nav);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 12px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.ori-search-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font: 500 1rem var(--sl-font);
+  border: none;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  background: transparent;
+  color: var(--sl-color-text);
+  outline: none;
+}
+
+.ori-search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.ori-search-results li {
+  margin: 0;
+}
+
+.ori-search-results a,
+.ori-search-results button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.ori-search-results a:hover,
+.ori-search-results button:hover,
+.ori-search-results [aria-selected="true"] {
+  background: var(--sl-color-gray-6);
+}
+
+.ori-search-kind {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-gray-3);
+}
+
+.ori-search-id {
+  font-family: var(--sl-font-mono);
+  font-size: 0.9rem;
+}
+
+.ori-search-sig {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-2);
+  margin-top: 0.15rem;
+}
+
+.ori-search-trigger {
+  margin-left: auto;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.ori-layer-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent);
+  margin-left: 0.35rem;
+}

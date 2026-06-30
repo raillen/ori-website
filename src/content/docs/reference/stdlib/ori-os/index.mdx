@@ -1,0 +1,79 @@
+---
+title: ori.os
+description: Standard library module ori.os
+---
+
+# ori.os
+
+### `ori.os.arch`
+
+```ori
+() -> string
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.arch`
+
+### `ori.os.args`
+
+```ori
+() -> list<string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.args`
+
+### `ori.os.change_dir`
+
+```ori
+(arg0: string) -> result<void, string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.change_dir`
+
+### `ori.os.current_dir`
+
+```ori
+() -> result<string, string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.current_dir`
+
+### `ori.os.env`
+
+```ori
+(arg0: string) -> optional<string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.env`
+
+### `ori.os.exit`
+
+```ori
+(arg0: int) -> void
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.exit`
+
+### `ori.os.pid`
+
+```ori
+() -> int
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.pid`
+
+### `ori.os.platform`
+
+```ori
+() -> string
+```
+
+- Layer 1 · runtime
+  - Aliases: `os.platform`
+

@@ -1,0 +1,61 @@
+---
+title: ori.fs.utils
+description: Standard library module ori.fs.utils
+---
+
+# ori.fs.utils
+
+### `ori.fs.utils.create_dir_all`
+
+```ori
+func create_dir_all(path: string) -> result<void, string>
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+
+### `ori.fs.utils.exists_result`
+
+```ori
+func exists_result(path: string) -> result<bool, string>
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+
+### `ori.fs.utils.move_path`
+
+```ori
+func move_path(from: string, to: string) -> result<void, string>
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+
+### `ori.fs.utils.read_text_or`
+
+```ori
+func read_text_or(path: string, fallback: string) -> string
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+
+### `ori.fs.utils.remove_file`
+
+```ori
+func remove_file(path: string) -> result<void, string>
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+
+### `ori.fs.utils.write_text_result`
+
+```ori
+func write_text_result(path: string, content: string) -> result<string, string>
+```
+
+- Layer 2 · .orl
+  - Source: `fs/utils.orl`
+

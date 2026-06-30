@@ -1,0 +1,6563 @@
+{
+  "version": "0.2.0",
+  "generated_at": "1782780138",
+  "modules": [
+    "float",
+    "int",
+    "len",
+    "ori",
+    "ori.Error",
+    "ori.atomic",
+    "ori.bytes",
+    "ori.bytes.algorithms",
+    "ori.bytes.utils",
+    "ori.channel",
+    "ori.concurrent",
+    "ori.concurrent.utils",
+    "ori.convert",
+    "ori.convert.utils",
+    "ori.core",
+    "ori.deque",
+    "ori.deque.utils",
+    "ori.doubly_linked_list",
+    "ori.doubly_linked_list.utils",
+    "ori.files",
+    "ori.format",
+    "ori.format.utils",
+    "ori.fs",
+    "ori.fs.utils",
+    "ori.graph",
+    "ori.graph.algorithms",
+    "ori.hash_table",
+    "ori.hash_table.utils",
+    "ori.heap",
+    "ori.heap.utils",
+    "ori.io",
+    "ori.io.utils",
+    "ori.iter",
+    "ori.iter.utils",
+    "ori.json",
+    "ori.json.utils",
+    "ori.lazy",
+    "ori.linked_list",
+    "ori.linked_list.utils",
+    "ori.list",
+    "ori.list.algorithms",
+    "ori.list.utils",
+    "ori.map",
+    "ori.map.algorithms",
+    "ori.map.utils",
+    "ori.math",
+    "ori.math.algorithms",
+    "ori.math.utils",
+    "ori.mem",
+    "ori.net",
+    "ori.net.utils",
+    "ori.os",
+    "ori.os.utils",
+    "ori.path",
+    "ori.process",
+    "ori.process.utils",
+    "ori.queue",
+    "ori.queue.utils",
+    "ori.random",
+    "ori.random.utils",
+    "ori.set",
+    "ori.set.algorithms",
+    "ori.set.utils",
+    "ori.stack",
+    "ori.stack.utils",
+    "ori.string",
+    "ori.string.algorithms",
+    "ori.string.utils",
+    "ori.task",
+    "ori.test",
+    "ori.test.utils",
+    "ori.time",
+    "ori.time.utils",
+    "ori.tree",
+    "ori.tree.algorithms",
+    "ori.validate",
+    "string"
+  ],
+  "symbols": [
+    {
+      "id": "float",
+      "kind": "function",
+      "module": "float",
+      "name": "float",
+      "signature": "(arg0: int) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "int",
+      "kind": "function",
+      "module": "int",
+      "name": "int",
+      "signature": "(arg0: int) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "len",
+      "kind": "function",
+      "module": "len",
+      "name": "len",
+      "signature": "(arg0: string) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.atomic.add",
+      "kind": "function",
+      "module": "ori.atomic",
+      "name": "add",
+      "signature": "(arg0: atomic.AtomicInt, arg1: int) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "atomic.add"
+      ]
+    },
+    {
+      "id": "ori.atomic.load",
+      "kind": "function",
+      "module": "ori.atomic",
+      "name": "load",
+      "signature": "(arg0: atomic.AtomicInt) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "atomic.load"
+      ]
+    },
+    {
+      "id": "ori.atomic.new",
+      "kind": "function",
+      "module": "ori.atomic",
+      "name": "new",
+      "signature": "(arg0: int) -> atomic.AtomicInt",
+      "layer": "runtime",
+      "aliases": [
+        "atomic.new"
+      ]
+    },
+    {
+      "id": "ori.atomic.store",
+      "kind": "function",
+      "module": "ori.atomic",
+      "name": "store",
+      "signature": "(arg0: atomic.AtomicInt, arg1: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "atomic.store"
+      ]
+    },
+    {
+      "id": "ori.bytes.algorithms.compare_lex",
+      "kind": "function",
+      "module": "ori.bytes.algorithms",
+      "name": "compare_lex",
+      "signature": "func compare_lex(a: bytes, b: bytes) -> int",
+      "layer": "orl",
+      "source": "bytes/algorithms.orl"
+    },
+    {
+      "id": "ori.bytes.algorithms.is_prefix_of",
+      "kind": "function",
+      "module": "ori.bytes.algorithms",
+      "name": "is_prefix_of",
+      "signature": "func is_prefix_of(prefix: bytes, value: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/algorithms.orl"
+    },
+    {
+      "id": "ori.bytes.concat",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "concat",
+      "signature": "(arg0: bytes, arg1: bytes) -> bytes",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.concat"
+      ]
+    },
+    {
+      "id": "ori.bytes.decode_utf8",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "decode_utf8",
+      "signature": "(arg0: bytes) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.decode_utf8"
+      ]
+    },
+    {
+      "id": "ori.bytes.from_hex",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "from_hex",
+      "signature": "(arg0: string) -> result<bytes, string>",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.from_hex"
+      ]
+    },
+    {
+      "id": "ori.bytes.from_list",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "from_list",
+      "signature": "(arg0: list<int>) -> bytes",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.from_list"
+      ]
+    },
+    {
+      "id": "ori.bytes.get",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "get",
+      "signature": "(arg0: bytes, arg1: int) -> u8",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.get"
+      ]
+    },
+    {
+      "id": "ori.bytes.len",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "len",
+      "signature": "(arg0: bytes) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.len"
+      ]
+    },
+    {
+      "id": "ori.bytes.slice",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "slice",
+      "signature": "(arg0: bytes, arg1: int, arg2: int) -> bytes",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.slice"
+      ]
+    },
+    {
+      "id": "ori.bytes.to_hex",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "to_hex",
+      "signature": "(arg0: bytes) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.to_hex"
+      ]
+    },
+    {
+      "id": "ori.bytes.to_list",
+      "kind": "function",
+      "module": "ori.bytes",
+      "name": "to_list",
+      "signature": "(arg0: bytes) -> list<int>",
+      "layer": "runtime",
+      "aliases": [
+        "bytes.to_list"
+      ]
+    },
+    {
+      "id": "ori.bytes.utils.contains",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "contains",
+      "signature": "func contains(value: bytes, part: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.empty_bytes",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "empty_bytes",
+      "signature": "func empty_bytes() -> bytes",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.ends_with",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "ends_with",
+      "signature": "func ends_with(value: bytes, suffix: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.equals",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "equals",
+      "signature": "func equals(a: bytes, b: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.from_hex_or",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "from_hex_or",
+      "signature": "func from_hex_or(hex: string, fallback: bytes) -> bytes",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.from_list",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "from_list",
+      "signature": "func from_list(values: list<int>) -> bytes",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.is_empty",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "is_empty",
+      "signature": "func is_empty(b: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.join",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "join",
+      "signature": "func join(left: bytes, right: bytes) -> bytes",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.starts_with",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "starts_with",
+      "signature": "func starts_with(value: bytes, prefix: bytes) -> bool",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.bytes.utils.to_list",
+      "kind": "function",
+      "module": "ori.bytes.utils",
+      "name": "to_list",
+      "signature": "func to_list(value: bytes) -> list<int>",
+      "layer": "orl",
+      "source": "bytes/utils.orl"
+    },
+    {
+      "id": "ori.channel.close",
+      "kind": "function",
+      "module": "ori.channel",
+      "name": "close",
+      "signature": "(arg0: channel.Channel<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "channel.close"
+      ]
+    },
+    {
+      "id": "ori.channel.create",
+      "kind": "function",
+      "module": "ori.channel",
+      "name": "create",
+      "signature": "() -> channel.Channel<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "channel.create"
+      ]
+    },
+    {
+      "id": "ori.channel.receive",
+      "kind": "function",
+      "module": "ori.channel",
+      "name": "receive",
+      "signature": "(arg0: channel.Channel<_#0>) -> result<_#0, channel.ReceiveError>",
+      "layer": "runtime",
+      "aliases": [
+        "channel.receive"
+      ]
+    },
+    {
+      "id": "ori.channel.send",
+      "kind": "function",
+      "module": "ori.channel",
+      "name": "send",
+      "signature": "(arg0: channel.Channel<_#0>, arg1: _#0) -> result<void, channel.SendError>",
+      "layer": "runtime",
+      "aliases": [
+        "channel.send"
+      ]
+    },
+    {
+      "id": "ori.concurrent.utils.copy_bool",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_bool",
+      "signature": "func copy_bool(value: bool) -> bool",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_bytes",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_bytes",
+      "signature": "func copy_bytes(value: bytes) -> bytes",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_float",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_float",
+      "signature": "func copy_float(value: float) -> float",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_int",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_int",
+      "signature": "func copy_int(value: int) -> int",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_list_int",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_list_int",
+      "signature": "func copy_list_int(value: list<int>) -> list<int>",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_list_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_list_string",
+      "signature": "func copy_list_string(value: list<string>) -> list<string>",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_map_string_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_map_string_string",
+      "signature": "func copy_map_string_string(value: map<string, string>) -> map<string, string>",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_set_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_set_string",
+      "signature": "func copy_set_string(value: set<string>) -> set<string>",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.copy_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "copy_string",
+      "signature": "func copy_string(value: string) -> string",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.transfer_int",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "transfer_int",
+      "signature": "func transfer_int(value: int) -> int",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.transfer_list_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "transfer_list_string",
+      "signature": "func transfer_list_string(value: list<string>) -> list<string>",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.concurrent.utils.transfer_string",
+      "kind": "function",
+      "module": "ori.concurrent.utils",
+      "name": "transfer_string",
+      "signature": "func transfer_string(value: string) -> string",
+      "layer": "orl",
+      "source": "concurrent/utils.orl"
+    },
+    {
+      "id": "ori.convert.bool_to_string",
+      "kind": "function",
+      "module": "ori.convert",
+      "name": "bool_to_string",
+      "signature": "(arg0: bool) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "bool_to_string"
+      ]
+    },
+    {
+      "id": "ori.convert.float_to_string",
+      "kind": "function",
+      "module": "ori.convert",
+      "name": "float_to_string",
+      "signature": "(arg0: float) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "float_to_string"
+      ]
+    },
+    {
+      "id": "ori.convert.string_to_float",
+      "kind": "function",
+      "module": "ori.convert",
+      "name": "string_to_float",
+      "signature": "(arg0: string) -> optional<float>",
+      "layer": "runtime",
+      "aliases": [
+        "string_to_float"
+      ]
+    },
+    {
+      "id": "ori.convert.string_to_int",
+      "kind": "function",
+      "module": "ori.convert",
+      "name": "string_to_int",
+      "signature": "(arg0: string) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "string_to_int"
+      ]
+    },
+    {
+      "id": "ori.convert.utils.parse_bool_or",
+      "kind": "function",
+      "module": "ori.convert.utils",
+      "name": "parse_bool_or",
+      "signature": "func parse_bool_or(s: string, default: bool) -> bool",
+      "layer": "orl",
+      "source": "convert/utils.orl"
+    },
+    {
+      "id": "ori.convert.utils.parse_float_or",
+      "kind": "function",
+      "module": "ori.convert.utils",
+      "name": "parse_float_or",
+      "signature": "func parse_float_or(s: string, default: float) -> float",
+      "layer": "orl",
+      "source": "convert/utils.orl"
+    },
+    {
+      "id": "ori.convert.utils.parse_int_or",
+      "kind": "function",
+      "module": "ori.convert.utils",
+      "name": "parse_int_or",
+      "signature": "func parse_int_or(s: string, default: int) -> int",
+      "layer": "orl",
+      "source": "convert/utils.orl"
+    },
+    {
+      "id": "ori.deque.back",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "back",
+      "signature": "(arg0: deque.Deque<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.back"
+      ]
+    },
+    {
+      "id": "ori.deque.clear",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "clear",
+      "signature": "(arg0: deque.Deque<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "deque.clear"
+      ]
+    },
+    {
+      "id": "ori.deque.clone",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "clone",
+      "signature": "(arg0: deque.Deque<_#0>) -> deque.Deque<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.clone"
+      ]
+    },
+    {
+      "id": "ori.deque.front",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "front",
+      "signature": "(arg0: deque.Deque<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.front"
+      ]
+    },
+    {
+      "id": "ori.deque.is_empty",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "is_empty",
+      "signature": "(arg0: deque.Deque<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "deque.is_empty"
+      ]
+    },
+    {
+      "id": "ori.deque.len",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "len",
+      "signature": "(arg0: deque.Deque<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "deque.len"
+      ]
+    },
+    {
+      "id": "ori.deque.new",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "new",
+      "signature": "() -> deque.Deque<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.new"
+      ]
+    },
+    {
+      "id": "ori.deque.pop_back",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "pop_back",
+      "signature": "(arg0: deque.Deque<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.pop_back"
+      ]
+    },
+    {
+      "id": "ori.deque.pop_front",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "pop_front",
+      "signature": "(arg0: deque.Deque<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.pop_front"
+      ]
+    },
+    {
+      "id": "ori.deque.push_back",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "push_back",
+      "signature": "(arg0: deque.Deque<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "deque.push_back"
+      ]
+    },
+    {
+      "id": "ori.deque.push_front",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "push_front",
+      "signature": "(arg0: deque.Deque<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "deque.push_front"
+      ]
+    },
+    {
+      "id": "ori.deque.to_list",
+      "kind": "function",
+      "module": "ori.deque",
+      "name": "to_list",
+      "signature": "(arg0: deque.Deque<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "deque.to_list"
+      ]
+    },
+    {
+      "id": "ori.deque.utils.back_or_int",
+      "kind": "function",
+      "module": "ori.deque.utils",
+      "name": "back_or_int",
+      "signature": "func back_or_int(d: Generic { name: QualifiedName { parts: [Name { text: \"deque\", span: Span { start: 702, end: 707 } }, Name { text: \"Deque\", span: Span { start: 708, end: 713 } }], span: Span { start: 702, end: 713 } }, args: [Int(Span { start: 714, end: 717 })], span: Span { start: 702, end: 718 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "deque/utils.orl"
+    },
+    {
+      "id": "ori.deque.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.deque.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"deque\", span: Span { start: 131, end: 136 } }, Name { text: \"Deque\", span: Span { start: 137, end: 142 } }], span: Span { start: 131, end: 142 } }, args: [Int(Span { start: 143, end: 146 })], span: Span { start: 131, end: 147 } }",
+      "layer": "orl",
+      "source": "deque/utils.orl"
+    },
+    {
+      "id": "ori.deque.utils.front_or_int",
+      "kind": "function",
+      "module": "ori.deque.utils",
+      "name": "front_or_int",
+      "signature": "func front_or_int(d: Generic { name: QualifiedName { parts: [Name { text: \"deque\", span: Span { start: 538, end: 543 } }, Name { text: \"Deque\", span: Span { start: 544, end: 549 } }], span: Span { start: 538, end: 549 } }, args: [Int(Span { start: 550, end: 553 })], span: Span { start: 538, end: 554 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "deque/utils.orl"
+    },
+    {
+      "id": "ori.deque.utils.push_all_int",
+      "kind": "function",
+      "module": "ori.deque.utils",
+      "name": "push_all_int",
+      "signature": "func push_all_int(d: Generic { name: QualifiedName { parts: [Name { text: \"deque\", span: Span { start: 866, end: 871 } }, Name { text: \"Deque\", span: Span { start: 872, end: 877 } }], span: Span { start: 866, end: 877 } }, args: [Int(Span { start: 878, end: 881 })], span: Span { start: 866, end: 882 } }, items: list<int>)",
+      "layer": "orl",
+      "source": "deque/utils.orl"
+    },
+    {
+      "id": "ori.deque.utils.to_list_int",
+      "kind": "function",
+      "module": "ori.deque.utils",
+      "name": "to_list_int",
+      "signature": "func to_list_int(d: Generic { name: QualifiedName { parts: [Name { text: \"deque\", span: Span { start: 442, end: 447 } }, Name { text: \"Deque\", span: Span { start: 448, end: 453 } }], span: Span { start: 442, end: 453 } }, args: [Int(Span { start: 454, end: 457 })], span: Span { start: 442, end: 458 } }) -> list<int>",
+      "layer": "orl",
+      "source": "deque/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.back",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "back",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.back"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.clear",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "clear",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.clear"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.clone",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "clone",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> doubly_linked_list.DoublyLinkedList<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.clone"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.cursor_back",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "cursor_back",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.cursor_back"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.cursor_front",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "cursor_front",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.cursor_front"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.find",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "find",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: _#0) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.find"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.front",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "front",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.front"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.insert_after",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "insert_after",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: int, arg2: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.insert_after"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.insert_before",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "insert_before",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: int, arg2: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.insert_before"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.is_empty",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "is_empty",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.is_empty"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.len",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "len",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.len"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.new",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "new",
+      "signature": "() -> doubly_linked_list.DoublyLinkedList<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.new"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.pop_back",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "pop_back",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.pop_back"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.pop_front",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "pop_front",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.pop_front"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.push_back",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "push_back",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.push_back"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.push_front",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "push_front",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.push_front"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.remove_at",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "remove_at",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: int) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.remove_at"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.to_list",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "to_list",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.to_list"
+      ]
+    },
+    {
+      "id": "ori.doubly_linked_list.utils.back_or_int",
+      "kind": "function",
+      "module": "ori.doubly_linked_list.utils",
+      "name": "back_or_int",
+      "signature": "func back_or_int(node: Generic { name: QualifiedName { parts: [Name { text: \"doubly_linked_list\", span: Span { start: 913, end: 931 } }, Name { text: \"DoublyLinkedList\", span: Span { start: 932, end: 948 } }], span: Span { start: 913, end: 948 } }, args: [Int(Span { start: 949, end: 952 })], span: Span { start: 913, end: 953 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "doubly_linked_list/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.doubly_linked_list.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"doubly_linked_list\", span: Span { start: 170, end: 188 } }, Name { text: \"DoublyLinkedList\", span: Span { start: 189, end: 205 } }], span: Span { start: 170, end: 205 } }, args: [Int(Span { start: 206, end: 209 })], span: Span { start: 170, end: 210 } }",
+      "layer": "orl",
+      "source": "doubly_linked_list/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.utils.front_or_int",
+      "kind": "function",
+      "module": "ori.doubly_linked_list.utils",
+      "name": "front_or_int",
+      "signature": "func front_or_int(node: Generic { name: QualifiedName { parts: [Name { text: \"doubly_linked_list\", span: Span { start: 706, end: 724 } }, Name { text: \"DoublyLinkedList\", span: Span { start: 725, end: 741 } }], span: Span { start: 706, end: 741 } }, args: [Int(Span { start: 742, end: 745 })], span: Span { start: 706, end: 746 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "doubly_linked_list/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.utils.len_int",
+      "kind": "function",
+      "module": "ori.doubly_linked_list.utils",
+      "name": "len_int",
+      "signature": "func len_int(node: Generic { name: QualifiedName { parts: [Name { text: \"doubly_linked_list\", span: Span { start: 1115, end: 1133 } }, Name { text: \"DoublyLinkedList\", span: Span { start: 1134, end: 1150 } }], span: Span { start: 1115, end: 1150 } }, args: [Int(Span { start: 1151, end: 1154 })], span: Span { start: 1115, end: 1155 } }) -> int",
+      "layer": "orl",
+      "source": "doubly_linked_list/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.utils.to_list_int",
+      "kind": "function",
+      "module": "ori.doubly_linked_list.utils",
+      "name": "to_list_int",
+      "signature": "func to_list_int(node: Generic { name: QualifiedName { parts: [Name { text: \"doubly_linked_list\", span: Span { start: 567, end: 585 } }, Name { text: \"DoublyLinkedList\", span: Span { start: 586, end: 602 } }], span: Span { start: 567, end: 602 } }, args: [Int(Span { start: 603, end: 606 })], span: Span { start: 567, end: 607 } }) -> list<int>",
+      "layer": "orl",
+      "source": "doubly_linked_list/utils.orl"
+    },
+    {
+      "id": "ori.doubly_linked_list.value_at",
+      "kind": "function",
+      "module": "ori.doubly_linked_list",
+      "name": "value_at",
+      "signature": "(arg0: doubly_linked_list.DoublyLinkedList<_#0>, arg1: int) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "doubly_linked_list.value_at"
+      ]
+    },
+    {
+      "id": "ori.format.binary",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "binary",
+      "signature": "(arg0: int) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.binary"
+      ]
+    },
+    {
+      "id": "ori.format.bytes_size",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "bytes_size",
+      "signature": "(arg0: int, arg1: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.bytes_size"
+      ]
+    },
+    {
+      "id": "ori.format.date",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "date",
+      "signature": "(arg0: int, arg1: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.date"
+      ]
+    },
+    {
+      "id": "ori.format.datetime",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "datetime",
+      "signature": "(arg0: int, arg1: string, arg2: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.datetime"
+      ]
+    },
+    {
+      "id": "ori.format.hex",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "hex",
+      "signature": "(arg0: int) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.hex"
+      ]
+    },
+    {
+      "id": "ori.format.number",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "number",
+      "signature": "(arg0: float, arg1: int) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.number"
+      ]
+    },
+    {
+      "id": "ori.format.percent",
+      "kind": "function",
+      "module": "ori.format",
+      "name": "percent",
+      "signature": "(arg0: float, arg1: int) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "format.percent"
+      ]
+    },
+    {
+      "id": "ori.format.utils.binary",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "binary",
+      "signature": "func binary(value: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.bytes_size",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "bytes_size",
+      "signature": "func bytes_size(value: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.bytes_size_unit",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "bytes_size_unit",
+      "signature": "func bytes_size_unit(value: int, unit: string) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.date",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "date",
+      "signature": "func date(ts: int, pattern: string) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.datetime",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "datetime",
+      "signature": "func datetime(ts: int, date_pattern: string, time_pattern: string) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.hex",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "hex",
+      "signature": "func hex(value: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.number",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "number",
+      "signature": "func number(value: float) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.number_int",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "number_int",
+      "signature": "func number_int(value: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.number_with",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "number_with",
+      "signature": "func number_with(value: float, decimals: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.percent",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "percent",
+      "signature": "func percent(value: float) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.format.utils.percent_with",
+      "kind": "function",
+      "module": "ori.format.utils",
+      "name": "percent_with",
+      "signature": "func percent_with(value: float, decimals: int) -> string",
+      "layer": "orl",
+      "source": "format/utils.orl"
+    },
+    {
+      "id": "ori.fs.append_text",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "append_text",
+      "signature": "(arg0: string, arg1: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.append_text",
+        "ori.files.append_text",
+        "files.append_text"
+      ]
+    },
+    {
+      "id": "ori.fs.close",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "close",
+      "signature": "(arg0: fs.File) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "fs.close",
+        "ori.files.close",
+        "files.close"
+      ]
+    },
+    {
+      "id": "ori.fs.copy",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "copy",
+      "signature": "(arg0: string, arg1: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.copy",
+        "ori.files.copy",
+        "files.copy"
+      ]
+    },
+    {
+      "id": "ori.fs.create_dir",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "create_dir",
+      "signature": "(arg0: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.create_dir",
+        "ori.files.create_dir",
+        "files.create_dir"
+      ]
+    },
+    {
+      "id": "ori.fs.create_dir_all",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "create_dir_all",
+      "signature": "(arg0: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.create_dir_all",
+        "ori.files.create_dir_all",
+        "files.create_dir_all"
+      ]
+    },
+    {
+      "id": "ori.fs.created_at",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "created_at",
+      "signature": "(arg0: string) -> result<optional<int>, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.created_at"
+      ]
+    },
+    {
+      "id": "ori.fs.delete",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "delete",
+      "signature": "(arg0: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.delete",
+        "ori.files.delete",
+        "files.delete"
+      ]
+    },
+    {
+      "id": "ori.fs.exists",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "exists",
+      "signature": "(arg0: string) -> result<bool, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.exists",
+        "ori.files.exists",
+        "files.exists"
+      ]
+    },
+    {
+      "id": "ori.fs.file_size",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "file_size",
+      "signature": "(arg0: string) -> result<int, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.file_size",
+        "fs.size"
+      ]
+    },
+    {
+      "id": "ori.fs.is_dir",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "is_dir",
+      "signature": "(arg0: string) -> result<bool, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.is_dir",
+        "ori.files.is_dir",
+        "files.is_dir"
+      ]
+    },
+    {
+      "id": "ori.fs.is_file",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "is_file",
+      "signature": "(arg0: string) -> result<bool, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.is_file",
+        "ori.files.is_file",
+        "files.is_file"
+      ]
+    },
+    {
+      "id": "ori.fs.list_dir",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "list_dir",
+      "signature": "(arg0: string) -> result<list<string>, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.list_dir",
+        "ori.files.list_dir",
+        "files.list_dir"
+      ]
+    },
+    {
+      "id": "ori.fs.modified_at",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "modified_at",
+      "signature": "(arg0: string) -> result<int, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.modified_at"
+      ]
+    },
+    {
+      "id": "ori.fs.open_read",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "open_read",
+      "signature": "(arg0: string) -> result<fs.File, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.open_read",
+        "ori.files.open_read",
+        "files.open_read"
+      ]
+    },
+    {
+      "id": "ori.fs.open_write",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "open_write",
+      "signature": "(arg0: string) -> result<fs.File, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.open_write",
+        "ori.files.open_write",
+        "files.open_write"
+      ]
+    },
+    {
+      "id": "ori.fs.read",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "read",
+      "signature": "(arg0: fs.File, arg1: int) -> result<bytes, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.read",
+        "ori.files.read",
+        "files.read"
+      ]
+    },
+    {
+      "id": "ori.fs.read_all",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "read_all",
+      "signature": "(arg0: string) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.read_all",
+        "ori.files.read_all",
+        "files.read_all"
+      ]
+    },
+    {
+      "id": "ori.fs.read_bytes",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "read_bytes",
+      "signature": "(arg0: string) -> result<bytes, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.read_bytes",
+        "ori.files.read_bytes",
+        "files.read_bytes"
+      ]
+    },
+    {
+      "id": "ori.fs.read_text",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "read_text",
+      "signature": "(arg0: string) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.read_text",
+        "ori.files.read_text",
+        "files.read_text"
+      ]
+    },
+    {
+      "id": "ori.fs.read_text_async",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "read_text_async",
+      "signature": "(arg0: string) -> future<result<string, string>>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.read_text_async",
+        "ori.files.read_text_async",
+        "files.read_text_async"
+      ]
+    },
+    {
+      "id": "ori.fs.rename",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "rename",
+      "signature": "(arg0: string, arg1: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.rename",
+        "ori.files.rename",
+        "files.rename"
+      ]
+    },
+    {
+      "id": "ori.fs.utils.create_dir_all",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "create_dir_all",
+      "signature": "func create_dir_all(path: string) -> result<void, string>",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.utils.exists_result",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "exists_result",
+      "signature": "func exists_result(path: string) -> result<bool, string>",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.utils.move_path",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "move_path",
+      "signature": "func move_path(from: string, to: string) -> result<void, string>",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.utils.read_text_or",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "read_text_or",
+      "signature": "func read_text_or(path: string, fallback: string) -> string",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.utils.remove_file",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "remove_file",
+      "signature": "func remove_file(path: string) -> result<void, string>",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.utils.write_text_result",
+      "kind": "function",
+      "module": "ori.fs.utils",
+      "name": "write_text_result",
+      "signature": "func write_text_result(path: string, content: string) -> result<string, string>",
+      "layer": "orl",
+      "source": "fs/utils.orl"
+    },
+    {
+      "id": "ori.fs.write",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "write",
+      "signature": "(arg0: fs.File, arg1: bytes) -> result<int, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.write",
+        "ori.files.write",
+        "files.write"
+      ]
+    },
+    {
+      "id": "ori.fs.write_bytes",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "write_bytes",
+      "signature": "(arg0: string, arg1: bytes) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.write_bytes",
+        "ori.files.write_bytes",
+        "files.write_bytes"
+      ]
+    },
+    {
+      "id": "ori.fs.write_text",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "write_text",
+      "signature": "(arg0: string, arg1: string) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.write_text",
+        "ori.files.write_text",
+        "files.write_text"
+      ]
+    },
+    {
+      "id": "ori.fs.write_text_async",
+      "kind": "function",
+      "module": "ori.fs",
+      "name": "write_text_async",
+      "signature": "(arg0: string, arg1: string) -> future<result<string, string>>",
+      "layer": "runtime",
+      "aliases": [
+        "fs.write_text_async",
+        "ori.files.write_text_async",
+        "files.write_text_async"
+      ]
+    },
+    {
+      "id": "ori.graph.add_edge",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "add_edge",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "graph.add_edge"
+      ]
+    },
+    {
+      "id": "ori.graph.add_node",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "add_node",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "graph.add_node"
+      ]
+    },
+    {
+      "id": "ori.graph.add_weighted_edge",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "add_weighted_edge",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0, arg3: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "graph.add_weighted_edge"
+      ]
+    },
+    {
+      "id": "ori.graph.algorithms.has_path",
+      "kind": "function",
+      "module": "ori.graph.algorithms",
+      "name": "has_path",
+      "signature": "func has_path(g: Generic { name: QualifiedName { parts: [Name { text: \"graph\", span: Span { start: 138, end: 143 } }, Name { text: \"Graph\", span: Span { start: 144, end: 149 } }], span: Span { start: 138, end: 149 } }, args: [String(Span { start: 150, end: 156 })], span: Span { start: 138, end: 157 } }, start: string, goal: string) -> bool",
+      "layer": "orl",
+      "source": "graph/algorithms.orl"
+    },
+    {
+      "id": "ori.graph.algorithms.has_path_int",
+      "kind": "function",
+      "module": "ori.graph.algorithms",
+      "name": "has_path_int",
+      "signature": "func has_path_int(g: Generic { name: QualifiedName { parts: [Name { text: \"graph\", span: Span { start: 1944, end: 1949 } }, Name { text: \"Graph\", span: Span { start: 1950, end: 1955 } }], span: Span { start: 1944, end: 1955 } }, args: [Int(Span { start: 1956, end: 1959 })], span: Span { start: 1944, end: 1960 } }, start: int, goal: int) -> bool",
+      "layer": "orl",
+      "source": "graph/algorithms.orl"
+    },
+    {
+      "id": "ori.graph.algorithms.is_reachable",
+      "kind": "function",
+      "module": "ori.graph.algorithms",
+      "name": "is_reachable",
+      "signature": "func is_reachable(g: Generic { name: QualifiedName { parts: [Name { text: \"graph\", span: Span { start: 1813, end: 1818 } }, Name { text: \"Graph\", span: Span { start: 1819, end: 1824 } }], span: Span { start: 1813, end: 1824 } }, args: [String(Span { start: 1825, end: 1831 })], span: Span { start: 1813, end: 1832 } }, start: string, goal: string) -> bool",
+      "layer": "orl",
+      "source": "graph/algorithms.orl"
+    },
+    {
+      "id": "ori.graph.algorithms.reachable_count",
+      "kind": "function",
+      "module": "ori.graph.algorithms",
+      "name": "reachable_count",
+      "signature": "func reachable_count(g: Generic { name: QualifiedName { parts: [Name { text: \"graph\", span: Span { start: 1077, end: 1082 } }, Name { text: \"Graph\", span: Span { start: 1083, end: 1088 } }], span: Span { start: 1077, end: 1088 } }, args: [String(Span { start: 1089, end: 1095 })], span: Span { start: 1077, end: 1096 } }, start: string) -> int",
+      "layer": "orl",
+      "source": "graph/algorithms.orl"
+    },
+    {
+      "id": "ori.graph.bfs",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "bfs",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.bfs"
+      ]
+    },
+    {
+      "id": "ori.graph.clone",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "clone",
+      "signature": "(arg0: graph.Graph<_#0>) -> graph.Graph<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.clone"
+      ]
+    },
+    {
+      "id": "ori.graph.components",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "components",
+      "signature": "(arg0: graph.Graph<_#0>) -> list<list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.components"
+      ]
+    },
+    {
+      "id": "ori.graph.dfs",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "dfs",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.dfs"
+      ]
+    },
+    {
+      "id": "ori.graph.edge_len",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "edge_len",
+      "signature": "(arg0: graph.Graph<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "graph.edge_len"
+      ]
+    },
+    {
+      "id": "ori.graph.edge_weight",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "edge_weight",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.edge_weight"
+      ]
+    },
+    {
+      "id": "ori.graph.edges",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "edges",
+      "signature": "(arg0: graph.Graph<_#0>) -> list<tuple<_#0, _#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.edges"
+      ]
+    },
+    {
+      "id": "ori.graph.has_cycle",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "has_cycle",
+      "signature": "(arg0: graph.Graph<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "graph.has_cycle"
+      ]
+    },
+    {
+      "id": "ori.graph.has_edge",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "has_edge",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "graph.has_edge"
+      ]
+    },
+    {
+      "id": "ori.graph.has_node",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "has_node",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "graph.has_node"
+      ]
+    },
+    {
+      "id": "ori.graph.is_directed",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "is_directed",
+      "signature": "(arg0: graph.Graph<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "graph.is_directed"
+      ]
+    },
+    {
+      "id": "ori.graph.len",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "len",
+      "signature": "(arg0: graph.Graph<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "graph.len"
+      ]
+    },
+    {
+      "id": "ori.graph.neighbors",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "neighbors",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.neighbors"
+      ]
+    },
+    {
+      "id": "ori.graph.new",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "new",
+      "signature": "(arg0: bool) -> graph.Graph<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.new"
+      ]
+    },
+    {
+      "id": "ori.graph.nodes",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "nodes",
+      "signature": "(arg0: graph.Graph<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.nodes"
+      ]
+    },
+    {
+      "id": "ori.graph.remove_edge",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "remove_edge",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "graph.remove_edge"
+      ]
+    },
+    {
+      "id": "ori.graph.remove_node",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "remove_node",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "graph.remove_node"
+      ]
+    },
+    {
+      "id": "ori.graph.shortest_path",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "shortest_path",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.shortest_path"
+      ]
+    },
+    {
+      "id": "ori.graph.shortest_weighted_path",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "shortest_weighted_path",
+      "signature": "(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.shortest_weighted_path"
+      ]
+    },
+    {
+      "id": "ori.graph.strongly_connected_components",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "strongly_connected_components",
+      "signature": "(arg0: graph.Graph<_#0>) -> list<list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.strongly_connected_components"
+      ]
+    },
+    {
+      "id": "ori.graph.topological_sort",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "topological_sort",
+      "signature": "(arg0: graph.Graph<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.topological_sort"
+      ]
+    },
+    {
+      "id": "ori.graph.transitive_closure",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "transitive_closure",
+      "signature": "(arg0: graph.Graph<_#0>) -> graph.Graph<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.transitive_closure"
+      ]
+    },
+    {
+      "id": "ori.graph.try_topological_sort",
+      "kind": "function",
+      "module": "ori.graph",
+      "name": "try_topological_sort",
+      "signature": "(arg0: graph.Graph<_#0>) -> optional<list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "graph.try_topological_sort"
+      ]
+    },
+    {
+      "id": "ori.hash_table.capacity",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "capacity",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.capacity"
+      ]
+    },
+    {
+      "id": "ori.hash_table.clear",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "clear",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.clear"
+      ]
+    },
+    {
+      "id": "ori.hash_table.clone",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "clone",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> hash_table.HashTable<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.clone"
+      ]
+    },
+    {
+      "id": "ori.hash_table.contains",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "contains",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.contains"
+      ]
+    },
+    {
+      "id": "ori.hash_table.entries",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "entries",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> list<tuple<_#0, _#1>>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.entries"
+      ]
+    },
+    {
+      "id": "ori.hash_table.from_entries",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "from_entries",
+      "signature": "(arg0: list<tuple<_#0, _#1>>) -> hash_table.HashTable<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.from_entries"
+      ]
+    },
+    {
+      "id": "ori.hash_table.get",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "get",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>, arg1: _#0) -> optional<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.get"
+      ]
+    },
+    {
+      "id": "ori.hash_table.is_empty",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "is_empty",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.is_empty"
+      ]
+    },
+    {
+      "id": "ori.hash_table.keys",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "keys",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.keys"
+      ]
+    },
+    {
+      "id": "ori.hash_table.len",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "len",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.len"
+      ]
+    },
+    {
+      "id": "ori.hash_table.new",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "new",
+      "signature": "() -> hash_table.HashTable<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.new"
+      ]
+    },
+    {
+      "id": "ori.hash_table.remove",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "remove",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>, arg1: _#0) -> optional<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.remove"
+      ]
+    },
+    {
+      "id": "ori.hash_table.reserve",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "reserve",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>, arg1: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.reserve"
+      ]
+    },
+    {
+      "id": "ori.hash_table.set",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "set",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>, arg1: _#0, arg2: _#1) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.set"
+      ]
+    },
+    {
+      "id": "ori.hash_table.utils.from_map_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "from_map_string_int",
+      "signature": "func from_map_string_int(source: map<string, int>) -> Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 621, end: 631 } }, Name { text: \"HashTable\", span: Span { start: 632, end: 641 } }], span: Span { start: 621, end: 641 } }, args: [String(Span { start: 642, end: 648 }), Int(Span { start: 650, end: 653 })], span: Span { start: 621, end: 654 } }",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.utils.get_or_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "get_or_string_int",
+      "signature": "func get_or_string_int(table: Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 134, end: 144 } }, Name { text: \"HashTable\", span: Span { start: 145, end: 154 } }], span: Span { start: 134, end: 154 } }, args: [String(Span { start: 155, end: 161 }), Int(Span { start: 163, end: 166 })], span: Span { start: 134, end: 167 } }, key: string, fallback: int) -> int",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.utils.is_empty_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "is_empty_string_int",
+      "signature": "func is_empty_string_int(table: Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 939, end: 949 } }, Name { text: \"HashTable\", span: Span { start: 950, end: 959 } }], span: Span { start: 939, end: 959 } }, args: [String(Span { start: 960, end: 966 }), Int(Span { start: 968, end: 971 })], span: Span { start: 939, end: 972 } }) -> bool",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.utils.key_count_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "key_count_string_int",
+      "signature": "func key_count_string_int(table: Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 816, end: 826 } }, Name { text: \"HashTable\", span: Span { start: 827, end: 836 } }], span: Span { start: 816, end: 836 } }, args: [String(Span { start: 837, end: 843 }), Int(Span { start: 845, end: 848 })], span: Span { start: 816, end: 849 } }) -> int",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.utils.keys_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "keys_string_int",
+      "signature": "func keys_string_int(table: Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 1064, end: 1074 } }, Name { text: \"HashTable\", span: Span { start: 1075, end: 1084 } }], span: Span { start: 1064, end: 1084 } }, args: [String(Span { start: 1085, end: 1091 }), Int(Span { start: 1093, end: 1096 })], span: Span { start: 1064, end: 1097 } }) -> list<string>",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.utils.set_if_absent_string_int",
+      "kind": "function",
+      "module": "ori.hash_table.utils",
+      "name": "set_if_absent_string_int",
+      "signature": "func set_if_absent_string_int(table: Generic { name: QualifiedName { parts: [Name { text: \"hash_table\", span: Span { start: 357, end: 367 } }, Name { text: \"HashTable\", span: Span { start: 368, end: 377 } }], span: Span { start: 357, end: 377 } }, args: [String(Span { start: 378, end: 384 }), Int(Span { start: 386, end: 389 })], span: Span { start: 357, end: 390 } }, key: string, value: int) -> bool",
+      "layer": "orl",
+      "source": "hash_table/utils.orl"
+    },
+    {
+      "id": "ori.hash_table.values",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "values",
+      "signature": "(arg0: hash_table.HashTable<_#0, _#1>) -> list<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.values"
+      ]
+    },
+    {
+      "id": "ori.hash_table.with_capacity",
+      "kind": "function",
+      "module": "ori.hash_table",
+      "name": "with_capacity",
+      "signature": "(arg0: int) -> hash_table.HashTable<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "hash_table.with_capacity"
+      ]
+    },
+    {
+      "id": "ori.heap.clear",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "clear",
+      "signature": "(arg0: heap.Heap<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "heap.clear"
+      ]
+    },
+    {
+      "id": "ori.heap.clone",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "clone",
+      "signature": "(arg0: heap.Heap<_#0>) -> heap.Heap<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.clone"
+      ]
+    },
+    {
+      "id": "ori.heap.from_list",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "from_list",
+      "signature": "(arg0: list<_#0>) -> heap.Heap<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.from_list"
+      ]
+    },
+    {
+      "id": "ori.heap.into_sorted_list",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "into_sorted_list",
+      "signature": "(arg0: heap.Heap<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.into_sorted_list"
+      ]
+    },
+    {
+      "id": "ori.heap.is_empty",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "is_empty",
+      "signature": "(arg0: heap.Heap<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "heap.is_empty"
+      ]
+    },
+    {
+      "id": "ori.heap.len",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "len",
+      "signature": "(arg0: heap.Heap<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "heap.len"
+      ]
+    },
+    {
+      "id": "ori.heap.merge",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "merge",
+      "signature": "(arg0: heap.Heap<_#0>, arg1: heap.Heap<_#0>) -> heap.Heap<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.merge"
+      ]
+    },
+    {
+      "id": "ori.heap.new",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "new",
+      "signature": "() -> heap.Heap<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.new"
+      ]
+    },
+    {
+      "id": "ori.heap.peek",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "peek",
+      "signature": "(arg0: heap.Heap<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.peek"
+      ]
+    },
+    {
+      "id": "ori.heap.pop",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "pop",
+      "signature": "(arg0: heap.Heap<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.pop"
+      ]
+    },
+    {
+      "id": "ori.heap.push",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "push",
+      "signature": "(arg0: heap.Heap<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "heap.push"
+      ]
+    },
+    {
+      "id": "ori.heap.remove",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "remove",
+      "signature": "(arg0: heap.Heap<_#0>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "heap.remove"
+      ]
+    },
+    {
+      "id": "ori.heap.to_list",
+      "kind": "function",
+      "module": "ori.heap",
+      "name": "to_list",
+      "signature": "(arg0: heap.Heap<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "heap.to_list"
+      ]
+    },
+    {
+      "id": "ori.heap.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.heap.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"heap\", span: Span { start: 102, end: 106 } }, Name { text: \"Heap\", span: Span { start: 107, end: 111 } }], span: Span { start: 102, end: 111 } }, args: [Int(Span { start: 112, end: 115 })], span: Span { start: 102, end: 116 } }",
+      "layer": "orl",
+      "source": "heap/utils.orl"
+    },
+    {
+      "id": "ori.heap.utils.into_sorted_int",
+      "kind": "function",
+      "module": "ori.heap.utils",
+      "name": "into_sorted_int",
+      "signature": "func into_sorted_int(h: Generic { name: QualifiedName { parts: [Name { text: \"heap\", span: Span { start: 508, end: 512 } }, Name { text: \"Heap\", span: Span { start: 513, end: 517 } }], span: Span { start: 508, end: 517 } }, args: [Int(Span { start: 518, end: 521 })], span: Span { start: 508, end: 522 } }) -> list<int>",
+      "layer": "orl",
+      "source": "heap/utils.orl"
+    },
+    {
+      "id": "ori.heap.utils.is_singleton_int",
+      "kind": "function",
+      "module": "ori.heap.utils",
+      "name": "is_singleton_int",
+      "signature": "func is_singleton_int(h: Generic { name: QualifiedName { parts: [Name { text: \"heap\", span: Span { start: 614, end: 618 } }, Name { text: \"Heap\", span: Span { start: 619, end: 623 } }], span: Span { start: 614, end: 623 } }, args: [Int(Span { start: 624, end: 627 })], span: Span { start: 614, end: 628 } }) -> bool",
+      "layer": "orl",
+      "source": "heap/utils.orl"
+    },
+    {
+      "id": "ori.heap.utils.peek_or_int",
+      "kind": "function",
+      "module": "ori.heap.utils",
+      "name": "peek_or_int",
+      "signature": "func peek_or_int(h: Generic { name: QualifiedName { parts: [Name { text: \"heap\", span: Span { start: 186, end: 190 } }, Name { text: \"Heap\", span: Span { start: 191, end: 195 } }], span: Span { start: 186, end: 195 } }, args: [Int(Span { start: 196, end: 199 })], span: Span { start: 186, end: 200 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "heap/utils.orl"
+    },
+    {
+      "id": "ori.heap.utils.pop_or_int",
+      "kind": "function",
+      "module": "ori.heap.utils",
+      "name": "pop_or_int",
+      "signature": "func pop_or_int(h: Generic { name: QualifiedName { parts: [Name { text: \"heap\", span: Span { start: 345, end: 349 } }, Name { text: \"Heap\", span: Span { start: 350, end: 354 } }], span: Span { start: 345, end: 354 } }, args: [Int(Span { start: 355, end: 358 })], span: Span { start: 345, end: 359 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "heap/utils.orl"
+    },
+    {
+      "id": "ori.io.eprint",
+      "kind": "function",
+      "module": "ori.io",
+      "name": "eprint",
+      "signature": "(arg0: string) -> void",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.io.eprintln",
+      "kind": "function",
+      "module": "ori.io",
+      "name": "eprintln",
+      "signature": "(arg0: string) -> void",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.io.print",
+      "kind": "function",
+      "module": "ori.io",
+      "name": "print",
+      "signature": "(arg0: string) -> void",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.io.println",
+      "kind": "function",
+      "module": "ori.io",
+      "name": "println",
+      "signature": "(arg0: string) -> void",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.io.read_line",
+      "kind": "function",
+      "module": "ori.io",
+      "name": "read_line",
+      "signature": "() -> optional<string>",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.io.utils.print_line",
+      "kind": "function",
+      "module": "ori.io.utils",
+      "name": "print_line",
+      "signature": "func print_line(value: string)",
+      "layer": "orl",
+      "source": "io/utils.orl"
+    },
+    {
+      "id": "ori.io.utils.try_read_line",
+      "kind": "function",
+      "module": "ori.io.utils",
+      "name": "try_read_line",
+      "signature": "func try_read_line() -> optional<string>",
+      "layer": "orl",
+      "source": "io/utils.orl"
+    },
+    {
+      "id": "ori.io.utils.write",
+      "kind": "function",
+      "module": "ori.io.utils",
+      "name": "write",
+      "signature": "func write(value: string)",
+      "layer": "orl",
+      "source": "io/utils.orl"
+    },
+    {
+      "id": "ori.iter.all",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "all",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "iter.all"
+      ]
+    },
+    {
+      "id": "ori.iter.any",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "any",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "iter.any"
+      ]
+    },
+    {
+      "id": "ori.iter.count_where",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "count_where",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "iter.count_where"
+      ]
+    },
+    {
+      "id": "ori.iter.filter",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "filter",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.filter"
+      ]
+    },
+    {
+      "id": "ori.iter.find",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "find",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.find"
+      ]
+    },
+    {
+      "id": "ori.iter.flat_map",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "flat_map",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.flat_map"
+      ]
+    },
+    {
+      "id": "ori.iter.flatten",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "flatten",
+      "signature": "(arg0: list<list<_#0>>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.flatten"
+      ]
+    },
+    {
+      "id": "ori.iter.group_by",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "group_by",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> _#0) -> map<_#0, list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.group_by"
+      ]
+    },
+    {
+      "id": "ori.iter.map",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "map",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> _#0) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.map"
+      ]
+    },
+    {
+      "id": "ori.iter.partition",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "partition",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> tuple<list<_#0>, list<_#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.partition"
+      ]
+    },
+    {
+      "id": "ori.iter.reduce",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "reduce",
+      "signature": "(arg0: list<_#0>, arg1: _#0, arg2: func(_#0, _#0) -> _#0) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "iter.reduce"
+      ]
+    },
+    {
+      "id": "ori.iter.reverse",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "reverse",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.reverse"
+      ]
+    },
+    {
+      "id": "ori.iter.skip",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "skip",
+      "signature": "(arg0: list<_#0>, arg1: int) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.skip"
+      ]
+    },
+    {
+      "id": "ori.iter.sort",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "sort",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.sort"
+      ]
+    },
+    {
+      "id": "ori.iter.sort_by",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "sort_by",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0, _#0) -> int) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.sort_by"
+      ]
+    },
+    {
+      "id": "ori.iter.take",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "take",
+      "signature": "(arg0: list<_#0>, arg1: int) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.take"
+      ]
+    },
+    {
+      "id": "ori.iter.unique",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "unique",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.unique"
+      ]
+    },
+    {
+      "id": "ori.iter.utils.all_equal_int",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "all_equal_int",
+      "signature": "func all_equal_int(items: list<int>, expected: int) -> bool",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.contains_int",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "contains_int",
+      "signature": "func contains_int(items: list<int>, target: int) -> bool",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.count",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "count",
+      "signature": "func count(items: list<T>) -> int",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.first",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "first",
+      "signature": "func first(items: list<T>) -> optional<T>",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.is_empty",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "is_empty",
+      "signature": "func is_empty(items: list<T>) -> bool",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.reversed_copy",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "reversed_copy",
+      "signature": "func reversed_copy(items: list<T>) -> list<T>",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.sum_int",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "sum_int",
+      "signature": "func sum_int(items: list<int>) -> int",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.utils.unique_count_int",
+      "kind": "function",
+      "module": "ori.iter.utils",
+      "name": "unique_count_int",
+      "signature": "func unique_count_int(items: list<int>) -> int",
+      "layer": "orl",
+      "source": "iter/utils.orl"
+    },
+    {
+      "id": "ori.iter.zip",
+      "kind": "function",
+      "module": "ori.iter",
+      "name": "zip",
+      "signature": "(arg0: list<_#0>, arg1: list<_#0>) -> list<tuple<_#0, _#0>>",
+      "layer": "runtime",
+      "aliases": [
+        "iter.zip"
+      ]
+    },
+    {
+      "id": "ori.json.parse",
+      "kind": "function",
+      "module": "ori.json",
+      "name": "parse",
+      "signature": "(arg0: string) -> result<<def DefId(9999)>, string>",
+      "layer": "runtime",
+      "aliases": [
+        "json.parse"
+      ]
+    },
+    {
+      "id": "ori.json.stringify",
+      "kind": "function",
+      "module": "ori.json",
+      "name": "stringify",
+      "signature": "(arg0: <def DefId(9999)>) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "json.stringify"
+      ]
+    },
+    {
+      "id": "ori.json.stringify_pretty",
+      "kind": "function",
+      "module": "ori.json",
+      "name": "stringify_pretty",
+      "signature": "(arg0: <def DefId(9999)>) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "json.stringify_pretty"
+      ]
+    },
+    {
+      "id": "ori.json.utils.read",
+      "kind": "function",
+      "module": "ori.json.utils",
+      "name": "read",
+      "signature": "func read(file_path: string) -> result<json.Value, string>",
+      "layer": "orl",
+      "source": "json/utils.orl"
+    },
+    {
+      "id": "ori.json.utils.write",
+      "kind": "function",
+      "module": "ori.json.utils",
+      "name": "write",
+      "signature": "func write(file_path: string, value: json.Value) -> result<string, string>",
+      "layer": "orl",
+      "source": "json/utils.orl"
+    },
+    {
+      "id": "ori.json.utils.write_pretty",
+      "kind": "function",
+      "module": "ori.json.utils",
+      "name": "write_pretty",
+      "signature": "func write_pretty(file_path: string, value: json.Value) -> result<string, string>",
+      "layer": "orl",
+      "source": "json/utils.orl"
+    },
+    {
+      "id": "ori.lazy.force",
+      "kind": "function",
+      "module": "ori.lazy",
+      "name": "force",
+      "signature": "(arg0: lazy<_#0>) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "lazy.force"
+      ]
+    },
+    {
+      "id": "ori.lazy.is_consumed",
+      "kind": "function",
+      "module": "ori.lazy",
+      "name": "is_consumed",
+      "signature": "(arg0: lazy<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "lazy.is_consumed"
+      ]
+    },
+    {
+      "id": "ori.lazy.once",
+      "kind": "function",
+      "module": "ori.lazy",
+      "name": "once",
+      "signature": "(arg0: func() -> _#0) -> lazy<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "lazy.once"
+      ]
+    },
+    {
+      "id": "ori.linked_list.clear",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "clear",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.clear"
+      ]
+    },
+    {
+      "id": "ori.linked_list.clone",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "clone",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> linked_list.LinkedList<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.clone"
+      ]
+    },
+    {
+      "id": "ori.linked_list.cursor_back",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "cursor_back",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.cursor_back"
+      ]
+    },
+    {
+      "id": "ori.linked_list.cursor_front",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "cursor_front",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.cursor_front"
+      ]
+    },
+    {
+      "id": "ori.linked_list.find",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "find",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: _#0) -> optional<int>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.find"
+      ]
+    },
+    {
+      "id": "ori.linked_list.front",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "front",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.front"
+      ]
+    },
+    {
+      "id": "ori.linked_list.insert_after",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "insert_after",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: int, arg2: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.insert_after"
+      ]
+    },
+    {
+      "id": "ori.linked_list.is_empty",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "is_empty",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.is_empty"
+      ]
+    },
+    {
+      "id": "ori.linked_list.len",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "len",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.len"
+      ]
+    },
+    {
+      "id": "ori.linked_list.new",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "new",
+      "signature": "() -> linked_list.LinkedList<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.new"
+      ]
+    },
+    {
+      "id": "ori.linked_list.pop_front",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "pop_front",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.pop_front"
+      ]
+    },
+    {
+      "id": "ori.linked_list.push_back",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "push_back",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.push_back"
+      ]
+    },
+    {
+      "id": "ori.linked_list.push_front",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "push_front",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.push_front"
+      ]
+    },
+    {
+      "id": "ori.linked_list.remove_at",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "remove_at",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: int) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.remove_at"
+      ]
+    },
+    {
+      "id": "ori.linked_list.to_list",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "to_list",
+      "signature": "(arg0: linked_list.LinkedList<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.to_list"
+      ]
+    },
+    {
+      "id": "ori.linked_list.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.linked_list.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"linked_list\", span: Span { start: 149, end: 160 } }, Name { text: \"LinkedList\", span: Span { start: 161, end: 171 } }], span: Span { start: 149, end: 171 } }, args: [Int(Span { start: 172, end: 175 })], span: Span { start: 149, end: 176 } }",
+      "layer": "orl",
+      "source": "linked_list/utils.orl"
+    },
+    {
+      "id": "ori.linked_list.utils.front_or_int",
+      "kind": "function",
+      "module": "ori.linked_list.utils",
+      "name": "front_or_int",
+      "signature": "func front_or_int(node: Generic { name: QualifiedName { parts: [Name { text: \"linked_list\", span: Span { start: 625, end: 636 } }, Name { text: \"LinkedList\", span: Span { start: 637, end: 647 } }], span: Span { start: 625, end: 647 } }, args: [Int(Span { start: 648, end: 651 })], span: Span { start: 625, end: 652 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "linked_list/utils.orl"
+    },
+    {
+      "id": "ori.linked_list.utils.is_empty_int",
+      "kind": "function",
+      "module": "ori.linked_list.utils",
+      "name": "is_empty_int",
+      "signature": "func is_empty_int(node: Generic { name: QualifiedName { parts: [Name { text: \"linked_list\", span: Span { start: 917, end: 928 } }, Name { text: \"LinkedList\", span: Span { start: 929, end: 939 } }], span: Span { start: 917, end: 939 } }, args: [Int(Span { start: 940, end: 943 })], span: Span { start: 917, end: 944 } }) -> bool",
+      "layer": "orl",
+      "source": "linked_list/utils.orl"
+    },
+    {
+      "id": "ori.linked_list.utils.len_int",
+      "kind": "function",
+      "module": "ori.linked_list.utils",
+      "name": "len_int",
+      "signature": "func len_int(node: Generic { name: QualifiedName { parts: [Name { text: \"linked_list\", span: Span { start: 808, end: 819 } }, Name { text: \"LinkedList\", span: Span { start: 820, end: 830 } }], span: Span { start: 808, end: 830 } }, args: [Int(Span { start: 831, end: 834 })], span: Span { start: 808, end: 835 } }) -> int",
+      "layer": "orl",
+      "source": "linked_list/utils.orl"
+    },
+    {
+      "id": "ori.linked_list.utils.to_list_int",
+      "kind": "function",
+      "module": "ori.linked_list.utils",
+      "name": "to_list_int",
+      "signature": "func to_list_int(node: Generic { name: QualifiedName { parts: [Name { text: \"linked_list\", span: Span { start: 506, end: 517 } }, Name { text: \"LinkedList\", span: Span { start: 518, end: 528 } }], span: Span { start: 506, end: 528 } }, args: [Int(Span { start: 529, end: 532 })], span: Span { start: 506, end: 533 } }) -> list<int>",
+      "layer": "orl",
+      "source": "linked_list/utils.orl"
+    },
+    {
+      "id": "ori.linked_list.value_at",
+      "kind": "function",
+      "module": "ori.linked_list",
+      "name": "value_at",
+      "signature": "(arg0: linked_list.LinkedList<_#0>, arg1: int) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "linked_list.value_at"
+      ]
+    },
+    {
+      "id": "ori.list.algorithms.all_equal_int",
+      "kind": "function",
+      "module": "ori.list.algorithms",
+      "name": "all_equal_int",
+      "signature": "func all_equal_int(items: list<int>, expected: int) -> bool",
+      "layer": "orl",
+      "source": "list/algorithms.orl"
+    },
+    {
+      "id": "ori.list.algorithms.binary_search_int",
+      "kind": "function",
+      "module": "ori.list.algorithms",
+      "name": "binary_search_int",
+      "signature": "func binary_search_int(items: list<int>, target: int) -> int",
+      "layer": "orl",
+      "source": "list/algorithms.orl"
+    },
+    {
+      "id": "ori.list.algorithms.sum_int",
+      "kind": "function",
+      "module": "ori.list.algorithms",
+      "name": "sum_int",
+      "signature": "func sum_int(items: list<int>) -> int",
+      "layer": "orl",
+      "source": "list/algorithms.orl"
+    },
+    {
+      "id": "ori.list.clear",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "clear",
+      "signature": "(arg0: list<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.clear"
+      ]
+    },
+    {
+      "id": "ori.list.clone",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "clone",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.clone"
+      ]
+    },
+    {
+      "id": "ori.list.contains",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "contains",
+      "signature": "(arg0: list<_#0>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "list.contains"
+      ]
+    },
+    {
+      "id": "ori.list.filter",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "filter",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> bool) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.filter"
+      ]
+    },
+    {
+      "id": "ori.list.free",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "free",
+      "signature": "(arg0: list<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.free"
+      ]
+    },
+    {
+      "id": "ori.list.from_list",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "from_list",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.from_list"
+      ]
+    },
+    {
+      "id": "ori.list.get",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "get",
+      "signature": "(arg0: list<_#0>, arg1: int) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "list.get"
+      ]
+    },
+    {
+      "id": "ori.list.index_of",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "index_of",
+      "signature": "(arg0: list<_#0>, arg1: _#0) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "list.index_of"
+      ]
+    },
+    {
+      "id": "ori.list.insert",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "insert",
+      "signature": "(arg0: list<_#0>, arg1: int, arg2: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.insert"
+      ]
+    },
+    {
+      "id": "ori.list.is_empty",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "is_empty",
+      "signature": "(arg0: list<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "list.is_empty"
+      ]
+    },
+    {
+      "id": "ori.list.len",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "len",
+      "signature": "(arg0: list<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "list.len"
+      ]
+    },
+    {
+      "id": "ori.list.map",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "map",
+      "signature": "(arg0: list<_#0>, arg1: func(_#0) -> _#1) -> list<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "list.map"
+      ]
+    },
+    {
+      "id": "ori.list.new",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "new",
+      "signature": "() -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.new"
+      ]
+    },
+    {
+      "id": "ori.list.pop",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "pop",
+      "signature": "(arg0: list<_#0>) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "list.pop"
+      ]
+    },
+    {
+      "id": "ori.list.push",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "push",
+      "signature": "(arg0: list<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.push"
+      ]
+    },
+    {
+      "id": "ori.list.remove",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "remove",
+      "signature": "(arg0: list<_#0>, arg1: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.remove"
+      ]
+    },
+    {
+      "id": "ori.list.reverse",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "reverse",
+      "signature": "(arg0: list<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.reverse"
+      ]
+    },
+    {
+      "id": "ori.list.set",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "set",
+      "signature": "(arg0: list<_#0>, arg1: int, arg2: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.set"
+      ]
+    },
+    {
+      "id": "ori.list.slice",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "slice",
+      "signature": "(arg0: list<_#0>, arg1: int, arg2: int) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.slice"
+      ]
+    },
+    {
+      "id": "ori.list.sort",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "sort",
+      "signature": "(arg0: list<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "list.sort"
+      ]
+    },
+    {
+      "id": "ori.list.to_list",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "to_list",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.to_list"
+      ]
+    },
+    {
+      "id": "ori.list.try_get",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "try_get",
+      "signature": "(arg0: list<_#0>, arg1: int) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.try_get"
+      ]
+    },
+    {
+      "id": "ori.list.try_pop",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "try_pop",
+      "signature": "(arg0: list<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "list.try_pop"
+      ]
+    },
+    {
+      "id": "ori.list.try_remove",
+      "kind": "function",
+      "module": "ori.list",
+      "name": "try_remove",
+      "signature": "(arg0: list<_#0>, arg1: int) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "list.try_remove"
+      ]
+    },
+    {
+      "id": "ori.list.utils.first_or",
+      "kind": "function",
+      "module": "ori.list.utils",
+      "name": "first_or",
+      "signature": "func first_or(items: list<T>, fallback: T) -> T",
+      "layer": "orl",
+      "source": "list/utils.orl"
+    },
+    {
+      "id": "ori.list.utils.get_or",
+      "kind": "function",
+      "module": "ori.list.utils",
+      "name": "get_or",
+      "signature": "func get_or(items: list<T>, index: int, fallback: T) -> T",
+      "layer": "orl",
+      "source": "list/utils.orl"
+    },
+    {
+      "id": "ori.list.utils.last_or",
+      "kind": "function",
+      "module": "ori.list.utils",
+      "name": "last_or",
+      "signature": "func last_or(items: list<T>, fallback: T) -> T",
+      "layer": "orl",
+      "source": "list/utils.orl"
+    },
+    {
+      "id": "ori.list.utils.singleton",
+      "kind": "function",
+      "module": "ori.list.utils",
+      "name": "singleton",
+      "signature": "func singleton(item: T) -> list<T>",
+      "layer": "orl",
+      "source": "list/utils.orl"
+    },
+    {
+      "id": "ori.map.algorithms.has_all_keys",
+      "kind": "function",
+      "module": "ori.map.algorithms",
+      "name": "has_all_keys",
+      "signature": "func has_all_keys(m: map<string, int>, keys: list<string>) -> bool",
+      "layer": "orl",
+      "source": "map/algorithms.orl"
+    },
+    {
+      "id": "ori.map.algorithms.invert_string_int",
+      "kind": "function",
+      "module": "ori.map.algorithms",
+      "name": "invert_string_int",
+      "signature": "func invert_string_int(m: map<string, int>) -> map<int, string>",
+      "layer": "orl",
+      "source": "map/algorithms.orl"
+    },
+    {
+      "id": "ori.map.algorithms.key_count_string_int",
+      "kind": "function",
+      "module": "ori.map.algorithms",
+      "name": "key_count_string_int",
+      "signature": "func key_count_string_int(m: map<string, int>) -> int",
+      "layer": "orl",
+      "source": "map/algorithms.orl"
+    },
+    {
+      "id": "ori.map.algorithms.merge_string_int",
+      "kind": "function",
+      "module": "ori.map.algorithms",
+      "name": "merge_string_int",
+      "signature": "func merge_string_int(base: map<string, int>, overlay: map<string, int>) -> map<string, int>",
+      "layer": "orl",
+      "source": "map/algorithms.orl"
+    },
+    {
+      "id": "ori.map.algorithms.values_sum_int",
+      "kind": "function",
+      "module": "ori.map.algorithms",
+      "name": "values_sum_int",
+      "signature": "func values_sum_int(m: map<string, int>) -> int",
+      "layer": "orl",
+      "source": "map/algorithms.orl"
+    },
+    {
+      "id": "ori.map.capacity",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "capacity",
+      "signature": "(arg0: map<_#0, _#1>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "map.capacity"
+      ]
+    },
+    {
+      "id": "ori.map.clear",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "clear",
+      "signature": "(arg0: map<_#0, _#1>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "map.clear"
+      ]
+    },
+    {
+      "id": "ori.map.clone",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "clone",
+      "signature": "(arg0: map<_#0, _#1>) -> map<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.clone"
+      ]
+    },
+    {
+      "id": "ori.map.contains",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "contains",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "map.contains"
+      ]
+    },
+    {
+      "id": "ori.map.entries",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "entries",
+      "signature": "(arg0: map<_#0, _#1>) -> list<tuple<_#0, _#1>>",
+      "layer": "runtime",
+      "aliases": [
+        "map.entries"
+      ]
+    },
+    {
+      "id": "ori.map.free",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "free",
+      "signature": "(arg0: map<_#0, _#1>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "map.free"
+      ]
+    },
+    {
+      "id": "ori.map.from_entries",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "from_entries",
+      "signature": "(arg0: list<tuple<_#0, _#1>>) -> map<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.from_entries"
+      ]
+    },
+    {
+      "id": "ori.map.get",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "get",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0) -> _#1",
+      "layer": "runtime",
+      "aliases": [
+        "map.get"
+      ]
+    },
+    {
+      "id": "ori.map.is_empty",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "is_empty",
+      "signature": "(arg0: map<_#0, _#1>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "map.is_empty"
+      ]
+    },
+    {
+      "id": "ori.map.keys",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "keys",
+      "signature": "(arg0: map<_#0, _#1>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "map.keys"
+      ]
+    },
+    {
+      "id": "ori.map.len",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "len",
+      "signature": "(arg0: map<_#0, _#1>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "map.len"
+      ]
+    },
+    {
+      "id": "ori.map.new",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "new",
+      "signature": "() -> map<_#0, _#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.new"
+      ]
+    },
+    {
+      "id": "ori.map.remove",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "remove",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "map.remove"
+      ]
+    },
+    {
+      "id": "ori.map.reserve",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "reserve",
+      "signature": "(arg0: map<_#0, _#1>, arg1: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "map.reserve"
+      ]
+    },
+    {
+      "id": "ori.map.set",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "set",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0, arg2: _#1) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "map.set"
+      ]
+    },
+    {
+      "id": "ori.map.try_get",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "try_get",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0) -> optional<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.try_get"
+      ]
+    },
+    {
+      "id": "ori.map.try_remove",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "try_remove",
+      "signature": "(arg0: map<_#0, _#1>, arg1: _#0) -> optional<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.try_remove"
+      ]
+    },
+    {
+      "id": "ori.map.utils.contains_key",
+      "kind": "function",
+      "module": "ori.map.utils",
+      "name": "contains_key",
+      "signature": "func contains_key(m: map<string, int>, key: string) -> bool",
+      "layer": "orl",
+      "source": "map/utils.orl"
+    },
+    {
+      "id": "ori.map.utils.get_or",
+      "kind": "function",
+      "module": "ori.map.utils",
+      "name": "get_or",
+      "signature": "func get_or(m: map<string, int>, key: string, fallback: int) -> int",
+      "layer": "orl",
+      "source": "map/utils.orl"
+    },
+    {
+      "id": "ori.map.utils.get_or_string",
+      "kind": "function",
+      "module": "ori.map.utils",
+      "name": "get_or_string",
+      "signature": "func get_or_string(m: map<string, string>, key: string, fallback: string) -> string",
+      "layer": "orl",
+      "source": "map/utils.orl"
+    },
+    {
+      "id": "ori.map.utils.has_key",
+      "kind": "function",
+      "module": "ori.map.utils",
+      "name": "has_key",
+      "signature": "func has_key(m: map<string, int>, key: string) -> bool",
+      "layer": "orl",
+      "source": "map/utils.orl"
+    },
+    {
+      "id": "ori.map.utils.is_empty",
+      "kind": "function",
+      "module": "ori.map.utils",
+      "name": "is_empty",
+      "signature": "func is_empty(m: map<string, int>) -> bool",
+      "layer": "orl",
+      "source": "map/utils.orl"
+    },
+    {
+      "id": "ori.map.values",
+      "kind": "function",
+      "module": "ori.map",
+      "name": "values",
+      "signature": "(arg0: map<_#0, _#1>) -> list<_#1>",
+      "layer": "runtime",
+      "aliases": [
+        "map.values"
+      ]
+    },
+    {
+      "id": "ori.math.abs",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "abs",
+      "signature": "(arg0: int) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.acos",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "acos",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.acos"
+      ]
+    },
+    {
+      "id": "ori.math.algorithms.clamp_float",
+      "kind": "function",
+      "module": "ori.math.algorithms",
+      "name": "clamp_float",
+      "signature": "func clamp_float(value: float, min_val: float, max_val: float) -> float",
+      "layer": "orl",
+      "source": "math/algorithms.orl"
+    },
+    {
+      "id": "ori.math.algorithms.hypot",
+      "kind": "function",
+      "module": "ori.math.algorithms",
+      "name": "hypot",
+      "signature": "func hypot(a: float, b: float) -> float",
+      "layer": "orl",
+      "source": "math/algorithms.orl"
+    },
+    {
+      "id": "ori.math.algorithms.is_approx_zero",
+      "kind": "function",
+      "module": "ori.math.algorithms",
+      "name": "is_approx_zero",
+      "signature": "func is_approx_zero(value: float) -> bool",
+      "layer": "orl",
+      "source": "math/algorithms.orl"
+    },
+    {
+      "id": "ori.math.algorithms.lerp_float",
+      "kind": "function",
+      "module": "ori.math.algorithms",
+      "name": "lerp_float",
+      "signature": "func lerp_float(a: float, b: float, t: float) -> float",
+      "layer": "orl",
+      "source": "math/algorithms.orl"
+    },
+    {
+      "id": "ori.math.algorithms.sign_float",
+      "kind": "function",
+      "module": "ori.math.algorithms",
+      "name": "sign_float",
+      "signature": "func sign_float(value: float) -> int",
+      "layer": "orl",
+      "source": "math/algorithms.orl"
+    },
+    {
+      "id": "ori.math.asin",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "asin",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.asin"
+      ]
+    },
+    {
+      "id": "ori.math.atan",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "atan",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.atan"
+      ]
+    },
+    {
+      "id": "ori.math.atan2",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "atan2",
+      "signature": "(arg0: float, arg1: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.atan2"
+      ]
+    },
+    {
+      "id": "ori.math.ceil",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "ceil",
+      "signature": "(arg0: float) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.clamp",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "clamp",
+      "signature": "(arg0: int, arg1: int, arg2: int) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.cos",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "cos",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.exp",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "exp",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.exp"
+      ]
+    },
+    {
+      "id": "ori.math.floor",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "floor",
+      "signature": "(arg0: float) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.is_finite",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "is_finite",
+      "signature": "(arg0: float) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "math.is_finite"
+      ]
+    },
+    {
+      "id": "ori.math.is_infinite",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "is_infinite",
+      "signature": "(arg0: float) -> bool",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.is_nan",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "is_nan",
+      "signature": "(arg0: float) -> bool",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.ln",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "ln",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.ln"
+      ]
+    },
+    {
+      "id": "ori.math.log",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "log",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.log10",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "log10",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.log10"
+      ]
+    },
+    {
+      "id": "ori.math.log2",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "log2",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.max",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "max",
+      "signature": "(arg0: int, arg1: int) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.min",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "min",
+      "signature": "(arg0: int, arg1: int) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.pow",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "pow",
+      "signature": "(arg0: float, arg1: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.round",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "round",
+      "signature": "(arg0: float) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.sin",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "sin",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.sqrt",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "sqrt",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.tan",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "tan",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.math.trunc",
+      "kind": "function",
+      "module": "ori.math",
+      "name": "trunc",
+      "signature": "(arg0: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "math.trunc"
+      ]
+    },
+    {
+      "id": "ori.math.utils.abs_float",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "abs_float",
+      "signature": "func abs_float(value: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.approx_eq",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "approx_eq",
+      "signature": "func approx_eq(a: float, b: float, eps: float) -> bool",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.clamp_int",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "clamp_int",
+      "signature": "func clamp_int(value: int, min_val: int, max_val: int) -> int",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.deg_to_rad",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "deg_to_rad",
+      "signature": "func deg_to_rad(degrees: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.lerp",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "lerp",
+      "signature": "func lerp(a: float, b: float, t: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.log10",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "log10",
+      "signature": "func log10(value: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.rad_to_deg",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "rad_to_deg",
+      "signature": "func rad_to_deg(radians: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.sign",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "sign",
+      "signature": "func sign(n: int) -> int",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.math.utils.trunc_float",
+      "kind": "function",
+      "module": "ori.math.utils",
+      "name": "trunc_float",
+      "signature": "func trunc_float(value: float) -> float",
+      "layer": "orl",
+      "source": "math/utils.orl"
+    },
+    {
+      "id": "ori.net.close",
+      "kind": "function",
+      "module": "ori.net",
+      "name": "close",
+      "signature": "(arg0: net.Connection) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "net.close"
+      ]
+    },
+    {
+      "id": "ori.net.connect",
+      "kind": "function",
+      "module": "ori.net",
+      "name": "connect",
+      "signature": "(arg0: string, arg1: int, arg2: int) -> result<net.Connection, string>",
+      "layer": "runtime",
+      "aliases": [
+        "net.connect"
+      ]
+    },
+    {
+      "id": "ori.net.is_closed",
+      "kind": "function",
+      "module": "ori.net",
+      "name": "is_closed",
+      "signature": "(arg0: net.Connection) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "net.is_closed"
+      ]
+    },
+    {
+      "id": "ori.net.read_some",
+      "kind": "function",
+      "module": "ori.net",
+      "name": "read_some",
+      "signature": "(arg0: net.Connection, arg1: int) -> result<bytes, string>",
+      "layer": "runtime",
+      "aliases": [
+        "net.read_some"
+      ]
+    },
+    {
+      "id": "ori.net.utils.close",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "close",
+      "signature": "func close(conn: net.Connection)",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.connect",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "connect",
+      "signature": "func connect(host: string, port: int, timeout_ms: int) -> result<net.Connection, string>",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.is_open",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "is_open",
+      "signature": "func is_open(conn: net.Connection) -> bool",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.read_bytes",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "read_bytes",
+      "signature": "func read_bytes(conn: net.Connection, max_bytes: int) -> result<bytes, string>",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.read_text",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "read_text",
+      "signature": "func read_text(conn: net.Connection, max_bytes: int) -> result<string, string>",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.write_bytes",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "write_bytes",
+      "signature": "func write_bytes(conn: net.Connection, payload: bytes) -> result<void, string>",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.utils.write_text",
+      "kind": "function",
+      "module": "ori.net.utils",
+      "name": "write_text",
+      "signature": "func write_text(conn: net.Connection, text: string) -> result<void, string>",
+      "layer": "orl",
+      "source": "net/utils.orl"
+    },
+    {
+      "id": "ori.net.write_all",
+      "kind": "function",
+      "module": "ori.net",
+      "name": "write_all",
+      "signature": "(arg0: net.Connection, arg1: bytes) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "net.write_all"
+      ]
+    },
+    {
+      "id": "ori.os.arch",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "arch",
+      "signature": "() -> string",
+      "layer": "runtime",
+      "aliases": [
+        "os.arch"
+      ]
+    },
+    {
+      "id": "ori.os.args",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "args",
+      "signature": "() -> list<string>",
+      "layer": "runtime",
+      "aliases": [
+        "os.args"
+      ]
+    },
+    {
+      "id": "ori.os.change_dir",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "change_dir",
+      "signature": "(arg0: string) -> result<void, string>",
+      "layer": "runtime",
+      "aliases": [
+        "os.change_dir"
+      ]
+    },
+    {
+      "id": "ori.os.current_dir",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "current_dir",
+      "signature": "() -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "os.current_dir"
+      ]
+    },
+    {
+      "id": "ori.os.env",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "env",
+      "signature": "(arg0: string) -> optional<string>",
+      "layer": "runtime",
+      "aliases": [
+        "os.env"
+      ]
+    },
+    {
+      "id": "ori.os.exit",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "exit",
+      "signature": "(arg0: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "os.exit"
+      ]
+    },
+    {
+      "id": "ori.os.pid",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "pid",
+      "signature": "() -> int",
+      "layer": "runtime",
+      "aliases": [
+        "os.pid"
+      ]
+    },
+    {
+      "id": "ori.os.platform",
+      "kind": "function",
+      "module": "ori.os",
+      "name": "platform",
+      "signature": "() -> string",
+      "layer": "runtime",
+      "aliases": [
+        "os.platform"
+      ]
+    },
+    {
+      "id": "ori.os.utils.arch",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "arch",
+      "signature": "func arch() -> string",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.args",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "args",
+      "signature": "func args() -> list<string>",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.current_dir_or",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "current_dir_or",
+      "signature": "func current_dir_or(fallback: string) -> string",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.env_or",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "env_or",
+      "signature": "func env_or(name: string, fallback: string) -> string",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.has_env",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "has_env",
+      "signature": "func has_env(name: string) -> bool",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.is_linux",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "is_linux",
+      "signature": "func is_linux() -> bool",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.is_macos",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "is_macos",
+      "signature": "func is_macos() -> bool",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.is_windows",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "is_windows",
+      "signature": "func is_windows() -> bool",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.pid",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "pid",
+      "signature": "func pid() -> int",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.os.utils.platform",
+      "kind": "function",
+      "module": "ori.os.utils",
+      "name": "platform",
+      "signature": "func platform() -> string",
+      "layer": "orl",
+      "source": "os/utils.orl"
+    },
+    {
+      "id": "ori.panic",
+      "kind": "function",
+      "module": "ori",
+      "name": "panic",
+      "signature": "(arg0: string) -> never",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.path.absolute",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "absolute",
+      "signature": "func absolute(value: string, base: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.base_name",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "base_name",
+      "signature": "func base_name(value: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.change_extension",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "change_extension",
+      "signature": "func change_extension(value: string, new_ext: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.extension",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "extension",
+      "signature": "func extension(value: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.has_extension",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "has_extension",
+      "signature": "func has_extension(value: string, expected: string) -> bool",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.is_absolute",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "is_absolute",
+      "signature": "func is_absolute(value: string) -> bool",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.is_relative",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "is_relative",
+      "signature": "func is_relative(value: string) -> bool",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.join",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "join",
+      "signature": "func join(parts: list<string>) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.name_without_extension",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "name_without_extension",
+      "signature": "func name_without_extension(value: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.normalize",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "normalize",
+      "signature": "func normalize(value: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.parent",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "parent",
+      "signature": "func parent(value: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.path.relative",
+      "kind": "function",
+      "module": "ori.path",
+      "name": "relative",
+      "signature": "func relative(value: string, from: string) -> string",
+      "layer": "orl",
+      "source": "path.orl"
+    },
+    {
+      "id": "ori.process.run",
+      "kind": "function",
+      "module": "ori.process",
+      "name": "run",
+      "signature": "(arg0: string, arg1: list<string>) -> result<int, string>",
+      "layer": "runtime",
+      "aliases": [
+        "process.run"
+      ]
+    },
+    {
+      "id": "ori.process.run_capture",
+      "kind": "function",
+      "module": "ori.process",
+      "name": "run_capture",
+      "signature": "(arg0: string, arg1: list<string>) -> result<map<string, string>, string>",
+      "layer": "runtime",
+      "aliases": [
+        "process.run_capture"
+      ]
+    },
+    {
+      "id": "ori.process.utils.exit_code",
+      "kind": "function",
+      "module": "ori.process.utils",
+      "name": "exit_code",
+      "signature": "func exit_code(capture: map<string, string>) -> int",
+      "layer": "orl",
+      "source": "process/utils.orl"
+    },
+    {
+      "id": "ori.process.utils.stderr",
+      "kind": "function",
+      "module": "ori.process.utils",
+      "name": "stderr",
+      "signature": "func stderr(capture: map<string, string>) -> string",
+      "layer": "orl",
+      "source": "process/utils.orl"
+    },
+    {
+      "id": "ori.process.utils.stdout",
+      "kind": "function",
+      "module": "ori.process.utils",
+      "name": "stdout",
+      "signature": "func stdout(capture: map<string, string>) -> string",
+      "layer": "orl",
+      "source": "process/utils.orl"
+    },
+    {
+      "id": "ori.queue.clear",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "clear",
+      "signature": "(arg0: queue.Queue<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "queue.clear"
+      ]
+    },
+    {
+      "id": "ori.queue.clone",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "clone",
+      "signature": "(arg0: queue.Queue<_#0>) -> queue.Queue<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "queue.clone"
+      ]
+    },
+    {
+      "id": "ori.queue.dequeue",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "dequeue",
+      "signature": "(arg0: queue.Queue<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "queue.dequeue"
+      ]
+    },
+    {
+      "id": "ori.queue.enqueue",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "enqueue",
+      "signature": "(arg0: queue.Queue<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "queue.enqueue"
+      ]
+    },
+    {
+      "id": "ori.queue.is_empty",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "is_empty",
+      "signature": "(arg0: queue.Queue<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "queue.is_empty"
+      ]
+    },
+    {
+      "id": "ori.queue.len",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "len",
+      "signature": "(arg0: queue.Queue<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "queue.len"
+      ]
+    },
+    {
+      "id": "ori.queue.new",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "new",
+      "signature": "() -> queue.Queue<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "queue.new"
+      ]
+    },
+    {
+      "id": "ori.queue.peek",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "peek",
+      "signature": "(arg0: queue.Queue<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "queue.peek"
+      ]
+    },
+    {
+      "id": "ori.queue.to_list",
+      "kind": "function",
+      "module": "ori.queue",
+      "name": "to_list",
+      "signature": "(arg0: queue.Queue<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "queue.to_list"
+      ]
+    },
+    {
+      "id": "ori.queue.utils.drain_count_int",
+      "kind": "function",
+      "module": "ori.queue.utils",
+      "name": "drain_count_int",
+      "signature": "func drain_count_int(q: Generic { name: QualifiedName { parts: [Name { text: \"queue\", span: Span { start: 1043, end: 1048 } }, Name { text: \"Queue\", span: Span { start: 1049, end: 1054 } }], span: Span { start: 1043, end: 1054 } }, args: [Int(Span { start: 1055, end: 1058 })], span: Span { start: 1043, end: 1059 } }) -> int",
+      "layer": "orl",
+      "source": "queue/utils.orl"
+    },
+    {
+      "id": "ori.queue.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.queue.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"queue\", span: Span { start: 131, end: 136 } }, Name { text: \"Queue\", span: Span { start: 137, end: 142 } }], span: Span { start: 131, end: 142 } }, args: [Int(Span { start: 143, end: 146 })], span: Span { start: 131, end: 147 } }",
+      "layer": "orl",
+      "source": "queue/utils.orl"
+    },
+    {
+      "id": "ori.queue.utils.from_list_string",
+      "kind": "function",
+      "module": "ori.queue.utils",
+      "name": "from_list_string",
+      "signature": "func from_list_string(items: list<string>) -> Generic { name: QualifiedName { parts: [Name { text: \"queue\", span: Span { start: 466, end: 471 } }, Name { text: \"Queue\", span: Span { start: 472, end: 477 } }], span: Span { start: 466, end: 477 } }, args: [String(Span { start: 478, end: 484 })], span: Span { start: 466, end: 485 } }",
+      "layer": "orl",
+      "source": "queue/utils.orl"
+    },
+    {
+      "id": "ori.queue.utils.peek_or_int",
+      "kind": "function",
+      "module": "ori.queue.utils",
+      "name": "peek_or_int",
+      "signature": "func peek_or_int(q: Generic { name: QualifiedName { parts: [Name { text: \"queue\", span: Span { start: 876, end: 881 } }, Name { text: \"Queue\", span: Span { start: 882, end: 887 } }], span: Span { start: 876, end: 887 } }, args: [Int(Span { start: 888, end: 891 })], span: Span { start: 876, end: 892 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "queue/utils.orl"
+    },
+    {
+      "id": "ori.queue.utils.to_list_int",
+      "kind": "function",
+      "module": "ori.queue.utils",
+      "name": "to_list_int",
+      "signature": "func to_list_int(q: Generic { name: QualifiedName { parts: [Name { text: \"queue\", span: Span { start: 781, end: 786 } }, Name { text: \"Queue\", span: Span { start: 787, end: 792 } }], span: Span { start: 781, end: 792 } }, args: [Int(Span { start: 793, end: 796 })], span: Span { start: 781, end: 797 } }) -> list<int>",
+      "layer": "orl",
+      "source": "queue/utils.orl"
+    },
+    {
+      "id": "ori.random.bool",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "bool",
+      "signature": "() -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "random.bool"
+      ]
+    },
+    {
+      "id": "ori.random.choice",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "choice",
+      "signature": "(arg0: list<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "random.choice"
+      ]
+    },
+    {
+      "id": "ori.random.float",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "float",
+      "signature": "(arg0: float, arg1: float) -> float",
+      "layer": "runtime",
+      "aliases": [
+        "random.float"
+      ]
+    },
+    {
+      "id": "ori.random.int",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "int",
+      "signature": "(arg0: int, arg1: int) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "random.int"
+      ]
+    },
+    {
+      "id": "ori.random.seed",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "seed",
+      "signature": "(arg0: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "random.seed"
+      ]
+    },
+    {
+      "id": "ori.random.shuffle",
+      "kind": "function",
+      "module": "ori.random",
+      "name": "shuffle",
+      "signature": "(arg0: list<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "random.shuffle"
+      ]
+    },
+    {
+      "id": "ori.random.utils.coin",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "coin",
+      "signature": "func coin() -> bool",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.float_range",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "float_range",
+      "signature": "func float_range(min_val: float, max_val: float) -> float",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.int_range",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "int_range",
+      "signature": "func int_range(min_val: int, max_val: int) -> int",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.is_empty_choice",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "is_empty_choice",
+      "signature": "func is_empty_choice(items: list<string>) -> bool",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.pick_int",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "pick_int",
+      "signature": "func pick_int(items: list<int>) -> optional<int>",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.pick_string",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "pick_string",
+      "signature": "func pick_string(items: list<string>) -> optional<string>",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.seeded_int",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "seeded_int",
+      "signature": "func seeded_int(seed: int, min_val: int, max_val: int) -> int",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.seeded_pick_string",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "seeded_pick_string",
+      "signature": "func seeded_pick_string(seed: int, items: list<string>) -> optional<string>",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.shuffle_ints",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "shuffle_ints",
+      "signature": "func shuffle_ints(items: list<int>) -> list<int>",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.random.utils.shuffle_strings",
+      "kind": "function",
+      "module": "ori.random.utils",
+      "name": "shuffle_strings",
+      "signature": "func shuffle_strings(items: list<string>) -> list<string>",
+      "layer": "orl",
+      "source": "random/utils.orl"
+    },
+    {
+      "id": "ori.set.add",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "add",
+      "signature": "(arg0: set<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "set.add"
+      ]
+    },
+    {
+      "id": "ori.set.algorithms.difference_string",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "difference_string",
+      "signature": "func difference_string(a: set<string>, b: set<string>) -> set<string>",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.intersection_int",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "intersection_int",
+      "signature": "func intersection_int(a: set<int>, b: set<int>) -> set<int>",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.intersection_size_string",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "intersection_size_string",
+      "signature": "func intersection_size_string(a: set<string>, b: set<string>) -> int",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.intersection_string",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "intersection_string",
+      "signature": "func intersection_string(a: set<string>, b: set<string>) -> set<string>",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.is_disjoint_string",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "is_disjoint_string",
+      "signature": "func is_disjoint_string(a: set<string>, b: set<string>) -> bool",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.union_int",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "union_int",
+      "signature": "func union_int(a: set<int>, b: set<int>) -> set<int>",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.algorithms.union_string",
+      "kind": "function",
+      "module": "ori.set.algorithms",
+      "name": "union_string",
+      "signature": "func union_string(a: set<string>, b: set<string>) -> set<string>",
+      "layer": "orl",
+      "source": "set/algorithms.orl"
+    },
+    {
+      "id": "ori.set.capacity",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "capacity",
+      "signature": "(arg0: set<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "set.capacity"
+      ]
+    },
+    {
+      "id": "ori.set.clear",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "clear",
+      "signature": "(arg0: set<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "set.clear"
+      ]
+    },
+    {
+      "id": "ori.set.clone",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "clone",
+      "signature": "(arg0: set<_#0>) -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.clone"
+      ]
+    },
+    {
+      "id": "ori.set.contains",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "contains",
+      "signature": "(arg0: set<_#0>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "set.contains"
+      ]
+    },
+    {
+      "id": "ori.set.difference",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "difference",
+      "signature": "(arg0: set<_#0>, arg1: set<_#0>) -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.difference"
+      ]
+    },
+    {
+      "id": "ori.set.free",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "free",
+      "signature": "(arg0: set<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "set.free"
+      ]
+    },
+    {
+      "id": "ori.set.from_list",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "from_list",
+      "signature": "(arg0: list<_#0>) -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.from_list"
+      ]
+    },
+    {
+      "id": "ori.set.intersection",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "intersection",
+      "signature": "(arg0: set<_#0>, arg1: set<_#0>) -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.intersection"
+      ]
+    },
+    {
+      "id": "ori.set.is_empty",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "is_empty",
+      "signature": "(arg0: set<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "set.is_empty"
+      ]
+    },
+    {
+      "id": "ori.set.len",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "len",
+      "signature": "(arg0: set<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "set.len"
+      ]
+    },
+    {
+      "id": "ori.set.new",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "new",
+      "signature": "() -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.new"
+      ]
+    },
+    {
+      "id": "ori.set.remove",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "remove",
+      "signature": "(arg0: set<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "set.remove"
+      ]
+    },
+    {
+      "id": "ori.set.reserve",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "reserve",
+      "signature": "(arg0: set<_#0>, arg1: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "set.reserve"
+      ]
+    },
+    {
+      "id": "ori.set.to_list",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "to_list",
+      "signature": "(arg0: set<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.to_list"
+      ]
+    },
+    {
+      "id": "ori.set.try_remove",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "try_remove",
+      "signature": "(arg0: set<_#0>, arg1: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "set.try_remove"
+      ]
+    },
+    {
+      "id": "ori.set.union",
+      "kind": "function",
+      "module": "ori.set",
+      "name": "union",
+      "signature": "(arg0: set<_#0>, arg1: set<_#0>) -> set<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "set.union"
+      ]
+    },
+    {
+      "id": "ori.set.utils.contains_all",
+      "kind": "function",
+      "module": "ori.set.utils",
+      "name": "contains_all",
+      "signature": "func contains_all(s: set<string>, items: list<string>) -> bool",
+      "layer": "orl",
+      "source": "set/utils.orl"
+    },
+    {
+      "id": "ori.set.utils.contains_all_int",
+      "kind": "function",
+      "module": "ori.set.utils",
+      "name": "contains_all_int",
+      "signature": "func contains_all_int(s: set<int>, items: list<int>) -> bool",
+      "layer": "orl",
+      "source": "set/utils.orl"
+    },
+    {
+      "id": "ori.set.utils.from_list",
+      "kind": "function",
+      "module": "ori.set.utils",
+      "name": "from_list",
+      "signature": "func from_list(items: list<string>) -> set<string>",
+      "layer": "orl",
+      "source": "set/utils.orl"
+    },
+    {
+      "id": "ori.set.utils.is_subset",
+      "kind": "function",
+      "module": "ori.set.utils",
+      "name": "is_subset",
+      "signature": "func is_subset(subset: set<string>, superset: set<string>) -> bool",
+      "layer": "orl",
+      "source": "set/utils.orl"
+    },
+    {
+      "id": "ori.stack.clear",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "clear",
+      "signature": "(arg0: stack.Stack<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "stack.clear"
+      ]
+    },
+    {
+      "id": "ori.stack.clone",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "clone",
+      "signature": "(arg0: stack.Stack<_#0>) -> stack.Stack<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "stack.clone"
+      ]
+    },
+    {
+      "id": "ori.stack.is_empty",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "is_empty",
+      "signature": "(arg0: stack.Stack<_#0>) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "stack.is_empty"
+      ]
+    },
+    {
+      "id": "ori.stack.len",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "len",
+      "signature": "(arg0: stack.Stack<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "stack.len"
+      ]
+    },
+    {
+      "id": "ori.stack.new",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "new",
+      "signature": "() -> stack.Stack<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "stack.new"
+      ]
+    },
+    {
+      "id": "ori.stack.peek",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "peek",
+      "signature": "(arg0: stack.Stack<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "stack.peek"
+      ]
+    },
+    {
+      "id": "ori.stack.pop",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "pop",
+      "signature": "(arg0: stack.Stack<_#0>) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "stack.pop"
+      ]
+    },
+    {
+      "id": "ori.stack.push",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "push",
+      "signature": "(arg0: stack.Stack<_#0>, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "stack.push"
+      ]
+    },
+    {
+      "id": "ori.stack.to_list",
+      "kind": "function",
+      "module": "ori.stack",
+      "name": "to_list",
+      "signature": "(arg0: stack.Stack<_#0>) -> list<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "stack.to_list"
+      ]
+    },
+    {
+      "id": "ori.stack.utils.from_list_int",
+      "kind": "function",
+      "module": "ori.stack.utils",
+      "name": "from_list_int",
+      "signature": "func from_list_int(items: list<int>) -> Generic { name: QualifiedName { parts: [Name { text: \"stack\", span: Span { start: 131, end: 136 } }, Name { text: \"Stack\", span: Span { start: 137, end: 142 } }], span: Span { start: 131, end: 142 } }, args: [Int(Span { start: 143, end: 146 })], span: Span { start: 131, end: 147 } }",
+      "layer": "orl",
+      "source": "stack/utils.orl"
+    },
+    {
+      "id": "ori.stack.utils.from_list_string",
+      "kind": "function",
+      "module": "ori.stack.utils",
+      "name": "from_list_string",
+      "signature": "func from_list_string(items: list<string>) -> Generic { name: QualifiedName { parts: [Name { text: \"stack\", span: Span { start: 463, end: 468 } }, Name { text: \"Stack\", span: Span { start: 469, end: 474 } }], span: Span { start: 463, end: 474 } }, args: [String(Span { start: 475, end: 481 })], span: Span { start: 463, end: 482 } }",
+      "layer": "orl",
+      "source": "stack/utils.orl"
+    },
+    {
+      "id": "ori.stack.utils.is_singleton_int",
+      "kind": "function",
+      "module": "ori.stack.utils",
+      "name": "is_singleton_int",
+      "signature": "func is_singleton_int(s: Generic { name: QualifiedName { parts: [Name { text: \"stack\", span: Span { start: 1038, end: 1043 } }, Name { text: \"Stack\", span: Span { start: 1044, end: 1049 } }], span: Span { start: 1038, end: 1049 } }, args: [Int(Span { start: 1050, end: 1053 })], span: Span { start: 1038, end: 1054 } }) -> bool",
+      "layer": "orl",
+      "source": "stack/utils.orl"
+    },
+    {
+      "id": "ori.stack.utils.peek_or_int",
+      "kind": "function",
+      "module": "ori.stack.utils",
+      "name": "peek_or_int",
+      "signature": "func peek_or_int(s: Generic { name: QualifiedName { parts: [Name { text: \"stack\", span: Span { start: 870, end: 875 } }, Name { text: \"Stack\", span: Span { start: 876, end: 881 } }], span: Span { start: 870, end: 881 } }, args: [Int(Span { start: 882, end: 885 })], span: Span { start: 870, end: 886 } }, fallback: int) -> int",
+      "layer": "orl",
+      "source": "stack/utils.orl"
+    },
+    {
+      "id": "ori.stack.utils.to_list_int",
+      "kind": "function",
+      "module": "ori.stack.utils",
+      "name": "to_list_int",
+      "signature": "func to_list_int(s: Generic { name: QualifiedName { parts: [Name { text: \"stack\", span: Span { start: 775, end: 780 } }, Name { text: \"Stack\", span: Span { start: 781, end: 786 } }], span: Span { start: 775, end: 786 } }, args: [Int(Span { start: 787, end: 790 })], span: Span { start: 775, end: 791 } }) -> list<int>",
+      "layer": "orl",
+      "source": "stack/utils.orl"
+    },
+    {
+      "id": "ori.string.algorithms.equals_any",
+      "kind": "function",
+      "module": "ori.string.algorithms",
+      "name": "equals_any",
+      "signature": "func equals_any(value: string, candidates: list<string>) -> bool",
+      "layer": "orl",
+      "source": "string/algorithms.orl"
+    },
+    {
+      "id": "ori.string.algorithms.join_non_empty",
+      "kind": "function",
+      "module": "ori.string.algorithms",
+      "name": "join_non_empty",
+      "signature": "func join_non_empty(parts: list<string>, separator: string) -> string",
+      "layer": "orl",
+      "source": "string/algorithms.orl"
+    },
+    {
+      "id": "ori.string.algorithms.repeated",
+      "kind": "function",
+      "module": "ori.string.algorithms",
+      "name": "repeated",
+      "signature": "func repeated(s: string, times: int) -> string",
+      "layer": "orl",
+      "source": "string/algorithms.orl"
+    },
+    {
+      "id": "ori.string.algorithms.truncate",
+      "kind": "function",
+      "module": "ori.string.algorithms",
+      "name": "truncate",
+      "signature": "func truncate(s: string, max_len: int) -> string",
+      "layer": "orl",
+      "source": "string/algorithms.orl"
+    },
+    {
+      "id": "ori.string.chars",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "chars",
+      "signature": "(arg0: string) -> list<string>",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.concat",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "concat",
+      "signature": "(arg0: string, arg1: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.contains",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "contains",
+      "signature": "(arg0: string, arg1: string) -> bool",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.ends_with",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "ends_with",
+      "signature": "(arg0: string, arg1: string) -> bool",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.from_bytes",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "from_bytes",
+      "signature": "(arg0: bytes) -> result<string, string>",
+      "layer": "runtime",
+      "aliases": [
+        "string.from_bytes"
+      ]
+    },
+    {
+      "id": "ori.string.index_of",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "index_of",
+      "signature": "(arg0: string, arg1: string) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "string.index_of"
+      ]
+    },
+    {
+      "id": "ori.string.join",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "join",
+      "signature": "(arg0: list<string>, arg1: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "string.join"
+      ]
+    },
+    {
+      "id": "ori.string.len",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "len",
+      "signature": "(arg0: string) -> int",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.pad_left",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "pad_left",
+      "signature": "(arg0: string, arg1: int, arg2: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "string.pad_left"
+      ]
+    },
+    {
+      "id": "ori.string.pad_right",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "pad_right",
+      "signature": "(arg0: string, arg1: int, arg2: string) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "string.pad_right"
+      ]
+    },
+    {
+      "id": "ori.string.parse_float",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "parse_float",
+      "signature": "(arg0: string) -> result<float, string>",
+      "layer": "runtime",
+      "aliases": [
+        "string.parse_float"
+      ]
+    },
+    {
+      "id": "ori.string.parse_int",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "parse_int",
+      "signature": "(arg0: string) -> result<int, string>",
+      "layer": "runtime",
+      "aliases": [
+        "string.parse_int"
+      ]
+    },
+    {
+      "id": "ori.string.repeat",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "repeat",
+      "signature": "(arg0: string, arg1: int) -> string",
+      "layer": "runtime",
+      "aliases": [
+        "string.repeat"
+      ]
+    },
+    {
+      "id": "ori.string.replace",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "replace",
+      "signature": "(arg0: string, arg1: string, arg2: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.slice",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "slice",
+      "signature": "(arg0: string, arg1: int, arg2: int) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.split",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "split",
+      "signature": "(arg0: string, arg1: string) -> list<string>",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.starts_with",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "starts_with",
+      "signature": "(arg0: string, arg1: string) -> bool",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.to_bytes",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "to_bytes",
+      "signature": "(arg0: string) -> bytes",
+      "layer": "runtime",
+      "aliases": [
+        "string.to_bytes"
+      ]
+    },
+    {
+      "id": "ori.string.to_lower",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "to_lower",
+      "signature": "(arg0: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.to_upper",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "to_upper",
+      "signature": "(arg0: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.trim",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "trim",
+      "signature": "(arg0: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.trim_end",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "trim_end",
+      "signature": "(arg0: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.trim_start",
+      "kind": "function",
+      "module": "ori.string",
+      "name": "trim_start",
+      "signature": "(arg0: string) -> string",
+      "layer": "runtime"
+    },
+    {
+      "id": "ori.string.utils.blank",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "blank",
+      "signature": "func blank(s: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.capitalize",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "capitalize",
+      "signature": "func capitalize(s: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.center",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "center",
+      "signature": "func center(s: string, width: int) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.count",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "count",
+      "signature": "func count(s: string, sub: string) -> int",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.default",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "default",
+      "signature": "func default(s: string, fallback: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.equals_ignore_case",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "equals_ignore_case",
+      "signature": "func equals_ignore_case(a: string, b: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.has_prefix",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "has_prefix",
+      "signature": "func has_prefix(s: string, prefix: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.has_suffix",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "has_suffix",
+      "signature": "func has_suffix(s: string, suffix: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.has_whitespace",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "has_whitespace",
+      "signature": "func has_whitespace(s: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.is_digits",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "is_digits",
+      "signature": "func is_digits(s: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.is_empty",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "is_empty",
+      "signature": "func is_empty(s: string) -> bool",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.last_index_of",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "last_index_of",
+      "signature": "func last_index_of(s: string, needle: string) -> int",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.left",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "left",
+      "signature": "func left(s: string, n: int) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.limit",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "limit",
+      "signature": "func limit(s: string, max_len: int) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.lines",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "lines",
+      "signature": "func lines(s: string) -> list<string>",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.replace_all",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "replace_all",
+      "signature": "func replace_all(s: string, needle: string, replacement: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.replicate",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "replicate",
+      "signature": "func replicate(s: string, n: int) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.reverse",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "reverse",
+      "signature": "func reverse(s: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.right",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "right",
+      "signature": "func right(s: string, n: int) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.swap_case",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "swap_case",
+      "signature": "func swap_case(s: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.title",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "title",
+      "signature": "func title(s: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.trim_all",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "trim_all",
+      "signature": "func trim_all(s: string) -> string",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.string.utils.words",
+      "kind": "function",
+      "module": "ori.string.utils",
+      "name": "words",
+      "signature": "func words(s: string) -> list<string>",
+      "layer": "orl",
+      "source": "string/utils.orl"
+    },
+    {
+      "id": "ori.task.associate",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "associate",
+      "signature": "(arg0: task.CancelToken, arg1: future<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "task.associate"
+      ]
+    },
+    {
+      "id": "ori.task.block_on",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "block_on",
+      "signature": "(arg0: future<_#0>) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "task.block_on"
+      ]
+    },
+    {
+      "id": "ori.task.cancel",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "cancel",
+      "signature": "(arg0: task.CancelToken) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "task.cancel"
+      ]
+    },
+    {
+      "id": "ori.task.create_token",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "create_token",
+      "signature": "() -> task.CancelToken",
+      "layer": "runtime",
+      "aliases": [
+        "task.create_token"
+      ]
+    },
+    {
+      "id": "ori.task.detach",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "detach",
+      "signature": "(arg0: task.Job<_#0>) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "task.detach"
+      ]
+    },
+    {
+      "id": "ori.task.is_cancelled",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "is_cancelled",
+      "signature": "(arg0: task.CancelToken) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "task.is_cancelled"
+      ]
+    },
+    {
+      "id": "ori.task.join",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "join",
+      "signature": "(arg0: task.Job<_#0>) -> result<_#0, task.JoinError>",
+      "layer": "runtime",
+      "aliases": [
+        "task.join"
+      ]
+    },
+    {
+      "id": "ori.task.sleep",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "sleep",
+      "signature": "(arg0: int) -> future<void>",
+      "layer": "runtime",
+      "aliases": [
+        "task.sleep"
+      ]
+    },
+    {
+      "id": "ori.task.spawn",
+      "kind": "function",
+      "module": "ori.task",
+      "name": "spawn",
+      "signature": "(arg0: func() -> _#0) -> task.Job<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "task.spawn"
+      ]
+    },
+    {
+      "id": "ori.test.assert",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "assert",
+      "signature": "(arg0: bool, arg1: string) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "test.assert"
+      ]
+    },
+    {
+      "id": "ori.test.assert_eq",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "assert_eq",
+      "signature": "(arg0: _#0, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "test.assert_eq"
+      ]
+    },
+    {
+      "id": "ori.test.assert_ne",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "assert_ne",
+      "signature": "(arg0: _#0, arg1: _#0) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "test.assert_ne"
+      ]
+    },
+    {
+      "id": "ori.test.assert_no_leaks",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "assert_no_leaks",
+      "signature": "(arg0: string) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "test.assert_no_leaks"
+      ]
+    },
+    {
+      "id": "ori.test.collect_cycles",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "collect_cycles",
+      "signature": "() -> int",
+      "layer": "runtime",
+      "aliases": [
+        "test.collect_cycles"
+      ]
+    },
+    {
+      "id": "ori.test.fail",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "fail",
+      "signature": "(arg0: string) -> never",
+      "layer": "runtime",
+      "aliases": [
+        "test.fail"
+      ]
+    },
+    {
+      "id": "ori.test.live_allocations",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "live_allocations",
+      "signature": "() -> int",
+      "layer": "runtime",
+      "aliases": [
+        "test.live_allocations"
+      ]
+    },
+    {
+      "id": "ori.test.skip",
+      "kind": "function",
+      "module": "ori.test",
+      "name": "skip",
+      "signature": "(arg0: string) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "test.skip"
+      ]
+    },
+    {
+      "id": "ori.test.utils.equal_int",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "equal_int",
+      "signature": "func equal_int(actual: int, expected: int)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.test.utils.equal_text",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "equal_text",
+      "signature": "func equal_text(actual: string, expected: string)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.test.utils.is_false",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "is_false",
+      "signature": "func is_false(value: bool)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.test.utils.is_true",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "is_true",
+      "signature": "func is_true(value: bool)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.test.utils.not_equal_int",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "not_equal_int",
+      "signature": "func not_equal_int(actual: int, expected: int)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.test.utils.not_equal_text",
+      "kind": "function",
+      "module": "ori.test.utils",
+      "name": "not_equal_text",
+      "signature": "func not_equal_text(actual: string, expected: string)",
+      "layer": "orl",
+      "source": "test/utils.orl"
+    },
+    {
+      "id": "ori.time.duration_ms",
+      "kind": "function",
+      "module": "ori.time",
+      "name": "duration_ms",
+      "signature": "(arg0: int, arg1: int) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "time.duration_ms"
+      ]
+    },
+    {
+      "id": "ori.time.now",
+      "kind": "function",
+      "module": "ori.time",
+      "name": "now",
+      "signature": "() -> int",
+      "layer": "runtime",
+      "aliases": [
+        "time.now"
+      ]
+    },
+    {
+      "id": "ori.time.sleep",
+      "kind": "function",
+      "module": "ori.time",
+      "name": "sleep",
+      "signature": "(arg0: int) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "time.sleep"
+      ]
+    },
+    {
+      "id": "ori.time.utils.add",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "add",
+      "signature": "func add(at: int, duration: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.diff",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "diff",
+      "signature": "func diff(a: int, b: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.from_unix_ms",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "from_unix_ms",
+      "signature": "func from_unix_ms(ts: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.hours",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "hours",
+      "signature": "func hours(n: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.milliseconds",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "milliseconds",
+      "signature": "func milliseconds(n: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.minutes",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "minutes",
+      "signature": "func minutes(n: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.seconds",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "seconds",
+      "signature": "func seconds(n: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.since",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "since",
+      "signature": "func since(start: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.sleep_ms",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "sleep_ms",
+      "signature": "func sleep_ms(duration: int)",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.sub",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "sub",
+      "signature": "func sub(at: int, duration: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.to_unix_ms",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "to_unix_ms",
+      "signature": "func to_unix_ms(at: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.time.utils.until",
+      "kind": "function",
+      "module": "ori.time.utils",
+      "name": "until",
+      "signature": "func until(target: int) -> int",
+      "layer": "orl",
+      "source": "time/utils.orl"
+    },
+    {
+      "id": "ori.tree.add_child",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "add_child",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: _#0) -> tree.NodeId",
+      "layer": "runtime",
+      "aliases": [
+        "tree.add_child"
+      ]
+    },
+    {
+      "id": "ori.tree.algorithms.is_leaf",
+      "kind": "function",
+      "module": "ori.tree.algorithms",
+      "name": "is_leaf",
+      "signature": "func is_leaf(t: Generic { name: QualifiedName { parts: [Name { text: \"tree\", span: Span { start: 112, end: 116 } }, Name { text: \"Tree\", span: Span { start: 117, end: 121 } }], span: Span { start: 112, end: 121 } }, args: [Named(QualifiedName { parts: [Name { text: \"T\", span: Span { start: 122, end: 123 } }], span: Span { start: 122, end: 123 } })], span: Span { start: 112, end: 124 } }, node: tree.NodeId) -> bool",
+      "layer": "orl",
+      "source": "tree/algorithms.orl"
+    },
+    {
+      "id": "ori.tree.algorithms.leaf_count",
+      "kind": "function",
+      "module": "ori.tree.algorithms",
+      "name": "leaf_count",
+      "signature": "func leaf_count(t: Generic { name: QualifiedName { parts: [Name { text: \"tree\", span: Span { start: 907, end: 911 } }, Name { text: \"Tree\", span: Span { start: 912, end: 916 } }], span: Span { start: 907, end: 916 } }, args: [Named(QualifiedName { parts: [Name { text: \"T\", span: Span { start: 917, end: 918 } }], span: Span { start: 917, end: 918 } })], span: Span { start: 907, end: 919 } }) -> int",
+      "layer": "orl",
+      "source": "tree/algorithms.orl"
+    },
+    {
+      "id": "ori.tree.algorithms.max_depth_from",
+      "kind": "function",
+      "module": "ori.tree.algorithms",
+      "name": "max_depth_from",
+      "signature": "func max_depth_from(t: Generic { name: QualifiedName { parts: [Name { text: \"tree\", span: Span { start: 1428, end: 1432 } }, Name { text: \"Tree\", span: Span { start: 1433, end: 1437 } }], span: Span { start: 1428, end: 1437 } }, args: [Named(QualifiedName { parts: [Name { text: \"T\", span: Span { start: 1438, end: 1439 } }], span: Span { start: 1438, end: 1439 } })], span: Span { start: 1428, end: 1440 } }, node: tree.NodeId) -> int",
+      "layer": "orl",
+      "source": "tree/algorithms.orl"
+    },
+    {
+      "id": "ori.tree.algorithms.values_preorder",
+      "kind": "function",
+      "module": "ori.tree.algorithms",
+      "name": "values_preorder",
+      "signature": "func values_preorder(t: Generic { name: QualifiedName { parts: [Name { text: \"tree\", span: Span { start: 288, end: 292 } }, Name { text: \"Tree\", span: Span { start: 293, end: 297 } }], span: Span { start: 288, end: 297 } }, args: [Named(QualifiedName { parts: [Name { text: \"T\", span: Span { start: 298, end: 299 } }], span: Span { start: 298, end: 299 } })], span: Span { start: 288, end: 300 } }) -> list<T>",
+      "layer": "orl",
+      "source": "tree/algorithms.orl"
+    },
+    {
+      "id": "ori.tree.breadth_first",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "breadth_first",
+      "signature": "(arg0: tree.Tree<_#0>) -> list<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.breadth_first"
+      ]
+    },
+    {
+      "id": "ori.tree.children",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "children",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> list<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.children"
+      ]
+    },
+    {
+      "id": "ori.tree.clone",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "clone",
+      "signature": "(arg0: tree.Tree<_#0>) -> tree.Tree<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.clone"
+      ]
+    },
+    {
+      "id": "ori.tree.clone_subtree",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "clone_subtree",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> tree.Tree<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.clone_subtree"
+      ]
+    },
+    {
+      "id": "ori.tree.contains_node",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "contains_node",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "tree.contains_node"
+      ]
+    },
+    {
+      "id": "ori.tree.depth",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "depth",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "tree.depth"
+      ]
+    },
+    {
+      "id": "ori.tree.find",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "find",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: _#0) -> optional<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.find"
+      ]
+    },
+    {
+      "id": "ori.tree.len",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "len",
+      "signature": "(arg0: tree.Tree<_#0>) -> int",
+      "layer": "runtime",
+      "aliases": [
+        "tree.len"
+      ]
+    },
+    {
+      "id": "ori.tree.move_subtree",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "move_subtree",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: tree.NodeId) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "tree.move_subtree"
+      ]
+    },
+    {
+      "id": "ori.tree.new",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "new",
+      "signature": "(arg0: _#0) -> tree.Tree<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.new"
+      ]
+    },
+    {
+      "id": "ori.tree.parent",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "parent",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> optional<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.parent"
+      ]
+    },
+    {
+      "id": "ori.tree.post_order",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "post_order",
+      "signature": "(arg0: tree.Tree<_#0>) -> list<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.post_order"
+      ]
+    },
+    {
+      "id": "ori.tree.pre_order",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "pre_order",
+      "signature": "(arg0: tree.Tree<_#0>) -> list<tree.NodeId>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.pre_order"
+      ]
+    },
+    {
+      "id": "ori.tree.remove_subtree",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "remove_subtree",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> void",
+      "layer": "runtime",
+      "aliases": [
+        "tree.remove_subtree"
+      ]
+    },
+    {
+      "id": "ori.tree.root",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "root",
+      "signature": "(arg0: tree.Tree<_#0>) -> tree.NodeId",
+      "layer": "runtime",
+      "aliases": [
+        "tree.root"
+      ]
+    },
+    {
+      "id": "ori.tree.set_value",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "set_value",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: _#0) -> bool",
+      "layer": "runtime",
+      "aliases": [
+        "tree.set_value"
+      ]
+    },
+    {
+      "id": "ori.tree.try_value",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "try_value",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> optional<_#0>",
+      "layer": "runtime",
+      "aliases": [
+        "tree.try_value"
+      ]
+    },
+    {
+      "id": "ori.tree.value",
+      "kind": "function",
+      "module": "ori.tree",
+      "name": "value",
+      "signature": "(arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> _#0",
+      "layer": "runtime",
+      "aliases": [
+        "tree.value"
+      ]
+    },
+    {
+      "id": "ori.validate.all_digits",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "all_digits",
+      "signature": "func all_digits(value: string) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.between",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "between",
+      "signature": "func between(value: int, min_val: int, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.blank",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "blank",
+      "signature": "func blank(value: string) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.even",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "even",
+      "signature": "func even(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.in_range",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "in_range",
+      "signature": "func in_range(value: int, min_val: int, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.int_in_range",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "int_in_range",
+      "signature": "func int_in_range(value: int, min_val: int, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.length_between",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "length_between",
+      "signature": "func length_between(value: string, min_val: int, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.length_equal",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "length_equal",
+      "signature": "func length_equal(value: string, expected: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.matches_length",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "matches_length",
+      "signature": "func matches_length(value: string, exact: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.max_len",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "max_len",
+      "signature": "func max_len(value: string, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.max_length",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "max_length",
+      "signature": "func max_length(value: string, max_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.min_len",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "min_len",
+      "signature": "func min_len(value: string, min_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.min_length",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "min_length",
+      "signature": "func min_length(value: string, min_val: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.negative",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "negative",
+      "signature": "func negative(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.non_negative",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "non_negative",
+      "signature": "func non_negative(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.non_zero",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "non_zero",
+      "signature": "func non_zero(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.not_empty",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "not_empty",
+      "signature": "func not_empty(value: string) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.not_empty_text",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "not_empty_text",
+      "signature": "func not_empty_text(value: string) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.odd",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "odd",
+      "signature": "func odd(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.one_of",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "one_of",
+      "signature": "func one_of(value: int, candidates: list<int>) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.one_of_string",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "one_of_string",
+      "signature": "func one_of_string(value: string, candidates: list<string>) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.positive",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "positive",
+      "signature": "func positive(value: int) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "ori.validate.string_not_blank",
+      "kind": "function",
+      "module": "ori.validate",
+      "name": "string_not_blank",
+      "signature": "func string_not_blank(value: string) -> bool",
+      "layer": "orl",
+      "source": "validate.orl"
+    },
+    {
+      "id": "string",
+      "kind": "function",
+      "module": "string",
+      "name": "string",
+      "signature": "(arg0: int) -> string",
+      "layer": "runtime"
+    }
+  ],
+  "errors": [
+    {
+      "code": "name.undefined",
+      "severity": "error",
+      "summary": "A name was used but is not defined in the current scope.",
+      "cause": "The identifier is missing a binding: typo, wrong import, or symbol defined in another module without import.",
+      "fix": "Check spelling, add `import module as alias`, or qualify with the module alias (e.g. `lib.Point`)."
+    },
+    {
+      "code": "name.private",
+      "severity": "error",
+      "summary": "A non-public item was accessed from outside its module.",
+      "cause": "The symbol exists but is not marked `public` in the defining file.",
+      "fix": "Mark the declaration `public` in its home module, or use a public wrapper/API."
+    },
+    {
+      "code": "name.duplicate",
+      "severity": "error",
+      "summary": "The same name is defined twice in one namespace.",
+      "cause": "Two top-level declarations share an identifier.",
+      "fix": "Rename one of the definitions or merge them into a single declaration."
+    },
+    {
+      "code": "type.type_mismatch",
+      "severity": "error",
+      "summary": "An expression type does not match what the context requires.",
+      "cause": "Assignment, return, argument, or branch expects a different type than inferred.",
+      "fix": "Adjust the expression, add an explicit conversion, or change the expected type annotation."
+    },
+    {
+      "code": "type.arg_type_mismatch",
+      "severity": "error",
+      "summary": "A function argument has the wrong type.",
+      "cause": "The callee parameter type differs from the value passed at this position.",
+      "fix": "Convert the argument or pick an overload/method that accepts this type."
+    },
+    {
+      "code": "type.unused_result",
+      "severity": "warning",
+      "summary": "A `result` value is computed but discarded.",
+      "cause": "Calling a function returning `result<T, E>` without `?`, `match`, or explicit handling.",
+      "fix": "Use `const _ = expr`, propagate with `?`, or handle `success`/`error` explicitly."
+    },
+    {
+      "code": "project.circular_import",
+      "severity": "error",
+      "summary": "Local imports form a cycle.",
+      "cause": "File A imports B (transitively) and B imports A before definitions are complete.",
+      "fix": "Extract shared types to a third module or invert the dependency direction."
+    },
+    {
+      "code": "project.namespace_file_mismatch",
+      "severity": "error",
+      "summary": "File namespace does not match its import path.",
+      "cause": "The `namespace` declaration in the file differs from the path implied by the import.",
+      "fix": "Align `namespace` with the directory layout or fix the import path."
+    },
+    {
+      "code": "project.entry_not_found",
+      "severity": "error",
+      "summary": "Project entry file is missing.",
+      "cause": "`ori.proj` points to a non-existent file, or no entry could be resolved.",
+      "fix": "Create the entry `.orl` file or fix the `entry` key in `ori.proj`."
+    },
+    {
+      "code": "project.no_proj_file",
+      "severity": "error",
+      "summary": "No project manifest was found.",
+      "cause": "The driver searched upward from the entry path and found no `ori.proj`.",
+      "fix": "Add `ori.proj` with an `entry = \"path/to/main.orl\"` line at the project root."
+    },
+    {
+      "code": "bind.import_not_found",
+      "severity": "error",
+      "summary": "Import path does not resolve to any file.",
+      "cause": "No matching `.orl` exists for the import path under the project or stdlib roots.",
+      "fix": "Fix the import path, add the missing file, or set `ORI_STDLIB_ROOT` if importing stdlib."
+    },
+    {
+      "code": "bind.stdlib_module_unknown",
+      "severity": "error",
+      "summary": "Unknown stdlib module.",
+      "cause": "The import looks like `ori.*` but is not in the runtime manifest and has no `.orl` source.",
+      "fix": "Check the module name in `docs/spec/12-stdlib.md` or `stdlib/README.md`."
+    },
+    {
+      "code": "parse.expected_type",
+      "severity": "error",
+      "summary": "Parser expected a type annotation.",
+      "cause": "Ori requires explicit types on bindings and parameters; a type was omitted or malformed.",
+      "fix": "Add `: Type` after the binding name (e.g. `var x: int = 0`)."
+    },
+    {
+      "code": "parse.unexpected_token",
+      "severity": "error",
+      "summary": "Unexpected token at this position.",
+      "cause": "Syntax does not match Ori grammar (often a missing `end`, comma, or keyword).",
+      "fix": "Read the surrounding block structure; ensure each `if`/`func`/`struct` has a matching `end`."
+    },
+    {
+      "code": "match.non_exhaustive",
+      "severity": "error",
+      "summary": "`match` does not cover all cases.",
+      "cause": "Some enum variants or patterns are not handled.",
+      "fix": "Add missing `case` arms or a catch-all pattern."
+    },
+    {
+      "code": "generic.constraint_not_satisfied",
+      "severity": "error",
+      "summary": "Generic constraint is not satisfied.",
+      "cause": "A type argument does not implement a required trait (`where T is Trait`).",
+      "fix": "Implement the trait for your type or use a type that already satisfies the constraint."
+    }
+  ],
+  "keywords": [
+    "namespace",
+    "import",
+    "func",
+    "struct",
+    "enum",
+    "trait",
+    "const",
+    "var",
+    "public",
+    "if",
+    "else",
+    "then",
+    "end",
+    "match",
+    "case",
+    "while",
+    "for",
+    "loop",
+    "break",
+    "continue",
+    "return",
+    "async",
+    "await",
+    "using",
+    "some",
+    "none",
+    "success",
+    "error",
+    "true",
+    "false",
+    "is",
+    "as",
+    "where",
+    "type",
+    "lazy",
+    "spawn",
+    "defer"
+  ]
+}

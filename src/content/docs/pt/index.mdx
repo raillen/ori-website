@@ -1,0 +1,32 @@
+---
+title: Linguagem Ori
+description: Documentação da linguagem Ori — guias, referência da stdlib e toolchain.
+template: splash
+hero:
+  tagline: Leitura em primeiro lugar · tipagem explícita · runtime nativo
+  actions:
+    - text: Começar
+      link: /pt/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Referência stdlib
+      link: /reference/
+      icon: document
+      variant: minimal
+---
+
+## Por que Ori?
+
+Ori prioriza **código legível** com anotações de tipo obrigatórias, `result` / `optional` para erros, e backend nativo Cranelift.
+
+- [Primeiros passos](/pt/getting-started/)
+- [Referência (EN)](/reference/) — gerada a partir do compilador
+- [Erros, null, void](/pt/language/errors-null-void/)
+
+```ori
+namespace app.main
+import ori.io as io
+func main()
+    io.println("Olá, Ori!")
+end
+```

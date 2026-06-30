@@ -1,0 +1,26 @@
+---
+title: If expressions
+description: Conditional expressions with if then else syntax.
+---
+
+Ori supports **inline conditionals** distinct from `if` statements:
+
+```ori
+const value: int = if condition then 1 else 2
+```
+
+- Requires **`then`** and **`else`** (else is mandatory)
+- No trailing **`end`** on expressions
+- Branches must unify to the same type (or `never`)
+
+## Statement form
+
+Block `if` uses `end`:
+
+```ori
+if flag
+    io.print("yes")
+else
+    io.print("no")
+end
+```

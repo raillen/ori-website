@@ -1,0 +1,88 @@
+---
+title: ori.bytes
+description: Standard library module ori.bytes
+---
+
+# ori.bytes
+
+### `ori.bytes.concat`
+
+```ori
+(arg0: bytes, arg1: bytes) -> bytes
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.concat`
+
+### `ori.bytes.decode_utf8`
+
+```ori
+(arg0: bytes) -> result<string, string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.decode_utf8`
+
+### `ori.bytes.from_hex`
+
+```ori
+(arg0: string) -> result<bytes, string>
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.from_hex`
+
+### `ori.bytes.from_list`
+
+```ori
+(arg0: list<int>) -> bytes
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.from_list`
+
+### `ori.bytes.get`
+
+```ori
+(arg0: bytes, arg1: int) -> u8
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.get`
+
+### `ori.bytes.len`
+
+```ori
+(arg0: bytes) -> int
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.len`
+
+### `ori.bytes.slice`
+
+```ori
+(arg0: bytes, arg1: int, arg2: int) -> bytes
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.slice`
+
+### `ori.bytes.to_hex`
+
+```ori
+(arg0: bytes) -> string
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.to_hex`
+
+### `ori.bytes.to_list`
+
+```ori
+(arg0: bytes) -> list<int>
+```
+
+- Layer 1 · runtime
+  - Aliases: `bytes.to_list`
+

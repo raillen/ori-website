@@ -1,0 +1,19 @@
+---
+title: CLI overview
+description: Ori compiler driver commands.
+---
+
+| Command | Purpose |
+|---------|---------|
+| `ori check <file>` | Type-check |
+| `ori compile <file>` | Native binary (Cranelift + link) |
+| `ori run <file>` | Compile and execute (JIT when cdylib available) |
+| `ori test <file>` | Run `@test` functions |
+| `ori fmt <file>` | Format source |
+| `ori doc file <file>` | Extract doc comments |
+| `ori doc export` | Export JSON for this website |
+| `ori doctor` | Environment health |
+| `ori explain <code>` | Explain a diagnostic |
+| `ori summary [path]` | Project import graph |
+
+Build from the `ori-lang` workspace: `cargo run -p ori-driver -- <command>`.

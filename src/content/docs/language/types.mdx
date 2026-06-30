@@ -1,0 +1,39 @@
+---
+title: Types & values
+description: Core types in Ori — bool, int, float, string, collections, result, optional.
+---
+
+Ori is **explicitly typed**: bindings require type annotations at the point of declaration.
+
+## Primitives
+
+| Type | Example |
+|------|---------|
+| `bool` | `true`, `false` |
+| `int` | `42` |
+| `float` | `3.14` |
+| `string` | `"hello"` |
+| `bytes` | Raw byte buffers |
+| `void` | No value (statements only) |
+
+## `result` and `optional`
+
+- **`result<T, E>`** — success or error (`match` with `success` / `error` arms)
+- **`optional<T>`** — `some(value)` or `none`
+
+Filesystem APIs use `result`; `io.read_line()` returns `optional<string>` (`none` at EOF).
+
+## Inline conditionals
+
+```ori
+const n: int = if flag then 1 else 2
+const label: string = if active then "on" else "off"
+```
+
+Both branches must have compatible types (or `never`).
+
+## Collections
+
+`list<T>`, `map<K, V>`, `set<T>`, and stdlib opaque types (`Deque`, `File`, etc.).
+
+See the [stdlib reference](/reference/) for full APIs.

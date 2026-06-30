@@ -1,0 +1,30 @@
+---
+title: Primeiros passos
+description: Instale o Ori, execute seu primeiro programa e explore a toolchain.
+---
+
+## Requisitos
+
+- **Rust 1.95+** para compilar o compilador
+- Runtime empacotado em `runtime/<triple>/` ou build local
+
+## Build
+
+```bash
+git clone https://github.com/ori-lang/ori-lang.git
+cd ori-lang
+cargo build -p ori-driver
+cargo run -p ori-driver -- run examples/hello_world.orl
+```
+
+## Verificar ambiente
+
+```bash
+cargo run -p ori-driver -- doctor
+```
+
+## Próximos passos
+
+- [Tipos](/language/types/) (EN)
+- [Erros, null, void](/pt/language/errors-null-void/)
+- [Referência stdlib](/reference/)

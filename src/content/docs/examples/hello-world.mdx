@@ -1,0 +1,16 @@
+---
+title: Hello world
+description: Minimal Ori program with namespace, import, and main.
+---
+
+```ori
+namespace app.main
+
+import ori.io as io
+
+func main()
+    io.println("Hello, world!")
+end
+```
+
+Run with `ori run main.orl` or `cargo run -p ori-driver -- run main.orl` from the compiler workspace.

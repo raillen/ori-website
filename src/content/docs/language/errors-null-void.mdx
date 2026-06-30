@@ -1,0 +1,37 @@
+---
+title: Errors, null, void
+description: Mental model for void, optional, result, and check in Ori.
+---
+
+## Four concepts
+
+| Concept | Role | Example |
+|---------|------|---------|
+| **void** | No value | `func f() -> void` |
+| **optional** | Maybe absent | `io.read_line()` → `none` at EOF |
+| **result** | Success or failure | `fs.read_text(path)` |
+| **check** | Compiler validation | `ori check file.orl` |
+
+## Handling `result`
+
+```ori
+match fs.read_text("data.txt")
+    case success(text):
+        io.print(text)
+    case error(e):
+        io.print("failed: " + e)
+end
+```
+
+## Handling `optional`
+
+```ori
+match io.read_line()
+    case some(line):
+        io.print(line)
+    case none:
+        io.print("EOF")
+end
+```
+
+Use `ori explain <code>` for diagnostic help — see [Error catalog](/reference/errors/).

@@ -1,0 +1,17 @@
+---
+title: ori doctor
+description: Validate stdlib, runtime, linker, and JIT setup.
+---
+
+```bash
+ori doctor
+```
+
+Checks:
+
+- **stdlib root** — `ORI_STDLIB_ROOT` or packaged `stdlib/`
+- **native runtime** — static lib / cdylib for your triple
+- **linker strategy** — rustc driver, bundled rust-lld, or system linker
+- **run mode** — AOT vs JIT default
+
+Exit code `1` if any check fails.

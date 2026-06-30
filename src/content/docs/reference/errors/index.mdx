@@ -1,0 +1,183 @@
+---
+title: Error catalog
+description: Diagnostic codes with causes and suggested fixes.
+---
+
+Use `ori explain <code>` in the CLI for the same content in the terminal.
+
+## `name.undefined`
+
+**Severity:** `error`
+
+A name was used but is not defined in the current scope.
+
+**Cause:** The identifier is missing a binding: typo, wrong import, or symbol defined in another module without import.
+
+**Fix:** Check spelling, add `import module as alias`, or qualify with the module alias (e.g. `lib.Point`).
+
+
+## `name.private`
+
+**Severity:** `error`
+
+A non-public item was accessed from outside its module.
+
+**Cause:** The symbol exists but is not marked `public` in the defining file.
+
+**Fix:** Mark the declaration `public` in its home module, or use a public wrapper/API.
+
+
+## `name.duplicate`
+
+**Severity:** `error`
+
+The same name is defined twice in one namespace.
+
+**Cause:** Two top-level declarations share an identifier.
+
+**Fix:** Rename one of the definitions or merge them into a single declaration.
+
+
+## `type.type_mismatch`
+
+**Severity:** `error`
+
+An expression type does not match what the context requires.
+
+**Cause:** Assignment, return, argument, or branch expects a different type than inferred.
+
+**Fix:** Adjust the expression, add an explicit conversion, or change the expected type annotation.
+
+
+## `type.arg_type_mismatch`
+
+**Severity:** `error`
+
+A function argument has the wrong type.
+
+**Cause:** The callee parameter type differs from the value passed at this position.
+
+**Fix:** Convert the argument or pick an overload/method that accepts this type.
+
+
+## `type.unused_result`
+
+**Severity:** `warning`
+
+A `result` value is computed but discarded.
+
+**Cause:** Calling a function returning `result<T, E>` without `?`, `match`, or explicit handling.
+
+**Fix:** Use `const _ = expr`, propagate with `?`, or handle `success`/`error` explicitly.
+
+
+## `project.circular_import`
+
+**Severity:** `error`
+
+Local imports form a cycle.
+
+**Cause:** File A imports B (transitively) and B imports A before definitions are complete.
+
+**Fix:** Extract shared types to a third module or invert the dependency direction.
+
+
+## `project.namespace_file_mismatch`
+
+**Severity:** `error`
+
+File namespace does not match its import path.
+
+**Cause:** The `namespace` declaration in the file differs from the path implied by the import.
+
+**Fix:** Align `namespace` with the directory layout or fix the import path.
+
+
+## `project.entry_not_found`
+
+**Severity:** `error`
+
+Project entry file is missing.
+
+**Cause:** `ori.proj` points to a non-existent file, or no entry could be resolved.
+
+**Fix:** Create the entry `.orl` file or fix the `entry` key in `ori.proj`.
+
+
+## `project.no_proj_file`
+
+**Severity:** `error`
+
+No project manifest was found.
+
+**Cause:** The driver searched upward from the entry path and found no `ori.proj`.
+
+**Fix:** Add `ori.proj` with an `entry = "path/to/main.orl"` line at the project root.
+
+
+## `bind.import_not_found`
+
+**Severity:** `error`
+
+Import path does not resolve to any file.
+
+**Cause:** No matching `.orl` exists for the import path under the project or stdlib roots.
+
+**Fix:** Fix the import path, add the missing file, or set `ORI_STDLIB_ROOT` if importing stdlib.
+
+
+## `bind.stdlib_module_unknown`
+
+**Severity:** `error`
+
+Unknown stdlib module.
+
+**Cause:** The import looks like `ori.*` but is not in the runtime manifest and has no `.orl` source.
+
+**Fix:** Check the module name in `docs/spec/12-stdlib.md` or `stdlib/README.md`.
+
+
+## `parse.expected_type`
+
+**Severity:** `error`
+
+Parser expected a type annotation.
+
+**Cause:** Ori requires explicit types on bindings and parameters; a type was omitted or malformed.
+
+**Fix:** Add `: Type` after the binding name (e.g. `var x: int = 0`).
+
+
+## `parse.unexpected_token`
+
+**Severity:** `error`
+
+Unexpected token at this position.
+
+**Cause:** Syntax does not match Ori grammar (often a missing `end`, comma, or keyword).
+
+**Fix:** Read the surrounding block structure; ensure each `if`/`func`/`struct` has a matching `end`.
+
+
+## `match.non_exhaustive`
+
+**Severity:** `error`
+
+`match` does not cover all cases.
+
+**Cause:** Some enum variants or patterns are not handled.
+
+**Fix:** Add missing `case` arms or a catch-all pattern.
+
+
+## `generic.constraint_not_satisfied`
+
+**Severity:** `error`
+
+Generic constraint is not satisfied.
+
+**Cause:** A type argument does not implement a required trait (`where T is Trait`).
+
+**Fix:** Implement the trait for your type or use a type that already satisfies the constraint.
+
+

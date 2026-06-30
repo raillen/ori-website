@@ -1,0 +1,22 @@
+---
+title: Erros, null e void
+description: Modelo mental de void, optional, result e check em Ori.
+---
+
+| Conceito | Papel |
+|----------|--------|
+| **void** | Sem valor |
+| **optional** | Valor opcional (`some` / `none`) |
+| **result** | Sucesso ou erro |
+| **check** | Validação estática (`ori check`) |
+
+```ori
+match fs.read_text("arquivo.txt")
+    case success(text):
+        io.print(text)
+    case error(e):
+        io.print("erro: " + e)
+end
+```
+
+Catálogo completo: [referência de erros](/reference/errors/).

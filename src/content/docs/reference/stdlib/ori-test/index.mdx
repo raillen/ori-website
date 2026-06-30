@@ -1,0 +1,79 @@
+---
+title: ori.test
+description: Standard library module ori.test
+---
+
+# ori.test
+
+### `ori.test.assert`
+
+```ori
+(arg0: bool, arg1: string) -> void
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.assert`
+
+### `ori.test.assert_eq`
+
+```ori
+(arg0: _#0, arg1: _#0) -> void
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.assert_eq`
+
+### `ori.test.assert_ne`
+
+```ori
+(arg0: _#0, arg1: _#0) -> void
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.assert_ne`
+
+### `ori.test.assert_no_leaks`
+
+```ori
+(arg0: string) -> int
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.assert_no_leaks`
+
+### `ori.test.collect_cycles`
+
+```ori
+() -> int
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.collect_cycles`
+
+### `ori.test.fail`
+
+```ori
+(arg0: string) -> never
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.fail`
+
+### `ori.test.live_allocations`
+
+```ori
+() -> int
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.live_allocations`
+
+### `ori.test.skip`
+
+```ori
+(arg0: string) -> void
+```
+
+- Layer 1 · runtime
+  - Aliases: `test.skip`
+

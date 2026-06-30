@@ -1,0 +1,25 @@
+{
+  "name": "ori-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Official documentation website for the Ori programming language",
+  "scripts": {
+    "export-docs": "node scripts/export-docs.mjs",
+    "generate-reference": "node scripts/generate-reference.mjs",
+    "predev": "node scripts/generate-reference.mjs",
+    "prebuild": "node scripts/generate-reference.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.34.3",
+    "astro": "^5.7.10",
+    "minisearch": "^7.1.2",
+    "sharp": "^0.34.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
