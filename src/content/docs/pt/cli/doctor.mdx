@@ -1,0 +1,17 @@
+---
+title: ori doctor
+description: Valida a integridade da stdlib, runtime, linker e configurações do JIT.
+---
+
+```bash
+ori doctor
+```
+
+O comando realiza as seguintes validações no ambiente:
+
+- **Raiz da stdlib** — verifica a variável `ORI_STDLIB_ROOT` ou a pasta empacotada `stdlib/`.
+- **Runtime nativo** — valida a existência da biblioteca estática (`staticlib`) ou dinâmica (`cdylib`) para o triple correspondente da sua máquina.
+- **Estratégia do linker** — detecta e valida o uso do driver rustc, `rust-lld` embutido ou linker nativo do sistema.
+- **Modo de execução** — valida se o padrão de execução de códigos será por JIT (in-memory) ou AOT.
+
+O comando retorna código de saída `1` se qualquer uma das verificações obrigatórias falhar.

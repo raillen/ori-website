@@ -1,0 +1,64 @@
+---
+title: Tipos & Valores
+description: Tipos básicos em Ori — bool, int, float, string, coleções, result, optional.
+---
+
+A linguagem Ori é **explicitamente tipada**: todas as variáveis exigem anotações de tipo no momento da declaração.
+
+## Primitivos
+
+| Tipo | Exemplo |
+|------|---------|
+| `bool` | `true`, `false` |
+| `int` | `42` |
+| `float` | `3.14` |
+| `string` | `"olá"` |
+| `bytes` | Buffers de bytes brutos |
+| `void` | Sem valor (apenas para instruções) |
+
+## Sufixos Numéricos
+
+Você pode definir explicitamente a largura em bits de literais numéricos anexando um sufixo de tipo diretamente aos dígitos. Isso é útil para chamadas de FFI nativas ou otimização de uso de memória:
+
+- **Inteiros com Sinal**: `i8`, `i16`, `i32`, `i64` (ex: `42i8`, `-123i64`)
+- **Inteiros sem Sinal**: `u8`, `u16`, `u32`, `u64` (ex: `255u8`, `1000u32`)
+- **Decimais (Floats)**: `f32`, `f64` (ex: `3.14f32`, `1.0f64`)
+
+Sem um sufixo, os literais inteiros assumem o tipo padrão `int` e literais decimais assumem `float`.
+
+## Coerção & Conversão de Tipos
+
+A Ori não suporta coerção implícita de tipos para evitar bugs ocultos de programação. Em vez disso, as conversões de tipo devem ser feitas explicitamente invocando o nome do tipo primitivo como uma função de conversão:
+
+```ori
+const x: float = 3.14
+const arredondado: int = int(x) // Converte float para int
+
+const ativo: bool = true
+const ativo_str: string = string(ativo) // Converte bool para "true"
+
+const lista_bytes: list<int> = [72, 101, 108, 108, 111]
+const bytes_brutos: bytes = bytes(lista_bytes) // Converte listas para bytes brutos
+```
+
+## `result` e `optional`
+
+- **`result<T, E>`** — representa sucesso ou erro (tratado via `match` com os braços `success` / `error`).
+- **`optional<T>`** — representa presença ou ausência (`some(value)` ou `none`).
+
+As APIs de sistema de arquivos usam `result`, enquanto `io.read_line()` retorna `optional<string>` (retornando `none` ao atingir o fim do arquivo - EOF).
+
+## Condicionais Inline
+
+```ori
+const n: int = if flag then 1 else 2
+const rotulo: string = if active then "ligado" else "desligado"
+```
+
+Ambos os braços da condicional devem ter tipos compatíveis (ou retornar `never`).
+
+## Coleções
+
+`list<T>`, `map<K, V>`, `set<T>`, além de tipos opacos da stdlib (`Deque`, `File`, etc.).
+
+Veja a [referência da stdlib](/reference/) para a documentação completa das APIs.

@@ -1,0 +1,19 @@
+---
+title: Visão Geral da CLI
+description: Comandos do driver do compilador Ori.
+---
+
+| Comando | Finalidade |
+|---------|------------|
+| `ori check <arquivo>` | Realiza a verificação de tipos (type-check) |
+| `ori compile <arquivo>` | Compila em um binário nativo (Cranelift + linkagem) |
+| `ori run <arquivo>` | Compila e executa (usa JIT se a cdylib do runtime estiver disponível) |
+| `ori test <arquivo>` | Executa funções marcadas com `@test` |
+| `ori fmt <arquivo>` | Formata o código-fonte |
+| `ori doc file <arquivo>` | Extrai os comentários de documentação |
+| `ori doc export` | Exporta a documentação em formato JSON para o website |
+| `ori doctor` | Diagnostica a integridade e caminhos do ambiente de desenvolvimento |
+| `ori explain <codigo>` | Explica de forma detalhada um código de erro/diagnóstico |
+| `ori summary [caminho]` | Exibe o grafo de imports do projeto |
+
+Para compilar e rodar a partir do workspace local do `ori-lang`: `cargo run -p ori-driver -- <comando>`.

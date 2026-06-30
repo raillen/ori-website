@@ -50,9 +50,7 @@ export default defineConfig({
           },
         },
       ],
-      components: {
-        SiteTitle: "./src/components/SiteTitle.astro",
-      },
+
       sidebar: [
         {
           label: "Start",

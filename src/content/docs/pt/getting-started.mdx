@@ -1,30 +1,55 @@
 ---
-title: Primeiros passos
-description: Instale o Ori, execute seu primeiro programa e explore a toolchain.
+title: Primeiros Passos
+description: Instale a Ori, execute seu primeiro programa e explore a toolchain.
 ---
 
 ## Requisitos
 
-- **Rust 1.95+** para compilar o compilador
-- Runtime empacotado em `runtime/<triple>/` ou build local
+- **Rust 1.95+** (para compilar o compilador a partir do código-fonte)
+- Cadeia de ferramentas **Windows MSVC**, **Linux GNU**, ou **macOS** para o backend nativo
+- Biblioteca de runtime empacotada em `runtime/<triple>/` (ou compilada localmente com `cargo build -p ori-runtime`)
 
-## Build
+## Compilando a partir do código-fonte
 
 ```bash
 git clone https://github.com/ori-lang/ori-lang.git
 cd ori-lang
 cargo build -p ori-driver
+cargo run -p ori-driver -- check examples/hello_world.orl
 cargo run -p ori-driver -- run examples/hello_world.orl
 ```
 
-## Verificar ambiente
+## Seu primeiro arquivo Ori
+
+Crie um arquivo chamado `main.orl`:
+
+```ori
+namespace app.main
+
+import ori.io as io
+
+func main()
+    io.println("Olá, Ori!")
+end
+```
+
+Para verificar o arquivo e depois executá-lo:
+
+```bash
+cargo run -p ori-driver -- check main.orl
+cargo run -p ori-driver -- run main.orl
+```
+
+## Verificação do Ambiente
 
 ```bash
 cargo run -p ori-driver -- doctor
 ```
 
+Este comando verifica a integridade e caminhos da raiz da stdlib, o runtime nativo correspondente, as estratégias disponíveis do linker e o suporte ao JIT.
+
 ## Próximos passos
 
-- [Tipos](/language/types/) (EN)
+- [Tipos & Valores](/pt/language/types/)
 - [Erros, null, void](/pt/language/errors-null-void/)
-- [Referência stdlib](/reference/)
+- [Referência da Biblioteca Padrão](/reference/)

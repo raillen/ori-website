@@ -1,0 +1,26 @@
+---
+title: Expressões If
+description: Expressões condicionais usando a sintaxe if then else.
+---
+
+A linguagem Ori suporta **condicionais inline** (que agem como expressões e retornam valor) que diferem das instruções `if` em bloco:
+
+```ori
+const valor: int = if condicao then 1 else 2
+```
+
+- Exige obrigatoriamente as palavras-chave **`then`** e **`else`** (o `else` é obrigatório).
+- Não há o uso do delimitador **`end`** nas expressões.
+- Ambos os caminhos (then/else) devem retornar o mesmo tipo unificado (ou um deles retornar `never`).
+
+## Formato em Instrução (Bloco)
+
+O `if` em formato de instrução em bloco usa a palavra-chave `end` para delimitação:
+
+```ori
+if flag
+    io.print("sim")
+else
+    io.print("não")
+end
+```
