@@ -1,0 +1,123 @@
+---
+title: Calculadora modular
+description: Construa uma calculadora pequena com módulos locais, imports públicos, operações em enum e divisão baseada em result.
+---
+
+Objetivo: construir uma calculadora separada em módulos locais.
+
+Este projeto usa:
+
+- `namespace`;
+- `import` local;
+- APIs `public`;
+- `enum` para operações;
+- `result<int, string>` para divisão.
+
+## Arquivos
+
+```text
+calculator/
+  main.orl
+  calculator/
+    domain.orl
+    engine.orl
+```
+
+## `calculator/domain.orl`
+
+```ori
+namespace calculator.domain
+
+public enum Operation
+    Add
+    Subtract
+    Multiply
+    Divide
+end
+
+public struct Calculation
+    left: int
+    right: int
+    operation: Operation
+end
+```
+
+## `calculator/engine.orl`
+
+```ori
+namespace calculator.engine
+
+import calculator.domain as domain
+
+public func calculate(input: domain.Calculation) -> result<int, string>
+    match input.operation
+        case Add:
+            return success(input.left + input.right)
+        case Subtract:
+            return success(input.left - input.right)
+        case Multiply:
+            return success(input.left * input.right)
+        case Divide:
+            if input.right == 0
+                return error("division by zero")
+            end
+            return success(input.left / input.right)
+    end
+end
+```
+
+## `main.orl`
+
+```ori
+namespace calculator.main
+
+import calculator.domain as domain
+import calculator.engine as engine
+import ori.io as io
+
+func print_result(label: string, result: result<int, string>)
+    match result
+        case success(value):
+            io.print(f"{label}: {value}")
+        case error(message):
+            io.print(f"{label}: error: {message}")
+    end
+end
+
+func main()
+    const sum: domain.Calculation = domain.Calculation(
+        left: 10,
+        right: 5,
+        operation: domain.Operation.Add,
+    )
+
+    const division: domain.Calculation = domain.Calculation(
+        left: 10,
+        right: 0,
+        operation: domain.Operation.Divide,
+    )
+
+    print_result("sum", engine.calculate(sum))
+    print_result("division", engine.calculate(division))
+end
+```
+
+## O que observar
+
+- `domain.orl` guarda a forma dos dados.
+- `engine.orl` guarda as regras de cálculo.
+- `main.orl` guarda a saída no terminal.
+- Divisão usa `result` porque pode falhar.
+- O `match` sobre `Operation` deixa as operações suportadas visíveis.
+
+## Próximo passo
+
+Adicione um novo caso ao enum:
+
+```ori
+Power
+```
+
+Depois atualize `calculate`.
+
+O compilador deve guiar para o ramo ausente quando a checagem de exaustividade se aplica.

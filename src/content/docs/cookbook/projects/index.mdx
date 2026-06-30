@@ -1,0 +1,43 @@
+---
+title: Project tutorials
+description: Small terminal projects that combine Ori modules, types, traits, collections, and error handling.
+---
+
+These tutorials show complete project shapes, not isolated syntax fragments.
+
+Each project uses a small set of language features on purpose.
+
+## Projects
+
+| Project | What it teaches |
+|---|---|
+| [Modular calculator](/cookbook/projects/modular-calculator/) | Local imports, public APIs, `enum`, `match`, `result`. |
+| [Terminal bank](/cookbook/projects/terminal-bank/) | Domain structs, typed errors, `try`, transfer flow. |
+| [Terminal book library](/cookbook/projects/book-library/) | Lists, search, `optional`, string normalization. |
+| [Terminal to-do](/cookbook/projects/terminal-todo/) | Queue, stack, task state, terminal reporting. |
+
+## Project standard
+
+Use this shape for small Ori projects:
+
+1. Put domain types in one module.
+2. Put rules in functions that do not print.
+3. Put terminal I/O in `main`.
+4. Return `optional<T>` for missing data.
+5. Return `result<T, E>` for failures.
+6. Keep public APIs small.
+
+## Suggested folders
+
+```text
+project/
+  ori.proj
+  main.orl
+  app/
+    domain.orl
+    service.orl
+```
+
+Start with one file if the project is tiny.
+
+Split when a section has a clear responsibility and a useful name.

@@ -1,0 +1,156 @@
+---
+title: Modules and imports
+description: How Ori source files, namespaces, local imports, public imports, and visibility work.
+---
+
+Ori code is organized by **namespace**.
+
+Every `.orl` file starts with one `namespace` declaration. Imports come next.
+
+```ori
+namespace app.main
+
+import ori.io as io
+import app.calculator as calculator
+```
+
+This makes file ownership visible before the reader sees any logic.
+
+## One file, one namespace
+
+A source file has this shape:
+
+```ori
+namespace app.orders
+
+import ori.io as io
+
+public struct Order
+    id: int
+    total: int
+end
+
+public func describe(order: Order) -> string
+    return f"order {order.id}: {order.total}"
+end
+```
+
+Top-level declarations are **private by default**.
+
+Use `public` only for names that other namespaces should use.
+
+## Local imports
+
+An import creates a local alias.
+
+```ori
+import app.orders
+import app.billing as billing
+```
+
+Rules:
+
+- `import app.orders` creates the alias `orders`.
+- `import app.billing as billing` creates the alias `billing`.
+- Only `public` declarations from the imported namespace are visible.
+- Private helper functions stay inside the file that defines them.
+
+Example:
+
+```ori
+namespace app.billing
+
+public func subtotal(value: int, tax: int) -> int
+    return value + tax
+end
+
+func internal_rounding(value: int) -> int
+    return value
+end
+```
+
+Another file can call `billing.subtotal(...)`.
+
+It cannot call `billing.internal_rounding(...)`.
+
+## File layout
+
+For local project code, keep the path close to the namespace:
+
+```text
+src/
+  main.orl              namespace app.main
+  app/
+    billing.orl         namespace app.billing
+    orders.orl          namespace app.orders
+    ui/
+      terminal.orl      namespace app.ui.terminal
+```
+
+The compiler resolves imports from namespace-like paths to matching `.orl` files near the importing file.
+
+For `import app.ui.terminal`, common matching files are:
+
+```text
+app/ui/terminal.orl
+app/ui/terminal/mod.orl
+app/ui/terminal/index.orl
+```
+
+If more than one matching file exists, the import is ambiguous.
+
+Keep only one matching file for each module.
+
+## Public imports
+
+Use `public import` to build a small facade.
+
+This is useful when you want one stable namespace for the rest of the app.
+
+```ori
+namespace app.api
+
+public import app.orders as orders
+public import app.billing as billing
+```
+
+Then consumers import the facade:
+
+```ori
+namespace app.main
+
+import app.api as api
+
+func main()
+    const total: int = api.billing.subtotal(100, 12)
+end
+```
+
+Use this sparingly.
+
+Good facades group related public modules. They should not hide unrelated code.
+
+## Import diagnostics
+
+Ori checks module structure early.
+
+Common diagnostics:
+
+| Diagnostic | Meaning | Fix |
+|---|---|---|
+| `project.import_not_found` | No matching `.orl` file was found. | Fix the path or add the file. |
+| `project.import_ambiguous` | More than one file matches the same import. | Keep one canonical file. |
+| `project.namespace_file_mismatch` | File path and `namespace` do not agree. | Align the namespace with the import path. |
+| `project.circular_import` | Two or more modules import each other in a cycle. | Move shared code into a third module. |
+| `name.private` | Imported code tried to use a private declaration. | Mark the declaration `public` or expose a public wrapper. |
+
+## Clean module checklist
+
+- Start every file with the correct `namespace`.
+- Keep imports explicit and near the top.
+- Prefer readable aliases over one-letter aliases.
+- Keep helper functions private.
+- Export only stable domain types and functions.
+- Break import cycles by extracting shared types into a small module.
+
+Next: [Composition and traits](/language/composition-and-traits/).

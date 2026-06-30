@@ -1,0 +1,157 @@
+---
+title: Composição e traits
+description: Como Ori usa structs, enums, traits, implement blocks, restrições e trait objects em vez de herança de classes.
+---
+
+Ori não tem **classes** e não tem **herança de classes**.
+
+O código é composto com:
+
+- `struct` para dados nomeados;
+- `enum` para estados do tipo "um entre vários";
+- `trait` para contratos de comportamento;
+- `implement Trait for Type` para anexar comportamento de forma explícita.
+
+Isso é mais próximo de **composição por contrato** do que de herança.
+
+## Defina dados primeiro
+
+Use `struct` quando todos os campos existem juntos.
+
+```ori
+struct InvoiceLine
+    label: string
+    unit_price: int
+    quantity: int
+end
+```
+
+Use `enum` quando um valor pode estar em um conjunto fechado de estados.
+
+```ori
+enum PaymentStatus
+    Pending
+    Paid(reference: string)
+    Failed(reason: string)
+end
+```
+
+## Adicione comportamento com trait
+
+Uma trait diz o que um tipo sabe fazer.
+
+```ori
+trait Chargeable
+    func amount(self) -> int
+end
+```
+
+Um bloco `implement` anexa esse comportamento a um tipo.
+
+```ori
+implement Chargeable for InvoiceLine
+    func amount(self) -> int
+        return self.unit_price * self.quantity
+    end
+end
+```
+
+O comportamento fica visível no ponto em que ele é anexado.
+
+Não há classe pai escondida.
+
+## Use restrições para código reutilizável
+
+Funções genéricas podem exigir uma trait com `where`.
+
+```ori
+func total<T>(items: list<T>) -> int where T is Chargeable
+    var sum: int = 0
+    for item in items
+        sum = sum + item.amount()
+    end
+    return sum
+end
+```
+
+Leia assim:
+
+> `total` funciona para qualquer `T`, desde que `T` seja `Chargeable`.
+
+O compilador rejeita chamadas em que o tipo não implementa a trait exigida.
+
+## Use trait objects quando o tipo concreto pode variar
+
+Use `any<Trait>` quando um valor pode guardar tipos concretos diferentes por trás do mesmo contrato.
+
+```ori
+trait Labelled
+    func label(self) -> string
+end
+
+struct User
+    name: string
+end
+
+implement Labelled for User
+    func label(self) -> string
+        return self.name
+    end
+end
+
+func print_label(value: any<Labelled>)
+    io.print(value.label())
+end
+```
+
+Prefira genéricos para caminhos críticos de performance.
+
+Prefira `any<Trait>` em fronteiras de plugin, listas mistas e APIs em que apagar o tipo concreto é intencional.
+
+## Use traits padrão
+
+Traits centrais vivem em `ori.core`.
+
+As mais comuns:
+
+| Trait | Uso |
+|---|---|
+| `Displayable` | Faz `string(value)` e strings interpoladas usarem texto customizado. |
+| `Equatable` | Habilita `==` / `!=` customizados. |
+| `Comparable` | Habilita ordenação customizada e coleções ordenadas. |
+| `Hashable` | Permite valores customizados como chaves de `map`, `set` ou `hash_table`. |
+| `Disposable` | Habilita limpeza determinística com `using`. |
+| `Iterable` | Permite `for item in value` quando `next()` retorna `optional<T>`. |
+
+Exemplo com display:
+
+```ori
+import ori.core as core
+
+struct User
+    name: string
+    role: string
+end
+
+implement core.Displayable for User
+    func display(self) -> string
+        return f"{self.name} ({self.role})"
+    end
+end
+
+func main()
+    const user: User = User(name: "Ada", role: "admin")
+    io.print(string(user))
+end
+```
+
+## Checklist de composição
+
+- Coloque a forma dos dados em `struct` ou `enum`.
+- Coloque comportamento reutilizável em uma `trait` pequena.
+- Anexe comportamento com `implement Trait for Type`.
+- Use `where T is Trait` para algoritmos genéricos.
+- Use `any<Trait>` apenas quando apagar o tipo for útil.
+- Evite uma trait gigante tentando descrever a aplicação inteira.
+
+Próximo: [Fluxo e dados](/pt/language/control-flow-and-data/).

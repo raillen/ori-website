@@ -1,0 +1,156 @@
+---
+title: Módulos e imports
+description: Como arquivos, namespaces, imports locais, public imports e visibilidade funcionam em Ori.
+---
+
+Código Ori é organizado por **namespace**.
+
+Todo arquivo `.orl` começa com uma declaração `namespace`. Os imports vêm logo depois.
+
+```ori
+namespace app.main
+
+import ori.io as io
+import app.calculator as calculator
+```
+
+Isso mostra onde o arquivo pertence antes da lógica aparecer.
+
+## Um arquivo, um namespace
+
+Um arquivo fonte tem este formato:
+
+```ori
+namespace app.orders
+
+import ori.io as io
+
+public struct Order
+    id: int
+    total: int
+end
+
+public func describe(order: Order) -> string
+    return f"order {order.id}: {order.total}"
+end
+```
+
+Declarações de topo são **privadas por padrão**.
+
+Use `public` apenas para nomes que outros namespaces devem usar.
+
+## Imports locais
+
+Um import cria um alias local.
+
+```ori
+import app.orders
+import app.billing as billing
+```
+
+Regras:
+
+- `import app.orders` cria o alias `orders`.
+- `import app.billing as billing` cria o alias `billing`.
+- Apenas declarações `public` do namespace importado ficam visíveis.
+- Funções auxiliares privadas continuam dentro do arquivo que as define.
+
+Exemplo:
+
+```ori
+namespace app.billing
+
+public func subtotal(value: int, tax: int) -> int
+    return value + tax
+end
+
+func internal_rounding(value: int) -> int
+    return value
+end
+```
+
+Outro arquivo pode chamar `billing.subtotal(...)`.
+
+Ele não pode chamar `billing.internal_rounding(...)`.
+
+## Layout de arquivos
+
+Em código local de projeto, mantenha o caminho perto do namespace:
+
+```text
+src/
+  main.orl              namespace app.main
+  app/
+    billing.orl         namespace app.billing
+    orders.orl          namespace app.orders
+    ui/
+      terminal.orl      namespace app.ui.terminal
+```
+
+O compilador resolve imports a partir de caminhos parecidos com namespaces para arquivos `.orl` próximos ao arquivo que importa.
+
+Para `import app.ui.terminal`, arquivos comuns são:
+
+```text
+app/ui/terminal.orl
+app/ui/terminal/mod.orl
+app/ui/terminal/index.orl
+```
+
+Se mais de um arquivo combinar com o mesmo import, o import fica ambíguo.
+
+Mantenha apenas um arquivo canônico para cada módulo.
+
+## Public imports
+
+Use `public import` para criar uma fachada pequena.
+
+Isso ajuda quando você quer um namespace estável para o resto da aplicação.
+
+```ori
+namespace app.api
+
+public import app.orders as orders
+public import app.billing as billing
+```
+
+Depois, consumidores importam a fachada:
+
+```ori
+namespace app.main
+
+import app.api as api
+
+func main()
+    const total: int = api.billing.subtotal(100, 12)
+end
+```
+
+Use isso com cuidado.
+
+Boas fachadas agrupam módulos públicos relacionados. Elas não devem esconder código sem relação.
+
+## Diagnósticos de import
+
+Ori valida a estrutura de módulos cedo.
+
+Diagnósticos comuns:
+
+| Diagnóstico | Significado | Correção |
+|---|---|---|
+| `project.import_not_found` | Nenhum arquivo `.orl` correspondente foi encontrado. | Corrija o caminho ou adicione o arquivo. |
+| `project.import_ambiguous` | Mais de um arquivo combina com o mesmo import. | Mantenha um arquivo canônico. |
+| `project.namespace_file_mismatch` | O caminho do arquivo e o `namespace` não combinam. | Alinhe o namespace com o caminho importado. |
+| `project.circular_import` | Dois ou mais módulos importam uns aos outros em ciclo. | Mova código compartilhado para um terceiro módulo. |
+| `name.private` | Código importado tentou usar uma declaração privada. | Marque a declaração como `public` ou exponha uma função pública. |
+
+## Checklist de módulo limpo
+
+- Comece todo arquivo com o `namespace` correto.
+- Mantenha imports explícitos e perto do topo.
+- Prefira aliases legíveis em vez de aliases de uma letra.
+- Deixe funções auxiliares privadas.
+- Exporte apenas tipos e funções estáveis do domínio.
+- Quebre ciclos de import extraindo tipos compartilhados para um módulo pequeno.
+
+Próximo: [Composição e traits](/pt/language/composition-and-traits/).

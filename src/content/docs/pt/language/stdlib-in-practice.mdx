@@ -1,0 +1,137 @@
+---
+title: Stdlib na prática
+description: Mapa prático dos módulos da biblioteca padrão da Ori e quando usar cada família.
+---
+
+A biblioteca padrão da Ori vive em `ori.*`.
+
+Você importa os módulos que usa.
+
+```ori
+import ori.io as io
+import ori.list as lists
+import ori.string as str
+```
+
+A seção de referência lista todas as APIs geradas.
+
+Esta página é um mapa prático.
+
+## Módulos do dia a dia
+
+| Necessidade | Módulo |
+|---|---|
+| Imprimir ou ler texto no terminal | `ori.io` |
+| Trabalhar com strings | `ori.string`, `ori.string.utils`, `ori.string.algorithms` |
+| Converter números e booleanos | `ori.string`, `ori.convert`, `ori.convert.utils` |
+| Listas e sequências simples | `ori.list`, `ori.list.utils`, `ori.list.algorithms` |
+| Maps e sets | `ori.map`, `ori.set`, `ori.map.utils`, `ori.set.utils` |
+| Arquivos e diretórios | `ori.fs`, `ori.fs.utils`, `ori.path` |
+| JSON | `ori.json`, `ori.json.utils` |
+
+## Coleções além de `list`
+
+Ori inclui várias famílias de coleções:
+
+| Coleção | Use quando |
+|---|---|
+| `queue.Queue<T>` | Itens de trabalho em ordem de chegada. |
+| `stack.Stack<T>` | Histórico, desfazer, backtracking, último que entra é o primeiro que sai. |
+| `deque.Deque<T>` | Inserir e remover nas duas pontas. |
+| `linked_list.LinkedList<T>` | Inserções e remoções por cursor. |
+| `tree.Tree<T>` | Estruturas pai/filho, como sumários. |
+| `graph.Graph<N>` | Nós e arestas. |
+| `heap.Heap<T>` | Recuperar primeiro o menor valor. |
+| `hash_table.HashTable<K, V>` | Controle de capacidade e busca que retorna `optional`. |
+
+Exemplo:
+
+```ori
+import ori.queue as queue
+
+const jobs: queue.Queue<string> = queue.new()
+
+queue.enqueue(jobs, "parse")
+queue.enqueue(jobs, "compile")
+
+match queue.dequeue(jobs)
+    case some(job):
+        io.print(job)
+    case none:
+        io.print("no jobs")
+end
+```
+
+## Helpers e algoritmos
+
+Módulos terminados em `.utils` guardam helpers práticos pequenos.
+
+Módulos terminados em `.algorithms` guardam algoritmos reutilizáveis maiores.
+
+Exemplos:
+
+```ori
+import ori.convert.utils as convert_utils
+import ori.list.algorithms as list_algorithms
+import ori.string.utils as string_utils
+
+const port: int = convert_utils.parse_int_or("8080", 3000)
+const total: int = list_algorithms.sum_int([1, 2, 3])
+const title: string = string_utils.title("ori language guide")
+```
+
+## Arquivos com erros explícitos
+
+Funções de sistema de arquivos retornam `result`.
+
+Trate o erro na borda do terminal.
+
+```ori
+import ori.fs as fs
+import ori.io as io
+
+func print_file(path: string)
+    match fs.read_text(path)
+        case success(text):
+            io.print(text)
+        case error(message):
+            io.print(f"could not read {path}: {message}")
+    end
+end
+```
+
+## Base de concorrência
+
+Ori nativa suporta tasks, futures, channels e atomics.
+
+Use estes módulos quando precisar de trabalho concorrente explícito:
+
+| Necessidade | Módulo |
+|---|---|
+| Criar e aguardar jobs | `ori.task` |
+| Dormir e aguardar futures | `ori.task` |
+| Enviar valores entre workers | `ori.channel` |
+| Contador inteiro compartilhado | `ori.atomic` |
+
+Exemplo async pequeno:
+
+```ori
+import ori.task as task
+
+async func wait_then_answer() -> int
+    await task.sleep(1)
+    return 42
+end
+```
+
+## Escolhendo o módulo certo
+
+- Comece com `list<T>` para dados ordenados simples.
+- Use `queue` para trabalho pendente.
+- Use `stack` para histórico e desfazer.
+- Use `map` para busca direta por chave.
+- Use `hash_table` quando `optional` e controle de capacidade importam.
+- Use `tree` ou `graph` apenas quando os dados realmente têm estrutura.
+- Use helpers que retornam `result` nas bordas de I/O.
+
+Próximo: [Tutoriais de projeto](/pt/cookbook/projects/).

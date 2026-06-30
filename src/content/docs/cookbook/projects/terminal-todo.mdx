@@ -1,0 +1,108 @@
+---
+title: Terminal to-do
+description: Build a terminal to-do flow with queue, stack, task state, optional values, and clear terminal reporting.
+---
+
+Goal: model pending tasks and completed history.
+
+Use:
+
+- `queue.Queue<T>` for pending work;
+- `stack.Stack<T>` for completed history;
+- `enum` for priority;
+- `optional<T>` for an empty queue.
+
+## Complete program
+
+```ori
+namespace todo.main
+
+import ori.io as io
+import ori.queue as queue
+import ori.stack as stack
+
+enum Priority
+    Low
+    Normal
+    High
+end
+
+struct Task
+    title: string
+    priority: Priority
+end
+
+func priority_label(priority: Priority) -> string
+    match priority
+        case Low:
+            return "low"
+        case Normal:
+            return "normal"
+        case High:
+            return "high"
+    end
+end
+
+func describe(task: Task) -> string
+    return f"[{priority_label(task.priority)}] {task.title}"
+end
+
+func add_task(todo: queue.Queue<Task>, title: string, priority: Priority)
+    queue.enqueue(todo, Task(title: title, priority: priority))
+end
+
+func complete_next(todo: queue.Queue<Task>, done: stack.Stack<Task>) -> optional<Task>
+    match queue.dequeue(todo)
+        case some(task):
+            stack.push(done, task)
+            return some(task)
+        case none:
+            return none
+    end
+end
+
+func main()
+    const todo: queue.Queue<Task> = queue.new()
+    const done: stack.Stack<Task> = stack.new()
+
+    add_task(todo, "write calculator tutorial", Priority.High)
+    add_task(todo, "review module names", Priority.Normal)
+
+    match complete_next(todo, done)
+        case some(task):
+            io.print(f"completed: {describe(task)}")
+        case none:
+            io.print("nothing to do")
+    end
+
+    match stack.peek(done)
+        case some(task):
+            io.print(f"last completed: {describe(task)}")
+        case none:
+            io.print("no completed task")
+    end
+end
+```
+
+## What to notice
+
+- Queue expresses "next task first".
+- Stack expresses "last completed task".
+- `complete_next` has no terminal output.
+- Empty queue is `none`, not an exception.
+- `priority_label` makes enum rendering explicit.
+
+## Next steps
+
+Add commands:
+
+```ori
+enum Command
+    Add(title: string)
+    CompleteNext
+    ShowHistory
+    Quit
+end
+```
+
+Then use `match command` in `main` to route terminal input.

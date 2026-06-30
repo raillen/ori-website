@@ -1,0 +1,108 @@
+---
+title: To-do no terminal
+description: Construa um fluxo de to-do no terminal com queue, stack, estado de tarefa, optional e saída clara.
+---
+
+Objetivo: modelar tarefas pendentes e histórico de tarefas concluídas.
+
+Use:
+
+- `queue.Queue<T>` para trabalho pendente;
+- `stack.Stack<T>` para histórico concluído;
+- `enum` para prioridade;
+- `optional<T>` para fila vazia.
+
+## Programa completo
+
+```ori
+namespace todo.main
+
+import ori.io as io
+import ori.queue as queue
+import ori.stack as stack
+
+enum Priority
+    Low
+    Normal
+    High
+end
+
+struct Task
+    title: string
+    priority: Priority
+end
+
+func priority_label(priority: Priority) -> string
+    match priority
+        case Low:
+            return "low"
+        case Normal:
+            return "normal"
+        case High:
+            return "high"
+    end
+end
+
+func describe(task: Task) -> string
+    return f"[{priority_label(task.priority)}] {task.title}"
+end
+
+func add_task(todo: queue.Queue<Task>, title: string, priority: Priority)
+    queue.enqueue(todo, Task(title: title, priority: priority))
+end
+
+func complete_next(todo: queue.Queue<Task>, done: stack.Stack<Task>) -> optional<Task>
+    match queue.dequeue(todo)
+        case some(task):
+            stack.push(done, task)
+            return some(task)
+        case none:
+            return none
+    end
+end
+
+func main()
+    const todo: queue.Queue<Task> = queue.new()
+    const done: stack.Stack<Task> = stack.new()
+
+    add_task(todo, "write calculator tutorial", Priority.High)
+    add_task(todo, "review module names", Priority.Normal)
+
+    match complete_next(todo, done)
+        case some(task):
+            io.print(f"completed: {describe(task)}")
+        case none:
+            io.print("nothing to do")
+    end
+
+    match stack.peek(done)
+        case some(task):
+            io.print(f"last completed: {describe(task)}")
+        case none:
+            io.print("no completed task")
+    end
+end
+```
+
+## O que observar
+
+- Queue expressa "próxima tarefa primeiro".
+- Stack expressa "última tarefa concluída".
+- `complete_next` não tem saída no terminal.
+- Fila vazia é `none`, não exceção.
+- `priority_label` deixa a renderização do enum explícita.
+
+## Próximos passos
+
+Adicione comandos:
+
+```ori
+enum Command
+    Add(title: string)
+    CompleteNext
+    ShowHistory
+    Quit
+end
+```
+
+Depois use `match command` em `main` para rotear a entrada do terminal.

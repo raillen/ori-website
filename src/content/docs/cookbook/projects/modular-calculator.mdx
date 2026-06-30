@@ -1,0 +1,123 @@
+---
+title: Modular calculator
+description: Build a small calculator with local modules, public imports, enum operations, and result-based division.
+---
+
+Goal: build a calculator split across local modules.
+
+This project uses:
+
+- `namespace`;
+- local `import`;
+- `public` APIs;
+- `enum` for operations;
+- `result<int, string>` for division.
+
+## Files
+
+```text
+calculator/
+  main.orl
+  calculator/
+    domain.orl
+    engine.orl
+```
+
+## `calculator/domain.orl`
+
+```ori
+namespace calculator.domain
+
+public enum Operation
+    Add
+    Subtract
+    Multiply
+    Divide
+end
+
+public struct Calculation
+    left: int
+    right: int
+    operation: Operation
+end
+```
+
+## `calculator/engine.orl`
+
+```ori
+namespace calculator.engine
+
+import calculator.domain as domain
+
+public func calculate(input: domain.Calculation) -> result<int, string>
+    match input.operation
+        case Add:
+            return success(input.left + input.right)
+        case Subtract:
+            return success(input.left - input.right)
+        case Multiply:
+            return success(input.left * input.right)
+        case Divide:
+            if input.right == 0
+                return error("division by zero")
+            end
+            return success(input.left / input.right)
+    end
+end
+```
+
+## `main.orl`
+
+```ori
+namespace calculator.main
+
+import calculator.domain as domain
+import calculator.engine as engine
+import ori.io as io
+
+func print_result(label: string, result: result<int, string>)
+    match result
+        case success(value):
+            io.print(f"{label}: {value}")
+        case error(message):
+            io.print(f"{label}: error: {message}")
+    end
+end
+
+func main()
+    const sum: domain.Calculation = domain.Calculation(
+        left: 10,
+        right: 5,
+        operation: domain.Operation.Add,
+    )
+
+    const division: domain.Calculation = domain.Calculation(
+        left: 10,
+        right: 0,
+        operation: domain.Operation.Divide,
+    )
+
+    print_result("sum", engine.calculate(sum))
+    print_result("division", engine.calculate(division))
+end
+```
+
+## What to notice
+
+- `domain.orl` owns the data shape.
+- `engine.orl` owns the calculation rules.
+- `main.orl` owns terminal output.
+- Division uses `result` because it can fail.
+- The `match` over `Operation` keeps the supported operations visible.
+
+## Next step
+
+Add a new enum case:
+
+```ori
+Power
+```
+
+Then update `calculate`.
+
+The compiler should guide you to the missing branch when exhaustiveness checks apply.

@@ -1,0 +1,192 @@
+---
+title: Control flow and data
+description: Practical guide to structs, enums, match, loops, optionals, results, closures, pipes, and collection literals.
+---
+
+Ori makes control flow explicit.
+
+Absence uses `optional<T>`.
+
+Failure uses `result<T, E>`.
+
+Branching over data uses `match`.
+
+## Structs
+
+Use a `struct` for data with named fields.
+
+```ori
+struct Book
+    title: string
+    author: string
+    year: int
+end
+
+const book: Book = Book(
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    year: 2008,
+)
+```
+
+Fields are named at construction. This keeps call sites readable.
+
+## Enums and `match`
+
+Use an `enum` for state that has a fixed set of cases.
+
+```ori
+enum Command
+    Add(title: string)
+    List
+    Quit
+end
+```
+
+Handle the state with `match`:
+
+```ori
+match command
+    case Add(title):
+        io.print(f"adding {title}")
+    case List:
+        io.print("listing")
+    case Quit:
+        io.print("bye")
+end
+```
+
+Use `case else` only when there is a real fallback.
+
+For domain states, prefer naming every case.
+
+## `optional<T>`
+
+Use `optional<T>` when a value may not exist.
+
+```ori
+func find_title(id: int) -> optional<string>
+    if id == 1
+        return some("Ori Guide")
+    end
+    return none
+end
+```
+
+Read it with `match`:
+
+```ori
+match find_title(1)
+    case some(title):
+        io.print(title)
+    case none:
+        io.print("not found")
+end
+```
+
+Or bind the happy path with `if some`:
+
+```ori
+if some(title) = find_title(1)
+    io.print(title)
+end
+```
+
+## `result<T, E>`
+
+Use `result<T, E>` when an operation can fail with a reason.
+
+```ori
+func divide(a: int, b: int) -> result<int, string>
+    if b == 0
+        return error("division by zero")
+    end
+    return success(a / b)
+end
+```
+
+Use `try` to propagate failure from a function that also returns `result`.
+
+```ori
+func double_division(a: int, b: int) -> result<int, string>
+    const value: int = try divide(a, b)
+    return success(value * 2)
+end
+```
+
+Use `match` at the boundary where the program can explain the result to a person.
+
+## Loops
+
+Use `for` when iterating values:
+
+```ori
+const names: list<string> = ["Ada", "Grace"]
+
+for name in names
+    io.print(name)
+end
+```
+
+Use `while` when the loop depends on a condition:
+
+```ori
+var index: int = 0
+while index < len(names)
+    io.print(names[index])
+    index = index + 1
+end
+```
+
+Use `loop` with `break` when the exit point is inside the body.
+
+## Closures and pipes
+
+Use `do` for small anonymous functions.
+
+```ori
+import ori.iter as iter
+
+const numbers: list<int> = [1, 2, 3, 4]
+
+const even: list<int> =
+    numbers
+    |> iter.filter(do(n: int) => n % 2 == 0)
+```
+
+Prefer named functions when the rule has a domain name.
+
+```ori
+func is_even(n: int) -> bool
+    return n % 2 == 0
+end
+
+const even: list<int> = iter.filter(numbers, is_even)
+```
+
+## Collection literals
+
+```ori
+const names: list<string> = ["Ada", "Grace"]
+const scores: map<string, int> = {"Ada": 10, "Grace": 9}
+const tags: set<string> = set{"compiler", "docs"}
+const pair: tuple<int, string> = tuple(1, "one")
+```
+
+Empty collections need a type annotation:
+
+```ori
+const empty_names: list<string> = []
+const empty_scores: map<string, int> = {}
+```
+
+## Clean flow checklist
+
+- Use `optional<T>` for missing values.
+- Use `result<T, E>` for failures with a reason.
+- Use `match` when the reader should see every case.
+- Use `try` only inside a compatible return type.
+- Prefer `for` over manual indexes when the index is not important.
+- Keep closures short; name longer rules.
+
+Next: [Standard library in practice](/language/stdlib-in-practice/).

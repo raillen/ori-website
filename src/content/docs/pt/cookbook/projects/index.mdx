@@ -1,0 +1,43 @@
+---
+title: Tutoriais de projeto
+description: Pequenos projetos de terminal que combinam módulos, tipos, traits, coleções e tratamento de erro em Ori.
+---
+
+Estes tutoriais mostram formatos completos de projeto, não apenas pedaços soltos de sintaxe.
+
+Cada projeto usa um conjunto pequeno de recursos da linguagem de propósito.
+
+## Projetos
+
+| Projeto | O que ensina |
+|---|---|
+| [Calculadora modular](/pt/cookbook/projects/modular-calculator/) | Imports locais, APIs públicas, `enum`, `match`, `result`. |
+| [Banco de terminal](/pt/cookbook/projects/terminal-bank/) | Structs de domínio, erros tipados, `try`, fluxo de transferência. |
+| [Biblioteca de livros no terminal](/pt/cookbook/projects/book-library/) | Listas, busca, `optional`, normalização de texto. |
+| [To-do no terminal](/pt/cookbook/projects/terminal-todo/) | Queue, stack, estado de tarefa, saída clara no terminal. |
+
+## Padrão de projeto
+
+Use este formato para projetos Ori pequenos:
+
+1. Coloque tipos de domínio em um módulo.
+2. Coloque regras em funções que não imprimem.
+3. Coloque I/O de terminal em `main`.
+4. Retorne `optional<T>` para dados ausentes.
+5. Retorne `result<T, E>` para falhas.
+6. Mantenha APIs públicas pequenas.
+
+## Pastas sugeridas
+
+```text
+project/
+  ori.proj
+  main.orl
+  app/
+    domain.orl
+    service.orl
+```
+
+Comece com um arquivo se o projeto for pequeno.
+
+Separe quando uma parte tiver responsabilidade clara e nome útil.

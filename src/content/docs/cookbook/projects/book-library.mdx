@@ -1,0 +1,100 @@
+---
+title: Terminal book library
+description: Build a small terminal library using structs, lists, string normalization, and optional search results.
+---
+
+Goal: store books in a list and search by title.
+
+This tutorial uses:
+
+- `struct`;
+- `list<T>`;
+- `optional<T>`;
+- `ori.list`;
+- `ori.string`.
+
+## Complete program
+
+```ori
+namespace library.main
+
+import ori.io as io
+import ori.list as lists
+import ori.string as str
+
+struct Book
+    title: string
+    author: string
+    year: int
+end
+
+func normalize(text: string) -> string
+    return str.to_lower(str.trim(text))
+end
+
+func add_book(books: list<Book>, book: Book)
+    lists.push(books, book)
+end
+
+func find_by_title(books: list<Book>, title: string) -> optional<Book>
+    const wanted: string = normalize(title)
+
+    var index: int = 0
+    while index < lists.len(books)
+        const book: Book = lists.get(books, index)
+        if normalize(book.title) == wanted
+            return some(book)
+        end
+        index = index + 1
+    end
+
+    return none
+end
+
+func print_book(book: Book)
+    io.print(f"{book.title} — {book.author} ({book.year})")
+end
+
+func main()
+    var books: list<Book> = []
+
+    add_book(books, Book(title: "The Pragmatic Programmer", author: "Andrew Hunt", year: 1999))
+    add_book(books, Book(title: "Clean Code", author: "Robert C. Martin", year: 2008))
+
+    io.print("Books")
+    for book in books
+        print_book(book)
+    end
+
+    match find_by_title(books, " clean code ")
+        case some(book):
+            io.print("Found:")
+            print_book(book)
+        case none:
+            io.print("Book not found")
+    end
+end
+```
+
+## What to notice
+
+- `Book` makes the record shape visible.
+- `normalize` gives the search rule a name.
+- `find_by_title` returns `optional<Book>` because absence is normal.
+- `main` handles `some` and `none` explicitly.
+
+## Better organization
+
+When this grows:
+
+```text
+library/
+  main.orl
+  library/
+    domain.orl      Book
+    catalog.orl     add_book, find_by_title
+```
+
+Keep terminal prompts and printing in `main`.
+
+Keep search rules in `catalog`.

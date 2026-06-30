@@ -1,0 +1,126 @@
+---
+title: Banco de terminal
+description: Construa um banco pequeno de terminal usando structs, erros tipados, propagação com result e match.
+---
+
+Objetivo: modelar um fluxo pequeno de transferência bancária.
+
+Este projeto separa regras de dinheiro da saída no terminal.
+
+## Modelo de domínio
+
+```ori
+namespace bank.main
+
+import ori.io as io
+
+struct Account
+    id: int
+    owner: string
+    balance: int
+end
+
+enum BankError
+    InvalidAmount(reason: string)
+    InsufficientFunds(owner: string)
+end
+```
+
+Use centavos em vez de dinheiro com ponto flutuante.
+
+Por exemplo, `1250` significa `$12.50`.
+
+## Regras
+
+```ori
+func deposit(account: Account, cents: int) -> result<Account, BankError>
+    if cents <= 0
+        return error(BankError.InvalidAmount(reason: "amount must be positive"))
+    end
+
+    return success(account with {
+        balance: account.balance + cents,
+    } end)
+end
+
+func withdraw(account: Account, cents: int) -> result<Account, BankError>
+    if cents <= 0
+        return error(BankError.InvalidAmount(reason: "amount must be positive"))
+    end
+
+    if account.balance < cents
+        return error(BankError.InsufficientFunds(owner: account.owner))
+    end
+
+    return success(account with {
+        balance: account.balance - cents,
+    } end)
+end
+
+func transfer(from: Account, to: Account, cents: int) -> result<tuple<Account, Account>, BankError>
+    const debited: Account = try withdraw(from, cents)
+    const credited: Account = try deposit(to, cents)
+
+    return success(tuple(debited, credited))
+end
+```
+
+As funções retornam novos valores de conta.
+
+Isso deixa o fluxo de dinheiro fácil de testar.
+
+## Saída no terminal
+
+```ori
+func describe_error(err: BankError) -> string
+    match err
+        case InvalidAmount(reason):
+            return f"invalid amount: {reason}"
+        case InsufficientFunds(owner):
+            return f"{owner} has insufficient funds"
+    end
+end
+
+func print_account(account: Account)
+    io.print(f"{account.owner}: {account.balance} cents")
+end
+
+func main()
+    const ada: Account = Account(id: 1, owner: "Ada", balance: 1500)
+    const grace: Account = Account(id: 2, owner: "Grace", balance: 300)
+
+    match transfer(ada, grace, 700)
+        case success(pair):
+            const updated_ada: Account = pair.0
+            const updated_grace: Account = pair.1
+
+            io.print("transfer accepted")
+            print_account(updated_ada)
+            print_account(updated_grace)
+        case error(err):
+            io.print(describe_error(err))
+    end
+end
+```
+
+## Por que este formato funciona
+
+- `Account` é dado simples.
+- `BankError` nomeia as falhas.
+- `deposit`, `withdraw` e `transfer` não imprimem.
+- `try` mantém o caminho de sucesso curto.
+- `main` decide como explicar o resultado no terminal.
+
+## Extensão de clean code
+
+Quando crescer, separe:
+
+```text
+bank/
+  main.orl              namespace bank.main
+  bank/
+    domain.orl          namespace bank.domain
+    accounts.orl        namespace bank.accounts
+```
+
+Mantenha `BankError` perto das regras que retornam esse erro.

@@ -1,0 +1,100 @@
+---
+title: Biblioteca de livros no terminal
+description: Construa uma pequena biblioteca de terminal usando structs, listas, normalização de texto e busca com optional.
+---
+
+Objetivo: guardar livros em uma lista e buscar por título.
+
+Este tutorial usa:
+
+- `struct`;
+- `list<T>`;
+- `optional<T>`;
+- `ori.list`;
+- `ori.string`.
+
+## Programa completo
+
+```ori
+namespace library.main
+
+import ori.io as io
+import ori.list as lists
+import ori.string as str
+
+struct Book
+    title: string
+    author: string
+    year: int
+end
+
+func normalize(text: string) -> string
+    return str.to_lower(str.trim(text))
+end
+
+func add_book(books: list<Book>, book: Book)
+    lists.push(books, book)
+end
+
+func find_by_title(books: list<Book>, title: string) -> optional<Book>
+    const wanted: string = normalize(title)
+
+    var index: int = 0
+    while index < lists.len(books)
+        const book: Book = lists.get(books, index)
+        if normalize(book.title) == wanted
+            return some(book)
+        end
+        index = index + 1
+    end
+
+    return none
+end
+
+func print_book(book: Book)
+    io.print(f"{book.title} - {book.author} ({book.year})")
+end
+
+func main()
+    var books: list<Book> = []
+
+    add_book(books, Book(title: "The Pragmatic Programmer", author: "Andrew Hunt", year: 1999))
+    add_book(books, Book(title: "Clean Code", author: "Robert C. Martin", year: 2008))
+
+    io.print("Books")
+    for book in books
+        print_book(book)
+    end
+
+    match find_by_title(books, " clean code ")
+        case some(book):
+            io.print("Found:")
+            print_book(book)
+        case none:
+            io.print("Book not found")
+    end
+end
+```
+
+## O que observar
+
+- `Book` deixa o formato do registro visível.
+- `normalize` dá nome à regra de busca.
+- `find_by_title` retorna `optional<Book>` porque ausência é normal.
+- `main` trata `some` e `none` explicitamente.
+
+## Melhor organização
+
+Quando crescer:
+
+```text
+library/
+  main.orl
+  library/
+    domain.orl      Book
+    catalog.orl     add_book, find_by_title
+```
+
+Mantenha prompts e impressão no `main`.
+
+Mantenha regras de busca em `catalog`.

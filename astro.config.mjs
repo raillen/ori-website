@@ -111,6 +111,33 @@ export default defineConfig({
               link: "/language/types/",
             },
             {
+              label: "Modules and imports",
+              link: "/language/modules-and-imports/",
+              translations: {
+                "pt-BR": "Módulos e imports",
+                es: "Módulos e imports",
+                ja: "モジュールと import",
+              },
+            },
+            {
+              label: "Composition and traits",
+              link: "/language/composition-and-traits/",
+              translations: {
+                "pt-BR": "Composição e traits",
+                es: "Composición y traits",
+                ja: "合成と traits",
+              },
+            },
+            {
+              label: "Control flow and data",
+              link: "/language/control-flow-and-data/",
+              translations: {
+                "pt-BR": "Fluxo e dados",
+                es: "Flujo y datos",
+                ja: "制御フローとデータ",
+              },
+            },
+            {
               label: "Errors, null, void",
               link: "/language/errors-null-void/",
               translations: {
@@ -122,6 +149,15 @@ export default defineConfig({
             {
               label: "If expressions",
               link: "/language/if-expressions/",
+            },
+            {
+              label: "Standard library in practice",
+              link: "/language/stdlib-in-practice/",
+              translations: {
+                "pt-BR": "Stdlib na prática",
+                es: "Stdlib en práctica",
+                ja: "標準ライブラリ実践",
+              },
             },
           ],
         },
@@ -158,6 +194,51 @@ export default defineConfig({
                 "pt-BR": "Organizar código",
                 es: "Organizar código",
                 ja: "コード構成",
+              },
+            },
+            {
+              label: "Project tutorials",
+              link: "/cookbook/projects/",
+              translations: {
+                "pt-BR": "Tutoriais de projeto",
+                es: "Tutoriales de proyecto",
+                ja: "プロジェクトチュートリアル",
+              },
+            },
+            {
+              label: "Modular calculator",
+              link: "/cookbook/projects/modular-calculator/",
+              translations: {
+                "pt-BR": "Calculadora modular",
+                es: "Calculadora modular",
+                ja: "モジュラー計算機",
+              },
+            },
+            {
+              label: "Terminal bank",
+              link: "/cookbook/projects/terminal-bank/",
+              translations: {
+                "pt-BR": "Banco de terminal",
+                es: "Banco de terminal",
+                ja: "ターミナル銀行",
+              },
+            },
+            {
+              label: "Book library",
+              link: "/cookbook/projects/book-library/",
+              translations: {
+                "pt-BR": "Biblioteca de livros",
+                es: "Biblioteca de libros",
+                ja: "本のライブラリ",
+              },
+            },
+            {
+              label: "Terminal to-do",
+              link: "/cookbook/projects/terminal-todo/",
+              translations: {
+                "pt-BR": "To-do no terminal",
+                es: "To-do en terminal",
+                ja: "ターミナル To-do",
               },
             },
           ],

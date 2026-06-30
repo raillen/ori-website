@@ -1,0 +1,137 @@
+---
+title: Standard library in practice
+description: A practical map of Ori standard-library modules and when to use each family.
+---
+
+The Ori standard library lives under `ori.*`.
+
+You import the modules you use.
+
+```ori
+import ori.io as io
+import ori.list as lists
+import ori.string as str
+```
+
+The reference section lists every generated API.
+
+This page gives a practical map.
+
+## Everyday modules
+
+| Need | Module |
+|---|---|
+| Print or read terminal text | `ori.io` |
+| Work with strings | `ori.string`, `ori.string.utils`, `ori.string.algorithms` |
+| Parse numbers and booleans | `ori.string`, `ori.convert`, `ori.convert.utils` |
+| Lists and simple sequences | `ori.list`, `ori.list.utils`, `ori.list.algorithms` |
+| Maps and sets | `ori.map`, `ori.set`, `ori.map.utils`, `ori.set.utils` |
+| Files and directories | `ori.fs`, `ori.fs.utils`, `ori.path` |
+| JSON | `ori.json`, `ori.json.utils` |
+
+## Collections beyond `list`
+
+Ori includes several collection families:
+
+| Collection | Use it when |
+|---|---|
+| `queue.Queue<T>` | First-in, first-out work items. |
+| `stack.Stack<T>` | Undo history, backtracking, last-in first-out flows. |
+| `deque.Deque<T>` | Push and pop from both ends. |
+| `linked_list.LinkedList<T>` | Cursor-based inserts/removes. |
+| `tree.Tree<T>` | Parent/child structures such as outlines. |
+| `graph.Graph<N>` | Nodes and edges. |
+| `heap.Heap<T>` | Priority-like smallest-first retrieval. |
+| `hash_table.HashTable<K, V>` | Explicit capacity and optional lookup APIs. |
+
+Example:
+
+```ori
+import ori.queue as queue
+
+const jobs: queue.Queue<string> = queue.new()
+
+queue.enqueue(jobs, "parse")
+queue.enqueue(jobs, "compile")
+
+match queue.dequeue(jobs)
+    case some(job):
+        io.print(job)
+    case none:
+        io.print("no jobs")
+end
+```
+
+## Helpers and algorithms
+
+Modules ending in `.utils` hold small practical helpers.
+
+Modules ending in `.algorithms` hold larger reusable algorithms.
+
+Examples:
+
+```ori
+import ori.convert.utils as convert_utils
+import ori.list.algorithms as list_algorithms
+import ori.string.utils as string_utils
+
+const port: int = convert_utils.parse_int_or("8080", 3000)
+const total: int = list_algorithms.sum_int([1, 2, 3])
+const title: string = string_utils.title("ori language guide")
+```
+
+## Files with explicit errors
+
+Filesystem functions return `result`.
+
+Handle the error at the terminal boundary.
+
+```ori
+import ori.fs as fs
+import ori.io as io
+
+func print_file(path: string)
+    match fs.read_text(path)
+        case success(text):
+            io.print(text)
+        case error(message):
+            io.print(f"could not read {path}: {message}")
+    end
+end
+```
+
+## Concurrency foundation
+
+Native Ori supports tasks, futures, channels, and atomics.
+
+Use these modules when you need explicit concurrent work:
+
+| Need | Module |
+|---|---|
+| Spawn and join jobs | `ori.task` |
+| Sleep and await futures | `ori.task` |
+| Send values between workers | `ori.channel` |
+| Shared integer counter | `ori.atomic` |
+
+Small async example:
+
+```ori
+import ori.task as task
+
+async func wait_then_answer() -> int
+    await task.sleep(1)
+    return 42
+end
+```
+
+## Choosing the right module
+
+- Start with `list<T>` for simple ordered data.
+- Use `queue` for pending work.
+- Use `stack` for undo and history.
+- Use `map` for direct key lookup.
+- Use `hash_table` when optional lookup and capacity control matter.
+- Use `tree` or `graph` only when the data is truly structural.
+- Use `result`-returning helpers at I/O boundaries.
+
+Next: [Project tutorials](/cookbook/projects/).
