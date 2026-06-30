@@ -1,72 +1,63 @@
 ---
-title: ori.net.utils
-description: Standard library module `ori.net.utils`.
+title: "ori.net.utils"
+description: "Standard library module `ori.net.utils`."
 ---
-
-# ori.net.utils
 
 Standard library module `ori.net.utils`.
 
-### `ori.net.utils.close`
+### `close`
 
 ```ori
 func close(conn: net.Connection)
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.connect`
+### `connect`
 
 ```ori
 func connect(host: string, port: int, timeout_ms: int) -> result<net.Connection, string>
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.is_open`
+### `is_open`
 
 ```ori
 func is_open(conn: net.Connection) -> bool
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.read_bytes`
+### `read_bytes`
 
 ```ori
 func read_bytes(conn: net.Connection, max_bytes: int) -> result<bytes, string>
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.read_text`
+### `read_text`
 
 ```ori
 func read_text(conn: net.Connection, max_bytes: int) -> result<string, string>
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.write_bytes`
+### `write_bytes`
 
 ```ori
 func write_bytes(conn: net.Connection, payload: bytes) -> result<void, string>
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 
-### `ori.net.utils.write_text`
+### `write_text`
 
 ```ori
 func write_text(conn: net.Connection, text: string) -> result<void, string>
 ```
 
-- Layer 2 · .orl
-  - Source: `net/utils.orl`
+*Layer 2 · .orl* · **Source:** `net/utils.orl`
 

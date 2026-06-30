@@ -1,45 +1,39 @@
 ---
-title: ori.channel
-description: Standard library module `ori.channel`.
+title: "ori.channel"
+description: "Standard library module `ori.channel`."
 ---
-
-# ori.channel
 
 Standard library module `ori.channel`.
 
-### `ori.channel.close`
+### `close`
 
 ```ori
 (arg0: channel.Channel<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `channel.close`
+*Layer 1 · runtime* · **Aliases:** `channel.close`
 
-### `ori.channel.create`
+### `create`
 
 ```ori
 () -> channel.Channel<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `channel.create`
+*Layer 1 · runtime* · **Aliases:** `channel.create`
 
-### `ori.channel.receive`
+### `receive`
 
 ```ori
 (arg0: channel.Channel<_#0>) -> result<_#0, channel.ReceiveError>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `channel.receive`
+*Layer 1 · runtime* · **Aliases:** `channel.receive`
 
-### `ori.channel.send`
+### `send`
 
 ```ori
 (arg0: channel.Channel<_#0>, arg1: _#0) -> result<void, channel.SendError>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `channel.send`
+*Layer 1 · runtime* · **Aliases:** `channel.send`
 

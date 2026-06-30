@@ -1,54 +1,47 @@
 ---
-title: ori.net
-description: Networking module. Provides interfaces for launching TCP/UDP servers and establishing network connection streams.
+title: "ori.net"
+description: "Networking module. Provides interfaces for launching TCP/UDP servers and establishing network connection streams."
 ---
-
-# ori.net
 
 Networking module. Provides interfaces for launching TCP/UDP servers and establishing network connection streams.
 
-### `ori.net.close`
+### `close`
 
 ```ori
 (arg0: net.Connection) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `net.close`
+*Layer 1 · runtime* · **Aliases:** `net.close`
 
-### `ori.net.connect`
+### `connect`
 
 ```ori
 (arg0: string, arg1: int, arg2: int) -> result<net.Connection, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `net.connect`
+*Layer 1 · runtime* · **Aliases:** `net.connect`
 
-### `ori.net.is_closed`
+### `is_closed`
 
 ```ori
 (arg0: net.Connection) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `net.is_closed`
+*Layer 1 · runtime* · **Aliases:** `net.is_closed`
 
-### `ori.net.read_some`
+### `read_some`
 
 ```ori
 (arg0: net.Connection, arg1: int) -> result<bytes, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `net.read_some`
+*Layer 1 · runtime* · **Aliases:** `net.read_some`
 
-### `ori.net.write_all`
+### `write_all`
 
 ```ori
 (arg0: net.Connection, arg1: bytes) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `net.write_all`
+*Layer 1 · runtime* · **Aliases:** `net.write_all`
 

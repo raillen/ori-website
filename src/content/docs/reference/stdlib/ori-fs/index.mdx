@@ -1,234 +1,207 @@
 ---
-title: ori.fs
-description: File system access and management module. Provides synchronous and asynchronous options to check, read, write, and manipulate files and directories on the local machine.
+title: "ori.fs"
+description: "File system access and management module. Provides synchronous and asynchronous options to check, read, write, and manipulate files and directories on the local machine."
 ---
-
-# ori.fs
 
 File system access and management module. Provides synchronous and asynchronous options to check, read, write, and manipulate files and directories on the local machine.
 
-### `ori.fs.append_text`
+### `append_text`
 
 ```ori
 (arg0: string, arg1: string) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.append_text`, `ori.files.append_text`, `files.append_text`
+*Layer 1 · runtime* · **Aliases:** `fs.append_text`, `ori.files.append_text`, `files.append_text`
 
-### `ori.fs.close`
+### `close`
 
 ```ori
 (arg0: fs.File) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.close`, `ori.files.close`, `files.close`
+*Layer 1 · runtime* · **Aliases:** `fs.close`, `ori.files.close`, `files.close`
 
-### `ori.fs.copy`
+### `copy`
 
 ```ori
 (arg0: string, arg1: string) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.copy`, `ori.files.copy`, `files.copy`
+*Layer 1 · runtime* · **Aliases:** `fs.copy`, `ori.files.copy`, `files.copy`
 
-### `ori.fs.create_dir`
-
-```ori
-(arg0: string) -> result<void, string>
-```
-
-- Layer 1 · runtime
-  - Aliases: `fs.create_dir`, `ori.files.create_dir`, `files.create_dir`
-
-### `ori.fs.create_dir_all`
+### `create_dir`
 
 ```ori
 (arg0: string) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.create_dir_all`, `ori.files.create_dir_all`, `files.create_dir_all`
+*Layer 1 · runtime* · **Aliases:** `fs.create_dir`, `ori.files.create_dir`, `files.create_dir`
 
-### `ori.fs.created_at`
+### `create_dir_all`
+
+```ori
+(arg0: string) -> result<void, string>
+```
+
+*Layer 1 · runtime* · **Aliases:** `fs.create_dir_all`, `ori.files.create_dir_all`, `files.create_dir_all`
+
+### `created_at`
 
 ```ori
 (arg0: string) -> result<optional<int>, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.created_at`
+*Layer 1 · runtime* · **Aliases:** `fs.created_at`
 
-### `ori.fs.delete`
+### `delete`
 
 ```ori
 (arg0: string) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.delete`, `ori.files.delete`, `files.delete`
+*Layer 1 · runtime* · **Aliases:** `fs.delete`, `ori.files.delete`, `files.delete`
 
-### `ori.fs.exists`
+### `exists`
 
 ```ori
 (arg0: string) -> result<bool, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.exists`, `ori.files.exists`, `files.exists`
+*Layer 1 · runtime* · **Aliases:** `fs.exists`, `ori.files.exists`, `files.exists`
 
-### `ori.fs.file_size`
+### `file_size`
 
 ```ori
 (arg0: string) -> result<int, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.file_size`, `fs.size`
+*Layer 1 · runtime* · **Aliases:** `fs.file_size`, `fs.size`
 
-### `ori.fs.is_dir`
-
-```ori
-(arg0: string) -> result<bool, string>
-```
-
-- Layer 1 · runtime
-  - Aliases: `fs.is_dir`, `ori.files.is_dir`, `files.is_dir`
-
-### `ori.fs.is_file`
+### `is_dir`
 
 ```ori
 (arg0: string) -> result<bool, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.is_file`, `ori.files.is_file`, `files.is_file`
+*Layer 1 · runtime* · **Aliases:** `fs.is_dir`, `ori.files.is_dir`, `files.is_dir`
 
-### `ori.fs.list_dir`
+### `is_file`
+
+```ori
+(arg0: string) -> result<bool, string>
+```
+
+*Layer 1 · runtime* · **Aliases:** `fs.is_file`, `ori.files.is_file`, `files.is_file`
+
+### `list_dir`
 
 ```ori
 (arg0: string) -> result<list<string>, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.list_dir`, `ori.files.list_dir`, `files.list_dir`
+*Layer 1 · runtime* · **Aliases:** `fs.list_dir`, `ori.files.list_dir`, `files.list_dir`
 
-### `ori.fs.modified_at`
+### `modified_at`
 
 ```ori
 (arg0: string) -> result<int, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.modified_at`
+*Layer 1 · runtime* · **Aliases:** `fs.modified_at`
 
-### `ori.fs.open_read`
-
-```ori
-(arg0: string) -> result<fs.File, string>
-```
-
-- Layer 1 · runtime
-  - Aliases: `fs.open_read`, `ori.files.open_read`, `files.open_read`
-
-### `ori.fs.open_write`
+### `open_read`
 
 ```ori
 (arg0: string) -> result<fs.File, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.open_write`, `ori.files.open_write`, `files.open_write`
+*Layer 1 · runtime* · **Aliases:** `fs.open_read`, `ori.files.open_read`, `files.open_read`
 
-### `ori.fs.read`
+### `open_write`
+
+```ori
+(arg0: string) -> result<fs.File, string>
+```
+
+*Layer 1 · runtime* · **Aliases:** `fs.open_write`, `ori.files.open_write`, `files.open_write`
+
+### `read`
 
 ```ori
 (arg0: fs.File, arg1: int) -> result<bytes, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.read`, `ori.files.read`, `files.read`
+*Layer 1 · runtime* · **Aliases:** `fs.read`, `ori.files.read`, `files.read`
 
-### `ori.fs.read_all`
+### `read_all`
 
 ```ori
 (arg0: string) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.read_all`, `ori.files.read_all`, `files.read_all`
+*Layer 1 · runtime* · **Aliases:** `fs.read_all`, `ori.files.read_all`, `files.read_all`
 
-### `ori.fs.read_bytes`
+### `read_bytes`
 
 ```ori
 (arg0: string) -> result<bytes, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.read_bytes`, `ori.files.read_bytes`, `files.read_bytes`
+*Layer 1 · runtime* · **Aliases:** `fs.read_bytes`, `ori.files.read_bytes`, `files.read_bytes`
 
-### `ori.fs.read_text`
+### `read_text`
 
 ```ori
 (arg0: string) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.read_text`, `ori.files.read_text`, `files.read_text`
+*Layer 1 · runtime* · **Aliases:** `fs.read_text`, `ori.files.read_text`, `files.read_text`
 
-### `ori.fs.read_text_async`
+### `read_text_async`
 
 ```ori
 (arg0: string) -> future<result<string, string>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.read_text_async`, `ori.files.read_text_async`, `files.read_text_async`
+*Layer 1 · runtime* · **Aliases:** `fs.read_text_async`, `ori.files.read_text_async`, `files.read_text_async`
 
-### `ori.fs.rename`
+### `rename`
 
 ```ori
 (arg0: string, arg1: string) -> result<void, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.rename`, `ori.files.rename`, `files.rename`
+*Layer 1 · runtime* · **Aliases:** `fs.rename`, `ori.files.rename`, `files.rename`
 
-### `ori.fs.write`
+### `write`
 
 ```ori
 (arg0: fs.File, arg1: bytes) -> result<int, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.write`, `ori.files.write`, `files.write`
+*Layer 1 · runtime* · **Aliases:** `fs.write`, `ori.files.write`, `files.write`
 
-### `ori.fs.write_bytes`
+### `write_bytes`
 
 ```ori
 (arg0: string, arg1: bytes) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.write_bytes`, `ori.files.write_bytes`, `files.write_bytes`
+*Layer 1 · runtime* · **Aliases:** `fs.write_bytes`, `ori.files.write_bytes`, `files.write_bytes`
 
-### `ori.fs.write_text`
+### `write_text`
 
 ```ori
 (arg0: string, arg1: string) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.write_text`, `ori.files.write_text`, `files.write_text`
+*Layer 1 · runtime* · **Aliases:** `fs.write_text`, `ori.files.write_text`, `files.write_text`
 
-### `ori.fs.write_text_async`
+### `write_text_async`
 
 ```ori
 (arg0: string, arg1: string) -> future<result<string, string>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `fs.write_text_async`, `ori.files.write_text_async`, `files.write_text_async`
+*Layer 1 · runtime* · **Aliases:** `fs.write_text_async`, `ori.files.write_text_async`, `files.write_text_async`
 

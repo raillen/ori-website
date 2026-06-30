@@ -1,36 +1,31 @@
 ---
-title: ori.json
-description: JSON (JavaScript Object Notation) parser and encoder. Allows serializing Ori values into strings and deserializing JSON payloads back to language structures.
+title: "ori.json"
+description: "JSON (JavaScript Object Notation) parser and encoder. Allows serializing Ori values into strings and deserializing JSON payloads back to language structures."
 ---
-
-# ori.json
 
 JSON (JavaScript Object Notation) parser and encoder. Allows serializing Ori values into strings and deserializing JSON payloads back to language structures.
 
-### `ori.json.parse`
+### `parse`
 
 ```ori
 (arg0: string) -> result<<def DefId(9999)>, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `json.parse`
+*Layer 1 · runtime* · **Aliases:** `json.parse`
 
-### `ori.json.stringify`
-
-```ori
-(arg0: <def DefId(9999)>) -> string
-```
-
-- Layer 1 · runtime
-  - Aliases: `json.stringify`
-
-### `ori.json.stringify_pretty`
+### `stringify`
 
 ```ori
 (arg0: <def DefId(9999)>) -> string
 ```
 
-- Layer 1 · runtime
-  - Aliases: `json.stringify_pretty`
+*Layer 1 · runtime* · **Aliases:** `json.stringify`
+
+### `stringify_pretty`
+
+```ori
+(arg0: <def DefId(9999)>) -> string
+```
+
+*Layer 1 · runtime* · **Aliases:** `json.stringify_pretty`
 

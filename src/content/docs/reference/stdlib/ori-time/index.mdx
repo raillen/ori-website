@@ -1,36 +1,32 @@
 ---
-title: ori.time
-description: Time measurement, clock manipulation, and thread execution suspension routines.
+title: "ori.time"
+description: "Time measurement, clock manipulation, and thread execution suspension routines."
 ---
-
-# ori.time
 
 Time measurement, clock manipulation, and thread execution suspension routines.
 
-### `ori.time.duration_ms`
+### `duration_ms`
 
 ```ori
 (arg0: int, arg1: int) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `time.duration_ms`
+*Layer 1 · runtime* · **Aliases:** `time.duration_ms`
 
-### `ori.time.now`
+### `now`
 
 ```ori
 () -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `time.now`
+*Layer 1 · runtime* · **Aliases:** `time.now`
 
 Returns the current system timestamp in UNIX epoch seconds or milliseconds.
 
-**Applicability:**
-Used for benchmarks, logging date metrics, calculating task durations, and generating unique ID seeds.
+* **Applicability:** Used for benchmarks, logging date metrics, calculating task durations, and generating unique ID seeds.
 
 ```ori
+// Example
 import ori.time as time
 import ori.io as io
 
@@ -42,21 +38,20 @@ func main()
 end
 ```
 
-### `ori.time.sleep`
+### `sleep`
 
 ```ori
 (arg0: int) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `time.sleep`
+*Layer 1 · runtime* · **Aliases:** `time.sleep`
 
 Suspends execution of the current thread/task for a given duration in milliseconds.
 
-**Applicability:**
-Used in loops to set intervals, rate-limiting requests, implementing game cycles, or delays in automation.
+* **Applicability:** Used in loops to set intervals, rate-limiting requests, implementing game cycles, or delays in automation.
 
 ```ori
+// Example
 import ori.time as time
 import ori.io as io
 

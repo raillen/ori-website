@@ -1,81 +1,71 @@
 ---
-title: ori.test
-description: Standard library module `ori.test`.
+title: "ori.test"
+description: "Standard library module `ori.test`."
 ---
-
-# ori.test
 
 Standard library module `ori.test`.
 
-### `ori.test.assert`
+### `assert`
 
 ```ori
 (arg0: bool, arg1: string) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.assert`
+*Layer 1 · runtime* · **Aliases:** `test.assert`
 
-### `ori.test.assert_eq`
-
-```ori
-(arg0: _#0, arg1: _#0) -> void
-```
-
-- Layer 1 · runtime
-  - Aliases: `test.assert_eq`
-
-### `ori.test.assert_ne`
+### `assert_eq`
 
 ```ori
 (arg0: _#0, arg1: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.assert_ne`
+*Layer 1 · runtime* · **Aliases:** `test.assert_eq`
 
-### `ori.test.assert_no_leaks`
+### `assert_ne`
+
+```ori
+(arg0: _#0, arg1: _#0) -> void
+```
+
+*Layer 1 · runtime* · **Aliases:** `test.assert_ne`
+
+### `assert_no_leaks`
 
 ```ori
 (arg0: string) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.assert_no_leaks`
+*Layer 1 · runtime* · **Aliases:** `test.assert_no_leaks`
 
-### `ori.test.collect_cycles`
+### `collect_cycles`
 
 ```ori
 () -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.collect_cycles`
+*Layer 1 · runtime* · **Aliases:** `test.collect_cycles`
 
-### `ori.test.fail`
+### `fail`
 
 ```ori
 (arg0: string) -> never
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.fail`
+*Layer 1 · runtime* · **Aliases:** `test.fail`
 
-### `ori.test.live_allocations`
+### `live_allocations`
 
 ```ori
 () -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.live_allocations`
+*Layer 1 · runtime* · **Aliases:** `test.live_allocations`
 
-### `ori.test.skip`
+### `skip`
 
 ```ori
 (arg0: string) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `test.skip`
+*Layer 1 · runtime* · **Aliases:** `test.skip`
 

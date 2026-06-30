@@ -1,180 +1,159 @@
 ---
-title: ori.tree
-description: Standard library module `ori.tree`.
+title: "ori.tree"
+description: "Standard library module `ori.tree`."
 ---
-
-# ori.tree
 
 Standard library module `ori.tree`.
 
-### `ori.tree.add_child`
+### `add_child`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: _#0) -> tree.NodeId
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.add_child`
+*Layer 1 · runtime* · **Aliases:** `tree.add_child`
 
-### `ori.tree.breadth_first`
+### `breadth_first`
 
 ```ori
 (arg0: tree.Tree<_#0>) -> list<tree.NodeId>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.breadth_first`
+*Layer 1 · runtime* · **Aliases:** `tree.breadth_first`
 
-### `ori.tree.children`
+### `children`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> list<tree.NodeId>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.children`
+*Layer 1 · runtime* · **Aliases:** `tree.children`
 
-### `ori.tree.clone`
+### `clone`
 
 ```ori
 (arg0: tree.Tree<_#0>) -> tree.Tree<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.clone`
+*Layer 1 · runtime* · **Aliases:** `tree.clone`
 
-### `ori.tree.clone_subtree`
+### `clone_subtree`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> tree.Tree<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.clone_subtree`
+*Layer 1 · runtime* · **Aliases:** `tree.clone_subtree`
 
-### `ori.tree.contains_node`
+### `contains_node`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.contains_node`
+*Layer 1 · runtime* · **Aliases:** `tree.contains_node`
 
-### `ori.tree.depth`
+### `depth`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.depth`
+*Layer 1 · runtime* · **Aliases:** `tree.depth`
 
-### `ori.tree.find`
+### `find`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: _#0) -> optional<tree.NodeId>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.find`
+*Layer 1 · runtime* · **Aliases:** `tree.find`
 
-### `ori.tree.len`
+### `len`
 
 ```ori
 (arg0: tree.Tree<_#0>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.len`
+*Layer 1 · runtime* · **Aliases:** `tree.len`
 
-### `ori.tree.move_subtree`
+### `move_subtree`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: tree.NodeId) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.move_subtree`
+*Layer 1 · runtime* · **Aliases:** `tree.move_subtree`
 
-### `ori.tree.new`
+### `new`
 
 ```ori
 (arg0: _#0) -> tree.Tree<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.new`
+*Layer 1 · runtime* · **Aliases:** `tree.new`
 
-### `ori.tree.parent`
+### `parent`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> optional<tree.NodeId>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.parent`
+*Layer 1 · runtime* · **Aliases:** `tree.parent`
 
-### `ori.tree.post_order`
-
-```ori
-(arg0: tree.Tree<_#0>) -> list<tree.NodeId>
-```
-
-- Layer 1 · runtime
-  - Aliases: `tree.post_order`
-
-### `ori.tree.pre_order`
+### `post_order`
 
 ```ori
 (arg0: tree.Tree<_#0>) -> list<tree.NodeId>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.pre_order`
+*Layer 1 · runtime* · **Aliases:** `tree.post_order`
 
-### `ori.tree.remove_subtree`
+### `pre_order`
+
+```ori
+(arg0: tree.Tree<_#0>) -> list<tree.NodeId>
+```
+
+*Layer 1 · runtime* · **Aliases:** `tree.pre_order`
+
+### `remove_subtree`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.remove_subtree`
+*Layer 1 · runtime* · **Aliases:** `tree.remove_subtree`
 
-### `ori.tree.root`
+### `root`
 
 ```ori
 (arg0: tree.Tree<_#0>) -> tree.NodeId
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.root`
+*Layer 1 · runtime* · **Aliases:** `tree.root`
 
-### `ori.tree.set_value`
+### `set_value`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId, arg2: _#0) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.set_value`
+*Layer 1 · runtime* · **Aliases:** `tree.set_value`
 
-### `ori.tree.try_value`
+### `try_value`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> optional<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.try_value`
+*Layer 1 · runtime* · **Aliases:** `tree.try_value`
 
-### `ori.tree.value`
+### `value`
 
 ```ori
 (arg0: tree.Tree<_#0>, arg1: tree.NodeId) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `tree.value`
+*Layer 1 · runtime* · **Aliases:** `tree.value`
 

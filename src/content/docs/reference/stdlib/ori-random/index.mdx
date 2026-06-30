@@ -1,45 +1,40 @@
 ---
-title: ori.random
-description: Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges.
+title: "ori.random"
+description: "Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges."
 ---
-
-# ori.random
 
 Pseudorandom number generation (PRNG) routines for generating floats and integers within ranges.
 
-### `ori.random.bool`
+### `bool`
 
 ```ori
 () -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.bool`
+*Layer 1 · runtime* · **Aliases:** `random.bool`
 
-### `ori.random.choice`
+### `choice`
 
 ```ori
 (arg0: list<_#0>) -> optional<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.choice`
+*Layer 1 · runtime* · **Aliases:** `random.choice`
 
-### `ori.random.float`
+### `float`
 
 ```ori
 (arg0: float, arg1: float) -> float
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.float`
+*Layer 1 · runtime* · **Aliases:** `random.float`
 
 Generates a pseudorandom floating-point number between 0.0 and 1.0.
 
-**Applicability:**
-Useful for generating percentages, probability weights, random noise multipliers, and easing variations.
+* **Applicability:** Useful for generating percentages, probability weights, random noise multipliers, and easing variations.
 
 ```ori
+// Example
 import ori.random as rnd
 import ori.io as io
 
@@ -49,30 +44,27 @@ func main()
 end
 ```
 
-### `ori.random.int`
+### `int`
 
 ```ori
 (arg0: int, arg1: int) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.int`
+*Layer 1 · runtime* · **Aliases:** `random.int`
 
-### `ori.random.seed`
+### `seed`
 
 ```ori
 (arg0: int) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.seed`
+*Layer 1 · runtime* · **Aliases:** `random.seed`
 
-### `ori.random.shuffle`
+### `shuffle`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `random.shuffle`
+*Layer 1 · runtime* · **Aliases:** `random.shuffle`
 

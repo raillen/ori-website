@@ -1,45 +1,40 @@
 ---
-title: ori.math.utils
-description: Standard library module `ori.math.utils`.
+title: "ori.math.utils"
+description: "Standard library module `ori.math.utils`."
 ---
-
-# ori.math.utils
 
 Standard library module `ori.math.utils`.
 
-### `ori.math.utils.abs_float`
+### `abs_float`
 
 ```ori
 func abs_float(value: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.approx_eq`
+### `approx_eq`
 
 ```ori
 func approx_eq(a: float, b: float, eps: float) -> bool
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.clamp_int`
+### `clamp_int`
 
 ```ori
 func clamp_int(value: int, min_val: int, max_val: int) -> int
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
 Restricts an integer value to be within a specified minimum and maximum range.
 
-**Applicability:**
-Commonly used in game logic (constraining characters within screen boundaries), UI layouts (clamping coordinate systems), and index math.
+* **Applicability:** Commonly used in game logic (constraining characters within screen boundaries), UI layouts (clamping coordinate systems), and index math.
 
 ```ori
+// Example
 import ori.math.utils as mu
 import ori.io as io
 
@@ -49,30 +44,28 @@ func main()
 end
 ```
 
-### `ori.math.utils.deg_to_rad`
+### `deg_to_rad`
 
 ```ori
 func deg_to_rad(degrees: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.lerp`
+### `lerp`
 
 ```ori
 func lerp(a: float, b: float, t: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
 Performs linear interpolation between two float values based on a weight ratio.
 
-**Applicability:**
-Essential for graphics development, game engines (smooth translation/transitions), and easing animations.
+* **Applicability:** Essential for graphics development, game engines (smooth translation/transitions), and easing animations.
 
 ```ori
+// Example
 import ori.math.utils as mu
 import ori.io as io
 
@@ -82,39 +75,35 @@ func main()
 end
 ```
 
-### `ori.math.utils.log10`
+### `log10`
 
 ```ori
 func log10(value: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.rad_to_deg`
+### `rad_to_deg`
 
 ```ori
 func rad_to_deg(radians: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.sign`
+### `sign`
 
 ```ori
 func sign(n: int) -> int
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 
-### `ori.math.utils.trunc_float`
+### `trunc_float`
 
 ```ori
 func trunc_float(value: float) -> float
 ```
 
-- Layer 2 · .orl
-  - Source: `math/utils.orl`
+*Layer 2 · .orl* · **Source:** `math/utils.orl`
 

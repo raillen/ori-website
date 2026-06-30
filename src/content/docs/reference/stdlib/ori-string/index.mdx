@@ -1,154 +1,144 @@
 ---
-title: ori.string
-description: String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays.
+title: "ori.string"
+description: "String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays."
 ---
-
-# ori.string
 
 String utility operations. Provides length checking, splitting, search filters, case modifications, and conversions to raw byte arrays.
 
-### `ori.string.chars`
+### `chars`
 
 ```ori
 (arg0: string) -> list<string>
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.concat`
+### `concat`
 
 ```ori
 (arg0: string, arg1: string) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.contains`
-
-```ori
-(arg0: string, arg1: string) -> bool
-```
-
-- Layer 1 · runtime
-
-### `ori.string.ends_with`
+### `contains`
 
 ```ori
 (arg0: string, arg1: string) -> bool
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.from_bytes`
+### `ends_with`
+
+```ori
+(arg0: string, arg1: string) -> bool
+```
+
+*Layer 1 · runtime*
+
+### `from_bytes`
 
 ```ori
 (arg0: bytes) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.from_bytes`
+*Layer 1 · runtime* · **Aliases:** `string.from_bytes`
 
-### `ori.string.index_of`
+### `index_of`
 
 ```ori
 (arg0: string, arg1: string) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.index_of`
+*Layer 1 · runtime* · **Aliases:** `string.index_of`
 
-### `ori.string.join`
+### `join`
 
 ```ori
 (arg0: list<string>, arg1: string) -> string
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.join`
+*Layer 1 · runtime* · **Aliases:** `string.join`
 
-### `ori.string.len`
+### `len`
 
 ```ori
 (arg0: string) -> int
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.pad_left`
-
-```ori
-(arg0: string, arg1: int, arg2: string) -> string
-```
-
-- Layer 1 · runtime
-  - Aliases: `string.pad_left`
-
-### `ori.string.pad_right`
+### `pad_left`
 
 ```ori
 (arg0: string, arg1: int, arg2: string) -> string
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.pad_right`
+*Layer 1 · runtime* · **Aliases:** `string.pad_left`
 
-### `ori.string.parse_float`
+### `pad_right`
+
+```ori
+(arg0: string, arg1: int, arg2: string) -> string
+```
+
+*Layer 1 · runtime* · **Aliases:** `string.pad_right`
+
+### `parse_float`
 
 ```ori
 (arg0: string) -> result<float, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.parse_float`
+*Layer 1 · runtime* · **Aliases:** `string.parse_float`
 
-### `ori.string.parse_int`
+### `parse_int`
 
 ```ori
 (arg0: string) -> result<int, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.parse_int`
+*Layer 1 · runtime* · **Aliases:** `string.parse_int`
 
-### `ori.string.repeat`
+### `repeat`
 
 ```ori
 (arg0: string, arg1: int) -> string
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.repeat`
+*Layer 1 · runtime* · **Aliases:** `string.repeat`
 
-### `ori.string.replace`
+### `replace`
 
 ```ori
 (arg0: string, arg1: string, arg2: string) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.slice`
+### `slice`
 
 ```ori
 (arg0: string, arg1: int, arg2: int) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.split`
+### `split`
 
 ```ori
 (arg0: string, arg1: string) -> list<string>
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
 Splits a string by a delimiter substring, returning a list of segments.
 
-**Applicability:**
-Useful for CSV processing, parsing command arguments, and text segment extraction.
+* **Applicability:** Useful for CSV processing, parsing command arguments, and text segment extraction.
 
 ```ori
+// Example
 import ori.string as str
 import ori.io as io
 
@@ -158,60 +148,59 @@ func main()
 end
 ```
 
-### `ori.string.starts_with`
+### `starts_with`
 
 ```ori
 (arg0: string, arg1: string) -> bool
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.to_bytes`
+### `to_bytes`
 
 ```ori
 (arg0: string) -> bytes
 ```
 
-- Layer 1 · runtime
-  - Aliases: `string.to_bytes`
+*Layer 1 · runtime* · **Aliases:** `string.to_bytes`
 
-### `ori.string.to_lower`
-
-```ori
-(arg0: string) -> string
-```
-
-- Layer 1 · runtime
-
-### `ori.string.to_upper`
+### `to_lower`
 
 ```ori
 (arg0: string) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.trim`
-
-```ori
-(arg0: string) -> string
-```
-
-- Layer 1 · runtime
-
-### `ori.string.trim_end`
+### `to_upper`
 
 ```ori
 (arg0: string) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
 
-### `ori.string.trim_start`
+### `trim`
 
 ```ori
 (arg0: string) -> string
 ```
 
-- Layer 1 · runtime
+*Layer 1 · runtime*
+
+### `trim_end`
+
+```ori
+(arg0: string) -> string
+```
+
+*Layer 1 · runtime*
+
+### `trim_start`
+
+```ori
+(arg0: string) -> string
+```
+
+*Layer 1 · runtime*
 

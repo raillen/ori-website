@@ -1,243 +1,215 @@
 ---
-title: ori.graph
-description: Standard library module `ori.graph`.
+title: "ori.graph"
+description: "Standard library module `ori.graph`."
 ---
-
-# ori.graph
 
 Standard library module `ori.graph`.
 
-### `ori.graph.add_edge`
+### `add_edge`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.add_edge`
+*Layer 1 · runtime* · **Aliases:** `graph.add_edge`
 
-### `ori.graph.add_node`
+### `add_node`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.add_node`
+*Layer 1 · runtime* · **Aliases:** `graph.add_node`
 
-### `ori.graph.add_weighted_edge`
+### `add_weighted_edge`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0, arg3: int) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.add_weighted_edge`
+*Layer 1 · runtime* · **Aliases:** `graph.add_weighted_edge`
 
-### `ori.graph.bfs`
+### `bfs`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.bfs`
+*Layer 1 · runtime* · **Aliases:** `graph.bfs`
 
-### `ori.graph.clone`
+### `clone`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> graph.Graph<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.clone`
+*Layer 1 · runtime* · **Aliases:** `graph.clone`
 
-### `ori.graph.components`
+### `components`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> list<list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.components`
+*Layer 1 · runtime* · **Aliases:** `graph.components`
 
-### `ori.graph.dfs`
+### `dfs`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.dfs`
+*Layer 1 · runtime* · **Aliases:** `graph.dfs`
 
-### `ori.graph.edge_len`
+### `edge_len`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.edge_len`
+*Layer 1 · runtime* · **Aliases:** `graph.edge_len`
 
-### `ori.graph.edge_weight`
+### `edge_weight`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<int>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.edge_weight`
+*Layer 1 · runtime* · **Aliases:** `graph.edge_weight`
 
-### `ori.graph.edges`
+### `edges`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> list<tuple<_#0, _#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.edges`
+*Layer 1 · runtime* · **Aliases:** `graph.edges`
 
-### `ori.graph.has_cycle`
+### `has_cycle`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.has_cycle`
+*Layer 1 · runtime* · **Aliases:** `graph.has_cycle`
 
-### `ori.graph.has_edge`
+### `has_edge`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.has_edge`
+*Layer 1 · runtime* · **Aliases:** `graph.has_edge`
 
-### `ori.graph.has_node`
+### `has_node`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.has_node`
+*Layer 1 · runtime* · **Aliases:** `graph.has_node`
 
-### `ori.graph.is_directed`
+### `is_directed`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.is_directed`
+*Layer 1 · runtime* · **Aliases:** `graph.is_directed`
 
-### `ori.graph.len`
+### `len`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.len`
+*Layer 1 · runtime* · **Aliases:** `graph.len`
 
-### `ori.graph.neighbors`
+### `neighbors`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.neighbors`
+*Layer 1 · runtime* · **Aliases:** `graph.neighbors`
 
-### `ori.graph.new`
+### `new`
 
 ```ori
 (arg0: bool) -> graph.Graph<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.new`
+*Layer 1 · runtime* · **Aliases:** `graph.new`
 
-### `ori.graph.nodes`
+### `nodes`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.nodes`
+*Layer 1 · runtime* · **Aliases:** `graph.nodes`
 
-### `ori.graph.remove_edge`
+### `remove_edge`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.remove_edge`
+*Layer 1 · runtime* · **Aliases:** `graph.remove_edge`
 
-### `ori.graph.remove_node`
+### `remove_node`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.remove_node`
+*Layer 1 · runtime* · **Aliases:** `graph.remove_node`
 
-### `ori.graph.shortest_path`
-
-```ori
-(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<list<_#0>>
-```
-
-- Layer 1 · runtime
-  - Aliases: `graph.shortest_path`
-
-### `ori.graph.shortest_weighted_path`
+### `shortest_path`
 
 ```ori
 (arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.shortest_weighted_path`
+*Layer 1 · runtime* · **Aliases:** `graph.shortest_path`
 
-### `ori.graph.strongly_connected_components`
+### `shortest_weighted_path`
+
+```ori
+(arg0: graph.Graph<_#0>, arg1: _#0, arg2: _#0) -> optional<list<_#0>>
+```
+
+*Layer 1 · runtime* · **Aliases:** `graph.shortest_weighted_path`
+
+### `strongly_connected_components`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> list<list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.strongly_connected_components`
+*Layer 1 · runtime* · **Aliases:** `graph.strongly_connected_components`
 
-### `ori.graph.topological_sort`
+### `topological_sort`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.topological_sort`
+*Layer 1 · runtime* · **Aliases:** `graph.topological_sort`
 
-### `ori.graph.transitive_closure`
+### `transitive_closure`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> graph.Graph<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.transitive_closure`
+*Layer 1 · runtime* · **Aliases:** `graph.transitive_closure`
 
-### `ori.graph.try_topological_sort`
+### `try_topological_sort`
 
 ```ori
 (arg0: graph.Graph<_#0>) -> optional<list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `graph.try_topological_sort`
+*Layer 1 · runtime* · **Aliases:** `graph.try_topological_sort`
 

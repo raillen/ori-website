@@ -1,45 +1,40 @@
 ---
-title: ori.bytes
-description: Raw byte buffers utilities. Allows operations such as hex conversions, slice manipulation, and list conversions.
+title: "ori.bytes"
+description: "Raw byte buffers utilities. Allows operations such as hex conversions, slice manipulation, and list conversions."
 ---
-
-# ori.bytes
 
 Raw byte buffers utilities. Allows operations such as hex conversions, slice manipulation, and list conversions.
 
-### `ori.bytes.concat`
+### `concat`
 
 ```ori
 (arg0: bytes, arg1: bytes) -> bytes
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.concat`
+*Layer 1 · runtime* · **Aliases:** `bytes.concat`
 
-### `ori.bytes.decode_utf8`
+### `decode_utf8`
 
 ```ori
 (arg0: bytes) -> result<string, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.decode_utf8`
+*Layer 1 · runtime* · **Aliases:** `bytes.decode_utf8`
 
-### `ori.bytes.from_hex`
+### `from_hex`
 
 ```ori
 (arg0: string) -> result<bytes, string>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.from_hex`
+*Layer 1 · runtime* · **Aliases:** `bytes.from_hex`
 
 Parses a hexadecimal string and returns the corresponding raw bytes buffer.
 
-**Applicability:**
-Useful for decoding hex-encoded files, processing public-key certificates, or parsing network packets represented as hex.
+* **Applicability:** Useful for decoding hex-encoded files, processing public-key certificates, or parsing network packets represented as hex.
 
 ```ori
+// Example
 import ori.bytes as bytes
 import ori.io as io
 
@@ -50,57 +45,52 @@ func main()
 end
 ```
 
-### `ori.bytes.from_list`
+### `from_list`
 
 ```ori
 (arg0: list<int>) -> bytes
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.from_list`
+*Layer 1 · runtime* · **Aliases:** `bytes.from_list`
 
-### `ori.bytes.get`
+### `get`
 
 ```ori
 (arg0: bytes, arg1: int) -> u8
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.get`
+*Layer 1 · runtime* · **Aliases:** `bytes.get`
 
-### `ori.bytes.len`
+### `len`
 
 ```ori
 (arg0: bytes) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.len`
+*Layer 1 · runtime* · **Aliases:** `bytes.len`
 
-### `ori.bytes.slice`
+### `slice`
 
 ```ori
 (arg0: bytes, arg1: int, arg2: int) -> bytes
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.slice`
+*Layer 1 · runtime* · **Aliases:** `bytes.slice`
 
-### `ori.bytes.to_hex`
+### `to_hex`
 
 ```ori
 (arg0: bytes) -> string
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.to_hex`
+*Layer 1 · runtime* · **Aliases:** `bytes.to_hex`
 
 Converts a raw bytes buffer into its hexadecimal string representation.
 
-**Applicability:**
-Widely used in cryptographic hashing visualizations, generating checksum strings, and formatting binary protocol payloads for debugging.
+* **Applicability:** Widely used in cryptographic hashing visualizations, generating checksum strings, and formatting binary protocol payloads for debugging.
 
 ```ori
+// Example
 import ori.bytes as bytes
 import ori.io as io
 
@@ -110,12 +100,11 @@ func main()
 end
 ```
 
-### `ori.bytes.to_list`
+### `to_list`
 
 ```ori
 (arg0: bytes) -> list<int>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `bytes.to_list`
+*Layer 1 · runtime* · **Aliases:** `bytes.to_list`
 

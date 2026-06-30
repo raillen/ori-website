@@ -1,171 +1,151 @@
 ---
-title: ori.iter
-description: Standard library module `ori.iter`.
+title: "ori.iter"
+description: "Standard library module `ori.iter`."
 ---
-
-# ori.iter
 
 Standard library module `ori.iter`.
 
-### `ori.iter.all`
+### `all`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.all`
+*Layer 1 · runtime* · **Aliases:** `iter.all`
 
-### `ori.iter.any`
+### `any`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.any`
+*Layer 1 · runtime* · **Aliases:** `iter.any`
 
-### `ori.iter.count_where`
+### `count_where`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.count_where`
+*Layer 1 · runtime* · **Aliases:** `iter.count_where`
 
-### `ori.iter.filter`
+### `filter`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.filter`
+*Layer 1 · runtime* · **Aliases:** `iter.filter`
 
-### `ori.iter.find`
+### `find`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> optional<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.find`
+*Layer 1 · runtime* · **Aliases:** `iter.find`
 
-### `ori.iter.flat_map`
+### `flat_map`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.flat_map`
+*Layer 1 · runtime* · **Aliases:** `iter.flat_map`
 
-### `ori.iter.flatten`
+### `flatten`
 
 ```ori
 (arg0: list<list<_#0>>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.flatten`
+*Layer 1 · runtime* · **Aliases:** `iter.flatten`
 
-### `ori.iter.group_by`
+### `group_by`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> _#0) -> map<_#0, list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.group_by`
+*Layer 1 · runtime* · **Aliases:** `iter.group_by`
 
-### `ori.iter.map`
+### `map`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> _#0) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.map`
+*Layer 1 · runtime* · **Aliases:** `iter.map`
 
-### `ori.iter.partition`
+### `partition`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> tuple<list<_#0>, list<_#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.partition`
+*Layer 1 · runtime* · **Aliases:** `iter.partition`
 
-### `ori.iter.reduce`
+### `reduce`
 
 ```ori
 (arg0: list<_#0>, arg1: _#0, arg2: func(_#0, _#0) -> _#0) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.reduce`
+*Layer 1 · runtime* · **Aliases:** `iter.reduce`
 
-### `ori.iter.reverse`
+### `reverse`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.reverse`
+*Layer 1 · runtime* · **Aliases:** `iter.reverse`
 
-### `ori.iter.skip`
+### `skip`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.skip`
+*Layer 1 · runtime* · **Aliases:** `iter.skip`
 
-### `ori.iter.sort`
+### `sort`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.sort`
+*Layer 1 · runtime* · **Aliases:** `iter.sort`
 
-### `ori.iter.sort_by`
+### `sort_by`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0, _#0) -> int) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.sort_by`
+*Layer 1 · runtime* · **Aliases:** `iter.sort_by`
 
-### `ori.iter.take`
+### `take`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.take`
+*Layer 1 · runtime* · **Aliases:** `iter.take`
 
-### `ori.iter.unique`
+### `unique`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.unique`
+*Layer 1 · runtime* · **Aliases:** `iter.unique`
 
-### `ori.iter.zip`
+### `zip`
 
 ```ori
 (arg0: list<_#0>, arg1: list<_#0>) -> list<tuple<_#0, _#0>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `iter.zip`
+*Layer 1 · runtime* · **Aliases:** `iter.zip`
 

@@ -1,171 +1,151 @@
 ---
-title: ori.map
-description: Hash map (key-value dictionary) utilities for storing, retrieving, and checking keys.
+title: "ori.map"
+description: "Hash map (key-value dictionary) utilities for storing, retrieving, and checking keys."
 ---
-
-# ori.map
 
 Hash map (key-value dictionary) utilities for storing, retrieving, and checking keys.
 
-### `ori.map.capacity`
+### `capacity`
 
 ```ori
 (arg0: map<_#0, _#1>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.capacity`
+*Layer 1 · runtime* · **Aliases:** `map.capacity`
 
-### `ori.map.clear`
+### `clear`
 
 ```ori
 (arg0: map<_#0, _#1>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.clear`
+*Layer 1 · runtime* · **Aliases:** `map.clear`
 
-### `ori.map.clone`
+### `clone`
 
 ```ori
 (arg0: map<_#0, _#1>) -> map<_#0, _#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.clone`
+*Layer 1 · runtime* · **Aliases:** `map.clone`
 
-### `ori.map.contains`
+### `contains`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: _#0) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.contains`
+*Layer 1 · runtime* · **Aliases:** `map.contains`
 
-### `ori.map.entries`
+### `entries`
 
 ```ori
 (arg0: map<_#0, _#1>) -> list<tuple<_#0, _#1>>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.entries`
+*Layer 1 · runtime* · **Aliases:** `map.entries`
 
-### `ori.map.free`
+### `free`
 
 ```ori
 (arg0: map<_#0, _#1>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.free`
+*Layer 1 · runtime* · **Aliases:** `map.free`
 
-### `ori.map.from_entries`
+### `from_entries`
 
 ```ori
 (arg0: list<tuple<_#0, _#1>>) -> map<_#0, _#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.from_entries`
+*Layer 1 · runtime* · **Aliases:** `map.from_entries`
 
-### `ori.map.get`
+### `get`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: _#0) -> _#1
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.get`
+*Layer 1 · runtime* · **Aliases:** `map.get`
 
-### `ori.map.is_empty`
+### `is_empty`
 
 ```ori
 (arg0: map<_#0, _#1>) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.is_empty`
+*Layer 1 · runtime* · **Aliases:** `map.is_empty`
 
-### `ori.map.keys`
+### `keys`
 
 ```ori
 (arg0: map<_#0, _#1>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.keys`
+*Layer 1 · runtime* · **Aliases:** `map.keys`
 
-### `ori.map.len`
+### `len`
 
 ```ori
 (arg0: map<_#0, _#1>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.len`
+*Layer 1 · runtime* · **Aliases:** `map.len`
 
-### `ori.map.new`
+### `new`
 
 ```ori
 () -> map<_#0, _#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.new`
+*Layer 1 · runtime* · **Aliases:** `map.new`
 
-### `ori.map.remove`
+### `remove`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.remove`
+*Layer 1 · runtime* · **Aliases:** `map.remove`
 
-### `ori.map.reserve`
+### `reserve`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: int) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.reserve`
+*Layer 1 · runtime* · **Aliases:** `map.reserve`
 
-### `ori.map.set`
+### `set`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: _#0, arg2: _#1) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.set`
+*Layer 1 · runtime* · **Aliases:** `map.set`
 
-### `ori.map.try_get`
-
-```ori
-(arg0: map<_#0, _#1>, arg1: _#0) -> optional<_#1>
-```
-
-- Layer 1 · runtime
-  - Aliases: `map.try_get`
-
-### `ori.map.try_remove`
+### `try_get`
 
 ```ori
 (arg0: map<_#0, _#1>, arg1: _#0) -> optional<_#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.try_remove`
+*Layer 1 · runtime* · **Aliases:** `map.try_get`
 
-### `ori.map.values`
+### `try_remove`
+
+```ori
+(arg0: map<_#0, _#1>, arg1: _#0) -> optional<_#1>
+```
+
+*Layer 1 · runtime* · **Aliases:** `map.try_remove`
+
+### `values`
 
 ```ori
 (arg0: map<_#0, _#1>) -> list<_#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `map.values`
+*Layer 1 · runtime* · **Aliases:** `map.values`
 

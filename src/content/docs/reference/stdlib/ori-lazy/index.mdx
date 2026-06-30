@@ -1,36 +1,31 @@
 ---
-title: ori.lazy
-description: Standard library module `ori.lazy`.
+title: "ori.lazy"
+description: "Standard library module `ori.lazy`."
 ---
-
-# ori.lazy
 
 Standard library module `ori.lazy`.
 
-### `ori.lazy.force`
+### `force`
 
 ```ori
 (arg0: lazy<_#0>) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `lazy.force`
+*Layer 1 · runtime* · **Aliases:** `lazy.force`
 
-### `ori.lazy.is_consumed`
+### `is_consumed`
 
 ```ori
 (arg0: lazy<_#0>) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `lazy.is_consumed`
+*Layer 1 · runtime* · **Aliases:** `lazy.is_consumed`
 
-### `ori.lazy.once`
+### `once`
 
 ```ori
 (arg0: func() -> _#0) -> lazy<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `lazy.once`
+*Layer 1 · runtime* · **Aliases:** `lazy.once`
 

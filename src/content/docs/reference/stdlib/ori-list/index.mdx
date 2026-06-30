@@ -1,225 +1,199 @@
 ---
-title: ori.list
-description: List manipulation core module. Houses size checks, indexing operations, pushing, popping, and slice manipulations.
+title: "ori.list"
+description: "List manipulation core module. Houses size checks, indexing operations, pushing, popping, and slice manipulations."
 ---
-
-# ori.list
 
 List manipulation core module. Houses size checks, indexing operations, pushing, popping, and slice manipulations.
 
-### `ori.list.clear`
+### `clear`
 
 ```ori
 (arg0: list<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.clear`
+*Layer 1 · runtime* · **Aliases:** `list.clear`
 
-### `ori.list.clone`
+### `clone`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.clone`
+*Layer 1 · runtime* · **Aliases:** `list.clone`
 
-### `ori.list.contains`
+### `contains`
 
 ```ori
 (arg0: list<_#0>, arg1: _#0) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.contains`
+*Layer 1 · runtime* · **Aliases:** `list.contains`
 
-### `ori.list.filter`
+### `filter`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> bool) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.filter`
+*Layer 1 · runtime* · **Aliases:** `list.filter`
 
-### `ori.list.free`
+### `free`
 
 ```ori
 (arg0: list<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.free`
+*Layer 1 · runtime* · **Aliases:** `list.free`
 
-### `ori.list.from_list`
+### `from_list`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.from_list`
+*Layer 1 · runtime* · **Aliases:** `list.from_list`
 
-### `ori.list.get`
+### `get`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.get`
+*Layer 1 · runtime* · **Aliases:** `list.get`
 
-### `ori.list.index_of`
+### `index_of`
 
 ```ori
 (arg0: list<_#0>, arg1: _#0) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.index_of`
+*Layer 1 · runtime* · **Aliases:** `list.index_of`
 
-### `ori.list.insert`
+### `insert`
 
 ```ori
 (arg0: list<_#0>, arg1: int, arg2: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.insert`
+*Layer 1 · runtime* · **Aliases:** `list.insert`
 
-### `ori.list.is_empty`
+### `is_empty`
 
 ```ori
 (arg0: list<_#0>) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.is_empty`
+*Layer 1 · runtime* · **Aliases:** `list.is_empty`
 
-### `ori.list.len`
+### `len`
 
 ```ori
 (arg0: list<_#0>) -> int
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.len`
+*Layer 1 · runtime* · **Aliases:** `list.len`
 
-### `ori.list.map`
+### `map`
 
 ```ori
 (arg0: list<_#0>, arg1: func(_#0) -> _#1) -> list<_#1>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.map`
+*Layer 1 · runtime* · **Aliases:** `list.map`
 
-### `ori.list.new`
+### `new`
 
 ```ori
 () -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.new`
+*Layer 1 · runtime* · **Aliases:** `list.new`
 
-### `ori.list.pop`
+### `pop`
 
 ```ori
 (arg0: list<_#0>) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.pop`
+*Layer 1 · runtime* · **Aliases:** `list.pop`
 
-### `ori.list.push`
+### `push`
 
 ```ori
 (arg0: list<_#0>, arg1: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.push`
+*Layer 1 · runtime* · **Aliases:** `list.push`
 
-### `ori.list.remove`
+### `remove`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.remove`
+*Layer 1 · runtime* · **Aliases:** `list.remove`
 
-### `ori.list.reverse`
+### `reverse`
 
 ```ori
 (arg0: list<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.reverse`
+*Layer 1 · runtime* · **Aliases:** `list.reverse`
 
-### `ori.list.set`
+### `set`
 
 ```ori
 (arg0: list<_#0>, arg1: int, arg2: _#0) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.set`
+*Layer 1 · runtime* · **Aliases:** `list.set`
 
-### `ori.list.slice`
+### `slice`
 
 ```ori
 (arg0: list<_#0>, arg1: int, arg2: int) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.slice`
+*Layer 1 · runtime* · **Aliases:** `list.slice`
 
-### `ori.list.sort`
+### `sort`
 
 ```ori
 (arg0: list<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.sort`
+*Layer 1 · runtime* · **Aliases:** `list.sort`
 
-### `ori.list.to_list`
+### `to_list`
 
 ```ori
 (arg0: list<_#0>) -> list<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.to_list`
+*Layer 1 · runtime* · **Aliases:** `list.to_list`
 
-### `ori.list.try_get`
+### `try_get`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> optional<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.try_get`
+*Layer 1 · runtime* · **Aliases:** `list.try_get`
 
-### `ori.list.try_pop`
+### `try_pop`
 
 ```ori
 (arg0: list<_#0>) -> optional<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.try_pop`
+*Layer 1 · runtime* · **Aliases:** `list.try_pop`
 
-### `ori.list.try_remove`
+### `try_remove`
 
 ```ori
 (arg0: list<_#0>, arg1: int) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `list.try_remove`
+*Layer 1 · runtime* · **Aliases:** `list.try_remove`
 

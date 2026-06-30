@@ -1,90 +1,79 @@
 ---
-title: ori.task
-description: Standard library module `ori.task`.
+title: "ori.task"
+description: "Standard library module `ori.task`."
 ---
-
-# ori.task
 
 Standard library module `ori.task`.
 
-### `ori.task.associate`
+### `associate`
 
 ```ori
 (arg0: task.CancelToken, arg1: future<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.associate`
+*Layer 1 · runtime* · **Aliases:** `task.associate`
 
-### `ori.task.block_on`
+### `block_on`
 
 ```ori
 (arg0: future<_#0>) -> _#0
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.block_on`
+*Layer 1 · runtime* · **Aliases:** `task.block_on`
 
-### `ori.task.cancel`
+### `cancel`
 
 ```ori
 (arg0: task.CancelToken) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.cancel`
+*Layer 1 · runtime* · **Aliases:** `task.cancel`
 
-### `ori.task.create_token`
+### `create_token`
 
 ```ori
 () -> task.CancelToken
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.create_token`
+*Layer 1 · runtime* · **Aliases:** `task.create_token`
 
-### `ori.task.detach`
+### `detach`
 
 ```ori
 (arg0: task.Job<_#0>) -> void
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.detach`
+*Layer 1 · runtime* · **Aliases:** `task.detach`
 
-### `ori.task.is_cancelled`
+### `is_cancelled`
 
 ```ori
 (arg0: task.CancelToken) -> bool
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.is_cancelled`
+*Layer 1 · runtime* · **Aliases:** `task.is_cancelled`
 
-### `ori.task.join`
+### `join`
 
 ```ori
 (arg0: task.Job<_#0>) -> result<_#0, task.JoinError>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.join`
+*Layer 1 · runtime* · **Aliases:** `task.join`
 
-### `ori.task.sleep`
+### `sleep`
 
 ```ori
 (arg0: int) -> future<void>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.sleep`
+*Layer 1 · runtime* · **Aliases:** `task.sleep`
 
-### `ori.task.spawn`
+### `spawn`
 
 ```ori
 (arg0: func() -> _#0) -> task.Job<_#0>
 ```
 
-- Layer 1 · runtime
-  - Aliases: `task.spawn`
+*Layer 1 · runtime* · **Aliases:** `task.spawn`
 

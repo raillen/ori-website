@@ -79,25 +79,23 @@ for (const [module, symbols] of [...byModule.entries()].sort()) {
   const rows = symbols
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((s) => {
-      const aliases =
-        s.aliases?.length ?
-          `\n  - Aliases: ${s.aliases.map((a) => `\`${a}\``).join(", ")}`
-        : "";
-      const src = s.source ? `\n  - Source: \`${s.source}\`` : "";
+      const aliasText = s.aliases?.length ? ` · **Aliases:** ${s.aliases.map((a) => `\`${a}\``).join(", ")}` : "";
+      const srcText = s.source ? ` · **Source:** \`${s.source}\`` : "";
+      const meta = `*${layerBadge(s.layer)}*${aliasText}${srcText}`;
       
       let docBlock = "";
       if (stdlibDocs[s.id]) {
         const d = stdlibDocs[s.id];
-        docBlock = `\n\n${d.description}\n\n**Applicability:**\n${d.applicability}\n\n\`\`\`ori\n${d.example}\n\`\`\``;
+        docBlock = `\n\n${d.description}\n\n* **Applicability:** ${d.applicability}\n\n\`\`\`ori\n// Example\n${d.example}\n\`\`\``;
       }
 
-      return `### \`${s.id}\`
+      return `### \`${s.name}\`
 
 \`\`\`ori
 ${s.signature}
 \`\`\`
 
-- ${layerBadge(s.layer)}${aliases}${src}${docBlock}
+${meta}${docBlock}
 `;
     })
     .join("\n");
@@ -110,11 +108,9 @@ ${s.signature}
   fs.writeFileSync(
     path.join(dir, "index.mdx"),
     `---
-title: ${module}
-description: ${moduleDesc.split("\n")[0]}
+title: "${module}"
+description: "${moduleDesc.split("\n")[0].replace(/"/g, '\\"')}"
 ---
-
-# ${module}
 
 ${moduleDesc}
 
