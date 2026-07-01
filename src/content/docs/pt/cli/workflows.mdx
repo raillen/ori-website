@@ -1,0 +1,96 @@
+---
+title: Fluxos da CLI
+description: Como combinar check, run, compile, test, fmt, doc, doctor, explain, summary e comandos de debug.
+---
+
+A CLI da Ori serve para escrever, validar, executar e documentar programas.
+
+Use comandos pequenos em sequência.
+
+## Ciclo diário
+
+```bash
+ori fmt app/main.orl
+ori check app/main.orl
+ori test app/main.orl
+ori run app/main.orl
+```
+
+Ordem sugerida:
+
+1. Formate.
+2. Cheque tipos e imports.
+3. Rode testes.
+4. Execute.
+
+## Compilar binário
+
+```bash
+ori compile app/main.orl
+```
+
+Use quando precisa de artefato nativo.
+
+`ori run` é melhor para ciclo rápido.
+
+## Documentar API
+
+```bash
+ori doc file app/main.orl
+ori doc file app/main.orl --format html
+ori doc export
+```
+
+Use `ori doc export` para gerar a referência usada pelo site.
+
+Comentários `--| ... |--` são a entrada principal.
+
+## Diagnosticar ambiente
+
+```bash
+ori doctor
+```
+
+Use quando o backend nativo, runtime ou linker parecem quebrados.
+
+Para entender um erro específico:
+
+```bash
+ori explain name.undefined
+```
+
+## Ver grafo do projeto
+
+```bash
+ori summary app/main.orl
+```
+
+Use para revisar imports, namespaces e dependências locais.
+
+Isso ajuda a detectar ciclos e módulos grandes demais.
+
+## Debug do compilador
+
+```bash
+ori lex app/main.orl
+ori parse app/main.orl
+```
+
+Use quando você está desenvolvendo a linguagem ou investigando bug de parser.
+
+Não é fluxo normal de pessoa usuária final.
+
+## Comandos planejados
+
+`ori install` e `ori publish` existem como direção de produto, mas não devem ser documentados como fluxo pronto.
+
+Marque tutoriais de pacotes como planejados até esses comandos ficarem disponíveis.
+
+## Checklist
+
+- `fmt` antes de revisar diff.
+- `check` antes de `run`.
+- `test` antes de mudar tutorial público.
+- `doctor` quando o problema parece ambiente.
+- `explain` quando o código diagnóstico é conhecido.
+- `summary` quando imports ficam difíceis de seguir.

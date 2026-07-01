@@ -1,6 +1,6 @@
 ---
 title: Tipos & Valores
-description: Tipos básicos em Ori — bool, int, float, string, coleções, result, optional.
+description: Tipos básicos em Ori — bool, inteiros, floats, string, coleções, result, optional.
 ---
 
 A linguagem Ori é **explicitamente tipada**: todas as variáveis exigem anotações de tipo no momento da declaração.
@@ -11,20 +11,41 @@ A linguagem Ori é **explicitamente tipada**: todas as variáveis exigem anotaç
 |------|---------|
 | `bool` | `true`, `false` |
 | `int` | `42` |
+| `int8`, `int16`, `int32`, `int64` | `12i8`, `12i16`, `12i32`, `12i64` |
+| `u8`, `u16`, `u32`, `u64` | `12u8`, `12u16`, `12u32`, `12u64` |
 | `float` | `3.14` |
+| `float32`, `float64` | `3.14f32`, `3.14f64` |
 | `string` | `"olá"` |
 | `bytes` | Buffers de bytes brutos |
 | `void` | Sem valor (apenas para instruções) |
 
 ## Sufixos Numéricos
 
-Você pode definir explicitamente a largura em bits de literais numéricos anexando um sufixo de tipo diretamente aos dígitos. Isso é útil para chamadas de FFI nativas ou otimização de uso de memória:
+A largura de um literal numérico é escolhida com um sufixo no literal. O sufixo
+não é o nome do tipo.
 
-- **Inteiros com Sinal**: `i8`, `i16`, `i32`, `i64` (ex: `42i8`, `-123i64`)
-- **Inteiros sem Sinal**: `u8`, `u16`, `u32`, `u64` (ex: `255u8`, `1000u32`)
-- **Decimais (Floats)**: `f32`, `f64` (ex: `3.14f32`, `1.0f64`)
+```ori
+const default_int: int = 12
+const small: int8 = 12i8
+const byte: u8 = 255u8
+const compact_float: float32 = 3.14f32
+```
+
+- **Sufixos de inteiros com sinal**: `i8`, `i16`, `i32`, `i64`.
+- **Sufixos de inteiros sem sinal**: `u8`, `u16`, `u32`, `u64`.
+- **Sufixos de float**: `f32`, `f64`.
 
 Sem um sufixo, os literais inteiros assumem o tipo padrão `int` e literais decimais assumem `float`.
+
+São conceitos diferentes:
+
+```ori
+const ok: int8 = 12i8
+
+const wrong_type: int8 = 12   // erro: 12 é int, não int8
+const wrong_suffix: int = 12i8 // erro: 12i8 é int8, não int
+const unknown: i8 = 12        // erro: i8 não é nome de tipo
+```
 
 ## Coerção & Conversão de Tipos
 

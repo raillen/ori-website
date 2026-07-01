@@ -1,0 +1,108 @@
+---
+title: Testes e documentação no código
+description: Como usar @test, check, ori.test.utils, comentários de documentação, @deprecated e comandos ori doc.
+---
+
+Teste e documentação devem ficar perto do comportamento.
+
+Isso ajuda a manter exemplos e APIs sincronizados.
+
+## Teste pequeno
+
+```ori
+@test
+func parse_amount_rejects_empty_text()
+    const result: result<int, string> = parse_amount("")
+    match result
+        case success(_):
+            panic("empty text should fail")
+        case error(_):
+            check true, "expected error"
+    end
+end
+```
+
+`@test` marca função sem parâmetros e sem retorno.
+
+Rode com:
+
+```bash
+ori test app/main.orl
+```
+
+## Assertions da stdlib
+
+Use `ori.test.utils` quando quiser mensagem padronizada.
+
+```ori
+import ori.test.utils as test
+
+@test
+func total_adds_values()
+    test.equal_int(total([1, 2, 3]), 6)
+end
+```
+
+Use `check` quando a afirmação local já é clara.
+
+## Teste de erro
+
+```ori
+@test
+func divide_by_zero_returns_error()
+    match divide(10, 0)
+        case success(_):
+            panic("division should fail")
+        case error(message):
+            check message == "division by zero", "message must explain failure"
+    end
+end
+```
+
+Não deixe falha esperada passar silenciosamente.
+
+## Comentários de documentação
+
+Use doc comments em APIs públicas.
+
+```ori
+--| Divides two integers.
+| @param left Numerator.
+| @param right Denominator. Must not be zero.
+|--
+public func divide(left: int, right: int) -> result<int, string>
+    if right == 0
+        return error("division by zero")
+    end
+    return success(left / right)
+end
+```
+
+Extraia documentação:
+
+```bash
+ori doc file app/math.orl
+ori doc file app/math.orl --format html
+ori doc export
+```
+
+## Depreciação
+
+Use `@deprecated` para API que ainda existe, mas não deve ser usada.
+
+```ori
+@deprecated("use divide instead")
+public func safe_divide(left: int, right: int) -> result<int, string>
+    return divide(left, right)
+end
+```
+
+A mensagem deve apontar o caminho novo.
+
+## Checklist
+
+- Teste tem nome de comportamento.
+- Teste falha quando o resultado errado acontece.
+- API pública tem doc comment quando será exportada.
+- Depreciação explica substituto.
+- `ori doc export` continua sendo a fonte do site de referência.

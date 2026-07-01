@@ -1,0 +1,73 @@
+---
+title: Analisador de logs
+description: Leia texto, quebre em linhas e palavras, conte ocorrências e gere um resumo no terminal.
+---
+
+Objetivo: analisar texto de log com stdlib de string, list e map.
+
+## Arquivos
+
+```text
+log-analyzer/
+  main.orl
+  analyzer/
+    summary.orl
+```
+
+## Summary
+
+```ori
+namespace analyzer.summary
+
+import ori.string as strings
+import ori.map.utils as map_utils
+
+public struct LogSummary
+    lines: int
+    errors: int
+end
+
+public func analyze(text: string) -> LogSummary
+    const rows: list<string> = strings.lines(text)
+    var errors: int = 0
+
+    for row in rows
+        if strings.count(row, "ERROR") > 0
+            errors = errors + 1
+        end
+    end
+
+    return LogSummary(lines: len(rows), errors: errors)
+end
+```
+
+## Main
+
+```ori
+namespace analyzer.main
+
+import ori.fs.utils as fs_utils
+import ori.io as io
+import analyzer.summary as summary
+
+func main()
+    const text: string = fs_utils.read_text_or("app.log", "")
+    const result: summary.LogSummary = summary.analyze(text)
+
+    io.print(f"lines: {result.lines}")
+    io.print(f"errors: {result.errors}")
+end
+```
+
+## O que este projeto ensina
+
+- Entrada de arquivo usa fallback seguro.
+- A regra de análise fica fora do `main`.
+- `strings.lines` cria uma lista para percorrer.
+- Contadores simples usam `var` local e explícito.
+
+## Próximo passo
+
+Conte também `WARN` e `INFO`.
+
+Depois extraia uma função `count_rows_with(text, marker)`.

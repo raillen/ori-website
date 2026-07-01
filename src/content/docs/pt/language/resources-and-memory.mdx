@@ -1,0 +1,130 @@
+---
+title: Recursos e memória
+description: Como Ori lida com valores, tipos gerenciados, using, Disposable, ARC, ciclos e testes de vazamento.
+---
+
+Ori tenta manter memória explícita no modelo mental, mas sem exigir gerenciamento manual comum.
+
+Você escreve valores e recursos.
+
+O runtime cuida de contagem de referências e coleta de ciclos.
+
+## Valores
+
+Tipos simples têm semântica de valor.
+
+```ori
+const a: int = 10
+const b: int = a
+```
+
+Alterar uma variável depois não altera a outra.
+
+Isso mantém o fluxo mais fácil de seguir.
+
+## Tipos gerenciados
+
+Strings, bytes e coleções são valores gerenciados pelo runtime.
+
+```ori
+const names: list<string> = ["Ada", "Grace"]
+const copy: list<string> = names
+```
+
+O runtime mantém referências vivas enquanto ainda são usadas.
+
+Você não chama `free`.
+
+## `using`
+
+Use `using` para recurso que precisa de limpeza determinística.
+
+```ori
+using file: fs.File = try fs.open_read(path)
+```
+
+Quando o bloco termina, `dispose` é chamado.
+
+Isso vale para saída normal, `return`, `break` e erro propagado.
+
+## Ordem de limpeza
+
+Vários recursos são limpos em ordem reversa.
+
+```ori
+using outer: Resource = open_outer()
+using inner: Resource = open_inner()
+
+-- inner é limpo antes de outer.
+```
+
+Essa ordem LIFO evita limpar o recurso pai antes do filho.
+
+## `Disposable`
+
+Tipos que funcionam com `using` implementam `Disposable`.
+
+```ori
+struct Session
+    id: int
+end
+
+implement Disposable for Session
+    mut func dispose(self)
+        io.print(f"closing {self.id}")
+    end
+end
+```
+
+Use isso para arquivos, conexões, locks e recursos externos.
+
+## ARC e coletor de ciclos
+
+O runtime usa ARC para liberar valores quando a última referência some.
+
+Quando há ciclos, o coletor cooperativo pode quebrar ciclos.
+
+Isso é importante em estruturas como grafos, árvores com ponteiro para pai e callbacks.
+
+## Testes de vazamento
+
+A stdlib de teste expõe helpers de memória.
+
+Use em testes quando o recurso precisa ser liberado ao final.
+
+```ori
+@test
+func session_does_not_leak()
+    using session: Session = Session(id: 1)
+    ori.test.collect_cycles()
+    ori.test.assert_no_leaks("session")
+end
+```
+
+Em execução de teste, `ORI_TEST_LEAK_CHECK=1` faz vazamentos virarem diagnóstico de erro.
+
+## Async e recursos
+
+`using` também é aceito dentro de `async func`.
+
+O recurso fica guardado no estado da future até a limpeza acontecer.
+
+```ori
+async func work()
+    using session: Session = Session(id: 1)
+    await task.sleep(1)
+end
+```
+
+Use isso quando uma operação assíncrona segura um arquivo, conexão ou token de cancelamento.
+
+## Checklist
+
+- Use valor simples quando possível.
+- Não exponha recurso externo sem regra de limpeza.
+- Use `using` para recurso com `dispose`.
+- Mantenha `using` perto do ponto em que o recurso nasce.
+- Teste vazamentos quando o código cria ciclos ou recursos externos.
+- Em async, lembre que o recurso vive até a future terminar ou ser cancelada.
+
+Próximo: [Async e concorrência](/pt/language/async-and-concurrency/).

@@ -1,0 +1,172 @@
+---
+title: Advanced types and generics
+description: Aliases, ranges, lazy, any<Trait>, function types, generics, constraints, and advanced type features.
+---
+
+This page collects features you do not need on day one, but that matter in larger projects.
+
+Read it after structs, enums, `optional`, and `result`.
+
+## Type aliases
+
+Use `alias` to give a domain name to an existing shape.
+
+```ori
+alias UserId = int
+alias AccountName = string
+alias Callback = func(string) -> bool
+```
+
+Aliases are transparent: `UserId` and `int` are interchangeable everywhere.
+
+They improve reading, but should not hide different data behind the same physical type.
+
+## `range`
+
+Ranges represent intervals.
+
+```ori
+const first_page: range<int> = 1..10
+```
+
+Use them for iteration, pagination, and slices.
+
+Avoid ranges with too much implicit rule.
+
+## `lazy<T>`
+
+Use `lazy<T>` to defer computation until it is needed.
+
+```ori
+const report: lazy<string> = lazy.once(do() => build_report())
+const value: string = lazy.force(report)
+```
+
+`lazy.once` creates a lazy value from a zero-argument function.
+`lazy.force` computes and caches the value on first call.
+
+Use it with care.
+
+If the computation is cheap and always used, prefer a normal value.
+
+## Function types
+
+Use `func(A) -> B` when a function receives behavior.
+
+```ori
+func apply(value: int, transform: func(int) -> int) -> int
+    return transform(value)
+end
+```
+
+This is useful for filters, validators, and pipelines.
+
+## `any<Trait>`
+
+Use `any<Trait>` when different concrete types share a contract.
+
+```ori
+func render(item: any<Displayable>) -> string
+    return item.display()
+end
+```
+
+Prefer generics when the concrete type can stay visible.
+
+Use `any<Trait>` when a collection or API needs mixed implementations.
+
+## Generics
+
+Generics avoid duplicating the same rule for many types.
+
+```ori
+func identity<T>(value: T) -> T
+    return value
+end
+```
+
+Use common short names for type parameters: `T`, `K`, `V`, `E`.
+
+Use longer names only when many types share the same scope.
+
+## Constraints
+
+When a function needs a specific operation, declare the constraint.
+
+```ori
+func max<T>(left: T, right: T) -> T
+where T is Comparable
+    if left > right
+        return left
+    end
+    return right
+end
+```
+
+This explains why any type is not enough.
+
+Use `where T is Trait` for positive constraints.
+
+Use `where T is not Trait` only when the API must reject a trait implementation.
+
+## Trait method disambiguation
+
+If two visible traits provide a method with the same name, call the method through the trait name.
+
+```ori
+Printable.output(value)
+Loggable.output(value)
+```
+
+This keeps the call readable and avoids ambiguous method resolution.
+
+## Advanced features
+
+The implementation and tests also cover more advanced features:
+
+| Feature | Use |
+|---|---|
+| Associated types | Traits that expose a type tied to the implementation. |
+| Const generics | Types parameterized by a constant value. |
+| Higher-kinded types | Higher-level type abstractions for rare cases. |
+| Negative constraints | Rules that forbid a type combination. |
+
+### Associated types
+
+```ori
+trait Container
+    type Item
+    func get(self) -> Self.Item
+end
+```
+
+### Const generics
+
+```ori
+struct Matrix<const N: int>
+    value: int
+end
+```
+
+### Negative constraints
+
+```ori
+func raw_copy<T>(src: T, dst: T) where T is not Disposable
+```
+
+Prevents the function from being called with managed or resource types.
+
+Use these only when the API really needs them.
+
+For application code, simple types and common traits are usually enough.
+
+## Checklist
+
+- Alias has a domain name.
+- `lazy` does not hide important cost.
+- Function type appears when behavior is a parameter.
+- Generic code removes real duplication.
+- Constraint explains the required operation.
+- Advanced features stay out of introductory tutorials.
+
+Next: [Advanced traits](/language/advanced-traits/).

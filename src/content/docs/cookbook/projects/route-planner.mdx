@@ -1,0 +1,62 @@
+---
+title: Route planner
+description: Model routes with graph.Graph and use graph.algorithms to query paths.
+---
+
+Goal: represent places and connections.
+
+This project uses a graph instead of loose lists.
+
+## Map
+
+```ori
+namespace routes.map
+
+import ori.graph as graph
+import ori.graph.algorithms as graph_algorithms
+
+public func build_city() -> graph.Graph<string>
+    const city: graph.Graph<string> = graph.new<string>()
+
+    graph.add_node(city, "home")
+    graph.add_node(city, "market")
+    graph.add_node(city, "library")
+
+    graph.add_edge(city, "home", "market")
+    graph.add_edge(city, "market", "library")
+
+    return city
+end
+
+public func can_reach(city: graph.Graph<string>, from: string, to: string) -> bool
+    return graph_algorithms.has_path(city, from, to)
+end
+```
+
+## Main
+
+```ori
+namespace routes.main
+
+import ori.io as io
+import routes.map as routes
+
+func main()
+    const city = routes.build_city()
+    if routes.can_reach(city, "home", "library")
+        io.print("route found")
+    else
+        io.print("no route")
+    end
+end
+```
+
+## What this teaches
+
+- A graph models relationships between nodes.
+- `has_path` answers a reachability question.
+- The domain is clearer than loose string pairs.
+
+## Next step
+
+Add `reachable_count` to show how many places are reachable from a point.

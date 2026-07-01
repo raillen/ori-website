@@ -1,0 +1,184 @@
+---
+title: Statements and patterns
+description: How to use const, var, if some, while some, repeat, match, guards, check, break, and continue.
+---
+
+Statements control the program path.
+
+In Ori, prefer explicit flow.
+
+The reader should see where a value is created, changed, and returned.
+
+## `const` and `var`
+
+Use `const` by default.
+
+```ori
+const name: string = "Ada"
+```
+
+Use `var` only when the value needs to change.
+
+```ori
+var total: int = 0
+for value in values
+    total = total + value
+end
+```
+
+This lowers cognitive load: the reader knows `const` will not change later.
+
+## `if` and `else`
+
+Use `if` for a direct decision.
+
+```ori
+if balance >= amount
+    io.print("approved")
+else
+    io.print("rejected")
+end
+```
+
+When both branches produce a value, consider inline `if`.
+
+```ori
+const label: string = if done then "done" else "open"
+```
+
+## `if some`
+
+Use `if some` for the happy path of an `optional<T>`.
+
+```ori
+if some(book) = find_book(id)
+    io.print(book.title)
+else
+    io.print("book not found")
+end
+```
+
+Use `match` when all cases need to stay visible.
+
+## `while some`
+
+Use `while some` when a source yields items until it stops.
+
+```ori
+while some(line) = reader.next_line()
+    io.print(line)
+end
+```
+
+The loop ends when the value becomes `none`.
+
+## `for`
+
+Use `for item in items` when the index does not matter.
+
+```ori
+for task in tasks
+    io.print(task.title)
+end
+```
+
+Use an index only when it is part of the rule.
+
+```ori
+for task, index in tasks
+    io.print(f"{index}: {task.title}")
+end
+```
+
+## `repeat`
+
+Use `repeat` for a fixed count.
+
+```ori
+repeat 3 times
+    io.print("retry")
+end
+```
+
+`times` is optional, but can improve readability.
+
+The count expression is evaluated once. Zero produces no iterations.
+Negative value is a runtime panic.
+
+## `loop`, `break`, and `continue`
+
+Use `loop` when the exit is inside the body.
+
+```ori
+loop
+    const command: string = read_command()
+    if command == "quit"
+        break
+    end
+    if command == ""
+        continue
+    end
+    handle(command)
+end
+```
+
+Avoid many `continue` statements in the same block.
+
+They make flow harder to follow.
+
+## `match`
+
+Use `match` for enums, `optional`, and `result`.
+
+```ori
+match result
+    case success(value):
+        io.print(f"ok: {value}")
+    case error(message):
+        io.print(f"error: {message}")
+end
+```
+
+`match` must be exhaustive: every possible value must be covered.
+
+Guards help when a case needs an extra condition.
+
+```ori
+match score
+    case n if n >= 90:
+        io.print("A")
+    case n if n >= 80:
+        io.print("B")
+    case else:
+        io.print("C")
+end
+```
+
+Guarded cases do not count toward exhaustiveness.
+
+Prefer covering all named cases.
+
+Use `case else` only for a real fallback.
+
+## `check`
+
+Use `check` to assert a condition that must be true.
+
+```ori
+check amount >= 0, "amount must not be negative"
+```
+
+Use `result` when failure is a normal domain outcome.
+
+Use `check` when failure means a programming error or broken test.
+
+## Checklist
+
+- `const` is the default.
+- `var` appears only for real mutation.
+- `if some` handles the happy path of `optional`.
+- `match` shows closed states.
+- `repeat` replaces simple manual counters.
+- `check` protects invariants and tests.
+
+Next: [Error handling](/language/error-handling/).

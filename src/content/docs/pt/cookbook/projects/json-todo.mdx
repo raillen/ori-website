@@ -1,0 +1,98 @@
+---
+title: To-do com JSON
+description: Um to-do persistido em arquivo JSON, usando módulos, result, json.utils, fs.utils e path.
+---
+
+Objetivo: evoluir o to-do de terminal para persistir estado em JSON.
+
+Este tutorial mostra a arquitetura e as bordas principais.
+
+## Arquivos
+
+```text
+json-todo/
+  main.orl
+  todo/
+    domain.orl
+    store.orl
+```
+
+## Domínio
+
+```ori
+namespace todo.domain
+
+public struct Task
+    id: int
+    title: string
+    done: bool
+end
+
+public func create_task(id: int, title: string) -> Task
+    return Task(id: id, title: title, done: false)
+end
+```
+
+O domínio não conhece arquivo.
+
+Isso deixa teste e evolução mais fáceis.
+
+## Store
+
+```ori
+namespace todo.store
+
+import ori.json as json
+import ori.json.utils as json_utils
+import ori.path as path
+
+public func default_path() -> string
+    return path.join(["data", "todo.json"])
+end
+
+public func load_raw(file_path: string) -> result<json.Value, string>
+    const value: json.Value =
+        try json_utils.read(file_path).or_wrap("loading todo file")
+    return success(value)
+end
+
+public func save_raw(file_path: string, value: json.Value) -> result<string, string>
+    return json_utils.write_pretty(file_path, value).or_wrap("saving todo file")
+end
+```
+
+`store` trata JSON bruto.
+
+Uma próxima camada pode converter `json.Value` para `list<Task>`.
+
+## Main
+
+```ori
+namespace todo.main
+
+import ori.io as io
+import todo.store as store
+
+func main()
+    const file_path: string = store.default_path()
+    match store.load_raw(file_path)
+        case success(_):
+            io.print("todo loaded")
+        case error(message):
+            io.print(f"could not load todo: {message}")
+    end
+end
+```
+
+## O que este projeto ensina
+
+- `path.join` mantém caminho portável.
+- `json.utils.read` e `write_pretty` ficam na borda.
+- `result` impede erro silencioso de I/O.
+- O domínio não depende do formato de armazenamento.
+
+## Próximo passo
+
+Adicione funções para converter entre `json.Value` e `list<Task>`.
+
+Mantenha essa conversão em `store`, não em `main`.

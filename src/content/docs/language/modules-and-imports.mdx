@@ -73,6 +73,20 @@ Another file can call `billing.subtotal(...)`.
 
 It cannot call `billing.internal_rounding(...)`.
 
+## Selective imports
+
+Use `only` when a file needs a small set of public names.
+
+```ori
+import ori.string only (is_empty, truncate as cut)
+```
+
+Rules:
+
+- `is_empty` is imported with the same name.
+- `truncate as cut` imports `truncate` under the local name `cut`.
+- The imported names still must be `public` in the source namespace.
+
 ## File layout
 
 For local project code, keep the path close to the namespace:

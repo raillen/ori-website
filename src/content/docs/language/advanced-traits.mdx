@@ -1,0 +1,225 @@
+---
+title: Advanced traits
+description: How to use trait, implement, default methods, Self, operator traits, Iterable, From, Error, and any<Trait>.
+---
+
+Traits describe behavior.
+
+Use a trait when different types must satisfy the same contract.
+
+Use composition when a type needs to contain another type.
+
+## Simple trait
+
+```ori
+trait Displayable
+    func display(self: Self) -> string
+end
+```
+
+A type implements the trait with `implement`.
+
+```ori
+struct Book
+    title: string
+end
+
+implement Displayable for Book
+    func display(self: Book) -> string
+        return self.title
+    end
+end
+```
+
+## Default methods
+
+Traits can provide default behavior.
+
+```ori
+trait Named
+    func name(self: Self) -> string
+
+    func label(self: Self) -> string
+        return f"name: {self.name()}"
+    end
+end
+```
+
+Use defaults when the rule is true for almost every type.
+
+Do not hide surprising behavior in a default.
+
+## `Self`
+
+Use `Self` to refer to the implementing type.
+
+```ori
+trait Cloneable
+    func clone(self: Self) -> Self
+end
+```
+
+This avoids repeating the concrete type inside the contract.
+
+## `mut func`
+
+Traits can require a mutating method.
+
+```ori
+trait Resettable
+    mut func reset(self: Self)
+end
+```
+
+Use it when the behavior changes the value itself.
+
+## Operator traits
+
+Standard traits let types participate in known operations.
+
+| Operator | Trait | Method |
+|---|---|---|
+| `+` | `Addable` | `func add(other: Self) -> Self` |
+| `-` | `Subtractable` | `func subtract(other: Self) -> Self` |
+| `<`, `<=`, `>`, `>=` | `Comparable` | `func compare(other: Self) -> int` |
+| `==`, `!=` | `Equatable` | `func equals(other: Self) -> bool` |
+
+No other operators will be overloadable. This is a deliberate design limit.
+
+`Comparable.compare` returns a negative integer when `self < other`, `0` when equal, and a positive integer when `self > other`.
+
+Use them carefully.
+
+An operator should do what the reader expects.
+
+## Standard library traits
+
+Core traits defined in `ori.core`:
+
+| Trait | Purpose |
+|---|---|
+| `Displayable` | `func display(self) -> string` — converts a value to string text |
+| `Equatable` | Custom equality via `func equals(other: Self) -> bool` |
+| `Comparable` | Ordering via `func compare(other: Self) -> int` |
+| `Hashable` | Hash for map/set keys via `func hash() -> u64` |
+| `Disposable` | Cleanup via `mut func dispose()` — used by `using` |
+| `Iterable` | Iteration via `mut func next() -> optional<T>` |
+| `Default` | Zero-argument construction via `func default() -> Self` |
+| `From<Other>` | Explicit conversion from `Other` to `Self` |
+| `Error` | Error display via `func message() -> string` |
+| `Cloneable` | Explicit copy via `func clone() -> Self` |
+| `Transferable` | Values that cross task/channel boundaries |
+
+## `Iterable`
+
+`Iterable` allows a type to be used in `for`.
+
+```ori
+import ori.core as core
+
+implement core.Iterable for CountUp
+    mut func next() -> optional<int>
+        if self.current > self.limit
+            return none
+        end
+        const value: int = self.current
+        self.current = self.current + 1
+        return some(value)
+    end
+end
+
+for n in CountUp(current: 1, limit: 5)
+    io.print(string(n))  -- 1 2 3 4 5
+end
+```
+
+The item type is inferred from the `optional<T>` returned by `next`.
+
+Use `implement core.Iterable for Type` and let `next` define the item type.
+
+## `From<T>`
+
+Use `From<T>` for explicit conversion.
+
+```ori
+trait From<T>
+    func from(value: T) -> Self
+end
+```
+
+Prefer explicit conversions to avoid surprise.
+
+## `Error`
+
+Error types can implement the `Error` trait.
+
+```ori
+struct NetworkError
+    code: int
+    message: string
+end
+
+implement Error for NetworkError
+    func message() -> string
+        return f"Network error {self.code}: {self.message}"
+    end
+end
+```
+
+`Error` is required for a type to be used as the error branch of `result<T, E>` in standard patterns.
+
+Use enums for error unions to guarantee exhaustive handling at call sites:
+
+```ori
+enum AppError
+    Network(error: NetworkError)
+    Validation(error: ValidationError)
+end
+
+implement Error for AppError
+    func message() -> string
+        match self
+        case .Network(error):
+            return error.message()
+        case .Validation(error):
+            return error.message()
+        end
+    end
+end
+```
+
+## Ambiguous trait methods
+
+When two traits define the same method name for the same value, call through the trait name.
+
+```ori
+Printable.output(value)
+Loggable.output(value)
+```
+
+Use this only when ordinary method syntax would be ambiguous.
+
+## `any<Trait>`
+
+Use `any<Trait>` for dynamic dispatch.
+
+```ori
+func print_item(item: any<Displayable>)
+    io.print(item.display())
+end
+```
+
+Prefer generics when you do not need to mix different concrete types.
+
+`any<Trait>` is useful when a collection or API receives several implementations.
+
+## Checklist
+
+- Trait has a behavior name, not a data name.
+- Default method is predictable.
+- `mut func` appears only when there is mutation.
+- Operators match natural expectation.
+- `any<Trait>` is used when dynamic dispatch is needed.
+- Conversions stay explicit.
+
+Next: [Standard library in practice](/language/stdlib-in-practice/).

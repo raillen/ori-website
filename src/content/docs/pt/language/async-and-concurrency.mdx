@@ -1,0 +1,145 @@
+---
+title: Async e concorrência
+description: Como usar async func, await, futures, task.spawn, join, channels, atomics e Transferable em Ori.
+---
+
+Ori tem async e concorrência no backend nativo.
+
+Use esse recurso quando o programa precisa esperar, coordenar trabalho ou mover dados entre workers.
+
+## `async func`
+
+Uma função assíncrona retorna `future<T>`.
+
+```ori
+import ori.task as task
+
+async func load_count() -> int
+    await task.sleep(1)
+    return 42
+end
+```
+
+Use `await` apenas dentro de `async func`.
+
+## `async main`
+
+O backend nativo aceita `async func main()`.
+
+```ori
+async func main()
+    const count: int = await load_count()
+    io.print(string(count))
+end
+```
+
+Quando você precisa chamar uma future a partir de código síncrono, use `task.block_on`.
+
+```ori
+const count: int = task.block_on(load_count())
+```
+
+## Tasks
+
+Use `task.spawn` para executar uma função ou closure em outra task nativa.
+
+```ori
+import ori.task as task
+
+func compute() -> int
+    return 41
+end
+
+func main()
+    const job: task.Job<int> = task.spawn(do() => compute())
+    match task.join(job)
+        case success(value):
+            io.print(string(value + 1))
+        case error(_):
+            io.print("job failed")
+    end
+end
+```
+
+`join` retorna `result` porque aguardar uma task pode falhar.
+
+## Channels
+
+Use channel para enviar valores entre partes concorrentes.
+
+```ori
+import ori.channel as channel
+
+const messages: channel.Channel<string> = channel.new<string>()
+
+match channel.send(messages, "done")
+    case success():
+        io.print("sent")
+    case error(_):
+        io.print("send failed")
+end
+```
+
+Valores enviados precisam ser seguros para transferência.
+
+## Atomics
+
+Use `atomic.AtomicInt` para contador compartilhado simples.
+
+```ori
+import ori.atomic as atomic
+
+const counter: atomic.AtomicInt = atomic.new(0)
+atomic.add(counter, 1)
+io.print(string(atomic.load(counter)))
+```
+
+Não transforme atomic em estado global sem necessidade.
+
+Prefira passar dados explicitamente.
+
+## `Transferable`
+
+Dados que cruzam boundary de task ou channel precisam ser `Transferable`.
+
+Isso protege o runtime de mover valores que não são seguros para concorrência.
+
+Na prática:
+
+- valores simples são bons candidatos;
+- strings e algumas coleções têm suporte controlado;
+- closures com captura problemática são rejeitadas;
+- recursos não transferíveis devem ficar no thread que os criou.
+
+## Cancelamento e recursos
+
+Recursos com `using` dentro de async são limpos quando a future termina ou é cancelada.
+
+```ori
+async func worker(token: CancelToken)
+    using session: Session = Session(id: 1)
+    await task.sleep(50)
+end
+```
+
+Isso evita deixar arquivo, conexão ou sessão vivos depois do trabalho.
+
+## Limitações
+
+- O backend C rejeita async e concorrência.
+- `await` fora de `async func` é erro.
+- `await` só aceita future.
+- Captura não transferível em `task.spawn` é erro.
+
+Veja também: [Backends e runtime](/pt/development/runtime-and-backends/).
+
+## Checklist
+
+- Use async para espera real, não para código simples.
+- Trate `task.join` como `result`.
+- Use channel para passagem de dados.
+- Use atomic só para estado pequeno e compartilhado.
+- Evite capturas grandes em closures enviadas para task.
+- Documente quando uma API depende do backend nativo.
+
+Próximo: [Tipos avançados e genéricos](/pt/language/advanced-types-and-generics/).

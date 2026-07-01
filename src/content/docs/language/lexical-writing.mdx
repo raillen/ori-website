@@ -1,0 +1,192 @@
+---
+title: Lexical writing
+description: How comments, literals, strings, ranges, attributes, and precedence support readable Ori code.
+---
+
+This page covers writing details that appear before logic.
+
+They look small, but they shape readability.
+
+## Comments
+
+Use `--` for a short comment.
+
+```ori
+-- This rule prevents negative balance.
+check amount > 0, "amount must be positive"
+```
+
+Use block comments only when a short paragraph helps.
+
+```ori
+--|
+The parser keeps this case explicit because the error message
+is better than failing later in type checking.
+|--
+```
+
+Use documentation comments for public APIs.
+
+```ori
+--| Returns a safe display name.
+| @param raw Name from user input.
+|--
+public func display_name(raw: string) -> string
+    return raw.or("Anonymous")
+end
+```
+
+## Names
+
+Prefer names that explain the domain.
+
+```ori
+const retry_count: int = 3
+const account_balance: int = 1200
+```
+
+Avoid abbreviations that only make sense to the original author.
+
+## Strings
+
+Use normal strings for short messages.
+
+```ori
+const label: string = "Balance"
+```
+
+Use interpolation for messages with values.
+
+```ori
+const line: string = f"{label}: {account_balance}"
+```
+
+Use multiline strings when line breaks are part of the text.
+
+```ori
+const help: string = """
+Commands:
+  add
+  list
+  quit
+"""
+```
+
+## Bytes
+
+Use byte strings for short binary data.
+
+```ori
+const magic: bytes = b"ORI"
+```
+
+For larger operations, prefer `ori.bytes`, `ori.bytes.utils`, and `ori.bytes.algorithms`.
+
+## Numbers
+
+Ori accepts integers and floats with literal suffixes when exact width matters.
+
+```ori
+const total: int = 42
+const small: int8 = 12i8
+const ratio: float = 0.75
+const compact: float32 = 0.75f32
+```
+
+The suffix belongs to the literal.
+
+It is not the type name: use `int8` as the type and `i8` as the literal suffix.
+
+Without a suffix, integer literals are `int` and float literals are `float`.
+
+There is no implicit widening or narrowing. Use explicit conversions when needed.
+
+## Ranges
+
+Ranges appear in loops and use inclusive endpoints.
+
+```ori
+for index in 0..5
+    io.print(string(index))
+end
+```
+
+Use explicit bounds.
+
+Avoid hiding important rules in complex ranges.
+
+## Attributes
+
+`@test` marks test functions.
+
+```ori
+@test
+func withdraw_rejects_negative_amount()
+    check validate_amount(-1) == false, "negative amount must fail"
+end
+```
+
+`@deprecated("message")` marks APIs that still exist but should not be used in new code.
+
+```ori
+@deprecated("use calculate_total instead")
+public func total_old(value: int) -> int
+    return calculate_total(value)
+end
+```
+
+`@inline` hints the compiler to inline a function at call sites.
+
+`@no_inline` prohibits inlining.
+
+`@cfg("condition")` conditionally includes a declaration based on build config.
+
+Built-in attributes:
+
+| Attribute | Applies to | Effect |
+|---|---|---|
+| `@test` | `func` | Runs through `ori test` |
+| `@deprecated("msg")` | any declaration | Emits warning at use sites |
+| `@inline` | `func` | Hint to inline at call sites |
+| `@no_inline` | `func` | Prohibit inlining |
+| `@cfg("condition")` | any declaration | Conditionally include based on build config |
+
+Custom attributes are not part of the planned v1 contract.
+
+## Precedence
+
+When an expression mixes many operators, use parentheses for human reading.
+
+```ori
+const ok: bool = (amount > 0) and (balance >= amount)
+```
+
+Do not depend on every reader remembering the whole precedence table.
+
+| Level | Operators | Associativity |
+|---|---|---|
+| 1 | `.field` `call()` `[index]` | Left |
+| 2 | `?` | Postfix |
+| 3 | `-` (unary) `not` `try` | Prefix |
+| 4 | `*` `/` `%` | Left |
+| 5 | `+` `-` | Left |
+| 6 | `==` `!=` `<` `<=` `>` `>=` | Non-chainable |
+| 7 | `and` | Left |
+| 8 | `or` | Left |
+| 9 | `\|>` | Left |
+
+Comparison operators do not chain. `a < b < c` is a compile error.
+Use `a < b and b < c` instead.
+
+Readable code matters more than saving two characters.
+
+## Checklist
+
+- Comments explain decisions, not obvious code.
+- Public APIs have doc comments when exported.
+- Interpolated strings are used for messages with data.
+- Ranges have clear bounds.
+- Tests use `@test` close to the behavior they protect.
+- Parentheses appear when they help reading.
+
+Next: [Functions and closures](/language/functions-and-closures/).

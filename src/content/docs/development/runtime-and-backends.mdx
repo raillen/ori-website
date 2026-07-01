@@ -1,0 +1,69 @@
+---
+title: Backends and runtime
+description: Practical matrix for the native backend, C debug backend, JIT, AOT, linkers, and ORI variables.
+---
+
+Ori has more than one execution route.
+
+Not every route covers the same features.
+
+## Main routes
+
+| Route | Use | Status |
+|---|---|---|
+| Native Cranelift + AOT | Produce a native binary. | Current |
+| Native Cranelift + JIT | `ori run` without external linking when the cdylib exists. | Current |
+| C debug backend | Inspect lowering and debug language parts. | Partial |
+
+## JIT and AOT
+
+`ori run` uses JIT by default when the runtime cdylib is available.
+
+Use AOT when you need to test linking and binary generation.
+
+```bash
+ORI_USE_AOT=1 ori run app/main.orl
+```
+
+Use JIT explicitly:
+
+```bash
+ORI_USE_JIT=1 ori run app/main.orl
+```
+
+## Linker strategies
+
+| Variable | Effect |
+|---|---|
+| `ORI_NATIVE_LINKER` | Uses the provided raw linker route. |
+| `ORI_USE_BUNDLED_RUST_LLD=1` | Uses packaged `rust-lld` when available. |
+| `ORI_USE_SYSTEM_LINKER=1` | Uses the system linker. |
+| `ORI_USE_RUST_LLD=1` | Uses `rust-lld` through a compatible driver. |
+
+Use these variables to diagnose the environment, not to hide a build error.
+
+## Runtime
+
+The native runtime provides:
+
+- ARC and cooperative cycle collection;
+- managed strings, bytes, and collections;
+- I/O and filesystem;
+- async, task, channel, and atomic support;
+- FFI symbols called by generated code.
+
+## C backend limits
+
+The C backend is useful for debugging.
+
+It should not be presented as full parity.
+
+Features such as async, channels, and atomics belong to the native backend.
+
+## Checklist
+
+- Use `ori run` for fast feedback.
+- Use `ori compile` to validate a binary.
+- Use `ori doctor` before changing linker variables.
+- Mark async tutorials as native.
+- Do not promise C support for a feature the matrix does not cover.

@@ -28,6 +28,13 @@ This page gives a practical map.
 | Maps and sets | `ori.map`, `ori.set`, `ori.map.utils`, `ori.set.utils` |
 | Files and directories | `ori.fs`, `ori.fs.utils`, `ori.path` |
 | JSON | `ori.json`, `ori.json.utils` |
+| OS info and args | `ori.os`, `ori.args` |
+| Formatting | `ori.format` |
+| Config files | `ori.config` |
+| Logging | `ori.log` |
+| Memory inspection | `ori.mem` |
+| Type conversion | `ori.convert` |
+| Standard error type | `ori.Error` |
 
 ## Collections beyond `list`
 
@@ -80,6 +87,33 @@ const total: int = list_algorithms.sum_int([1, 2, 3])
 const title: string = string_utils.title("ori language guide")
 ```
 
+## Functional operations (`ori.iter`)
+
+```ori
+import ori.iter as iter
+
+iter.map<T, R>(values: list<T>, mapper: func(T) -> R) -> list<R>
+iter.filter<T>(values: list<T>, predicate: func(T) -> bool) -> list<T>
+iter.any<T>(values: list<T>, predicate: func(T) -> bool) -> bool
+iter.all<T>(values: list<T>, predicate: func(T) -> bool) -> bool
+iter.count_where<T>(values: list<T>, predicate: func(T) -> bool) -> int
+iter.take<T>(values: list<T>, n: int) -> list<T>
+iter.skip<T>(values: list<T>, n: int) -> list<T>
+iter.reverse<T>(values: list<T>) -> list<T>
+iter.reduce<T, R>(values: list<T>, initial: R, reducer: func(R, T) -> R) -> R
+iter.find<T>(values: list<T>, predicate: func(T) -> bool) -> optional<T>
+iter.flat_map<T, R>(values: list<T>, mapper: func(T) -> list<R>) -> list<R>
+iter.sort<T>(values: list<T>) -> list<T> where T is Comparable
+iter.sort_by<T>(values: list<T>, compare: func(T, T) -> int) -> list<T>
+iter.unique<T>(values: list<T>) -> list<T> where T is Equatable
+iter.zip<A, B>(a: list<A>, b: list<B>) -> list<tuple<A, B>>
+iter.partition<T>(values: list<T>, predicate: func(T) -> bool) -> tuple<list<T>, list<T>>
+iter.group_by<T, K>(values: list<T>, key: func(T) -> K) -> map<K, list<T>>
+iter.flatten<T>(nested: list<list<T>>) -> list<T>
+```
+
+All `iter.*` functions are eager: they return a new `list<T>` immediately.
+
 ## Files with explicit errors
 
 Filesystem functions return `result`.
@@ -100,6 +134,171 @@ func print_file(path: string)
 end
 ```
 
+### File handles
+
+```ori
+import ori.fs as fs
+
+using file: fs.File = try fs.open_read(path)
+const content: string = try fs.read_all(file)
+```
+
+Available functions:
+
+```ori
+fs.open_read(path: string)  -> result<fs.File, string>
+fs.open_write(path: string) -> result<fs.File, string>
+fs.read(file: fs.File, bytes_count: int) -> result<bytes, string>
+fs.write(file: fs.File, data: bytes)     -> result<int, string>
+fs.close(file: fs.File)                  -> void
+```
+
+### String operations
+
+```ori
+import ori.string as str
+
+str.len(s: string)                         -> int
+str.concat(a: string, b: string)           -> string
+str.split(s: string, sep: string)          -> list<string>
+str.contains(s: string, sub: string)       -> bool
+str.starts_with(s: string, prefix: string) -> bool
+str.ends_with(s: string, suffix: string)   -> bool
+str.trim(s: string)                        -> string
+str.to_upper(s: string)                    -> string
+str.to_lower(s: string)                    -> string
+str.replace(s: string, from: string, to: string) -> string
+str.slice(s: string, start: int, end: int) -> string
+str.chars(s: string)                       -> list<string>
+str.parse_int(s: string)                   -> result<int, string>
+str.parse_float(s: string)                 -> result<float, string>
+str.to_bytes(s: string)                    -> bytes
+str.from_bytes(b: bytes)                   -> result<string, string>
+```
+
+Additional `.orl` helpers:
+
+```ori
+import ori.string only (is_empty, truncate as cut)
+
+is_empty(s: string)                           -> bool
+blank(s: string)                              -> bool
+replicate(s: string, n: int)                  -> string
+replace_all(s: string, needle: string, replacement: string) -> string
+join_non_empty(parts: list<string>, separator: string) -> string
+truncate(s: string, max_len: int)             -> string
+```
+
+### Byte operations
+
+```ori
+import ori.bytes as bytes
+
+bytes.len(b: bytes)                          -> int
+bytes.concat(a: bytes, b: bytes)             -> bytes
+bytes.slice(b: bytes, start: int, end: int)  -> bytes
+bytes.to_hex(b: bytes)                       -> string
+bytes.from_hex(s: string)                    -> result<bytes, string>
+bytes.decode_utf8(b: bytes)                  -> result<string, string>
+bytes.get(b: bytes, index: int)              -> u8
+```
+
+### Math
+
+```ori
+import ori.math as math
+
+math.abs(x: int) -> int
+math.abs(x: float) -> float
+math.min(a: int, b: int) -> int
+math.min(a: float, b: float) -> float
+math.max(a: int, b: int) -> int
+math.max(a: float, b: float) -> float
+math.clamp(value: int, min: int, max: int) -> int
+math.floor(x: float) -> int
+math.ceil(x: float) -> int
+math.round(x: float) -> int
+math.sqrt(x: float) -> float
+math.pow(base: float, exp: float) -> float
+math.log(x: float) -> float
+math.log2(x: float) -> float
+math.sin(x: float) -> float
+math.cos(x: float) -> float
+math.tan(x: float) -> float
+math.is_nan(x: float) -> bool
+math.is_infinite(x: float) -> bool
+
+-- Constants:
+math.pi: float
+math.e: float
+math.infinity: float
+math.nan: float
+```
+
+### Random
+
+```ori
+import ori.random as random
+
+random.int(min: int, max: int) -> int       -- inclusive range
+random.float(min: float, max: float) -> float
+random.bool() -> bool
+random.choice<T>(items: list<T>) -> optional<T>
+random.shuffle<T>(items: list<T>) -> list<T>
+```
+
+### List helpers
+
+```ori
+import ori.list as lists
+
+-- Global built-in:
+len(items: list<T>) -> int
+
+-- Module helpers:
+lists.get_or<T>(items: list<T>, index: int, fallback: T) -> T
+lists.first_or<T>(items: list<T>, fallback: T) -> T
+lists.last_or<T>(items: list<T>, fallback: T) -> T
+lists.singleton<T>(item: T) -> list<T>
+lists.sum_int(items: list<int>) -> int
+lists.binary_search_int(items: list<int>, target: int) -> int
+lists.all_equal_int(items: list<int>, expected: int) -> bool
+```
+
+### JSON
+
+```ori
+import ori.json as json
+
+json.parse(text: string) -> result<json.Value, string>
+json.stringify(value: json.Value) -> string
+json.stringify_pretty(value: json.Value) -> string
+```
+
+The `json.Value` enum:
+
+```ori
+enum Value
+    Null
+    Bool(value: bool)
+    Number(value: float)
+    String(value: string)
+    Array(items: list<Value>)
+    Object(fields: map<string, Value>)
+end
+```
+
+### Type conversion
+
+```ori
+import ori.convert as conv
+
+conv.float_to_string(n: float)        -> string
+conv.bool_to_string(b: bool)          -> string
+conv.string_to_int(s: string)         -> optional<int>
+conv.string_to_float(s: string)       -> optional<float>
+```
+
 ## Concurrency foundation
 
 Native Ori supports tasks, futures, channels, and atomics.
@@ -112,6 +311,7 @@ Use these modules when you need explicit concurrent work:
 | Sleep and await futures | `ori.task` |
 | Send values between workers | `ori.channel` |
 | Shared integer counter | `ori.atomic` |
+| Cooperative cancellation | `ori.task` (CancelToken) |
 
 Small async example:
 
@@ -124,6 +324,143 @@ async func wait_then_answer() -> int
 end
 ```
 
+## System and OS
+
+```ori
+import ori.os as os
+
+os.args() -> list<string>        -- command-line arguments
+os.env(name: string) -> optional<string>
+os.exit(code: int)
+os.pid() -> int
+os.platform() -> string          -- "linux", "windows", "macos"
+os.arch() -> string              -- "x86_64", "aarch64", etc.
+```
+
+For CLI argument helpers:
+
+```ori
+import ori.args as args
+
+args.all() -> list<string>
+args.count() -> int
+args.get_or(index: int, fallback: string) -> string
+args.program_name_or(fallback: string) -> string
+```
+
+## Testing
+
+```ori
+import ori.test as test
+
+@test
+func test_addition()
+    check 1 + 1 == 2
+end
+
+-- Assertions:
+test.assert(condition: bool, message: string)
+test.assert_eq<T>(a: T, b: T)
+test.assert_ne<T>(a: T, b: T)
+test.fail(message: string)
+
+-- Memory:
+test.live_allocations() -> int
+test.collect_cycles() -> int
+test.assert_no_leaks(label: string)
+```
+
+Run tests with `ori test <file-or-project>`.
+Use `--filter <name>` to run only matching tests.
+
+## Formatting
+
+```ori
+import ori.format as format
+
+format.number(value: float, decimals: int) -> string
+format.percent(value: float, decimals: int) -> string
+format.hex(value: int) -> string
+format.binary(value: int) -> string
+format.date(millis: int, style: string) -> string
+format.bytes_size(bytes: int, style: string) -> string
+```
+
+## Time
+
+```ori
+import ori.time as time
+
+time.now() -> int                    -- Unix timestamp in milliseconds
+time.sleep(millis: int) -> void
+time.duration_ms(start: int, end: int) -> int
+
+-- Structured time:
+time.instant_now() -> time.Instant
+time.instant_from_unix_ms(value: int) -> time.Instant
+time.instant_to_unix_ms(value: time.Instant) -> int
+time.duration_millis(value: int) -> time.Duration
+time.duration_seconds(value: int) -> time.Duration
+time.duration_minutes(value: int) -> time.Duration
+time.duration_hours(value: int) -> time.Duration
+time.duration_to_millis(value: time.Duration) -> int
+time.elapsed_since(start: time.Instant) -> time.Duration
+time.between(start: time.Instant, finish: time.Instant) -> time.Duration
+time.add(value: time.Instant, duration: time.Duration) -> time.Instant
+time.sub(value: time.Instant, duration: time.Duration) -> time.Instant
+time.sleep_duration(duration: time.Duration) -> void
+```
+
+## Config helpers
+
+```ori
+import ori.config as config
+
+config.read_text(path: string) -> result<string, string>
+config.read_text_or(path: string, fallback: string) -> string
+config.write_text(path: string, content: string) -> result<string, string>
+config.read_json(path: string) -> result<json.Value, string>
+config.write_json(path: string, value: json.Value) -> result<string, string>
+```
+
+## Logging
+
+```ori
+import ori.log as log
+
+log.info(message: string)
+log.warn(message: string)
+log.error_message(message: string)
+log.debug(message: string)
+```
+
+`info`, `warn`, and `debug` write to stdout.
+`error_message` writes to stderr.
+
+## Memory inspection
+
+```ori
+import ori.mem as mem
+
+mem.size_of(value) -> int    -- size in bytes of value's static type
+mem.align_of(value) -> int   -- alignment in bytes
+```
+
+Both functions return compile-time constants.
+
+## Standard error type
+
+```ori
+import ori.Error as StdError
+
+struct ori.Error
+    code: string
+    message: string
+end
+
+const err: StdError = StdError(code: "E_IO", message: "could not read file")
+```
+
 ## Choosing the right module
 
 - Start with `list<T>` for simple ordered data.
@@ -133,5 +470,17 @@ end
 - Use `hash_table` when optional lookup and capacity control matter.
 - Use `tree` or `graph` only when the data is truly structural.
 - Use `result`-returning helpers at I/O boundaries.
+
+## Collection complexity
+
+| Family | Expected cost |
+|---|---|
+| `list` | `get`/`set` O(1), `push` amortized O(1), `insert`/`remove` O(n), `sort` O(n log n) |
+| `map`, `set`, `hash_table` | `get`/`set`/`contains`/`remove` average O(1), worst-case O(n) |
+| `deque`, `queue`, `stack` | Front/back push/pop O(1) amortized |
+| `linked_list`, `doubly_linked_list` | Cursor lookup O(n), front/back push/pop O(1) amortized |
+| `tree` | Node lookup O(1), traversal/find/clone O(n) |
+| `graph` | Node lookup linear in v1, traversal O(V + E) |
+| `heap` | `push`/`pop` O(log n), `peek` O(1) |
 
 Next: [Project tutorials](/cookbook/projects/).

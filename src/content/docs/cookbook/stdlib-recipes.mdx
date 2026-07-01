@@ -1,0 +1,127 @@
+---
+title: Stdlib recipes
+description: Small examples for using text, files, JSON, processes, collections, graphs, and concurrency.
+---
+
+This page shows short recipes.
+
+Use the reference when you need the full function list.
+
+## Text and conversion
+
+```ori
+import ori.string as strings
+import ori.convert.utils as convert_utils
+
+const name: string = strings.title("ori language")
+const port: int = convert_utils.parse_int_or("8080", 3000)
+```
+
+Use `*_or` helpers when there is a safe fallback.
+
+## Paths and files
+
+```ori
+import ori.path as path
+import ori.fs.utils as fs_utils
+
+const file_path: string = path.join(["data", "todo.json"])
+
+match fs_utils.exists_result(file_path)
+    case success(true):
+        io.print("file exists")
+    case success(false):
+        io.print("file missing")
+    case error(message):
+        io.print(message)
+end
+```
+
+## JSON
+
+```ori
+import ori.json.utils as json_utils
+
+func read_config(path: string) -> result<json.Value, string>
+    const value: json.Value = try json_utils.read(path).or_wrap("reading config")
+    return success(value)
+end
+```
+
+Use `json.utils.read` and `write_pretty` at persistence edges.
+
+Keep domain rules out of raw JSON.
+
+## Processes
+
+```ori
+import ori.process as process
+import ori.process.utils as process_utils
+
+const capture: map<string, string> = process.run_capture("ori", ["--version"])
+const code: int = process_utils.exit_code(capture)
+const out: string = process_utils.stdout(capture)
+```
+
+Use this in development tools, not pure domain logic.
+
+## Collections
+
+```ori
+import ori.list as lists
+import ori.set.utils as set_utils
+
+const total: int = lists.sum_int([1, 2, 3])
+const tags: set<string> = set_utils.from_list(["docs", "compiler"])
+```
+
+Start with `list<T>`.
+
+Move to `queue`, `stack`, `heap`, `tree`, or `graph` when the problem shape requires it.
+
+## Graphs
+
+```ori
+import ori.graph as graph
+import ori.graph.algorithms as graph_algorithms
+
+const routes: graph.Graph<string> = graph.new<string>()
+graph.add_node(routes, "home")
+graph.add_node(routes, "docs")
+graph.add_edge(routes, "home", "docs")
+
+const ok: bool = graph_algorithms.has_path(routes, "home", "docs")
+```
+
+Use graphs for dependencies, routes, and node relationships.
+
+## Concurrency
+
+```ori
+import ori.task as task
+import ori.atomic as atomic
+
+func compute() -> int
+    return 41
+end
+
+const counter: atomic.AtomicInt = atomic.new(0)
+const job: task.Job<int> = task.spawn(do() => compute())
+
+match task.join(job)
+    case success(value):
+        atomic.add(counter, value)
+    case error(_):
+        io.print("job failed")
+end
+```
+
+Use concurrency only when there is real independent work.
+
+## Checklist
+
+- Stdlib helpers stay close to the problem.
+- I/O returns `result` and is handled at the edge.
+- JSON does not replace domain types.
+- External processes stay outside pure rules.
+- Collection structure matches the main operation.

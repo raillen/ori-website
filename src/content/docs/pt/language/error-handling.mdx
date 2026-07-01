@@ -1,0 +1,175 @@
+---
+title: Tratamento de erros
+description: Como usar optional, result, try, ?, .or, .or_return, .or_wrap, erros tipados e panic.
+---
+
+Ori não usa exceções como fluxo comum.
+
+Ausência é `optional<T>`.
+
+Falha com motivo é `result<T, E>`.
+
+## `optional<T>`
+
+Use quando o valor pode não existir.
+
+```ori
+func find_book(id: int) -> optional<Book>
+    if id == 1
+        return some(Book(title: "Ori", author: "Team"))
+    end
+    return none
+end
+```
+
+Trate com `if some` quando só o caminho feliz importa.
+
+```ori
+if some(book) = find_book(1)
+    io.print(book.title)
+end
+```
+
+Trate com `match` quando os dois caminhos importam.
+
+```ori
+match find_book(2)
+    case some(book):
+        io.print(book.title)
+    case none:
+        io.print("not found")
+end
+```
+
+Use `.or(fallback)` quando existe um padrão seguro.
+
+```ori
+const display_name: string = maybe_name.or("Anonymous")
+```
+
+## `result<T, E>`
+
+Use quando a operação pode falhar e a falha tem motivo.
+
+```ori
+func divide(left: int, right: int) -> result<int, string>
+    if right == 0
+        return error("division by zero")
+    end
+    return success(left / right)
+end
+```
+
+Use `try` para propagar erro.
+
+```ori
+func double_division(left: int, right: int) -> result<int, string>
+    const value: int = try divide(left, right)
+    return success(value * 2)
+end
+```
+
+Use `?` quando o código fica mais claro e o retorno é compatível.
+
+```ori
+const value: int = divide(left, right)?
+```
+
+## `.or_return`
+
+Use `.or_return()` para desembrulhar ou sair cedo da função externa.
+
+A função externa precisa retornar um `optional` ou `result` compatível.
+
+```ori
+func title_if_found(id: int) -> optional<string>
+    const book: Book = find_book(id).or_return()
+    return some(book.title)
+end
+```
+
+Prefira `match` se a pessoa precisa ver a mensagem de erro ou ausência.
+
+## `.or_wrap`
+
+Use `.or_wrap("contexto")` para adicionar contexto ao erro.
+
+```ori
+func load_config(path: string) -> result<json.Value, string>
+    const value: json.Value = try json_utils.read(path).or_wrap("loading config")
+    return success(value)
+end
+```
+
+Isso ajuda a pessoa leitora a saber em qual etapa a falha aconteceu.
+
+## `success()` sem payload
+
+Use `success()` apenas quando a função retorna `result<void, E>`.
+
+```ori
+func save(book: Book) -> result<void, string>
+    -- write the book
+    return success()
+end
+```
+
+## Erros tipados
+
+Use enum quando o domínio tem falhas conhecidas.
+
+```ori
+enum BankError
+    InvalidAmount
+    InsufficientFunds(balance: int)
+end
+
+func withdraw(balance: int, amount: int) -> result<int, BankError>
+    if amount <= 0
+        return error(BankError.InvalidAmount)
+    end
+    if balance < amount
+        return error(BankError.InsufficientFunds(balance: balance))
+    end
+    return success(balance - amount)
+end
+```
+
+Na borda do terminal, converta para texto.
+
+```ori
+match withdraw(10, 30)
+    case success(next):
+        io.print(f"balance: {next}")
+    case error(InvalidAmount):
+        io.print("amount must be positive")
+    case error(InsufficientFunds(balance)):
+        io.print(f"insufficient funds: {balance}")
+end
+```
+
+## `panic`, `todo` e `unreachable`
+
+Use com cuidado.
+
+| Forma | Uso |
+|---|---|
+| `panic("message")` | Falha que deve encerrar a execução. |
+| `todo("message")` | Trecho intencionalmente incompleto. |
+| `unreachable("message")` | Caminho que a lógica não deveria permitir. |
+
+Não use `panic` para erro esperado de usuário.
+
+Use `result`.
+
+## Checklist
+
+- Valor ausente usa `optional<T>`.
+- Falha com motivo usa `result<T, E>`.
+- `try` aparece em funções que também retornam `result`.
+- `.or` só aparece quando existe fallback seguro.
+- `.or_wrap` adiciona contexto útil.
+- Erros de domínio viram enum.
+- `panic` não substitui validação normal.
+
+Próximo: [Recursos e memória](/pt/language/resources-and-memory/).

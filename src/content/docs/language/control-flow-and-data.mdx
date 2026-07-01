@@ -31,6 +31,45 @@ const book: Book = Book(
 
 Fields are named at construction. This keeps call sites readable.
 
+### Field contracts
+
+Fields can declare a validation rule with `if it`:
+
+```ori
+struct Rectangle
+    width: int  if it > 0
+    height: int if it > 0
+end
+```
+
+`it` refers to the field value being validated. Contracts are checked at construction time and on mutation. A violation is a runtime panic.
+
+### Anonymous struct form
+
+When the expected type is already visible, use the anonymous struct form:
+
+```ori
+const short_book: Book = .{
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    year: 2008,
+}
+```
+
+Use the full `Book(...)` form when there is no expected type nearby.
+
+### Struct update
+
+To copy a struct with a few changed fields, use `with`:
+
+```ori
+const newer_book: Book = book with {
+    year: 2009,
+} end
+```
+
+`with` creates a new value. It does not mutate the original binding.
+
 ## Enums and `match`
 
 Use an `enum` for state that has a fixed set of cases.
@@ -47,18 +86,54 @@ Handle the state with `match`:
 
 ```ori
 match command
-    case Add(title):
+    case Command.Add(title):
         io.print(f"adding {title}")
-    case List:
+    case Command.List:
         io.print("listing")
-    case Quit:
+    case Command.Quit:
         io.print("bye")
 end
 ```
 
-Use `case else` only when there is a real fallback.
+`match` must be exhaustive: every possible value must be covered.
+Use `case else` as the explicit fallback for non-exhaustive cases.
+
+```ori
+match command
+    case Command.Add(title):
+        io.print(f"adding {title}")
+    case else:
+        io.print("unknown command")
+end
+```
 
 For domain states, prefer naming every case.
+
+When the expected enum type is visible, the enum name can be omitted:
+
+```ori
+const command: Command = .List
+const add: Command = .Add(title: "Clean Code")
+```
+
+Payload variants use named arguments inside `(...)` in the current compiler.
+
+### Guards
+
+Guards help when a case needs an extra condition:
+
+```ori
+match score
+    case n if n >= 90:
+        io.print("A")
+    case n if n >= 80:
+        io.print("B")
+    case else:
+        io.print("C")
+end
+```
+
+Guarded cases do not count toward exhaustiveness.
 
 ## `optional<T>`
 
@@ -178,6 +253,31 @@ Empty collections need a type annotation:
 ```ori
 const empty_names: list<string> = []
 const empty_scores: map<string, int> = {}
+```
+
+## Ranges and slices
+
+Ranges are inclusive and can be descending:
+
+```ori
+for index in 0..3
+    io.print(string(index)) -- 0, 1, 2, 3
+end
+
+for index in 3..0
+    io.print(string(index)) -- 3, 2, 1, 0
+end
+```
+
+Float ranges are not part of the current language. Use an explicit loop or iterator helper when a floating-point step is needed.
+
+Slices use an exclusive end:
+
+```ori
+const middle: list<string> = names[1..3]
+const tail: list<string> = names[1..]
+const head: list<string> = names[..3]
+const copy: list<string> = names[..]
 ```
 
 ## Clean flow checklist

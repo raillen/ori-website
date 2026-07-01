@@ -1,0 +1,80 @@
+---
+title: Arquitetura da stdlib
+description: Como a biblioteca padrão da Ori é dividida entre runtime, wrappers .orl e algoritmos .orl.
+---
+
+A stdlib da Ori tem três camadas.
+
+Essa divisão evita misturar ABI de runtime com código de biblioteca comum.
+
+## Camada 1: runtime
+
+Implementada em Rust no runtime nativo.
+
+Responsável por:
+
+- ARC;
+- async executor;
+- I/O;
+- alocação de strings e bytes;
+- FFI de coleções;
+- chamadas de sistema de baixo nível.
+
+Essa camada é o contrato ABI entre código gerado e runtime.
+
+## Camada 2: wrappers `.orl`
+
+Wrappers seguros e helpers pequenos escritos em Ori.
+
+Exemplos:
+
+- `ori.validate`;
+- `ori.path`;
+- `ori.fs.utils`;
+- `ori.json.utils`;
+- `ori.string.utils`;
+- `ori.list.utils`;
+- `ori.process.utils`.
+
+Use essa camada para ergonomia sem duplicar runtime.
+
+## Camada 3: algoritmos `.orl`
+
+Algoritmos puros escritos em Ori.
+
+Exemplos:
+
+- `ori.list.algorithms`;
+- `ori.tree.algorithms`;
+- `ori.graph.algorithms`;
+- `ori.map.algorithms`;
+- `ori.set.algorithms`;
+- `ori.string.algorithms`;
+- `ori.bytes.algorithms`;
+- `ori.math.algorithms`.
+
+Essa camada é boa para tutoriais porque mostra a linguagem escrevendo biblioteca.
+
+## Resolução da stdlib
+
+A raiz da stdlib segue esta ordem:
+
+1. `ORI_STDLIB_ROOT`;
+2. layout de desenvolvimento do workspace;
+3. `stdlib` ao lado do executável empacotado.
+
+## Ao adicionar função
+
+Para Layer 2 ou 3:
+
+1. Crie arquivo em `stdlib/<modulo>.orl`.
+2. Use namespace `ori.<modulo>`.
+3. Marque função pública com `public`.
+4. Adicione teste de regressão.
+5. Atualize docs quando a API for pública.
+
+## Limitações atuais
+
+- Alguns helpers usam tipos concretos como `string` e `int`.
+- Funções genéricas recursivas ainda têm limites no typechecker.
+- O backend C não deve ser usado como prova de paridade total da stdlib.

@@ -1,0 +1,111 @@
+---
+title: Mapa da linguagem
+description: Um mapa de recursos da Ori, com status, uso recomendado e links para guias práticos.
+---
+
+Esta página mostra o que a linguagem oferece hoje.
+
+Use como checklist de estudo.
+
+Use também para decidir qual guia ler em seguida.
+
+## Núcleo da linguagem
+
+| Tema | Status | Leia |
+|---|---|---|
+| Tipos primitivos, structs, enums, tuples | Atual | [Tipos e valores](/pt/language/types/) |
+| `optional<T>` e `result<T, E>` | Atual | [Tratamento de erros](/pt/language/error-handling/) |
+| `if`, `match`, `for`, `while`, `repeat` | Atual | [Statements e padrões](/pt/language/statements-and-patterns/) |
+| Funções, métodos, closures e genéricos | Atual | [Funções e closures](/pt/language/functions-and-closures/) |
+| Traits, `implement`, `any<Trait>` | Atual | [Traits avançadas](/pt/language/advanced-traits/) |
+| Módulos locais e imports públicos | Atual | [Módulos e imports](/pt/language/modules-and-imports/) |
+| `using`, `Disposable`, ARC e coletor de ciclos | Atual | [Recursos e memória](/pt/language/resources-and-memory/) |
+| `async func`, `await`, tasks, channels, atomics | Atual no backend nativo | [Async e concorrência](/pt/language/async-and-concurrency/) |
+
+## Atalhos práticos
+
+Estas formas ajudam a reduzir repetição sem esconder os tipos.
+
+| Atalho | Uso |
+|---|---|
+| `const book: Book = .{ ... }` | Criar um struct quando o tipo esperado já está visível. |
+| `value with { field: next } end` | Copiar um struct mudando só alguns campos. |
+| `.North` e `.Circle(radius: 5.0)` | Criar uma variante de enum quando o tipo esperado é conhecido. Variantes com payload usam `(...)` hoje. |
+| <code>value &vert;> transform &vert;> render</code> | Passar o valor da esquerda como primeiro argumento da próxima chamada. |
+| `fallible()?` | Forma curta de `try fallible()`. |
+| `maybe.or(fallback)` | Usar um fallback seguro para `optional<T>` ou `result<T, E>`. |
+| `maybe.or_return()` | Desembrulhar ou propagar a partir de uma função que também retorna `optional`/`result` compatível. |
+| `result.or_wrap("contexto")` | Adicionar contexto de texto antes de propagar `result<T, string>`. |
+| `if some(value) = maybe` | Capturar o caminho feliz de um `optional<T>`. |
+| `while some(value) = source.next()` | Repetir até uma fonte opcional retornar `none`. |
+| `repeat 3 times` | Rodar uma contagem fixa; `times` é opcional e só melhora a leitura. |
+| `0..9` e `9..0` | Ranges inclusivos, inclusive descendentes. |
+| `items[2..]`, `items[..5]`, `items[..]` | Fatiar a partir de um índice, até um fim exclusivo, ou copiar tudo. |
+| `total(..parts)` | Espalhar uma `list<T>` em um parâmetro variádico. |
+| `connect(host: "...", port: 80)` | Usar argumentos nomeados quando a ordem pode confundir. |
+| `do(n: int) => n * 2` | Closure curta. |
+| `iter.filter(items, is_visible)` | Passar uma função nomeada onde um callback é esperado. |
+| `using file: fs.File = open()?` | Declarar um recurso e liberar ao sair do escopo. |
+| `success()` | Retornar sucesso de `result<void, E>` sem payload. |
+| `import ori.string only (is_empty, truncate as cut)` | Importar só os nomes usados pelo arquivo. |
+| `public import app.orders as orders` | Reexportar um namespace por uma fachada. |
+| `any<Displayable>` | Usar despacho dinâmico quando tipos concretos diferentes compartilham uma trait. |
+| `Printable.output(value)` | Desambiguar dois métodos de traits com o mesmo nome. |
+| `f"... {value} ..."`, `"""..."""`, `b"ORI"` | Usar strings interpoladas, multilinha e bytes. |
+| `const empty: list<int> = []` | Dar tipo explícito para coleções vazias. |
+| `const n: int8 = 12i8` | Colocar largura de bits no literal com sufixo; o nome do tipo continua sendo `int8`. |
+
+## Escrita e leitura
+
+| Recurso | Quando usar |
+|---|---|
+| Comentário de linha `--` | Explicar uma decisão pequena perto do código. |
+| Comentário de bloco `--[[ ... ]]` | Explicar uma região curta sem quebrar o fluxo. |
+| Comentário de documentação `--| ... |--` | Gerar documentação com `ori doc`. |
+| Strings interpoladas `f"..."` | Montar mensagens legíveis. |
+| Strings multilinha | Textos longos, templates e mensagens de ajuda. |
+| Byte strings | Dados binários curtos e testes de bytes. |
+| Ranges `1..5` | Iteração e fatias. |
+| Atributos `@test` e `@deprecated` | Testes e evolução de API. |
+
+Veja: [Léxico e escrita](/pt/language/lexical-writing/).
+
+## Biblioteca padrão
+
+| Família | Exemplos |
+|---|---|
+| Texto | `ori.string`, `ori.string.utils`, `ori.string.algorithms` |
+| Coleções | `ori.list`, `ori.map`, `ori.set`, `ori.queue`, `ori.stack`, `ori.heap` |
+| Arquivos e caminhos | `ori.fs`, `ori.fs.utils`, `ori.path` |
+| JSON | `ori.json`, `ori.json.utils` |
+| Concorrência | `ori.task`, `ori.channel`, `ori.atomic` |
+| Sistema | `ori.os`, `ori.process`, `ori.time` |
+| Testes | `ori.test`, `ori.test.utils` |
+
+Veja: [Stdlib na prática](/pt/language/stdlib-in-practice/) e [Receitas de stdlib](/pt/cookbook/stdlib-recipes/).
+
+## Ferramentas
+
+| Comando | Uso |
+|---|---|
+| `ori check` | Validar código sem gerar binário. |
+| `ori run` | Executar programa, usando JIT quando disponível. |
+| `ori compile` | Gerar binário nativo. |
+| `ori test` | Rodar funções marcadas com `@test`. |
+| `ori fmt` | Formatar código. |
+| `ori doc file` | Extrair docs de um arquivo. |
+| `ori doc export` | Exportar JSON para o site. |
+| `ori doctor` | Diagnosticar ambiente. |
+| `ori explain` | Explicar diagnóstico. |
+| `ori summary` | Ver grafo de imports. |
+
+Veja: [Fluxos da CLI](/pt/cli/workflows/).
+
+## Limitações importantes
+
+- O backend C é um caminho de debug e não cobre tudo que o backend nativo cobre.
+- Async, channels e atomics pertencem ao caminho nativo.
+- `install` e `publish` aparecem como direção de CLI, mas ainda não são comandos de uso final.
+- Alguns helpers da stdlib usam tipos concretos, como `string` e `int`, enquanto a camada de traits amadurece.
+
+Próximo: [Léxico e escrita](/pt/language/lexical-writing/).

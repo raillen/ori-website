@@ -1,0 +1,65 @@
+---
+title: Loader de configuração
+description: Carregue configuração combinando env vars, path, json.utils, result e .or_wrap.
+---
+
+Objetivo: carregar configuração de forma previsível.
+
+O programa procura `APP_CONFIG`.
+
+Se não existir, usa `config/app.json`.
+
+## Config
+
+```ori
+namespace config.loader
+
+import ori.os.utils as os_utils
+import ori.path as path
+import ori.json as json
+import ori.json.utils as json_utils
+
+public func default_path() -> string
+    return path.join(["config", "app.json"])
+end
+
+public func configured_path() -> string
+    return os_utils.env_or("APP_CONFIG", default_path())
+end
+
+public func load() -> result<json.Value, string>
+    const file_path: string = configured_path()
+    const value: json.Value =
+        try json_utils.read(file_path).or_wrap("loading application config")
+    return success(value)
+end
+```
+
+## Main
+
+```ori
+namespace config.main
+
+import ori.io as io
+import config.loader as config
+
+func main()
+    match config.load()
+        case success(_):
+            io.print("config loaded")
+        case error(message):
+            io.print(f"config error: {message}")
+    end
+end
+```
+
+## O que este projeto ensina
+
+- `env_or` deixa fallback explícito.
+- `path.join` evita concatenar separador manualmente.
+- `.or_wrap` adiciona contexto de etapa.
+- `main` decide como apresentar erro.
+
+## Próximo passo
+
+Valide campos obrigatórios depois de carregar o JSON.

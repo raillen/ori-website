@@ -1,0 +1,159 @@
+---
+title: Léxico e escrita
+description: Como comentários, literais, strings, ranges, atributos e precedência ajudam a escrever Ori legível.
+---
+
+Esta página cobre os detalhes de escrita que aparecem antes da lógica.
+
+Eles parecem pequenos, mas afetam muito a leitura.
+
+## Comentários
+
+Use `--` para comentário curto.
+
+```ori
+-- Esta regra evita saldo negativo.
+check amount > 0, "amount must be positive"
+```
+
+Use comentário de bloco apenas quando um parágrafo curto ajuda.
+
+```ori
+--[[
+The parser keeps this case explicit because the error message
+is better than failing later in type checking.
+]]
+```
+
+Use comentário de documentação quando a API é pública.
+
+```ori
+--| Returns a safe display name.
+| @param raw Name from user input.
+|--
+public func display_name(raw: string) -> string
+    return raw.or("Anonymous")
+end
+```
+
+## Nomes
+
+Prefira nomes que expliquem o domínio.
+
+```ori
+const retry_count: int = 3
+const account_balance: int = 1200
+```
+
+Evite abreviações que só fazem sentido para quem escreveu.
+
+## Strings
+
+Use strings comuns para mensagens curtas.
+
+```ori
+const label: string = "Balance"
+```
+
+Use interpolação para mensagens com valores.
+
+```ori
+const line: string = f"{label}: {account_balance}"
+```
+
+Use string multilinha quando a quebra de linha faz parte do texto.
+
+```ori
+const help: string = """
+Commands:
+  add
+  list
+  quit
+"""
+```
+
+## Bytes
+
+Use byte strings para dados binários curtos.
+
+```ori
+const magic: bytes = b"ORI"
+```
+
+Para operações maiores, prefira `ori.bytes`, `ori.bytes.utils` e `ori.bytes.algorithms`.
+
+## Números
+
+Ori aceita inteiros e floats com sufixos no literal quando a largura exata importa.
+
+```ori
+const total: int = 42
+const small: int8 = 12i8
+const ratio: float = 0.75
+const compact: float32 = 0.75f32
+```
+
+O sufixo pertence ao literal.
+
+Ele não é o nome do tipo: use `int8` como tipo e `i8` como sufixo do literal.
+
+Sem sufixo, literais inteiros são `int` e literais decimais são `float`.
+
+Não existe widening ou narrowing implícito. Use conversões explícitas quando precisar.
+
+## Ranges
+
+Ranges aparecem em loops e usam limites inclusivos.
+
+```ori
+for index in 0..5
+    io.print(string(index))
+end
+```
+
+Use limites explícitos.
+
+Evite esconder regras importantes em ranges complexos.
+
+## Atributos
+
+`@test` marca funções de teste.
+
+```ori
+@test
+func withdraw_rejects_negative_amount()
+    check validate_amount(-1) == false, "negative amount must fail"
+end
+```
+
+`@deprecated("mensagem")` marca APIs que ainda existem, mas não devem ser usadas em código novo.
+
+```ori
+@deprecated("use calculate_total instead")
+public func total_old(value: int) -> int
+    return calculate_total(value)
+end
+```
+
+## Precedência
+
+Quando a expressão mistura muitos operadores, use parênteses para leitura humana.
+
+```ori
+const ok: bool = (amount > 0) and (balance >= amount)
+```
+
+Não dependa da pessoa lembrar a tabela inteira de precedência.
+
+Código legível é mais importante que economizar dois caracteres.
+
+## Checklist
+
+- Comentários explicam decisões, não repetem código óbvio.
+- APIs públicas têm doc comments quando serão exportadas.
+- Strings interpoladas são usadas para mensagens com dados.
+- Ranges têm limites claros.
+- Testes usam `@test` perto do comportamento que protegem.
+- Parênteses aparecem quando ajudam a leitura.
+
+Próximo: [Funções e closures](/pt/language/functions-and-closures/).

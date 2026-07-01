@@ -1,0 +1,224 @@
+---
+title: Functions and closures
+description: Function declarations, methods, named parameters, defaults, contracts, variadics, closures, and generics.
+---
+
+Ori functions should make intent, types, and failure visible.
+
+Use small functions for domain rules.
+
+Use `main` to connect parts and perform I/O.
+
+## Basic declaration
+
+```ori
+func add(left: int, right: int) -> int
+    return left + right
+end
+```
+
+When there is no useful return value, omit the type or use `void` when the signature must be explicit.
+
+```ori
+func print_total(total: int)
+    io.print(f"total: {total}")
+end
+```
+
+## Named parameters
+
+Use names at call sites when order may confuse the reader.
+
+```ori
+func transfer(from: string, to: string, amount: int) -> result<void, string>
+    check amount > 0, "amount must be positive"
+    return success()
+end
+
+transfer(from: "checking", to: "savings", amount: 50)
+```
+
+After one named argument is used, every later argument in that call must also be named.
+
+## Default values
+
+Defaults reduce repetition without hiding important behavior.
+
+```ori
+func retry(label: string, attempts: int = 3)
+    io.print(f"{label}: {attempts}")
+end
+```
+
+Use defaults for operational detail.
+
+Do not use defaults for business rules the caller should choose.
+
+## Value contracts
+
+Parameters can declare a local rule with `if it`.
+
+```ori
+func withdraw(amount: int if it > 0) -> result<int, string>
+    return success(amount)
+end
+```
+
+Use contracts for simple invariants.
+
+For validations with richer messages, prefer a named function.
+
+## Variadics and spread
+
+Use `...` when a function receives several values of the same type.
+
+```ori
+func total(values: int...) -> int
+    var sum: int = 0
+    for value in values
+        sum = sum + value
+    end
+    return sum
+end
+
+const values: list<int> = [1, 2, 3]
+const answer: int = total(..values)
+```
+
+Use variadics for small call-site lists.
+
+Use `list<T>` when the data is already a domain collection.
+
+## Methods
+
+Methods live inside the `struct` block they operate on. They receive an implicit `self` parameter.
+
+```ori
+struct Counter
+    value: int
+
+    func current() -> int
+        return self.value
+    end
+end
+```
+
+Use `mut func` when the method changes the value.
+
+```ori
+struct Counter
+    value: int
+
+    mut func increment()
+        self.value = self.value + 1
+    end
+
+    func current() -> int
+        return self.value
+    end
+end
+```
+
+Calling a `mut func` on a `const` binding is a compile error:
+
+```ori
+const c: Counter = Counter(value: 0)
+c.increment()    -- Error: cannot call mut func on const binding
+
+var c: Counter = Counter(value: 0)
+c.increment()    -- OK
+```
+
+Methods declared in a `struct` block are not required to be in an `implement` block (they are "inherent methods").
+
+## Closures
+
+Use `do` for a short anonymous function.
+
+```ori
+const doubled: list<int> = iter.map(numbers, do(n: int) => n * 2)
+```
+
+For more than one rule, give the rule a name.
+
+```ori
+func is_visible(task: Task) -> bool
+    return task.done == false
+end
+```
+
+Closures capture values in a controlled way.
+
+Do not use long closures to hide logic.
+
+## Higher-order functions
+
+A function can receive another function.
+
+```ori
+func count_matching(items: list<int>, accepts: func(int) -> bool) -> int
+    var total: int = 0
+    for item in items
+        if accepts(item)
+            total = total + 1
+        end
+    end
+    return total
+end
+```
+
+Use this to separate “how to traverse” from “which rule to apply”.
+
+A named function can be passed directly as the callback:
+
+```ori
+func is_even(value: int) -> bool
+    return value % 2 == 0
+end
+
+const even_count: int = count_matching(numbers, is_even)
+```
+
+## Generics
+
+Use generics when the rule is the same for many types.
+
+```ori
+func first_or<T>(items: list<T>, fallback: T) -> T
+    if len(items) == 0
+        return fallback
+    end
+    return items[0]
+end
+```
+
+If the rule depends on equality, ordering, or hashing, use traits.
+
+## Async functions
+
+Use `async func` when a function needs to await futures.
+
+```ori
+import ori.task as task
+
+async func load_count() -> int
+    await task.sleep(1)
+    return 41
+end
+```
+
+An `async func` returns `future<T>`. Use `await` only inside `async func`.
+
+See [Async and concurrency](/language/async-and-concurrency/) for details.
+
+## Checklist
+
+- The signature shows important types.
+- Named parameters appear in ambiguous calls.
+- Defaults do not hide business rules.
+- `if it` contracts stay simple.
+- Variadics improve the call site.
+- Closures stay short.
+- Named rules become named functions.
+
+Next: [Statements and patterns](/language/statements-and-patterns/).

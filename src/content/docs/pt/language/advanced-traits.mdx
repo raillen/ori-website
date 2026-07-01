@@ -1,0 +1,165 @@
+---
+title: Traits avançadas
+description: Como usar trait, implement, métodos padrão, Self, operator traits, Iterable, From, Error e any<Trait>.
+---
+
+Traits descrevem comportamento.
+
+Use trait quando tipos diferentes precisam cumprir o mesmo contrato.
+
+Use composição quando um tipo precisa conter outro.
+
+## Trait simples
+
+```ori
+trait Displayable
+    func display(self: Self) -> string
+end
+```
+
+Um tipo implementa a trait com `implement`.
+
+```ori
+struct Book
+    title: string
+end
+
+implement Displayable for Book
+    func display(self: Book) -> string
+        return self.title
+    end
+end
+```
+
+## Métodos padrão
+
+Traits podem oferecer comportamento padrão.
+
+```ori
+trait Named
+    func name(self: Self) -> string
+
+    func label(self: Self) -> string
+        return f"name: {self.name()}"
+    end
+end
+```
+
+Use default quando a regra é verdadeira para quase todos os tipos.
+
+Não esconda comportamento surpreendente em default.
+
+## `Self`
+
+Use `Self` para referir ao tipo que implementa a trait.
+
+```ori
+trait Cloneable
+    func clone(self: Self) -> Self
+end
+```
+
+Isso evita repetir o tipo concreto dentro da declaração do contrato.
+
+## `mut func`
+
+Traits podem exigir método mutável.
+
+```ori
+trait Resettable
+    mut func reset(self: Self)
+end
+```
+
+Use quando o comportamento altera o próprio valor.
+
+## Traits de operadores
+
+Traits padrão permitem que tipos participem de operações conhecidas.
+
+| Trait | Uso |
+|---|---|
+| `Equatable` | Igualdade. |
+| `Comparable` | Ordenação. |
+| `Hashable` | Chave de hash. |
+| `Addable` | Soma customizada. |
+| `Subtractable` | Subtração customizada. |
+
+Use com cuidado.
+
+Um operador deve fazer o que a pessoa espera.
+
+## `Iterable`
+
+`Iterable` permite usar um tipo em `for`.
+
+```ori
+for item in collection
+    io.print(item.display())
+end
+```
+
+Na implementação atual, siga a forma aceita pelo parser para traits genéricas da stdlib.
+
+Quando estiver em dúvida, confira a referência gerada e os testes.
+
+## `From<T>`
+
+Use `From<T>` para conversão explícita.
+
+```ori
+trait From<T>
+    func from(value: T) -> Self
+end
+```
+
+Prefira conversões explícitas para evitar surpresa.
+
+## `Error`
+
+Tipos de erro podem implementar uma trait de erro.
+
+Isso ajuda APIs que querem aceitar erros de domínio sem perder o contrato.
+
+```ori
+enum ConfigError
+    MissingFile
+    InvalidJson
+end
+```
+
+## Métodos de traits ambíguos
+
+Quando duas traits definem o mesmo método para o mesmo valor, chame pelo nome da trait.
+
+```ori
+Printable.output(value)
+Loggable.output(value)
+```
+
+Use isso apenas quando a sintaxe comum de método ficaria ambígua.
+
+## `any<Trait>`
+
+Use `any<Trait>` para despacho dinâmico.
+
+```ori
+func print_item(item: any<Displayable>)
+    io.print(item.display())
+end
+```
+
+Prefira genéricos quando não precisa misturar tipos diferentes.
+
+`any<Trait>` é útil quando a coleção ou API recebe várias implementações.
+
+## Checklist
+
+- Trait tem nome de comportamento, não de dado.
+- Método padrão é previsível.
+- `mut func` aparece apenas quando há mutação.
+- Operadores seguem expectativa natural.
+- `any<Trait>` é usado quando despacho dinâmico é necessário.
+- Conversões ficam explícitas.
+
+Próximo: [Stdlib na prática](/pt/language/stdlib-in-practice/).

@@ -1,0 +1,80 @@
+---
+title: Standard library architecture
+description: How Ori's standard library is split between runtime, .orl wrappers, and .orl algorithms.
+---
+
+Ori's stdlib has three layers.
+
+This separation avoids mixing runtime ABI with ordinary library code.
+
+## Layer 1: runtime
+
+Implemented in Rust in the native runtime.
+
+Responsible for:
+
+- ARC;
+- async executor;
+- I/O;
+- string and byte allocation;
+- collection FFI;
+- low-level system calls.
+
+This layer is the ABI contract between generated code and runtime.
+
+## Layer 2: `.orl` wrappers
+
+Safe wrappers and small helpers written in Ori.
+
+Examples:
+
+- `ori.validate`;
+- `ori.path`;
+- `ori.fs.utils`;
+- `ori.json.utils`;
+- `ori.string.utils`;
+- `ori.list.utils`;
+- `ori.process.utils`.
+
+Use this layer for ergonomics without duplicating runtime.
+
+## Layer 3: `.orl` algorithms
+
+Pure algorithms written in Ori.
+
+Examples:
+
+- `ori.list.algorithms`;
+- `ori.tree.algorithms`;
+- `ori.graph.algorithms`;
+- `ori.map.algorithms`;
+- `ori.set.algorithms`;
+- `ori.string.algorithms`;
+- `ori.bytes.algorithms`;
+- `ori.math.algorithms`.
+
+This layer is good for tutorials because it shows the language writing library code.
+
+## Stdlib resolution
+
+The stdlib root follows this order:
+
+1. `ORI_STDLIB_ROOT`;
+2. workspace development layout;
+3. `stdlib` beside the packaged executable.
+
+## Adding a function
+
+For Layer 2 or 3:
+
+1. Create a file under `stdlib/<module>.orl`.
+2. Use namespace `ori.<module>`.
+3. Mark public functions with `public`.
+4. Add a regression test.
+5. Update docs when the API is public.
+
+## Current limits
+
+- Some helpers use concrete types such as `string` and `int`.
+- Recursive generic functions still have typechecker limits.
+- The C backend should not be used as proof of full stdlib parity.

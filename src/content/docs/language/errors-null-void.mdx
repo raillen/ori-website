@@ -10,7 +10,41 @@ description: Mental model for void, optional, result, and check in Ori.
 | **void** | No value | `func f() -> void` |
 | **optional** | Maybe absent | `io.read_line()` → `none` at EOF |
 | **result** | Success or failure | `fs.read_text(path)` |
-| **check** | Compiler validation | `ori check file.orl` |
+| **check** | Programmer assertion | `check count >= 0` |
+
+## `void`
+
+A function that returns nothing may omit the return type or use `void`:
+
+```ori
+func log(message: string)
+    io.print(message)
+end
+
+func explicit_void() -> void
+    io.print("explicit")
+end
+```
+
+When a function returns `void`, `return` with no value exits early.
+
+## `optional<T>`
+
+Represents a value that may be absent. There is no `null`.
+
+```ori
+const name: optional<string> = some("Ada")
+const empty: optional<string> = none
+```
+
+## `result<T, E>`
+
+Represents an operation that may succeed or fail.
+
+```ori
+const ok: result<int, string>  = success(42)
+const bad: result<int, string> = error("something went wrong")
+```
 
 ## Handling `result`
 
@@ -33,5 +67,21 @@ match io.read_line()
         io.print("EOF")
 end
 ```
+
+## `check`
+
+Use `check` for programmer assertions that must hold. A failed `check` is a non-recoverable panic.
+
+```ori
+check count >= 0, "count must not be negative"
+check index < len(items), "index out of range"
+```
+
+**Difference from `if` value contracts:**
+`check` is imperative — called explicitly at a point in the code.
+`if` contracts on fields and parameters are declarative — checked automatically at construction or call time.
+
+Use `result<T, E>` for expected, recoverable failures.
+Use `check` when failure means a programming error.
 
 Use `ori explain <code>` for diagnostic help — see [Error catalog](/reference/errors/).

@@ -1,0 +1,100 @@
+---
+title: Padrões de tratamento de erro
+description: Receitas para escolher optional, result, match, try, .or, .or_wrap e erros de domínio em Ori.
+---
+
+Tratamento de erro bom é previsível.
+
+A pessoa leitora deve saber onde a falha nasce, onde ganha contexto e onde vira mensagem.
+
+## Escolha o tipo certo
+
+| Situação | Use |
+|---|---|
+| Valor pode não existir | `optional<T>` |
+| Operação pode falhar com motivo | `result<T, E>` |
+| Falha é erro de programação | `check` ou `panic` |
+| Falha pertence ao domínio | `enum` de erro |
+
+## Validação simples
+
+```ori
+func parse_amount(raw: string) -> result<int, string>
+    const amount: int = convert_utils.parse_int_or(raw, -1)
+    if amount <= 0
+        return error("amount must be positive")
+    end
+    return success(amount)
+end
+```
+
+Use `result` porque entrada inválida é normal em programa de terminal.
+
+## Adicionar contexto
+
+```ori
+func load_settings(path: string) -> result<json.Value, string>
+    const value: json.Value =
+        try json_utils.read(path).or_wrap("loading settings")
+    return success(value)
+end
+```
+
+O erro final diz em qual etapa a falha ocorreu.
+
+## Traduzir erro na borda
+
+```ori
+func print_load_result(path: string)
+    match load_settings(path)
+        case success(_):
+            io.print("settings loaded")
+        case error(message):
+            io.print(f"could not load settings: {message}")
+    end
+end
+```
+
+Bibliotecas retornam dados.
+
+`main` transforma dados em texto para pessoa usuária.
+
+## Erro tipado
+
+```ori
+enum TransferError
+    InvalidAmount
+    InsufficientFunds(balance: int)
+end
+
+func transfer(balance: int, amount: int) -> result<int, TransferError>
+    if amount <= 0
+        return error(TransferError.InvalidAmount)
+    end
+    if balance < amount
+        return error(TransferError.InsufficientFunds(balance: balance))
+    end
+    return success(balance - amount)
+end
+```
+
+Use enum quando o código precisa reagir de forma diferente para cada falha.
+
+## Fallback seguro
+
+```ori
+const port: int = convert_utils.parse_int_or(os_utils.env_or("PORT", "8080"), 8080)
+```
+
+Use fallback quando existe padrão correto.
+
+Não use fallback para esconder configuração obrigatória.
+
+## Checklist
+
+- `optional` não carrega mensagem.
+- `result` carrega motivo.
+- `.or_wrap` adiciona contexto antes de propagar.
+- `match` aparece na borda que decide a mensagem.
+- Erros de domínio são enums pequenos.
+- `panic` não é usado para erro esperado de usuário.

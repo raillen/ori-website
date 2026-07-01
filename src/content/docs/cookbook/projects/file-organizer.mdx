@@ -1,0 +1,64 @@
+---
+title: File organizer
+description: Organize files by extension using ori.path, ori.fs.utils, result, and clear messages.
+---
+
+Goal: move files into folders by extension.
+
+This project exercises paths, filesystem, and error handling.
+
+## Service
+
+```ori
+namespace organizer.service
+
+import ori.path as path
+import ori.fs.utils as fs_utils
+
+public func target_dir(base: string, file_path: string) -> string
+    const ext: string = path.extension(file_path)
+    if ext == ""
+        return path.join([base, "unknown"])
+    end
+    return path.join([base, ext])
+end
+
+public func move_to_group(base: string, file_path: string) -> result<void, string>
+    const dir: string = target_dir(base, file_path)
+    try fs_utils.create_dir_all(dir)
+
+    const name: string = path.base_name(file_path)
+    const target: string = path.join([dir, name])
+
+    return fs_utils.move_path(file_path, target)
+end
+```
+
+## Main
+
+```ori
+namespace organizer.main
+
+import ori.io as io
+import organizer.service as organizer
+
+func print_move(file_path: string)
+    match organizer.move_to_group("organized", file_path)
+        case success():
+            io.print(f"moved: {file_path}")
+        case error(message):
+            io.print(f"could not move {file_path}: {message}")
+    end
+end
+```
+
+## What this teaches
+
+- `path.extension` decides the group.
+- `create_dir_all` prepares the folder before moving.
+- `move_path` returns `result`.
+- `main` turns technical errors into readable messages.
+
+## Next step
+
+Receive the file list from process arguments with `ori.os.utils.args()`.

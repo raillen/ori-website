@@ -1,6 +1,6 @@
 ---
 title: Types & values
-description: Core types in Ori — bool, int, float, string, collections, result, optional.
+description: Core types in Ori — bool, integers, floats, string, collections, result, optional.
 ---
 
 Ori is **explicitly typed**: bindings require type annotations at the point of declaration.
@@ -11,20 +11,41 @@ Ori is **explicitly typed**: bindings require type annotations at the point of d
 |------|---------|
 | `bool` | `true`, `false` |
 | `int` | `42` |
+| `int8`, `int16`, `int32`, `int64` | `12i8`, `12i16`, `12i32`, `12i64` |
+| `u8`, `u16`, `u32`, `u64` | `12u8`, `12u16`, `12u32`, `12u64` |
 | `float` | `3.14` |
+| `float32`, `float64` | `3.14f32`, `3.14f64` |
 | `string` | `"hello"` |
 | `bytes` | Raw byte buffers |
 | `void` | No value (statements only) |
 
 ## Numeric Suffixes
 
-You can define the explicit bit-width of numeric literals by appending a type suffix directly to the digits. This is useful when calling native FFI interfaces or optimising memory layouts:
+Numeric literal width is selected with a suffix on the literal. The suffix is
+not the type name.
 
-- **Signed Integers**: `i8`, `i16`, `i32`, `i64` (e.g., `42i8`, `-123i64`)
-- **Unsigned Integers**: `u8`, `u16`, `u32`, `u64` (e.g., `255u8`, `1000u32`)
-- **Floats**: `f32`, `f64` (e.g., `3.14f32`, `1.0f64`)
+```ori
+const default_int: int = 12
+const small: int8 = 12i8
+const byte: u8 = 255u8
+const compact_float: float32 = 3.14f32
+```
+
+- **Signed integer suffixes**: `i8`, `i16`, `i32`, `i64`.
+- **Unsigned integer suffixes**: `u8`, `u16`, `u32`, `u64`.
+- **Float suffixes**: `f32`, `f64`.
 
 Without a suffix, integer literals default to `int` and float literals default to `float`.
+
+These are different concepts:
+
+```ori
+const ok: int8 = 12i8
+
+const wrong_type: int8 = 12   // error: 12 is int, not int8
+const wrong_suffix: int = 12i8 // error: 12i8 is int8, not int
+const unknown: i8 = 12        // error: i8 is not a type name
+```
 
 ## Type Coercion & Casting
 
@@ -59,6 +80,43 @@ Both branches must have compatible types (or `never`).
 
 ## Collections
 
-`list<T>`, `map<K, V>`, `set<T>`, and stdlib opaque types (`Deque`, `File`, etc.).
+Built-in generic collections:
+
+| Type | Description |
+|------|-------------|
+| `list<T>` | Ordered, resizable sequence |
+| `map<K, V>` | Key-value mapping |
+| `set<T>` | Unordered unique values |
+| `optional<T>` | A value that may be absent (`some(value)` or `none`) |
+| `result<T, E>` | Success or failure (`success(value)` or `error(value)`) |
+| `range<int>` | Inclusive integer range |
+| `tuple<...>` | Ordered product of positional values |
+| `lazy<T>` | Lazy value computed at most once |
+| `future<T>` | Async computation result |
+| `any<Trait>` | Dynamic dispatch over a trait |
+
+### Tuple
+
+```ori
+const pair: tuple<int, string> = tuple(1, "one")
+const n: int    = pair.0
+const s: string = pair.1
+```
+
+### Collection literals
+
+```ori
+const names: list<string> = ["Ada", "Grace"]
+const scores: map<string, int> = {"Ada": 10, "Grace": 9}
+const tags: set<string> = set{"compiler", "docs"}
+const pair: tuple<int, string> = tuple(1, "one")
+```
+
+Empty collections need a type annotation:
+
+```ori
+const empty_names: list<string> = []
+const empty_scores: map<string, int> = {}
+```
 
 See the [stdlib reference](/reference/) for full APIs.

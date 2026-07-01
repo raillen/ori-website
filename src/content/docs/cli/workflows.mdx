@@ -1,0 +1,96 @@
+---
+title: CLI workflows
+description: How to combine check, run, compile, test, fmt, doc, doctor, explain, summary, and debug commands.
+---
+
+Ori's CLI is used to write, validate, run, and document programs.
+
+Use small commands in sequence.
+
+## Daily loop
+
+```bash
+ori fmt app/main.orl
+ori check app/main.orl
+ori test app/main.orl
+ori run app/main.orl
+```
+
+Suggested order:
+
+1. Format.
+2. Check types and imports.
+3. Run tests.
+4. Execute.
+
+## Compile a binary
+
+```bash
+ori compile app/main.orl
+```
+
+Use this when you need a native artifact.
+
+`ori run` is better for the fast loop.
+
+## Document an API
+
+```bash
+ori doc file app/main.orl
+ori doc file app/main.orl --format html
+ori doc export
+```
+
+Use `ori doc export` to generate the reference used by this website.
+
+Documentation comments `--| ... |--` are the main input.
+
+## Diagnose the environment
+
+```bash
+ori doctor
+```
+
+Use this when the native backend, runtime, or linker looks broken.
+
+To understand a specific error:
+
+```bash
+ori explain name.undefined
+```
+
+## Inspect the project graph
+
+```bash
+ori summary app/main.orl
+```
+
+Use it to review imports, namespaces, and local dependencies.
+
+It helps detect cycles and modules that became too large.
+
+## Compiler debugging
+
+```bash
+ori lex app/main.orl
+ori parse app/main.orl
+```
+
+Use these when developing the language or investigating a parser bug.
+
+They are not the ordinary end-user flow.
+
+## Planned commands
+
+`ori install` and `ori publish` exist as product direction, but should not be documented as ready workflows.
+
+Mark package tutorials as planned until those commands are available.
+
+## Checklist
+
+- `fmt` before reviewing a diff.
+- `check` before `run`.
+- `test` before changing public tutorials.
+- `doctor` when the problem looks environmental.
+- `explain` when a diagnostic code is known.
+- `summary` when imports become hard to follow.

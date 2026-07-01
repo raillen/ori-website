@@ -31,6 +31,28 @@ const book: Book = Book(
 
 Os campos são nomeados na construção. Isso deixa chamadas mais legíveis.
 
+Quando o tipo esperado já está visível, use a forma anônima de struct:
+
+```ori
+const livro_curto: Book = .{
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    year: 2008,
+}
+```
+
+Use a forma completa `Book(...)` quando não houver tipo esperado por perto.
+
+Para copiar um struct mudando poucos campos, use `with`:
+
+```ori
+const livro_atualizado: Book = book with {
+    year: 2009,
+} end
+```
+
+`with` cria um novo valor. Ele não altera a binding original.
+
 ## Enums e `match`
 
 Use `enum` para estado com um conjunto fechado de casos.
@@ -59,6 +81,15 @@ end
 Use `case else` apenas quando existir um fallback real.
 
 Para estados de domínio, prefira nomear todos os casos.
+
+Quando o tipo esperado do enum está visível, o nome do enum pode ser omitido:
+
+```ori
+const command: Command = .List
+const add: Command = .Add(title: "Clean Code")
+```
+
+Variantes com payload usam argumentos nomeados dentro de `(...)` no compilador atual.
 
 ## `optional<T>`
 
@@ -178,6 +209,29 @@ Coleções vazias precisam de anotação de tipo:
 ```ori
 const empty_names: list<string> = []
 const empty_scores: map<string, int> = {}
+```
+
+## Ranges e slices
+
+Ranges são inclusivos e podem ser descendentes:
+
+```ori
+for index in 0..3
+    io.print(string(index)) -- 0, 1, 2, 3
+end
+
+for index in 3..0
+    io.print(string(index)) -- 3, 2, 1, 0
+end
+```
+
+Slices usam fim exclusivo:
+
+```ori
+const middle: list<string> = names[1..3]
+const tail: list<string> = names[1..]
+const head: list<string> = names[..3]
+const copy: list<string> = names[..]
 ```
 
 ## Checklist de fluxo limpo

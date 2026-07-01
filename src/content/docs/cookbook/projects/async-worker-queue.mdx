@@ -1,0 +1,64 @@
+---
+title: Async worker queue
+description: Coordinate work with task.spawn, task.join, channel, atomic, and result.
+---
+
+Goal: run small jobs and accumulate progress.
+
+This project depends on the native backend.
+
+## Worker
+
+```ori
+namespace workers.service
+
+import ori.task as task
+import ori.atomic as atomic
+
+public func run_job(value: int) -> int
+    return value * value
+end
+
+public func run_all(values: list<int>) -> int
+    const total: atomic.AtomicInt = atomic.new(0)
+
+    for value in values
+        const job: task.Job<int> = task.spawn(do() => run_job(value))
+        match task.join(job)
+            case success(result):
+                atomic.add(total, result)
+            case error(_):
+                atomic.add(total, 0)
+        end
+    end
+
+    return atomic.load(total)
+end
+```
+
+## Main
+
+```ori
+namespace workers.main
+
+import ori.io as io
+import workers.service as workers
+
+func main()
+    const total: int = workers.run_all([1, 2, 3, 4])
+    io.print(f"total: {total}")
+end
+```
+
+## What this teaches
+
+- `task.spawn` runs independent work.
+- `task.join` returns `result`.
+- `atomic.AtomicInt` stores small shared progress.
+- Captures sent to tasks must be transferable.
+
+## Limit
+
+The C backend rejects async and concurrency.
+
+Use this project with the native backend.

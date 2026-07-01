@@ -1,0 +1,184 @@
+---
+title: Error handling
+description: How to use optional, result, try, ?, .or, .or_return, .or_wrap, typed errors, and panic.
+---
+
+Ori does not use exceptions for ordinary control flow.
+
+Absence is `optional<T>`.
+
+Failure with a reason is `result<T, E>`.
+
+## `optional<T>`
+
+Use it when a value may not exist.
+
+```ori
+func find_book(id: int) -> optional<Book>
+    if id == 1
+        return some(Book(title: "Ori", author: "Team"))
+    end
+    return none
+end
+```
+
+Use `if some` when only the happy path matters.
+
+```ori
+if some(book) = find_book(1)
+    io.print(book.title)
+end
+```
+
+Use `match` when both paths matter.
+
+```ori
+match find_book(2)
+    case some(book):
+        io.print(book.title)
+    case none:
+        io.print("not found")
+end
+```
+
+Use `.or(fallback)` when there is a safe default.
+
+```ori
+const display_name: string = maybe_name.or("Anonymous")
+```
+
+## `result<T, E>`
+
+Use it when the operation may fail and the failure has a reason.
+
+```ori
+func divide(left: int, right: int) -> result<int, string>
+    if right == 0
+        return error("division by zero")
+    end
+    return success(left / right)
+end
+```
+
+Use `try` to propagate an error.
+
+```ori
+func double_division(left: int, right: int) -> result<int, string>
+    const value: int = try divide(left, right)
+    return success(value * 2)
+end
+```
+
+Use `?` when the code is clearer and the return type is compatible.
+
+```ori
+const value: int = divide(left, right)?
+```
+
+### `try`/`?` compatibility rules
+
+| Expression type | Required enclosing return type |
+|---|---|
+| `try optional<T>` | `optional<_>` |
+| `try result<T, E>` | `result<_, E>` or `result<_, F>` where `E` converts to `F` |
+
+Using `try` or `?` in a function that returns `void` or an incompatible type is a compile error.
+
+## `.or_return`
+
+Use `.or_return()` to unwrap or return early from the enclosing function.
+
+The enclosing function must return a compatible `optional` or `result`.
+
+```ori
+func title_if_found(id: int) -> optional<string>
+    const book: Book = find_book(id).or_return()
+    return some(book.title)
+end
+```
+
+Prefer `match` if the reader needs to see the error or absence message.
+
+## `.or_wrap`
+
+Use `.or_wrap("context")` to add context to an error.
+
+```ori
+func load_config(path: string) -> result<json.Value, string>
+    const value: json.Value = try json_utils.read(path).or_wrap("loading config")
+    return success(value)
+end
+```
+
+This helps the reader know which step failed.
+
+## `success()` without payload
+
+Use `success()` only when the function returns `result<void, E>`.
+
+```ori
+func save(book: Book) -> result<void, string>
+    -- write the book
+    return success()
+end
+```
+
+## Typed errors
+
+Use enums when the domain has known failures.
+
+```ori
+enum BankError
+    InvalidAmount
+    InsufficientFunds(balance: int)
+end
+
+func withdraw(balance: int, amount: int) -> result<int, BankError>
+    if amount <= 0
+        return error(BankError.InvalidAmount)
+    end
+    if balance < amount
+        return error(BankError.InsufficientFunds(balance: balance))
+    end
+    return success(balance - amount)
+end
+```
+
+Convert to text at the terminal edge.
+
+```ori
+match withdraw(10, 30)
+    case success(next):
+        io.print(f"balance: {next}")
+    case error(InvalidAmount):
+        io.print("amount must be positive")
+    case error(InsufficientFunds(balance)):
+        io.print(f"insufficient funds: {balance}")
+end
+```
+
+## `panic`, `todo`, and `unreachable`
+
+Use them carefully.
+
+| Form | Use |
+|---|---|
+| `panic("message")` | Failure that should stop execution. |
+| `todo("message")` | Intentionally incomplete code. |
+| `unreachable("message")` | Path the logic should not allow. |
+
+Do not use `panic` for expected user errors.
+
+Use `result`.
+
+## Checklist
+
+- Missing value uses `optional<T>`.
+- Failure with reason uses `result<T, E>`.
+- `try` appears in functions that also return `result`.
+- `.or` appears only with a safe fallback.
+- `.or_wrap` adds useful context.
+- Domain errors become enums.
+- `panic` does not replace normal validation.
+
+Next: [Resources and memory](/language/resources-and-memory/).

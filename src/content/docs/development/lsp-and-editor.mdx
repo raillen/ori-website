@@ -1,0 +1,50 @@
+---
+title: LSP and editor
+description: How the VS Code extension and ori-lsp connect to the stdlib, compiler, and diagnostics.
+---
+
+Ori includes editor support through LSP.
+
+The goal is to make the language easier to explore without memorizing everything.
+
+## Components
+
+| Part | Role |
+|---|---|
+| `ori-lsp` | LSP server. |
+| VS Code extension | Client that starts the LSP. |
+| `ori-driver` | Source for checking, diagnostics, and commands. |
+| Stdlib | Source for hover, goto, and module completion. |
+
+## Useful settings
+
+| Setting | Use |
+|---|---|
+| `ori.lsp.path` | Path to the `ori-lsp` binary. |
+| `ori.compiler.path` | Path to the Ori compiler. |
+| `ori.stdlib.root` | Path to the local stdlib. |
+
+Use these settings when the extension does not find the right binary.
+
+## What the editor should teach
+
+- Diagnostics with code and clear message.
+- Hover for stdlib symbols.
+- Goto for imported modules.
+- Completion for known names and modules.
+- Incremental sync without blocking the writing flow.
+
+## Relationship with docs
+
+The website explains concepts.
+
+The LSP helps while writing.
+
+Both should use the same feature and diagnostic names.
+
+## Checklist
+
+- Error message names the documented concept.
+- Hover does not replace a tutorial.
+- Tutorial does not depend on a feature hidden only in the editor.
+- Public page points to CLI validation when the user needs to verify outside VS Code.

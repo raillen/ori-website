@@ -1,0 +1,50 @@
+---
+title: LSP e editor
+description: Como a extensão VS Code e o ori-lsp se conectam à stdlib, ao compilador e aos diagnósticos.
+---
+
+Ori inclui suporte de editor via LSP.
+
+O objetivo é tornar a linguagem mais fácil de explorar sem decorar tudo.
+
+## Componentes
+
+| Parte | Função |
+|---|---|
+| `ori-lsp` | Servidor LSP. |
+| Extensão VS Code | Cliente que inicia o LSP. |
+| `ori-driver` | Fonte de checagem, diagnostics e comandos. |
+| Stdlib | Fonte para hover, goto e autocomplete de módulos. |
+
+## Configurações úteis
+
+| Configuração | Uso |
+|---|---|
+| `ori.lsp.path` | Caminho do binário `ori-lsp`. |
+| `ori.compiler.path` | Caminho do compilador Ori. |
+| `ori.stdlib.root` | Caminho da stdlib local. |
+
+Use essas configurações quando a extensão não encontra o binário certo.
+
+## O que o editor deve ensinar
+
+- Diagnósticos com código e mensagem clara.
+- Hover para símbolos da stdlib.
+- Goto para módulos importados.
+- Complete para nomes e módulos conhecidos.
+- Sincronização incremental sem travar o fluxo de escrita.
+
+## Relação com docs
+
+O site explica conceitos.
+
+O LSP ajuda no momento de escrever.
+
+Os dois devem usar os mesmos nomes de recursos e diagnósticos.
+
+## Checklist
+
+- Mensagem de erro cita o conceito documentado.
+- Hover não substitui tutorial.
+- Tutorial não depende de recurso escondido só no editor.
+- Página pública aponta para CLI quando o usuário precisa validar fora do VS Code.

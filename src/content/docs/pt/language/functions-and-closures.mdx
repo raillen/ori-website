@@ -1,0 +1,187 @@
+---
+title: Funções e closures
+description: Como declarar funções, métodos, parâmetros nomeados, defaults, contratos, variádicos, closures e genéricos.
+---
+
+Funções em Ori devem deixar intenção, tipos e falhas visíveis.
+
+Use funções pequenas para regras de domínio.
+
+Use `main` para ligar as partes e fazer I/O.
+
+## Declaração básica
+
+```ori
+func add(left: int, right: int) -> int
+    return left + right
+end
+```
+
+Quando não há retorno útil, omita o tipo ou use `void` quando a assinatura precisa ser explícita.
+
+```ori
+func print_total(total: int)
+    io.print(f"total: {total}")
+end
+```
+
+## Parâmetros nomeados
+
+Use nomes nas chamadas quando a ordem pode confundir.
+
+```ori
+func transfer(from: string, to: string, amount: int) -> result<void, string>
+    check amount > 0, "amount must be positive"
+    return success()
+end
+
+transfer(from: "checking", to: "savings", amount: 50)
+```
+
+Depois que um argumento nomeado aparece, todos os argumentos seguintes nessa chamada também precisam ser nomeados.
+
+## Valores padrão
+
+Defaults reduzem repetição sem esconder comportamento importante.
+
+```ori
+func retry(label: string, attempts: int = 3)
+    io.print(f"{label}: {attempts}")
+end
+```
+
+Use default para detalhe operacional.
+
+Não use default para regra de negócio que a pessoa precisa escolher.
+
+## Contratos de valor
+
+Parâmetros podem declarar uma regra local com `if it`.
+
+```ori
+func withdraw(amount: int if it > 0) -> result<int, string>
+    return success(amount)
+end
+```
+
+Use contratos para invariantes simples.
+
+Para validações com mensagem rica, prefira uma função nomeada.
+
+## Variádicos e spread
+
+Use `...` quando uma função recebe vários valores do mesmo tipo.
+
+```ori
+func total(values: int...) -> int
+    var sum: int = 0
+    for value in values
+        sum = sum + value
+    end
+    return sum
+end
+
+const values: list<int> = [1, 2, 3]
+const answer: int = total(..values)
+```
+
+Use variádico para listas pequenas de chamada.
+
+Use `list<T>` quando os dados já são uma coleção do domínio.
+
+## Métodos
+
+Métodos ficam perto do tipo que operam.
+
+```ori
+struct Counter
+    value: int
+end
+
+func Counter.current(self: Counter) -> int
+    return self.value
+end
+```
+
+Use `mut func` quando o método altera o valor.
+
+```ori
+mut func Counter.increment(self: Counter)
+    self.value = self.value + 1
+end
+```
+
+## Closures
+
+Use `do` para função anônima curta.
+
+```ori
+const doubled: list<int> = iter.map(numbers, do(n: int) => n * 2)
+```
+
+Para mais de uma regra, dê nome.
+
+```ori
+func is_visible(task: Task) -> bool
+    return task.done == false
+end
+```
+
+Closures capturam valores de forma controlada.
+
+Não use closure longa como esconderijo de lógica.
+
+## Funções de alta ordem
+
+Uma função pode receber outra função.
+
+```ori
+func count_matching(items: list<int>, accepts: func(int) -> bool) -> int
+    var total: int = 0
+    for item in items
+        if accepts(item)
+            total = total + 1
+        end
+    end
+    return total
+end
+```
+
+Use isso para separar “como percorrer” de “qual regra aplicar”.
+
+Uma função nomeada pode ser passada diretamente como callback:
+
+```ori
+func is_even(value: int) -> bool
+    return value % 2 == 0
+end
+
+const even_count: int = count_matching(numbers, is_even)
+```
+
+## Genéricos
+
+Use genérico quando a regra é igual para vários tipos.
+
+```ori
+func first_or<T>(items: list<T>, fallback: T) -> T
+    if len(items) == 0
+        return fallback
+    end
+    return items[0]
+end
+```
+
+Se a regra depende de operações como igualdade, ordenação ou hash, use traits.
+
+## Checklist
+
+- A assinatura mostra tipos importantes.
+- Parâmetros nomeados aparecem em chamadas ambíguas.
+- Defaults não escondem regra de negócio.
+- Contratos `if it` ficam simples.
+- Variádicos são usados só quando melhoram a chamada.
+- Closures são curtas.
+- Regras com nome viram funções nomeadas.
+
+Próximo: [Statements e padrões](/pt/language/statements-and-patterns/).

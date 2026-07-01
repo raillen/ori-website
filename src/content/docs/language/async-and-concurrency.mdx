@@ -1,0 +1,182 @@
+---
+title: Async and concurrency
+description: How to use async func, await, futures, task.spawn, join, channels, atomics, and Transferable in Ori.
+---
+
+Ori has async and concurrency on the native backend.
+
+Use it when a program needs to wait, coordinate work, or move data between workers.
+
+## `async func`
+
+An async function returns `future<T>`.
+
+```ori
+import ori.task as task
+
+async func load_count() -> int
+    await task.sleep(1)
+    return 42
+end
+```
+
+Use `await` only inside `async func`.
+
+## `async main`
+
+The native backend accepts `async func main()`.
+
+```ori
+async func main()
+    const count: int = await load_count()
+    io.print(string(count))
+end
+```
+
+When synchronous code needs to call a future, use `task.block_on`.
+
+```ori
+const count: int = task.block_on(load_count())
+```
+
+## Tasks
+
+Use `task.spawn` to run a function or closure in another native task.
+
+```ori
+import ori.task as task
+
+func compute() -> int
+    return 41
+end
+
+func main()
+    const job: task.Job<int> = task.spawn(do() => compute())
+    match task.join(job)
+        case success(value):
+            io.print(string(value + 1))
+        case error(_):
+            io.print("job failed")
+    end
+end
+```
+
+`join` returns `result` because waiting on a task can fail.
+
+## Channels
+
+Use a channel to send values between concurrent parts.
+
+```ori
+import ori.channel as channel
+
+const messages: channel.Channel<string> = channel.create<string>()
+
+match channel.send(messages, "done")
+    case success():
+        io.print("sent")
+    case error(_):
+        io.print("send failed")
+end
+```
+
+`channel.create` creates an unbounded FIFO channel.
+`channel.send` enqueues a value, or returns `error(...)` when the channel is closed.
+`channel.receive` waits until a value is available, or returns `error(...)` when closed and empty.
+`channel.close` closes the channel and wakes waiting receivers.
+
+Sent values must be safe to transfer.
+
+## Atomics
+
+Use `atomic.AtomicInt` for a small shared counter.
+
+```ori
+import ori.atomic as atomic
+
+const counter: atomic.AtomicInt = atomic.new(0)
+atomic.add(counter, 1)
+io.print(string(atomic.load(counter)))
+```
+
+Do not turn atomic state into global state without need.
+
+Prefer passing data explicitly.
+
+## `Transferable`
+
+Data that crosses a task or channel boundary must be `Transferable`.
+
+This protects the runtime from moving values that are not concurrency-safe.
+
+Currently transferable:
+
+- Primitive scalar values (`int`, `float`, `bool`, etc.)
+- `string` and `bytes`
+- `list<T>`, `map<K, V>`, `set<T>`, `optional<T>`, `result<T, E>`, tuples
+- `future<T>`, `task.Job<T>`, `channel.Channel<T>`
+- Structs when all fields are transferable
+- Enum values
+- `atomic.AtomicInt` and opaque collection handles when contents are transferable
+
+Not transferable:
+
+- Function values (`func(...)`)
+- Lazy thunks (`lazy<T>`)
+- `any<Trait>` values
+- Closures that capture a `var` binding
+
+## Cancellation and resources
+
+Use `task.CancelToken` for cooperative cancellation:
+
+```ori
+import ori.task as task
+
+const token: task.CancelToken = task.create_token()
+
+-- Cancel after a delay
+task.cancel(token)
+
+-- Check if cancelled
+if task.is_cancelled(token)
+    io.print("cancelled")
+end
+```
+
+Associate a token with a future:
+
+```ori
+task.associate(token, some_future)
+```
+
+Resources with `using` inside async are cleaned when the future finishes or is canceled.
+
+```ori
+async func worker(token: CancelToken)
+    using session: Session = Session(id: 1)
+    await task.sleep(50)
+end
+```
+
+This avoids leaving a file, connection, or session alive after work ends.
+
+## Limits
+
+- The C backend rejects async and concurrency.
+- `await` outside `async func` is an error.
+- `await` accepts only futures.
+- Non-transferable capture in `task.spawn` is an error.
+
+See also: [Backends and runtime](/development/runtime-and-backends/).
+
+## Checklist
+
+- Use async for real waiting, not for simple code.
+- Treat `task.join` as `result`.
+- Use channels for data passing.
+- Use atomic only for small shared state.
+- Avoid large captures in closures sent to tasks.
+- Document when an API depends on the native backend.
+
+Next: [Advanced types and generics](/language/advanced-types-and-generics/).

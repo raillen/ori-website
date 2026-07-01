@@ -1,0 +1,144 @@
+---
+title: Resources and memory
+description: How Ori handles values, managed types, using, Disposable, ARC, cycles, and leak tests.
+---
+
+Ori keeps memory visible in the mental model without requiring ordinary manual memory management.
+
+You write values and resources.
+
+The runtime handles reference counting and cycle collection.
+
+## Values
+
+Simple types have value semantics.
+
+```ori
+const a: int = 10
+const b: int = a
+```
+
+Changing one variable later does not change the other.
+
+This keeps flow easier to follow.
+
+## Managed types
+
+Strings, bytes, and collections are managed by the runtime.
+
+```ori
+const names: list<string> = ["Ada", "Grace"]
+const copy: list<string> = names
+```
+
+The runtime keeps references alive while they are still used.
+
+You do not call `free`.
+
+## `using`
+
+Use `using` for a resource that needs deterministic cleanup.
+
+```ori
+using file: fs.File = try fs.open_read(path)
+```
+
+When the block ends, `dispose` is called.
+
+This applies to normal exit, `return`, `break`, and propagated error.
+
+## Cleanup order
+
+Multiple resources are cleaned in reverse order.
+
+```ori
+using outer: Resource = open_outer()
+using inner: Resource = open_inner()
+
+-- inner is cleaned before outer.
+```
+
+This LIFO order avoids cleaning the parent before the child.
+
+## `Disposable`
+
+Types that work with `using` implement `Disposable`.
+
+```ori
+struct Session
+    id: int
+end
+
+implement Disposable for Session
+    mut func dispose(self)
+        io.print(f"closing {self.id}")
+    end
+end
+```
+
+Use this for files, connections, locks, and external resources.
+
+## ARC and cycle collection
+
+The runtime uses ARC (Automatic Reference Counting) to free values when the last reference disappears.
+
+When cycles exist, the cooperative collector can break them.
+
+This matters in graphs, trees with parent links, and callbacks.
+
+The runtime calls the cycle collector at safe points:
+
+- At the end of a sync function body (after scope cleanup)
+- After dropping dead frame values following an `await` resume
+- Explicitly from Ori code via `ori.test.collect_cycles()`
+
+## Leak tests
+
+The test stdlib exposes memory helpers:
+
+```ori
+import ori.test as test
+
+test.live_allocations()      -- number of live ARC-managed heap allocations
+test.collect_cycles()        -- run cycle collector, return reclaimed count
+test.assert_no_leaks(label)  -- run collector, abort if leaks remain
+```
+
+Use them in tests when a resource must be released at the end:
+
+```ori
+@test
+func session_does_not_leak()
+    using session: Session = Session(id: 1)
+    ori.test.collect_cycles()
+    ori.test.assert_no_leaks("session")
+end
+```
+
+With `ORI_TEST_LEAK_CHECK=1`, leaks become a failing diagnostic during tests.
+
+## Async and resources
+
+`using` is also accepted inside `async func`.
+
+The resource is stored in the future state until cleanup happens.
+
+```ori
+async func work()
+    using session: Session = Session(id: 1)
+    await task.sleep(1)
+end
+```
+
+Use this when an async operation holds a file, connection, or cancellation token.
+
+## Checklist
+
+- Use simple values when possible.
+- Do not expose an external resource without a cleanup rule.
+- Use `using` for resources with `dispose`.
+- Keep `using` near where the resource is created.
+- Test leaks when code creates cycles or external resources.
+- In async code, remember the resource lives until the future finishes or is canceled.
+
+Next: [Async and concurrency](/language/async-and-concurrency/).

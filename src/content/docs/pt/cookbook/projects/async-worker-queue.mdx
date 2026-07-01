@@ -1,0 +1,64 @@
+---
+title: Fila async de tarefas
+description: Coordene trabalho com task.spawn, task.join, channel, atomic e result.
+---
+
+Objetivo: executar trabalhos pequenos e acumular progresso.
+
+Este projeto depende do backend nativo.
+
+## Worker
+
+```ori
+namespace workers.service
+
+import ori.task as task
+import ori.atomic as atomic
+
+public func run_job(value: int) -> int
+    return value * value
+end
+
+public func run_all(values: list<int>) -> int
+    const total: atomic.AtomicInt = atomic.new(0)
+
+    for value in values
+        const job: task.Job<int> = task.spawn(do() => run_job(value))
+        match task.join(job)
+            case success(result):
+                atomic.add(total, result)
+            case error(_):
+                atomic.add(total, 0)
+        end
+    end
+
+    return atomic.load(total)
+end
+```
+
+## Main
+
+```ori
+namespace workers.main
+
+import ori.io as io
+import workers.service as workers
+
+func main()
+    const total: int = workers.run_all([1, 2, 3, 4])
+    io.print(f"total: {total}")
+end
+```
+
+## O que este projeto ensina
+
+- `task.spawn` executa trabalho independente.
+- `task.join` retorna `result`.
+- `atomic.AtomicInt` guarda progresso compartilhado simples.
+- Capturas enviadas para task precisam ser transferíveis.
+
+## Limitação
+
+O backend C rejeita async e concorrência.
+
+Use este projeto com o backend nativo.

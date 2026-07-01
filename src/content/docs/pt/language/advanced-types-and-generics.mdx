@@ -1,0 +1,140 @@
+---
+title: Tipos avançados e genéricos
+description: Aliases, ranges, lazy, any<Trait>, tipos de função, genéricos, constraints e recursos avançados.
+---
+
+Esta página reúne recursos que você não precisa no primeiro dia, mas que fazem diferença em projetos maiores.
+
+Leia depois de entender structs, enums, `optional` e `result`.
+
+## Type aliases
+
+Use alias para dar nome de domínio a uma forma existente.
+
+```ori
+type UserId = int
+type AccountName = string
+```
+
+Alias melhora leitura, mas não deve esconder dados diferentes com o mesmo tipo físico.
+
+## `range`
+
+Ranges representam intervalos.
+
+```ori
+const first_page: range<int> = 1..10
+```
+
+Use para iteração, paginação e fatias.
+
+Evite ranges com regra implícita demais.
+
+## `lazy<T>`
+
+Use `lazy<T>` para adiar cálculo até ele ser necessário.
+
+```ori
+const report: lazy<string> = lazy build_report()
+```
+
+Use com moderação.
+
+Se o cálculo é barato e sempre usado, prefira valor normal.
+
+## Tipos de função
+
+Use `func(A) -> B` quando uma função recebe comportamento.
+
+```ori
+func apply(value: int, transform: func(int) -> int) -> int
+    return transform(value)
+end
+```
+
+Isso é útil em filtros, validadores e pipelines.
+
+## `any<Trait>`
+
+Use `any<Trait>` quando vários tipos diferentes compartilham um contrato.
+
+```ori
+func render(item: any<Displayable>) -> string
+    return item.display()
+end
+```
+
+Prefira genéricos quando o tipo concreto pode continuar visível.
+
+Use `any<Trait>` quando a coleção ou API precisa misturar implementações.
+
+## Genéricos
+
+Genéricos evitam duplicar a mesma regra para vários tipos.
+
+```ori
+func identity<T>(value: T) -> T
+    return value
+end
+```
+
+Use nomes pequenos e comuns para parâmetros de tipo: `T`, `K`, `V`, `E`.
+
+Use nomes longos apenas quando há muitos tipos no mesmo escopo.
+
+## Constraints
+
+Quando a função precisa de operação específica, declare a constraint.
+
+```ori
+func max<T>(left: T, right: T) -> T
+where T is Comparable
+    if left > right
+        return left
+    end
+    return right
+end
+```
+
+Isso deixa claro por que qualquer tipo não serve.
+
+Use `where T is Trait` para constraints positivas.
+
+Use `where T is not Trait` apenas quando a API precisa rejeitar uma implementação de trait.
+
+## Desambiguação de método de trait
+
+Se duas traits visíveis oferecem um método com o mesmo nome, chame o método pelo nome da trait.
+
+```ori
+Printable.output(value)
+Loggable.output(value)
+```
+
+Isso mantém a chamada legível e evita resolução ambígua de método.
+
+## Recursos avançados
+
+A implementação e os testes também cobrem recursos mais avançados:
+
+| Recurso | Uso |
+|---|---|
+| Associated types | Traits que expõem um tipo ligado à implementação. |
+| Const generics | Tipos parametrizados por valor constante. |
+| Higher-kinded types | Abstrações de tipo mais altas, para casos raros. |
+| Negative constraints | Regras que impedem uma combinação de tipos. |
+
+Use esses recursos só quando a API realmente precisa.
+
+Para código de aplicação, tipos simples e traits comuns costumam ser suficientes.
+
+## Checklist
+
+- Alias tem nome de domínio.
+- `lazy` não esconde custo importante.
+- Tipo de função aparece quando comportamento é parâmetro.
+- Genérico remove duplicação real.
+- Constraint explica a operação necessária.
+- Recursos avançados ficam fora de tutoriais iniciais.
+
+Próximo: [Traits avançadas](/pt/language/advanced-traits/).
