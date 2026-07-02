@@ -30,28 +30,90 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/ori-lang/ori-lang",
-        },
-        {
-          icon: "github",
-          label: "Releases",
-          href: "https://github.com/raillen/ori-lang/releases",
+          href: "https://github.com/raillen/ori-lang",
         },
       ],
+      components: {
+        Hero: "./src/components/Hero.astro",
+      },
       customCss: ["./src/styles/custom.css"],
       head: [
+        // Anti-FOUC: apply theme before paint
+        {
+          tag: "script",
+          attrs: { src: "/theme-init.js" },
+        },
+        // Geist Variable (UI) + Geist Mono Variable (code)
         {
           tag: "link",
           attrs: {
             rel: "preconnect",
-            href: "https://fonts.googleapis.com",
+            href: "https://cdn.jsdelivr.net",
           },
         },
         {
           tag: "link",
           attrs: {
             rel: "stylesheet",
-            href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.1.1/index.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono@5.1.1/index.css",
+          },
+        },
+        // Inter + JetBrains Mono (fallbacks)
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.1/400.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.1/500.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.1/600.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.1/700.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/400.css",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/500.css",
+          },
+        },
+        // Noto Sans JP (Japanese)
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/@fontsource-variable/noto-sans-jp@5.1.1/index.css",
           },
         },
       ],
@@ -478,12 +540,135 @@ export default defineConfig({
         },
         {
           label: "Reference",
-          autogenerate: { directory: "reference" },
           translations: {
             "pt-BR": "Referência",
             es: "Referencia",
             ja: "リファレンス",
           },
+          items: [
+            { label: "Overview", link: "/reference/" },
+            {
+              label: "Error Codes",
+              link: "/reference/errors/",
+            },
+            {
+              label: "Stdlib",
+              collapsed: true,
+              items: [
+                {
+                  label: "Core",
+                  collapsed: true,
+                  items: [
+                    { label: "ori", link: "/reference/stdlib/ori/" },
+                    { label: "int", link: "/reference/stdlib/int/" },
+                    { label: "float", link: "/reference/stdlib/float/" },
+                    { label: "string", link: "/reference/stdlib/string/" },
+                    { label: "len", link: "/reference/stdlib/len/" },
+                  ],
+                },
+                {
+                  label: "Collections",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.list", link: "/reference/stdlib/ori-list/" },
+                    { label: "ori.map", link: "/reference/stdlib/ori-map/" },
+                    { label: "ori.set", link: "/reference/stdlib/ori-set/" },
+                    { label: "ori.queue", link: "/reference/stdlib/ori-queue/" },
+                    { label: "ori.stack", link: "/reference/stdlib/ori-stack/" },
+                    { label: "ori.deque", link: "/reference/stdlib/ori-deque/" },
+                    { label: "ori.linked_list", link: "/reference/stdlib/ori-linkedlist/" },
+                    { label: "ori.doubly_linked_list", link: "/reference/stdlib/ori-doublylinkedlist/" },
+                    { label: "ori.hash_table", link: "/reference/stdlib/ori-hashtable/" },
+                    { label: "ori.heap", link: "/reference/stdlib/ori-heap/" },
+                    { label: "ori.tree", link: "/reference/stdlib/ori-tree/" },
+                    { label: "ori.graph", link: "/reference/stdlib/ori-graph/" },
+                  ],
+                },
+                {
+                  label: "I/O & System",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.io", link: "/reference/stdlib/ori-io/" },
+                    { label: "ori.fs", link: "/reference/stdlib/ori-fs/" },
+                    { label: "ori.os", link: "/reference/stdlib/ori-os/" },
+                    { label: "ori.net", link: "/reference/stdlib/ori-net/" },
+                    { label: "ori.process", link: "/reference/stdlib/ori-process/" },
+                    { label: "ori.path", link: "/reference/stdlib/ori-path/" },
+                    { label: "ori.json", link: "/reference/stdlib/ori-json/" },
+                    { label: "ori.format", link: "/reference/stdlib/ori-format/" },
+                    { label: "ori.convert", link: "/reference/stdlib/ori-convert/" },
+                    { label: "ori.time", link: "/reference/stdlib/ori-time/" },
+                    { label: "ori.random", link: "/reference/stdlib/ori-random/" },
+                    { label: "ori.bytes", link: "/reference/stdlib/ori-bytes/" },
+                  ],
+                },
+                {
+                  label: "Concurrency",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.channel", link: "/reference/stdlib/ori-channel/" },
+                    { label: "ori.concurrent.utils", link: "/reference/stdlib/ori-concurrent-utils/" },
+                    { label: "ori.task", link: "/reference/stdlib/ori-task/" },
+                    { label: "ori.atomic", link: "/reference/stdlib/ori-atomic/" },
+                    { label: "ori.lazy", link: "/reference/stdlib/ori-lazy/" },
+                  ],
+                },
+                {
+                  label: "Algorithms",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.list.algorithms", link: "/reference/stdlib/ori-list-algorithms/" },
+                    { label: "ori.map.algorithms", link: "/reference/stdlib/ori-map-algorithms/" },
+                    { label: "ori.set.algorithms", link: "/reference/stdlib/ori-set-algorithms/" },
+                    { label: "ori.graph.algorithms", link: "/reference/stdlib/ori-graph-algorithms/" },
+                    { label: "ori.tree.algorithms", link: "/reference/stdlib/ori-tree-algorithms/" },
+                    { label: "ori.math.algorithms", link: "/reference/stdlib/ori-math-algorithms/" },
+                    { label: "ori.string.algorithms", link: "/reference/stdlib/ori-string-algorithms/" },
+                    { label: "ori.bytes.algorithms", link: "/reference/stdlib/ori-bytes-algorithms/" },
+                  ],
+                },
+                {
+                  label: "Utils",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.list.utils", link: "/reference/stdlib/ori-list-utils/" },
+                    { label: "ori.map.utils", link: "/reference/stdlib/ori-map-utils/" },
+                    { label: "ori.set.utils", link: "/reference/stdlib/ori-set-utils/" },
+                    { label: "ori.string.utils", link: "/reference/stdlib/ori-string-utils/" },
+                    { label: "ori.math.utils", link: "/reference/stdlib/ori-math-utils/" },
+                    { label: "ori.io.utils", link: "/reference/stdlib/ori-io-utils/" },
+                    { label: "ori.fs.utils", link: "/reference/stdlib/ori-fs-utils/" },
+                    { label: "ori.os.utils", link: "/reference/stdlib/ori-os-utils/" },
+                    { label: "ori.net.utils", link: "/reference/stdlib/ori-net-utils/" },
+                    { label: "ori.process.utils", link: "/reference/stdlib/ori-process-utils/" },
+                    { label: "ori.json.utils", link: "/reference/stdlib/ori-json-utils/" },
+                    { label: "ori.format.utils", link: "/reference/stdlib/ori-format-utils/" },
+                    { label: "ori.convert.utils", link: "/reference/stdlib/ori-convert-utils/" },
+                    { label: "ori.time.utils", link: "/reference/stdlib/ori-time-utils/" },
+                    { label: "ori.random.utils", link: "/reference/stdlib/ori-random-utils/" },
+                    { label: "ori.bytes.utils", link: "/reference/stdlib/ori-bytes-utils/" },
+                    { label: "ori.iter.utils", link: "/reference/stdlib/ori-iter-utils/" },
+                    { label: "ori.deque.utils", link: "/reference/stdlib/ori-deque-utils/" },
+                    { label: "ori.linked_list.utils", link: "/reference/stdlib/ori-linkedlist-utils/" },
+                    { label: "ori.doubly_linked_list.utils", link: "/reference/stdlib/ori-doublylinkedlist-utils/" },
+                    { label: "ori.hash_table.utils", link: "/reference/stdlib/ori-hashtable-utils/" },
+                    { label: "ori.heap.utils", link: "/reference/stdlib/ori-heap-utils/" },
+                    { label: "ori.queue.utils", link: "/reference/stdlib/ori-queue-utils/" },
+                    { label: "ori.stack.utils", link: "/reference/stdlib/ori-stack-utils/" },
+                  ],
+                },
+                {
+                  label: "Testing",
+                  collapsed: true,
+                  items: [
+                    { label: "ori.test", link: "/reference/stdlib/ori-test/" },
+                    { label: "ori.test.utils", link: "/reference/stdlib/ori-test-utils/" },
+                    { label: "ori.validate", link: "/reference/stdlib/ori-validate/" },
+                  ],
+                },
+              ],
+            },
+          ],
         },
         {
           label: "Downloads",

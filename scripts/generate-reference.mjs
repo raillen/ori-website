@@ -86,7 +86,14 @@ for (const [module, symbols] of [...byModule.entries()].sort()) {
       let docBlock = "";
       if (stdlibDocs[s.id]) {
         const d = stdlibDocs[s.id];
-        docBlock = `\n\n${d.description}\n\n* **Applicability:** ${d.applicability}\n\n\`\`\`ori\n// Example\n${d.example}\n\`\`\``;
+        let parts = [`\n\n${d.description}`];
+        if (d.applicability) {
+          parts.push(`\n\n* **Applicability:** ${d.applicability}`);
+        }
+        if (d.example) {
+          parts.push(`\n\n\`\`\`ori\n// Example\n${d.example}\n\`\`\``);
+        }
+        docBlock = parts.join("");
       }
 
       return `### \`${s.name}\`

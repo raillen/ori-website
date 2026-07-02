@@ -1,9 +1,9 @@
 ---
 title: "ori.iter"
-description: "Standard library module `ori.iter`."
+description: "Iterator functional operations. Provides map, filter, reduce, sort, and other higher-order functions for sequences."
 ---
 
-Standard library module `ori.iter`.
+Iterator functional operations. Provides map, filter, reduce, sort, and other higher-order functions for sequences.
 
 ### `all`
 
@@ -13,6 +13,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.all`
 
+Returns true if all elements satisfy the given predicate.
+
 ### `any`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.any`
+
+Returns true if at least one element satisfies the predicate.
 
 ### `count_where`
 
@@ -29,6 +33,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.count_where`
 
+Returns the number of elements that satisfy the predicate.
+
 ### `filter`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.filter`
+
+Returns a new collection containing only elements that satisfy the given predicate.
 
 ### `find`
 
@@ -45,6 +53,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.find`
 
+Searches for a node matching the predicate and returns its value.
+
 ### `flat_map`
 
 ```ori
@@ -52,6 +62,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.flat_map`
+
+Applies a function that returns a list to each element, then flattens the results.
 
 ### `flatten`
 
@@ -61,6 +73,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.flatten`
 
+Flattens a list of lists into a single list.
+
 ### `group_by`
 
 ```ori
@@ -68,6 +82,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.group_by`
+
+Groups elements by a key function into a map of lists.
 
 ### `map`
 
@@ -77,6 +93,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.map`
 
+Returns a new collection by applying a transformation function to each element.
+
 ### `partition`
 
 ```ori
@@ -84,6 +102,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.partition`
+
+Splits elements into two groups based on a predicate.
 
 ### `reduce`
 
@@ -93,6 +113,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.reduce`
 
+Reduces all elements to a single value using an accumulator function.
+
 ### `reverse`
 
 ```ori
@@ -100,6 +122,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.reverse`
+
+Returns a new collection with elements in reversed order.
 
 ### `skip`
 
@@ -109,6 +133,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.skip`
 
+Skips the current test.
+
 ### `sort`
 
 ```ori
@@ -116,6 +142,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.sort`
+
+Returns a new collection with elements sorted in ascending order.
 
 ### `sort_by`
 
@@ -125,6 +153,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.sort_by`
 
+Returns a new collection with elements sorted by the given key function.
+
 ### `take`
 
 ```ori
@@ -132,6 +162,8 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.take`
+
+Returns a new collection with at most N elements from the start.
 
 ### `unique`
 
@@ -141,6 +173,8 @@ Standard library module `ori.iter`.
 
 *Layer 1 · runtime* · **Aliases:** `iter.unique`
 
+Returns a new collection with duplicate elements removed.
+
 ### `zip`
 
 ```ori
@@ -148,4 +182,6 @@ Standard library module `ori.iter`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `iter.zip`
+
+Combines two collections into a list of paired tuples.
 

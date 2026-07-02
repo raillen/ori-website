@@ -13,6 +13,8 @@ Raw byte buffers utilities. Allows operations such as hex conversions, slice man
 
 *Layer 1 · runtime* · **Aliases:** `bytes.concat`
 
+Concatenates two strings into one.
+
 ### `decode_utf8`
 
 ```ori
@@ -20,6 +22,8 @@ Raw byte buffers utilities. Allows operations such as hex conversions, slice man
 ```
 
 *Layer 1 · runtime* · **Aliases:** `bytes.decode_utf8`
+
+Decodes the byte buffer as a UTF-8 string.
 
 ### `from_hex`
 
@@ -53,6 +57,8 @@ end
 
 *Layer 1 · runtime* · **Aliases:** `bytes.from_list`
 
+Creates a new collection initialized with the elements from the given list.
+
 ### `get`
 
 ```ori
@@ -60,6 +66,8 @@ end
 ```
 
 *Layer 1 · runtime* · **Aliases:** `bytes.get`
+
+Returns the element at the specified index without removing it.
 
 ### `len`
 
@@ -69,6 +77,8 @@ end
 
 *Layer 1 · runtime* · **Aliases:** `bytes.len`
 
+Returns the number of elements in the collection.
+
 ### `slice`
 
 ```ori
@@ -76,6 +86,8 @@ end
 ```
 
 *Layer 1 · runtime* · **Aliases:** `bytes.slice`
+
+Returns a new collection containing elements from the specified start to end index.
 
 ### `to_hex`
 
@@ -107,4 +119,6 @@ end
 ```
 
 *Layer 1 · runtime* · **Aliases:** `bytes.to_list`
+
+Converts the collection into a plain list.
 

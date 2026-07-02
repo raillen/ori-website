@@ -13,6 +13,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.append_text`, `ori.files.append_text`, `files.append_text`
 
+Appends a string to the end of a file.
+
 ### `close`
 
 ```ori
@@ -20,6 +22,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.close`, `ori.files.close`, `files.close`
+
+Closes an open file handle, releasing the associated resources.
 
 ### `copy`
 
@@ -29,6 +33,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.copy`, `ori.files.copy`, `files.copy`
 
+Copies a file from source path to destination path.
+
 ### `create_dir`
 
 ```ori
@@ -36,6 +42,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.create_dir`, `ori.files.create_dir`, `files.create_dir`
+
+Creates a new directory at the specified path.
 
 ### `create_dir_all`
 
@@ -45,6 +53,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.create_dir_all`, `ori.files.create_dir_all`, `files.create_dir_all`
 
+Creates a directory and all necessary parent directories.
+
 ### `created_at`
 
 ```ori
@@ -52,6 +62,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.created_at`
+
+Returns the creation timestamp of the file.
 
 ### `delete`
 
@@ -61,6 +73,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.delete`, `ori.files.delete`, `files.delete`
 
+Deletes the file at the specified path.
+
 ### `exists`
 
 ```ori
@@ -68,6 +82,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.exists`, `ori.files.exists`, `files.exists`
+
+Returns true if the file or directory exists at the given path.
 
 ### `file_size`
 
@@ -77,6 +93,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.file_size`, `fs.size`
 
+Returns the size of the file in bytes.
+
 ### `is_dir`
 
 ```ori
@@ -84,6 +102,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.is_dir`, `ori.files.is_dir`, `files.is_dir`
+
+Returns true if the path points to a directory.
 
 ### `is_file`
 
@@ -93,6 +113,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.is_file`, `ori.files.is_file`, `files.is_file`
 
+Returns true if the path points to a regular file.
+
 ### `list_dir`
 
 ```ori
@@ -100,6 +122,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.list_dir`, `ori.files.list_dir`, `files.list_dir`
+
+Lists all entries in the specified directory.
 
 ### `modified_at`
 
@@ -109,6 +133,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.modified_at`
 
+Returns the last modification timestamp of the file.
+
 ### `open_read`
 
 ```ori
@@ -116,6 +142,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.open_read`, `ori.files.open_read`, `files.open_read`
+
+Opens a file for reading and returns a file handle.
 
 ### `open_write`
 
@@ -125,6 +153,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.open_write`, `ori.files.open_write`, `files.open_write`
 
+Opens a file for writing and returns a file handle.
+
 ### `read`
 
 ```ori
@@ -132,6 +162,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.read`, `ori.files.read`, `files.read`
+
+Reads the contents of a file into a bytes buffer.
 
 ### `read_all`
 
@@ -141,6 +173,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.read_all`, `ori.files.read_all`, `files.read_all`
 
+Reads the entire contents of a file into a bytes buffer.
+
 ### `read_bytes`
 
 ```ori
@@ -148,6 +182,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.read_bytes`, `ori.files.read_bytes`, `files.read_bytes`
+
+Reads a specific number of bytes from the file.
 
 ### `read_text`
 
@@ -157,6 +193,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.read_text`, `ori.files.read_text`, `files.read_text`
 
+Reads the entire contents of a file as a string.
+
 ### `read_text_async`
 
 ```ori
@@ -164,6 +202,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.read_text_async`, `ori.files.read_text_async`, `files.read_text_async`
+
+Reads the entire contents of a file as a string asynchronously.
 
 ### `rename`
 
@@ -173,6 +213,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.rename`, `ori.files.rename`, `files.rename`
 
+Renames or moves a file from one path to another.
+
 ### `write`
 
 ```ori
@@ -180,6 +222,8 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.write`, `ori.files.write`, `files.write`
+
+Writes a bytes buffer to a file.
 
 ### `write_bytes`
 
@@ -189,6 +233,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.write_bytes`, `ori.files.write_bytes`, `files.write_bytes`
 
+Writes raw bytes to a file at the current position.
+
 ### `write_text`
 
 ```ori
@@ -197,6 +243,8 @@ File system access and management module. Provides synchronous and asynchronous 
 
 *Layer 1 · runtime* · **Aliases:** `fs.write_text`, `ori.files.write_text`, `files.write_text`
 
+Writes a string to a file, creating it if it doesn't exist.
+
 ### `write_text_async`
 
 ```ori
@@ -204,4 +252,6 @@ File system access and management module. Provides synchronous and asynchronous 
 ```
 
 *Layer 1 · runtime* · **Aliases:** `fs.write_text_async`, `ori.files.write_text_async`, `files.write_text_async`
+
+Writes a string to a file asynchronously.
 

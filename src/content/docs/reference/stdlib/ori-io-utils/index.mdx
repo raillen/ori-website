@@ -1,9 +1,9 @@
 ---
 title: "ori.io.utils"
-description: "Standard library module `ori.io.utils`."
+description: "I/O utility helpers. Provides convenience wrappers for printing and reading with fallback defaults."
 ---
 
-Standard library module `ori.io.utils`.
+I/O utility helpers. Provides convenience wrappers for printing and reading with fallback defaults.
 
 ### `print_line`
 
@@ -13,6 +13,8 @@ func print_line(value: string)
 
 *Layer 2 · .orl* · **Source:** `io/utils.orl`
 
+Performs the print line operation on utils.
+
 ### `try_read_line`
 
 ```ori
@@ -21,6 +23,8 @@ func try_read_line() -> optional<string>
 
 *Layer 2 · .orl* · **Source:** `io/utils.orl`
 
+Performs the try read line operation on utils.
+
 ### `write`
 
 ```ori
@@ -28,4 +32,6 @@ func write(value: string)
 ```
 
 *Layer 2 · .orl* · **Source:** `io/utils.orl`
+
+Writes a bytes buffer to a file.
 

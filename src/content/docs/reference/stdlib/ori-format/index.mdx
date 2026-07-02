@@ -1,9 +1,9 @@
 ---
 title: "ori.format"
-description: "Standard library module `ori.format`."
+description: "Value formatting primitives for rendering numbers, dates, bytes, and other types as human-readable strings."
 ---
 
-Standard library module `ori.format`.
+Value formatting primitives for rendering numbers, dates, bytes, and other types as human-readable strings.
 
 ### `binary`
 
@@ -13,6 +13,8 @@ Standard library module `ori.format`.
 
 *Layer 1 · runtime* · **Aliases:** `format.binary`
 
+Formats a number as a binary (base-2) string.
+
 ### `bytes_size`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.format`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `format.bytes_size`
+
+Formats a byte count as a human-readable size string (e.g., "1.5 MB").
 
 ### `date`
 
@@ -29,6 +33,8 @@ Standard library module `ori.format`.
 
 *Layer 1 · runtime* · **Aliases:** `format.date`
 
+Formats a timestamp as a date string.
+
 ### `datetime`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.format`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `format.datetime`
+
+Formats a timestamp as a date-time string.
 
 ### `hex`
 
@@ -45,6 +53,8 @@ Standard library module `ori.format`.
 
 *Layer 1 · runtime* · **Aliases:** `format.hex`
 
+Formats a number as a hexadecimal string.
+
 ### `number`
 
 ```ori
@@ -53,6 +63,8 @@ Standard library module `ori.format`.
 
 *Layer 1 · runtime* · **Aliases:** `format.number`
 
+Formats a number with locale-aware separators.
+
 ### `percent`
 
 ```ori
@@ -60,4 +72,6 @@ Standard library module `ori.format`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `format.percent`
+
+Formats a float as a percentage string.
 

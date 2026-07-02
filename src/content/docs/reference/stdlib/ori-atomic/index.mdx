@@ -1,9 +1,9 @@
 ---
 title: "ori.atomic"
-description: "Standard library module `ori.atomic`."
+description: "Atomic operations for lock-free concurrent value access. Provides atomic load, store, and add operations."
 ---
 
-Standard library module `ori.atomic`.
+Atomic operations for lock-free concurrent value access. Provides atomic load, store, and add operations.
 
 ### `add`
 
@@ -13,6 +13,8 @@ Standard library module `ori.atomic`.
 
 *Layer 1 · runtime* · **Aliases:** `atomic.add`
 
+Adds an element to the set. Returns true if the element was newly inserted.
+
 ### `load`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.atomic`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `atomic.load`
+
+Atomically reads the current value.
 
 ### `new`
 
@@ -29,6 +33,8 @@ Standard library module `ori.atomic`.
 
 *Layer 1 · runtime* · **Aliases:** `atomic.new`
 
+Creates a new empty instance of the atomic collection.
+
 ### `store`
 
 ```ori
@@ -36,4 +42,6 @@ Standard library module `ori.atomic`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `atomic.store`
+
+Atomically replaces the stored value.
 

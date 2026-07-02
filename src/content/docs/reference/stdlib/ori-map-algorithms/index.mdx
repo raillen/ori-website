@@ -1,9 +1,9 @@
 ---
 title: "ori.map.algorithms"
-description: "Standard library module `ori.map.algorithms`."
+description: "Map algorithms. Provides batch operations like merging, inversion, key counting, and value aggregation on typed maps."
 ---
 
-Standard library module `ori.map.algorithms`.
+Map algorithms. Provides batch operations like merging, inversion, key counting, and value aggregation on typed maps.
 
 ### `has_all_keys`
 
@@ -13,6 +13,8 @@ func has_all_keys(m: map<string, int>, keys: list<string>) -> bool
 
 *Layer 2 · .orl* · **Source:** `map/algorithms.orl`
 
+Performs the has all keys operation on algorithms.
+
 ### `invert_string_int`
 
 ```ori
@@ -20,6 +22,8 @@ func invert_string_int(m: map<string, int>) -> map<int, string>
 ```
 
 *Layer 2 · .orl* · **Source:** `map/algorithms.orl`
+
+Performs the invert string int operation on algorithms.
 
 ### `key_count_string_int`
 
@@ -29,6 +33,8 @@ func key_count_string_int(m: map<string, int>) -> int
 
 *Layer 2 · .orl* · **Source:** `map/algorithms.orl`
 
+Performs the key count string int operation on algorithms.
+
 ### `merge_string_int`
 
 ```ori
@@ -37,6 +43,8 @@ func merge_string_int(base: map<string, int>, overlay: map<string, int>) -> map<
 
 *Layer 2 · .orl* · **Source:** `map/algorithms.orl`
 
+Performs the merge string int operation on algorithms.
+
 ### `values_sum_int`
 
 ```ori
@@ -44,4 +52,6 @@ func values_sum_int(m: map<string, int>) -> int
 ```
 
 *Layer 2 · .orl* · **Source:** `map/algorithms.orl`
+
+Performs the values sum int operation on algorithms.
 

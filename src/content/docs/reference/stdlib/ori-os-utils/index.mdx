@@ -1,9 +1,9 @@
 ---
 title: "ori.os.utils"
-description: "Standard library module `ori.os.utils`."
+description: "OS utility helpers. Provides convenience wrappers with fallback defaults for platform and environment queries."
 ---
 
-Standard library module `ori.os.utils`.
+OS utility helpers. Provides convenience wrappers with fallback defaults for platform and environment queries.
 
 ### `arch`
 
@@ -13,6 +13,8 @@ func arch() -> string
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
 
+Returns the CPU architecture (e.g., x86_64, aarch64).
+
 ### `args`
 
 ```ori
@@ -20,6 +22,8 @@ func args() -> list<string>
 ```
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
+
+Returns the command-line arguments passed to the program.
 
 ### `current_dir_or`
 
@@ -29,6 +33,8 @@ func current_dir_or(fallback: string) -> string
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
 
+Performs the current dir or operation on utils.
+
 ### `env_or`
 
 ```ori
@@ -36,6 +42,8 @@ func env_or(name: string, fallback: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
+
+Performs the env or operation on utils.
 
 ### `has_env`
 
@@ -45,6 +53,8 @@ func has_env(name: string) -> bool
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
 
+Performs the has env operation on utils.
+
 ### `is_linux`
 
 ```ori
@@ -52,6 +62,8 @@ func is_linux() -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
+
+Performs the is linux operation on utils.
 
 ### `is_macos`
 
@@ -61,6 +73,8 @@ func is_macos() -> bool
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
 
+Performs the is macos operation on utils.
+
 ### `is_windows`
 
 ```ori
@@ -68,6 +82,8 @@ func is_windows() -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
+
+Performs the is windows operation on utils.
 
 ### `pid`
 
@@ -77,6 +93,8 @@ func pid() -> int
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
 
+Returns the current process ID.
+
 ### `platform`
 
 ```ori
@@ -84,4 +102,6 @@ func platform() -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `os/utils.orl`
+
+Returns the current operating system platform name.
 

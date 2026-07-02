@@ -1,9 +1,9 @@
 ---
 title: "ori.format.utils"
-description: "Standard library module `ori.format.utils`."
+description: "Format utility helpers. Provides additional formatting functions with custom parameters."
 ---
 
-Standard library module `ori.format.utils`.
+Format utility helpers. Provides additional formatting functions with custom parameters.
 
 ### `binary`
 
@@ -13,6 +13,8 @@ func binary(value: int) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Formats a number as a binary (base-2) string.
+
 ### `bytes_size`
 
 ```ori
@@ -20,6 +22,8 @@ func bytes_size(value: int) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
+
+Formats a byte count as a human-readable size string (e.g., "1.5 MB").
 
 ### `bytes_size_unit`
 
@@ -29,6 +33,8 @@ func bytes_size_unit(value: int, unit: string) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Performs the bytes size unit operation on utils.
+
 ### `date`
 
 ```ori
@@ -36,6 +42,8 @@ func date(ts: int, pattern: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
+
+Formats a timestamp as a date string.
 
 ### `datetime`
 
@@ -45,6 +53,8 @@ func datetime(ts: int, date_pattern: string, time_pattern: string) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Formats a timestamp as a date-time string.
+
 ### `hex`
 
 ```ori
@@ -52,6 +62,8 @@ func hex(value: int) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
+
+Formats a number as a hexadecimal string.
 
 ### `number`
 
@@ -61,6 +73,8 @@ func number(value: float) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Formats a number with locale-aware separators.
+
 ### `number_int`
 
 ```ori
@@ -68,6 +82,8 @@ func number_int(value: int) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
+
+Performs the number int operation on utils.
 
 ### `number_with`
 
@@ -77,6 +93,8 @@ func number_with(value: float, decimals: int) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Performs the number with operation on utils.
+
 ### `percent`
 
 ```ori
@@ -85,6 +103,8 @@ func percent(value: float) -> string
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
 
+Formats a float as a percentage string.
+
 ### `percent_with`
 
 ```ori
@@ -92,4 +112,6 @@ func percent_with(value: float, decimals: int) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `format/utils.orl`
+
+Performs the percent with operation on utils.
 

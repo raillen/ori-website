@@ -1,9 +1,9 @@
 ---
 title: "ori.net.utils"
-description: "Standard library module `ori.net.utils`."
+description: "Network utility helpers. Provides convenience wrappers for connection management with fallback defaults."
 ---
 
-Standard library module `ori.net.utils`.
+Network utility helpers. Provides convenience wrappers for connection management with fallback defaults.
 
 ### `close`
 
@@ -13,6 +13,8 @@ func close(conn: net.Connection)
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
 
+Closes an open file handle, releasing the associated resources.
+
 ### `connect`
 
 ```ori
@@ -20,6 +22,8 @@ func connect(host: string, port: int, timeout_ms: int) -> result<net.Connection,
 ```
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
+
+Establishes a TCP connection to the specified host and port.
 
 ### `is_open`
 
@@ -29,6 +33,8 @@ func is_open(conn: net.Connection) -> bool
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
 
+Performs the is open operation on utils.
+
 ### `read_bytes`
 
 ```ori
@@ -36,6 +42,8 @@ func read_bytes(conn: net.Connection, max_bytes: int) -> result<bytes, string>
 ```
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
+
+Reads a specific number of bytes from the file.
 
 ### `read_text`
 
@@ -45,6 +53,8 @@ func read_text(conn: net.Connection, max_bytes: int) -> result<string, string>
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
 
+Reads the entire contents of a file as a string.
+
 ### `write_bytes`
 
 ```ori
@@ -53,6 +63,8 @@ func write_bytes(conn: net.Connection, payload: bytes) -> result<void, string>
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
 
+Writes raw bytes to a file at the current position.
+
 ### `write_text`
 
 ```ori
@@ -60,4 +72,6 @@ func write_text(conn: net.Connection, text: string) -> result<void, string>
 ```
 
 *Layer 2 · .orl* · **Source:** `net/utils.orl`
+
+Writes a string to a file, creating it if it doesn't exist.
 

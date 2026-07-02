@@ -1,9 +1,9 @@
 ---
 title: "ori.convert.utils"
-description: "Standard library module `ori.convert.utils`."
+description: "Safe type conversion utilities with fallback default values."
 ---
 
-Standard library module `ori.convert.utils`.
+Safe type conversion utilities with fallback default values.
 
 ### `parse_bool_or`
 
@@ -13,6 +13,8 @@ func parse_bool_or(s: string, default: bool) -> bool
 
 *Layer 2 · .orl* · **Source:** `convert/utils.orl`
 
+Performs the parse bool or operation on utils.
+
 ### `parse_float_or`
 
 ```ori
@@ -21,6 +23,8 @@ func parse_float_or(s: string, default: float) -> float
 
 *Layer 2 · .orl* · **Source:** `convert/utils.orl`
 
+Performs the parse float or operation on utils.
+
 ### `parse_int_or`
 
 ```ori
@@ -28,4 +32,6 @@ func parse_int_or(s: string, default: int) -> int
 ```
 
 *Layer 2 · .orl* · **Source:** `convert/utils.orl`
+
+Performs the parse int or operation on utils.
 

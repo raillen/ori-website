@@ -3,80 +3,56 @@ title: The Ori Programming Language
 description: An evolving language to study compilers, runtimes, AI, and language design. Focus on explicit code, low ambiguity, readable errors, and honest documentation.
 template: splash
 hero:
-  tagline: An evolving language to study compilers, runtimes, AI, and language design. The focus is on writing explicit code, with low ambiguity, readable errors, and honest documentation.
+  tagline: A language built for reading. Explicit types, readable errors, zero toolchain — from source to native binary.
   actions:
-    - text: Read the Manifesto
-      link: /manifesto/
-      icon: open-book
-      variant: primary
     - text: Get started
       link: /getting-started/
       icon: right-arrow
+      variant: primary
+    - text: Read the Manifesto
+      link: /manifesto/
+      icon: open-book
       variant: secondary
-    - text: Download releases
-      link: https://github.com/raillen/ori-lang/releases
-      icon: download
-      variant: minimal
-    - text: Stdlib reference
-      link: /reference/
-      icon: document
-      variant: minimal
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
+import IndexShowcase from "../../components/IndexShowcase.astro";
 
+<IndexShowcase />
 
+---
 
-## Language Pillars
+## Why Ori?
+
+In a landscape where many languages favor shortcuts and implicit behavior, Ori takes a different path. Code must be written to be understood.
 
 <CardGrid>
-  <Card title="Readability First" icon="open-book">
-    No cryptic brackets or symbol noise. Blocks are structured using clear text delimiters like `end`.
+  <Card title="Readability over brevity" icon="open-book">
+    Blocks use `end` instead of braces. No cryptic symbols. Every decision is visible in the source code itself.
   </Card>
-  <Card title="Strict Explicit Types" icon="approve-check-circle">
-    Required annotations at declarations. Type coercion is entirely explicit via primitive functions (e.g., `int(val)`).
+  <Card title="Explicit types everywhere" icon="approve-check-circle">
+    Type annotations are required at declarations. No hidden coercion, no implicit conversions — what you see is what runs.
   </Card>
-  <Card title="Zero-Toolchain Linker" icon="setting">
-    The compiler automatically orchestrates CRT discovery and linking via bundled `rust-lld` or system linkers.
+  <Card title="Zero-toolchain linker" icon="setting">
+    The compiler handles CRT discovery and linking automatically. No C or Rust toolchain needed on the user machine.
   </Card>
-  <Card title="JIT and AOT Compilation" icon="rocket">
-    AOT compiles to standalone binaries. JIT executes instantly in-process via Cranelift, resolving symbols dynamically.
+  <Card title="JIT and AOT compilation" icon="rocket">
+    Run code instantly in-memory with Cranelift JIT, or compile to standalone native binaries for distribution.
   </Card>
 </CardGrid>
 
 ---
 
-## Quick showcase
-
-An Ori source file starts with a namespace declaration, imports dependencies, and uses clear, readable control flows:
-
-```ori
-namespace app.main
-
-import ori.io as io
-
-func main()
-    const label: string = if true then "Ori" else "world"
-    io.println("Hello, " + label + "!")
-end
-```
-
-To run this file instantly with in-memory JIT execution:
-
-```bash
-ori run main.orl
-```
-
-## Learning paths
+## Start learning
 
 <CardGrid>
   <Card title="Language map" icon="document">
-    Start with the [feature map](/language/feature-map/) to see what Ori covers today.
+    See the full feature landscape — types, modules, error handling, async, and more.
   </Card>
   <Card title="Cookbook" icon="open-book">
-    Use the [cookbook](/cookbook/) for practical patterns and project tutorials.
+    Practical patterns and real project tutorials to build intuition.
   </Card>
-  <Card title="Runtime notes" icon="setting">
-    Read [runtime and backends](/development/runtime-and-backends/) before documenting native-only behavior.
+  <Card title="Stdlib reference" icon="setting">
+    Browse all standard library modules with signatures and descriptions.
   </Card>
 </CardGrid>

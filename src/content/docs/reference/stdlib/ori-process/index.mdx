@@ -1,9 +1,9 @@
 ---
 title: "ori.process"
-description: "Standard library module `ori.process`."
+description: "System process execution. Provides functions to run shell commands and capture their output."
 ---
 
-Standard library module `ori.process`.
+System process execution. Provides functions to run shell commands and capture their output.
 
 ### `run`
 
@@ -13,6 +13,8 @@ Standard library module `ori.process`.
 
 *Layer 1 · runtime* · **Aliases:** `process.run`
 
+Executes a system command and waits for it to complete.
+
 ### `run_capture`
 
 ```ori
@@ -20,4 +22,6 @@ Standard library module `ori.process`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `process.run_capture`
+
+Executes a system command and captures its stdout and stderr output.
 

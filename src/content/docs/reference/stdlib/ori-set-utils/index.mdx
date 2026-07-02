@@ -1,9 +1,9 @@
 ---
 title: "ori.set.utils"
-description: "Standard library module `ori.set.utils`."
+description: "Set utility helpers. Provides convenience functions for set membership testing and construction."
 ---
 
-Standard library module `ori.set.utils`.
+Set utility helpers. Provides convenience functions for set membership testing and construction.
 
 ### `contains_all`
 
@@ -13,6 +13,8 @@ func contains_all(s: set<string>, items: list<string>) -> bool
 
 *Layer 2 · .orl* · **Source:** `set/utils.orl`
 
+Performs the contains all operation on utils.
+
 ### `contains_all_int`
 
 ```ori
@@ -20,6 +22,8 @@ func contains_all_int(s: set<int>, items: list<int>) -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `set/utils.orl`
+
+Performs the contains all int operation on utils.
 
 ### `from_list`
 
@@ -29,6 +33,8 @@ func from_list(items: list<string>) -> set<string>
 
 *Layer 2 · .orl* · **Source:** `set/utils.orl`
 
+Creates a new collection initialized with the elements from the given list.
+
 ### `is_subset`
 
 ```ori
@@ -36,4 +42,6 @@ func is_subset(subset: set<string>, superset: set<string>) -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `set/utils.orl`
+
+Performs the is subset operation on utils.
 

@@ -1,9 +1,9 @@
 ---
 title: "ori.lazy"
-description: "Standard library module `ori.lazy`."
+description: "Lazy evaluation primitives. Defers computation until the value is first accessed."
 ---
 
-Standard library module `ori.lazy`.
+Lazy evaluation primitives. Defers computation until the value is first accessed.
 
 ### `force`
 
@@ -13,6 +13,8 @@ Standard library module `ori.lazy`.
 
 *Layer 1 · runtime* · **Aliases:** `lazy.force`
 
+Forces evaluation of the lazy value and returns the computed result.
+
 ### `is_consumed`
 
 ```ori
@@ -21,6 +23,8 @@ Standard library module `ori.lazy`.
 
 *Layer 1 · runtime* · **Aliases:** `lazy.is_consumed`
 
+Returns true if the lazy value has already been evaluated.
+
 ### `once`
 
 ```ori
@@ -28,4 +32,6 @@ Standard library module `ori.lazy`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `lazy.once`
+
+Creates a lazy value that computes its result on first access and caches it.
 

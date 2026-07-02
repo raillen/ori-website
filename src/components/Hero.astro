@@ -1,0 +1,168 @@
+---
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline, actions = [] } = data.hero || {};
+---
+
+<div class="hero">
+	<div class="sl-flex stack">
+		<div class="sl-flex copy">
+			<h1 id="_top" data-page-title set:html={title} />
+			{tagline && <p class="tagline" set:html={tagline} />}
+		</div>
+		{
+			actions.length > 0 && (
+				<div class="sl-flex actions">
+					{actions.map(({ icon, link: href, text, variant }) => (
+						<a {href} class:list={['sl-flex', 'action', `action--${variant}`]}>
+							{text}
+							{icon?.html && <Fragment set:html={icon.html} />}
+						</a>
+					))}
+				</div>
+			)
+		}
+	</div>
+</div>
+
+<style>
+	.hero {
+		display: grid;
+		align-items: center;
+		gap: 1rem;
+		padding-top: clamp(2.5rem, calc(1rem + 5vmin), 5rem);
+		padding-bottom: clamp(1.5rem, calc(0.5rem + 2vmin), 2.5rem);
+	}
+
+	.stack {
+		flex-direction: column;
+		gap: clamp(1.25rem, calc(1rem + 1vw), 2rem);
+		text-align: center;
+	}
+
+	.copy {
+		flex-direction: column;
+		gap: 0.85rem;
+		align-items: center;
+	}
+
+	.copy > * {
+		max-width: 48ch;
+	}
+
+	h1 {
+		font-family: var(--sl-font);
+		font-size: clamp(1.75rem, calc(0.5rem + 3.5vw), 2.5rem);
+		line-height: 1.15;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--sl-color-white);
+	}
+
+	.tagline {
+		font-family: var(--sl-font);
+		font-size: clamp(0.875rem, calc(0.0625rem + 1.2vw), 1rem);
+		line-height: 1.6;
+		color: var(--sl-color-gray-2);
+		max-width: 42ch;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		justify-content: center;
+	}
+
+	.action {
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		border-radius: var(--radius-md, 0.75rem);
+		font-family: var(--sl-font);
+		font-weight: 500;
+		font-size: 0.85rem;
+		padding: 0.6rem 1.3rem;
+		text-decoration: none;
+		cursor: pointer;
+		transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+		white-space: nowrap;
+	}
+
+	.action:active {
+		transform: scale(0.97);
+	}
+
+	/* Primary */
+	.action--primary {
+		background: var(--accent, #1d4ed8);
+		color: #fff;
+		border: 1px solid transparent;
+		box-shadow:
+			0 1px 2px rgb(15 23 42 / 0.08),
+			0 4px 12px -4px color-mix(in srgb, var(--accent, #1d4ed8) 40%, transparent);
+	}
+
+	.action--primary:hover {
+		background: var(--accent-hover, #2563eb);
+		box-shadow:
+			0 1px 2px rgb(15 23 42 / 0.06),
+			0 6px 16px -6px color-mix(in srgb, var(--accent, #1d4ed8) 50%, transparent);
+		transform: translateY(-1px);
+	}
+
+	/* Secondary */
+	.action--secondary {
+		background: var(--sl-color-bg, #ffffff);
+		color: var(--sl-color-text, #0d1526);
+		border: 1px solid var(--sl-color-border, #e3e8f0);
+		box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+	}
+
+	.action--secondary:hover {
+		border-color: var(--sl-color-gray-4, #cdd5e1);
+		box-shadow: 0 1px 3px rgb(15 23 42 / 0.06);
+		transform: translateY(-1px);
+	}
+
+	/* Minimal */
+	.action--minimal {
+		background: transparent;
+		color: var(--sl-color-gray-2, #5b6678);
+		border: 1px solid transparent;
+	}
+
+	.action--minimal:hover {
+		color: var(--accent, #1d4ed8);
+		background: var(--accent-soft, color-mix(in srgb, var(--accent, #1d4ed8) 12%, transparent));
+	}
+
+	/* Dark */
+	:root[data-theme="dark"] .action--primary {
+		box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 12px -4px color-mix(in srgb, var(--accent, #4f87ff) 40%, transparent);
+	}
+	:root[data-theme="dark"] .action--primary:hover {
+		box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 16px -6px color-mix(in srgb, var(--accent, #4f87ff) 50%, transparent);
+	}
+	:root[data-theme="dark"] .action--secondary {
+		background: var(--sl-color-bg, #131b2d);
+		color: var(--sl-color-white, #eef2f9);
+		border-color: var(--sl-color-border, #243049);
+	}
+	:root[data-theme="dark"] .action--secondary:hover {
+		border-color: var(--sl-color-gray-4, #324264);
+	}
+	:root[data-theme="dark"] .action--minimal {
+		color: var(--sl-color-gray-2, #94a3b8);
+	}
+
+	@media (min-width: 50rem) {
+		.hero {
+			grid-template-columns: 1fr;
+			padding-block: clamp(2.5rem, calc(1rem + 5vmin), 6rem);
+		}
+
+		.stack { text-align: start; }
+		.copy { align-items: flex-start; }
+		.actions { justify-content: flex-start; }
+	}
+</style>

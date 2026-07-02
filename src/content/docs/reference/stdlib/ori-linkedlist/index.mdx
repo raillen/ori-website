@@ -1,9 +1,9 @@
 ---
 title: "ori.linked_list"
-description: "Standard library module `ori.linked_list`."
+description: "Singly-linked list data structure. Supports O(1) insertion at head, cursor-based traversal, and sequential access patterns."
 ---
 
-Standard library module `ori.linked_list`.
+Singly-linked list data structure. Supports O(1) insertion at head, cursor-based traversal, and sequential access patterns.
 
 ### `clear`
 
@@ -13,6 +13,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.clear`
 
+Removes all elements from the collection, resetting it to empty.
+
 ### `clone`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.clone`
+
+Returns a deep copy of the collection, independent of the original.
 
 ### `cursor_back`
 
@@ -29,6 +33,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.cursor_back`
 
+Creates a cursor positioned at the back of the list.
+
 ### `cursor_front`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.cursor_front`
+
+Creates a cursor positioned at the front of the list.
 
 ### `find`
 
@@ -45,6 +53,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.find`
 
+Searches for a node matching the predicate and returns its value.
+
 ### `front`
 
 ```ori
@@ -52,6 +62,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.front`
+
+Returns the element at the front without removing it.
 
 ### `insert_after`
 
@@ -61,6 +73,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.insert_after`
 
+Inserts a new element after the node at the given cursor position.
+
 ### `is_empty`
 
 ```ori
@@ -68,6 +82,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.is_empty`
+
+Returns true if the collection contains no elements.
 
 ### `len`
 
@@ -77,6 +93,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.len`
 
+Returns the number of elements in the collection.
+
 ### `new`
 
 ```ori
@@ -84,6 +102,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.new`
+
+Creates a new empty instance of the linked_list collection.
 
 ### `pop_front`
 
@@ -93,6 +113,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.pop_front`
 
+Removes and returns the element at the front of the deque.
+
 ### `push_back`
 
 ```ori
@@ -100,6 +122,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.push_back`
+
+Adds an element to the back of the deque.
 
 ### `push_front`
 
@@ -109,6 +133,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.push_front`
 
+Adds an element to the front of the deque.
+
 ### `remove_at`
 
 ```ori
@@ -116,6 +142,8 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.remove_at`
+
+Removes the element at the specified node index.
 
 ### `to_list`
 
@@ -125,6 +153,8 @@ Standard library module `ori.linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.to_list`
 
+Converts the collection into a plain list.
+
 ### `value_at`
 
 ```ori
@@ -132,4 +162,6 @@ Standard library module `ori.linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `linked_list.value_at`
+
+Returns the value at the specified node index.
 

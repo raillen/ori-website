@@ -1,9 +1,9 @@
 ---
 title: "ori.tree"
-description: "Standard library module `ori.tree`."
+description: "Tree data structure. Supports hierarchical node management with pre-order, post-order, and breadth-first traversals."
 ---
 
-Standard library module `ori.tree`.
+Tree data structure. Supports hierarchical node management with pre-order, post-order, and breadth-first traversals.
 
 ### `add_child`
 
@@ -13,6 +13,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.add_child`
 
+Adds a child node to the specified parent node.
+
 ### `breadth_first`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.breadth_first`
+
+Traverses the tree level by level and returns node values.
 
 ### `children`
 
@@ -29,6 +33,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.children`
 
+Returns the direct children of the specified node.
+
 ### `clone`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.clone`
+
+Returns a deep copy of the collection, independent of the original.
 
 ### `clone_subtree`
 
@@ -45,6 +53,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.clone_subtree`
 
+Creates a deep copy of the subtree rooted at the given node.
+
 ### `contains_node`
 
 ```ori
@@ -52,6 +62,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.contains_node`
+
+Returns true if the tree contains the specified node.
 
 ### `depth`
 
@@ -61,6 +73,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.depth`
 
+Returns the depth of the specified node from the root.
+
 ### `find`
 
 ```ori
@@ -68,6 +82,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.find`
+
+Searches for a node matching the predicate and returns its value.
 
 ### `len`
 
@@ -77,6 +93,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.len`
 
+Returns the number of elements in the collection.
+
 ### `move_subtree`
 
 ```ori
@@ -84,6 +102,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.move_subtree`
+
+Moves a subtree to become a child of a new parent node.
 
 ### `new`
 
@@ -93,6 +113,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.new`
 
+Creates a new empty instance of the tree collection.
+
 ### `parent`
 
 ```ori
@@ -100,6 +122,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.parent`
+
+Returns the parent node of the specified node.
 
 ### `post_order`
 
@@ -109,6 +133,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.post_order`
 
+Traverses the tree in post-order (children, root) and returns node values.
+
 ### `pre_order`
 
 ```ori
@@ -116,6 +142,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.pre_order`
+
+Traverses the tree in pre-order (root, children) and returns node values.
 
 ### `remove_subtree`
 
@@ -125,6 +153,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.remove_subtree`
 
+Removes the subtree rooted at the specified node.
+
 ### `root`
 
 ```ori
@@ -132,6 +162,8 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.root`
+
+Returns the root node of the tree.
 
 ### `set_value`
 
@@ -141,6 +173,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.set_value`
 
+Replaces the value stored at the specified node.
+
 ### `try_value`
 
 ```ori
@@ -149,6 +183,8 @@ Standard library module `ori.tree`.
 
 *Layer 1 · runtime* · **Aliases:** `tree.try_value`
 
+Returns the value at the node, or an error if the node is not found.
+
 ### `value`
 
 ```ori
@@ -156,4 +192,6 @@ Standard library module `ori.tree`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `tree.value`
+
+Returns the value stored at the specified node.
 

@@ -13,6 +13,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.add`
 
+Adds an element to the set. Returns true if the element was newly inserted.
+
 ### `capacity`
 
 ```ori
@@ -20,6 +22,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.capacity`
+
+Returns the current allocated capacity of the collection.
 
 ### `clear`
 
@@ -29,6 +33,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.clear`
 
+Removes all elements from the collection, resetting it to empty.
+
 ### `clone`
 
 ```ori
@@ -36,6 +42,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.clone`
+
+Returns a deep copy of the collection, independent of the original.
 
 ### `contains`
 
@@ -45,6 +53,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.contains`
 
+Returns true if the collection contains the specified element.
+
 ### `difference`
 
 ```ori
@@ -52,6 +62,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.difference`
+
+Returns a new set with elements in the first set but not in the second.
 
 ### `free`
 
@@ -61,6 +73,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.free`
 
+Releases the underlying memory allocated by the collection.
+
 ### `from_list`
 
 ```ori
@@ -68,6 +82,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.from_list`
+
+Creates a new collection initialized with the elements from the given list.
 
 ### `intersection`
 
@@ -77,6 +93,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.intersection`
 
+Returns a new set containing only elements present in both sets.
+
 ### `is_empty`
 
 ```ori
@@ -84,6 +102,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.is_empty`
+
+Returns true if the collection contains no elements.
 
 ### `len`
 
@@ -93,6 +113,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.len`
 
+Returns the number of elements in the collection.
+
 ### `new`
 
 ```ori
@@ -100,6 +122,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.new`
+
+Creates a new empty instance of the set collection.
 
 ### `remove`
 
@@ -109,6 +133,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.remove`
 
+Removes and returns the element at the specified index.
+
 ### `reserve`
 
 ```ori
@@ -116,6 +142,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.reserve`
+
+Ensures the collection has capacity for at least the specified number of elements.
 
 ### `to_list`
 
@@ -125,6 +153,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.to_list`
 
+Converts the collection into a plain list.
+
 ### `try_remove`
 
 ```ori
@@ -133,6 +163,8 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 
 *Layer 1 · runtime* · **Aliases:** `set.try_remove`
 
+Removes the element at the specified index, or returns an error if out of bounds.
+
 ### `union`
 
 ```ori
@@ -140,4 +172,6 @@ Unique set collection helpers for set arithmetic, values membership tests, inser
 ```
 
 *Layer 1 · runtime* · **Aliases:** `set.union`
+
+Returns a new set containing all elements from both sets.
 

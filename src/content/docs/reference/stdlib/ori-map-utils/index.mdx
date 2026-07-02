@@ -1,9 +1,9 @@
 ---
 title: "ori.map.utils"
-description: "Standard library module `ori.map.utils`."
+description: "Map utility helpers. Provides convenience accessors with fallback defaults for map lookups."
 ---
 
-Standard library module `ori.map.utils`.
+Map utility helpers. Provides convenience accessors with fallback defaults for map lookups.
 
 ### `contains_key`
 
@@ -13,6 +13,8 @@ func contains_key(m: map<string, int>, key: string) -> bool
 
 *Layer 2 · .orl* · **Source:** `map/utils.orl`
 
+Performs the contains key operation on utils.
+
 ### `get_or`
 
 ```ori
@@ -20,6 +22,8 @@ func get_or(m: map<string, int>, key: string, fallback: int) -> int
 ```
 
 *Layer 2 · .orl* · **Source:** `map/utils.orl`
+
+Performs the get or operation on utils.
 
 ### `get_or_string`
 
@@ -29,6 +33,8 @@ func get_or_string(m: map<string, string>, key: string, fallback: string) -> str
 
 *Layer 2 · .orl* · **Source:** `map/utils.orl`
 
+Performs the get or string operation on utils.
+
 ### `has_key`
 
 ```ori
@@ -37,6 +43,8 @@ func has_key(m: map<string, int>, key: string) -> bool
 
 *Layer 2 · .orl* · **Source:** `map/utils.orl`
 
+Performs the has key operation on utils.
+
 ### `is_empty`
 
 ```ori
@@ -44,4 +52,6 @@ func is_empty(m: map<string, int>) -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `map/utils.orl`
+
+Returns true if the collection contains no elements.
 

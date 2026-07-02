@@ -1,9 +1,9 @@
 ---
 title: "ori.list.utils"
-description: "Standard library module `ori.list.utils`."
+description: "List utility helpers. Provides convenience accessors with fallback defaults."
 ---
 
-Standard library module `ori.list.utils`.
+List utility helpers. Provides convenience accessors with fallback defaults.
 
 ### `first_or`
 
@@ -13,6 +13,8 @@ func first_or(items: list<T>, fallback: T) -> T
 
 *Layer 2 · .orl* · **Source:** `list/utils.orl`
 
+Performs the first or operation on utils.
+
 ### `get_or`
 
 ```ori
@@ -20,6 +22,8 @@ func get_or(items: list<T>, index: int, fallback: T) -> T
 ```
 
 *Layer 2 · .orl* · **Source:** `list/utils.orl`
+
+Performs the get or operation on utils.
 
 ### `last_or`
 
@@ -29,6 +33,8 @@ func last_or(items: list<T>, fallback: T) -> T
 
 *Layer 2 · .orl* · **Source:** `list/utils.orl`
 
+Performs the last or operation on utils.
+
 ### `singleton`
 
 ```ori
@@ -36,4 +42,6 @@ func singleton(item: T) -> list<T>
 ```
 
 *Layer 2 · .orl* · **Source:** `list/utils.orl`
+
+Performs the singleton operation on utils.
 

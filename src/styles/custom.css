@@ -1,69 +1,392 @@
-:root {
-  --sl-font: "Inter", system-ui, sans-serif;
-  --sl-font-mono: "JetBrains Mono", ui-monospace, monospace;
+/* ============================================================
+   ORI WEBSITE — DESIGN TOKENS & GLOBAL STYLES
+   Based on DESIGN-RULES.md
+   ============================================================ */
+
+/* ── Anti-FOUC: prevent flash of unstyled theme ── */
+html:not([data-theme]) {
+  visibility: hidden;
+}
+html[data-theme] {
+  visibility: visible;
 }
 
-:root[data-theme="dark"] {
-  /* Modern Premium Dark Palette (Slate/Blue) */
-  --sl-color-bg: #090d16;
-  --sl-color-bg-nav: rgba(15, 23, 42, 0.75);
-  --sl-color-bg-sidebar: #090d16;
-  --sl-color-accent: #3b82f6; 
-  --sl-color-accent-low: rgba(59, 130, 246, 0.12);
-  --sl-color-accent-high: #60a5fa;
-  --sl-color-border: #1e293b;
-  --sl-color-gray-6: #0f172a;
-  --sl-color-gray-5: #1e293b;
-  --sl-color-gray-4: #334155;
-  --sl-color-gray-3: #64748b;
-  --sl-color-gray-2: #94a3b8;
-  --sl-color-gray-1: #cbd5e1;
-  --sl-color-text: #f8fafc;
-
-  /* Custom extra helper vars for dark theme */
-  --custom-card-bg: #0f172a;
-  --custom-table-th-bg: #0f172a;
-  --custom-search-panel-bg: #0f172a;
-  --custom-glow-color: rgba(59, 130, 246, 0.04);
-}
-
+/* ──────────────────────────────────────────────────
+   1. DESIGN TOKENS — LIGHT THEME
+   ────────────────────────────────────────────────── */
 :root[data-theme="light"] {
-  /* Modern Premium Light Palette (Slate/Blue) */
-  --sl-color-bg: #f8fafc; 
+  /* Colors */
+  --bg-page: #f5f7fb;
+  --bg-surface: #ffffff;
+  --bg-surface-muted: #eef2f7;
+  --border: #e3e8f0;
+  --border-strong: #cdd5e1;
+  --text: #0d1526;
+  --text-secondary: #5b6678;
+  --text-muted: #94a3b8;
+  --accent: #1d4ed8;
+  --accent-hover: #2563eb;
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  --success: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --shadow-color: rgb(15 23 42);
+
+  /* Starlight overrides */
+  --sl-color-bg: var(--bg-page);
   --sl-color-bg-nav: rgba(241, 245, 249, 0.75);
-  --sl-color-bg-sidebar: #f1f5f9;
-  --sl-color-accent: #2563eb; 
-  --sl-color-accent-low: rgba(37, 99, 235, 0.08);
-  --sl-color-accent-high: #1d4ed8; 
-  --sl-color-border: #e2e8f0; 
+  --sl-color-bg-sidebar: var(--bg-page);
+  --sl-color-accent: var(--accent);
+  --sl-color-accent-low: var(--accent-soft);
+  --sl-color-accent-high: var(--accent-hover);
+  --sl-color-border: var(--border);
   --sl-color-gray-6: #f1f5f9;
-  --sl-color-gray-5: #e2e8f0;
-  --sl-color-gray-4: #cbd5e1;
+  --sl-color-gray-5: var(--border);
+  --sl-color-gray-4: #cdd5e1;
   --sl-color-gray-3: #94a3b8;
   --sl-color-gray-2: #64748b;
   --sl-color-gray-1: #334155;
-  --sl-color-text: #0f172a;
+  --sl-color-text: var(--text);
+}
 
-  /* Custom extra helper vars for light theme */
-  --custom-card-bg: #ffffff;
-  --custom-table-th-bg: #f1f5f9;
-  --custom-search-panel-bg: #ffffff;
-  --custom-glow-color: rgba(37, 99, 235, 0.02);
+/* ──────────────────────────────────────────────────
+   2. DESIGN TOKENS — DARK THEME
+   ────────────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  /* Colors */
+  --bg-page: #0b1120;
+  --bg-surface: #131b2d;
+  --bg-surface-muted: #161f33;
+  --border: #243049;
+  --border-strong: #324264;
+  --text: #eef2f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #6f7580;
+  --accent: #4f87ff;
+  --accent-hover: #5b8dff;
+  --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
+  --success: #23c55e;
+  --danger: #f8717a;
+  --warning: #fbbf24;
+  --shadow-color: rgb(0 0 0);
+
+  /* Starlight overrides */
+  --sl-color-bg: var(--bg-page);
+  --sl-color-bg-nav: rgba(11, 17, 32, 0.75);
+  --sl-color-bg-sidebar: var(--bg-page);
+  --sl-color-accent: var(--accent);
+  --sl-color-accent-low: var(--accent-soft);
+  --sl-color-accent-high: var(--accent-hover);
+  --sl-color-border: var(--border);
+  --sl-color-gray-6: var(--bg-page);
+  --sl-color-gray-5: var(--bg-surface);
+  --sl-color-gray-4: var(--border-strong);
+  --sl-color-gray-3: var(--text-muted);
+  --sl-color-gray-2: var(--text-secondary);
+  --sl-color-gray-1: #cbd5e1;
+  --sl-color-text: var(--text);
+}
+
+/* ──────────────────────────────────────────────────
+   3. TYPOGRAPHY TOKENS
+   ────────────────────────────────────────────────── */
+:root {
+  /* Font families */
+  --sl-font: 'Geist Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --sl-font-mono: 'Geist Mono Variable', 'JetBrains Mono', 'Cascadia Mono', 'Consolas', monospace;
+
+  /* Font sizes (base = 14px) */
+  --fs-display: 2.25rem;     /* 36px */
+  --fs-h1: 1.75rem;          /* 28px */
+  --fs-h2: 1.375rem;         /* 22px */
+  --fs-h3: 1.125rem;         /* 18px */
+  --fs-body-lg: 1rem;        /* 16px */
+  --fs-body: 0.875rem;       /* 14px */
+  --fs-body-sm: 0.8125rem;   /* 13px */
+  --fs-caption: 0.75rem;     /* 12px */
+  --fs-overline: 0.6875rem;  /* 11px */
+
+  /* Line heights */
+  --lh-display: 2.75rem;
+  --lh-h1: 2.25rem;
+  --lh-h2: 1.875rem;
+  --lh-h3: 1.625rem;
+  --lh-body-lg: 1.625rem;
+  --lh-body: 1.5rem;
+  --lh-body-sm: 1.25rem;
+  --lh-caption: 1rem;
+
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-tight-sm: -0.02em;
+  --tracking-tight-xs: -0.015em;
+  --tracking-normal: normal;
+  --tracking-wide: 0.05em;
+
+  /* Base font size override */
+  font-size: 14px;
 }
 
 :lang(ja) {
-  --sl-font: "Noto Sans JP", "Inter", system-ui, sans-serif;
+  --sl-font: "Noto Sans JP", 'Geist Variable', 'Inter', system-ui, sans-serif;
 }
 
-/* Glassmorphism for Header */
+/* ──────────────────────────────────────────────────
+   4. SPACING TOKENS
+   ────────────────────────────────────────────────── */
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 48px;
+  --space-5xl: 64px;
+}
+
+/* ──────────────────────────────────────────────────
+   5. BORDER RADIUS TOKENS
+   ────────────────────────────────────────────────── */
+:root {
+  --radius-sm: 0.5rem;    /* 8px — badges, small tags */
+  --radius-md: 0.75rem;   /* 12px — buttons, inputs */
+  --radius-lg: 1rem;      /* 16px — dropdowns, popovers */
+  --radius-xl: 1.25rem;   /* 20px — interactive cards */
+  --radius-2xl: 1.5rem;   /* 24px — static cards, modals */
+  --radius-full: 9999px;  /* pills, avatars */
+}
+
+/* ──────────────────────────────────────────────────
+   6. SHADOW TOKENS
+   ────────────────────────────────────────────────── */
+:root[data-theme="light"] {
+  --shadow-xs: 0 1px 2px -1px rgb(15 23 42 / 0.08);
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -4px rgb(15 23 42 / 0.12), 0 2px 6px -3px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 18px 40px -16px rgb(15 23 42 / 0.22), 0 6px 16px -10px rgb(15 23 42 / 0.14);
+  --shadow-xl: 0 24px 48px -12px rgb(15 23 42 / 0.25), 0 8px 20px -8px rgb(15 23 42 / 0.18);
+  --custom-glow-color: rgba(29, 78, 216, 0.02);
+  --custom-card-bg: #ffffff;
+  --custom-table-th-bg: #f1f5f9;
+  --custom-search-panel-bg: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --shadow-xs: 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 6px 16px -6px rgb(0 0 0 / 0.5), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 24px 48px -18px rgb(0 0 0 / 0.6), 0 8px 20px -12px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 32px 64px -12px rgb(0 0 0 / 0.7);
+  --custom-glow-color: rgba(79, 135, 255, 0.04);
+  --custom-card-bg: #131b2d;
+  --custom-table-th-bg: #0f172a;
+  --custom-search-panel-bg: #131b2d;
+}
+
+/* ──────────────────────────────────────────────────
+   7. TRANSITIONS & EASING
+   ────────────────────────────────────────────────── */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 280ms;
+  --duration-slower: 400ms;
+}
+
+/* ──────────────────────────────────────────────────
+   8. KEYFRAME ANIMATIONS
+   ────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ──────────────────────────────────────────────────
+   9. REDUCED MOTION SUPPORT
+   ────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   10. GLOBAL RESETS & BASE STYLES
+   ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--sl-font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background-color: var(--bg-page);
+  transition: background-color var(--duration-slow) var(--ease-out),
+              color var(--duration-slow) var(--ease-out);
+}
+
+/* ──────────────────────────────────────────────────
+   11. FOCUS RING (Accessibility)
+   ────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip-to-content */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: var(--space-lg);
+  z-index: 10000;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition: top var(--duration-fast) var(--ease-out);
+}
+.skip-to-content:focus {
+  top: var(--space-lg);
+}
+
+/* ──────────────────────────────────────────────────
+   12. SCROLLBAR
+   ────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ──────────────────────────────────────────────────
+   13. HEADER — Glassmorphism + Backdrop Blur (fixed via Starlight)
+   ────────────────────────────────────────────────── */
 header.header {
-  position: relative;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   background-color: var(--sl-color-bg-nav) !important;
-  border-bottom: 1px solid var(--sl-color-border);
+  border-bottom: 1px solid var(--border);
 }
 
-/* Centraliza a barra de pesquisa global no Navbar (Desktop) */
+/* ──────────────────────────────────────────────────
+   14. SIDEBAR
+   ────────────────────────────────────────────────── */
+.sidebar-content {
+  padding-top: var(--space-xl);
+}
+
+.sidebar-content a {
+  border-radius: var(--radius-md);
+  padding: 0.3rem 0.6rem !important;
+  transition: all var(--duration-base) var(--ease-out);
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+}
+
+.sidebar-content a:hover,
+.sidebar-content a[aria-current="page"] {
+  background-color: var(--accent-soft) !important;
+  color: var(--accent-hover) !important;
+}
+
+/* Sidebar section labels (overline style) */
+.sidebar-content .sidebar-section-label,
+.sidebar-group .sidebar-group-label {
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  padding-top: var(--space-md);
+}
+
+/* Collapsible group summaries — tighter */
+.sidebar-content details > summary {
+  border-radius: var(--radius-md);
+  padding: 0.25rem 0.5rem;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.sidebar-content details > summary:hover {
+  background-color: var(--bg-surface-muted);
+}
+
+/* Nested collapsible groups — compact */
+.sidebar-content details details {
+  padding-inline-start: 0.5rem;
+}
+
+.sidebar-content details details > summary {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.4rem;
+}
+
+.sidebar-content details details > summary:hover {
+  color: var(--accent);
+}
+
+/* ──────────────────────────────────────────────────
+   15. SEARCH — Centered Desktop Bar
+   ────────────────────────────────────────────────── */
 @media (min-width: 50rem) {
   site-search {
     position: absolute;
@@ -74,55 +397,27 @@ header.header {
   }
 }
 
-/* Clean sidebar noise */
-.sidebar-content {
-  padding-top: 1.5rem;
+.ori-search-trigger {
+  margin-left: auto;
+  font-size: var(--fs-body-sm);
+  font-family: var(--sl-font);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
 }
-.sidebar-content a {
-  border-radius: 6px;
-  padding: 0.35rem 0.65rem !important;
-  transition: all 0.2s ease;
-}
-.sidebar-content a:hover,
-.sidebar-content a[aria-current="page"] {
-  background-color: var(--sl-color-accent-low) !important;
-  color: var(--sl-color-accent-high) !important;
-}
-
-/* Clean Card Designs */
-.card {
-  border: 1px solid var(--sl-color-border) !important;
-  background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), var(--custom-glow-color), transparent 40%), var(--custom-card-bg) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sl-color-gray-4) !important;
+.ori-search-trigger:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* Table polishing */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1.5rem 0;
-}
-th {
-  background-color: var(--custom-table-th-bg);
-  border-bottom: 2px solid var(--sl-color-border) !important;
-  font-weight: 600;
-  color: var(--sl-color-text);
-}
-td, th {
-  padding: 0.75rem 1rem !important;
-  border: 1px solid var(--sl-color-border) !important;
-}
-tr:nth-child(even) {
-  background-color: rgba(15, 23, 42, 0.03);
-}
-
-/* Search Dialog Glassmorphism */
+/* ──────────────────────────────────────────────────
+   16. SEARCH DIALOG — Modal
+   ────────────────────────────────────────────────── */
 .ori-search-dialog {
   position: fixed;
   inset: 0;
@@ -131,31 +426,34 @@ tr:nth-child(even) {
   align-items: flex-start;
   justify-content: center;
   padding: 10vh 1rem 1rem;
-  background: rgba(4, 6, 12, 0.4);
+  background: rgba(4, 6, 12, 0.45);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .ori-search-dialog[data-open="true"] {
   display: flex;
+  animation: fadeInUp var(--duration-base) var(--ease-out-expo);
 }
 
 .ori-search-panel {
   width: min(640px, 100%);
-  background: var(--custom-search-panel-bg);
-  border: 1px solid var(--sl-color-border);
-  border-radius: 12px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
   overflow: hidden;
+  animation: scaleIn var(--duration-base) var(--ease-out-expo);
 }
 
 .ori-search-input {
   width: 100%;
   padding: 1.1rem 1.4rem;
-  font: 500 1rem var(--sl-font);
+  font: 500 var(--fs-body-lg) var(--sl-font);
   border: none;
-  border-bottom: 1px solid var(--sl-color-border);
+  border-bottom: 1px solid var(--border);
   background: transparent;
-  color: var(--sl-color-text);
+  color: var(--text);
   outline: none;
 }
 
@@ -163,7 +461,7 @@ tr:nth-child(even) {
   max-height: 50vh;
   overflow-y: auto;
   margin: 0;
-  padding: 0.5rem;
+  padding: var(--space-sm);
   list-style: none;
 }
 
@@ -177,66 +475,316 @@ tr:nth-child(even) {
   width: 100%;
   text-align: left;
   padding: 0.75rem 0.95rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border: none;
   background: transparent;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  transition: background-color 0.15s ease;
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .ori-search-results a:hover,
 .ori-search-results button:hover,
 .ori-search-results [aria-selected="true"] {
-  background: var(--sl-color-accent-low);
-  color: var(--sl-color-accent-high);
+  background: var(--accent-soft);
+  color: var(--accent-hover);
 }
 
 .ori-search-kind {
-  font-size: 0.72rem;
+  font-size: var(--fs-overline);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--sl-color-accent-high);
-  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  font-weight: var(--fw-semibold);
 }
 
 .ori-search-id {
   font-family: var(--sl-font-mono);
-  font-size: 0.92rem;
+  font-size: var(--fs-body);
   margin-top: 0.15rem;
 }
 
 .ori-search-sig {
-  font-size: 0.82rem;
-  color: var(--sl-color-gray-2);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
   margin-top: 0.25rem;
-}
-
-.ori-search-trigger {
-  margin-left: auto;
-  font-size: 0.85rem;
-  opacity: 0.9;
-  border: 1px solid var(--sl-color-border);
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
-  background: var(--custom-search-panel-bg);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.ori-search-trigger:hover {
-  background: var(--sl-color-accent-low);
-  border-color: var(--sl-color-accent);
 }
 
 .ori-layer-badge {
   display: inline-block;
-  font-size: 0.68rem;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
   padding: 0.1rem 0.45rem;
-  border-radius: 999px;
-  background: var(--sl-color-accent-low);
-  color: var(--sl-color-accent-high);
+  border-radius: var(--radius-full);
+  background: var(--accent-soft);
+  color: var(--accent);
   margin-left: 0.45rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* ──────────────────────────────────────────────────
+   17. CARDS — Starlight Overrides
+   ────────────────────────────────────────────────── */
+.card {
+  border: 1px solid var(--border) !important;
+  background: var(--bg-surface) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-2xl) !important;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong) !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* CardGrid spacing */
+sl-card-grid,
+.card-grid {
+  gap: var(--space-xl) !important;
+}
+
+/* ──────────────────────────────────────────────────
+   18. TABLES — Polished
+   ────────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: var(--fs-body);
+}
+
+th {
+  background-color: var(--custom-table-th-bg);
+  border-bottom: 2px solid var(--border) !important;
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  font-size: var(--fs-overline);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+td, th {
+  padding: 0.75rem 1rem !important;
+  border: 1px solid var(--border) !important;
+}
+
+tr:nth-child(even) {
+  background-color: var(--accent-soft);
+}
+
+tr {
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+tr:hover {
+  background-color: var(--bg-surface-muted);
+}
+
+/* ──────────────────────────────────────────────────
+   19. CODE BLOCKS
+   ────────────────────────────────────────────────── */
+pre {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-xs);
+}
+
+:not(pre) > code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.9em;
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.35em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: var(--fw-medium);
+}
+
+/* ──────────────────────────────────────────────────
+   20. HERO (Splash Page) — handled by Hero.astro
+   ────────────────────────────────────────────────── */
+
+/* ──────────────────────────────────────────────────
+   21. BUTTONS — Starlight Overrides
+   ────────────────────────────────────────────────── */
+.sl-doc-nav a,
+.sidebar-content a,
+.starlight-sidebar-actions a {
+  border-radius: var(--radius-md);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.starlight-sidebar-actions a {
+  border-radius: var(--radius-md) !important;
+  font-weight: var(--fw-medium);
+  transition: all var(--duration-base) var(--ease-out) !important;
+}
+
+.starlight-sidebar-actions a:active {
+  transform: scale(0.97);
+}
+
+/* ──────────────────────────────────────────────────
+   22. CONTENT PROSE
+   ────────────────────────────────────────────────── */
+.sl-markdown-content {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.sl-markdown-content h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight-sm);
+}
+
+.sl-markdown-content h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-tight-xs);
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sl-markdown-content h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: var(--fw-semibold);
+  letter-spacing: -0.01em;
+}
+
+.sl-markdown-content p {
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.sl-markdown-content strong {
+  color: var(--text);
+  font-weight: var(--fw-semibold);
+}
+
+.sl-markdown-content a {
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.sl-markdown-content li {
+  margin-bottom: 0.35rem;
+  color: var(--text-secondary);
+}
+
+.sl-markdown-content blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-lg) var(--space-xl);
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+}
+
+.sl-markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ──────────────────────────────────────────────────
+   23. BADGES (Starlight component overrides)
+   ────────────────────────────────────────────────── */
+.badge {
+  border-radius: var(--radius-full) !important;
+  padding: 0.1rem 0.55rem !important;
+  font-size: var(--fs-caption) !important;
+  font-weight: var(--fw-medium) !important;
+}
+
+/* ──────────────────────────────────────────────────
+   24. ASIDES / CALLOUTS
+   ────────────────────────────────────────────────── */
+.starlight-aside {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+/* ──────────────────────────────────────────────────
+   25. PAGE-LEVEL ANIMATIONS
+   ────────────────────────────────────────────────── */
+.main-pane {
+  animation: fadeInUp var(--duration-slow) var(--ease-out-expo);
+}
+
+/* ──────────────────────────────────────────────────
+   26. SELECTION
+   ────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ──────────────────────────────────────────────────
+   27. STEP COMPONENT (Starlight Steps)
+   ────────────────────────────────────────────────── */
+.steps .step {
+  border-radius: var(--radius-lg);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.steps .step:hover {
+  background: var(--bg-surface-muted);
+}
+
+/* ──────────────────────────────────────────────────
+   28. TABS (Starlight)
+   ────────────────────────────────────────────────── */
+.tabs .tab-label {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+/* ──────────────────────────────────────────────────
+   29. TOOLTIP / LINK CARDS
+   ────────────────────────────────────────────────── */
+link-preview,
+.link-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+link-preview:hover,
+.link-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ──────────────────────────────────────────────────
+   30. FOOTER
+   ────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
 }

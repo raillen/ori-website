@@ -1,9 +1,9 @@
 ---
 title: "ori.json.utils"
-description: "Standard library module `ori.json.utils`."
+description: "JSON utility helpers. Provides convenience wrappers for reading and writing JSON files."
 ---
 
-Standard library module `ori.json.utils`.
+JSON utility helpers. Provides convenience wrappers for reading and writing JSON files.
 
 ### `read`
 
@@ -13,6 +13,8 @@ func read(file_path: string) -> result<json.Value, string>
 
 *Layer 2 · .orl* · **Source:** `json/utils.orl`
 
+Reads the contents of a file into a bytes buffer.
+
 ### `write`
 
 ```ori
@@ -21,6 +23,8 @@ func write(file_path: string, value: json.Value) -> result<string, string>
 
 *Layer 2 · .orl* · **Source:** `json/utils.orl`
 
+Writes a bytes buffer to a file.
+
 ### `write_pretty`
 
 ```ori
@@ -28,4 +32,6 @@ func write_pretty(file_path: string, value: json.Value) -> result<string, string
 ```
 
 *Layer 2 · .orl* · **Source:** `json/utils.orl`
+
+Performs the write pretty operation on utils.
 

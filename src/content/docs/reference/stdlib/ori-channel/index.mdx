@@ -1,9 +1,9 @@
 ---
 title: "ori.channel"
-description: "Standard library module `ori.channel`."
+description: "Channel-based message passing for concurrent communication between tasks."
 ---
 
-Standard library module `ori.channel`.
+Channel-based message passing for concurrent communication between tasks.
 
 ### `close`
 
@@ -13,6 +13,8 @@ Standard library module `ori.channel`.
 
 *Layer 1 · runtime* · **Aliases:** `channel.close`
 
+Closes an open file handle, releasing the associated resources.
+
 ### `create`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.channel`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `channel.create`
+
+Creates a new channel for message passing between tasks.
 
 ### `receive`
 
@@ -29,6 +33,8 @@ Standard library module `ori.channel`.
 
 *Layer 1 · runtime* · **Aliases:** `channel.receive`
 
+Receives a value from the channel, blocking until one is available.
+
 ### `send`
 
 ```ori
@@ -36,4 +42,6 @@ Standard library module `ori.channel`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `channel.send`
+
+Sends a value through the channel.
 

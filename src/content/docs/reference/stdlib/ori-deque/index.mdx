@@ -1,9 +1,9 @@
 ---
 title: "ori.deque"
-description: "Standard library module `ori.deque`."
+description: "Double-ended queue (deque) data structure. Supports efficient insertion and removal from both ends."
 ---
 
-Standard library module `ori.deque`.
+Double-ended queue (deque) data structure. Supports efficient insertion and removal from both ends.
 
 ### `back`
 
@@ -13,6 +13,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.back`
 
+Returns the element at the back without removing it.
+
 ### `clear`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.clear`
+
+Removes all elements from the collection, resetting it to empty.
 
 ### `clone`
 
@@ -29,6 +33,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.clone`
 
+Returns a deep copy of the collection, independent of the original.
+
 ### `front`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.front`
+
+Returns the element at the front without removing it.
 
 ### `is_empty`
 
@@ -45,6 +53,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.is_empty`
 
+Returns true if the collection contains no elements.
+
 ### `len`
 
 ```ori
@@ -52,6 +62,8 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.len`
+
+Returns the number of elements in the collection.
 
 ### `new`
 
@@ -61,6 +73,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.new`
 
+Creates a new empty instance of the deque collection.
+
 ### `pop_back`
 
 ```ori
@@ -68,6 +82,8 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.pop_back`
+
+Removes and returns the element at the back of the deque.
 
 ### `pop_front`
 
@@ -77,6 +93,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.pop_front`
 
+Removes and returns the element at the front of the deque.
+
 ### `push_back`
 
 ```ori
@@ -84,6 +102,8 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.push_back`
+
+Adds an element to the back of the deque.
 
 ### `push_front`
 
@@ -93,6 +113,8 @@ Standard library module `ori.deque`.
 
 *Layer 1 · runtime* · **Aliases:** `deque.push_front`
 
+Adds an element to the front of the deque.
+
 ### `to_list`
 
 ```ori
@@ -100,4 +122,6 @@ Standard library module `ori.deque`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `deque.to_list`
+
+Converts the collection into a plain list.
 

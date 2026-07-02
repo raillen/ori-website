@@ -1,9 +1,9 @@
 ---
 title: "ori.fs.utils"
-description: "Standard library module `ori.fs.utils`."
+description: "File system utility helpers. Provides convenience wrappers with fallback defaults for common file operations."
 ---
 
-Standard library module `ori.fs.utils`.
+File system utility helpers. Provides convenience wrappers with fallback defaults for common file operations.
 
 ### `create_dir_all`
 
@@ -13,6 +13,8 @@ func create_dir_all(path: string) -> result<void, string>
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
 
+Creates a directory and all necessary parent directories.
+
 ### `exists_result`
 
 ```ori
@@ -20,6 +22,8 @@ func exists_result(path: string) -> result<bool, string>
 ```
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
+
+Performs the exists result operation on utils.
 
 ### `move_path`
 
@@ -29,6 +33,8 @@ func move_path(from: string, to: string) -> result<void, string>
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
 
+Performs the move path operation on utils.
+
 ### `read_text_or`
 
 ```ori
@@ -36,6 +42,8 @@ func read_text_or(path: string, fallback: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
+
+Performs the read text or operation on utils.
 
 ### `remove_file`
 
@@ -45,6 +53,8 @@ func remove_file(path: string) -> result<void, string>
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
 
+Performs the remove file operation on utils.
+
 ### `write_text_result`
 
 ```ori
@@ -52,4 +62,6 @@ func write_text_result(path: string, content: string) -> result<string, string>
 ```
 
 *Layer 2 · .orl* · **Source:** `fs/utils.orl`
+
+Performs the write text result operation on utils.
 

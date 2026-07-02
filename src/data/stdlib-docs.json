@@ -122,5 +122,2039 @@
     "description": "Splits a string by a delimiter substring, returning a list of segments.",
     "applicability": "Useful for CSV processing, parsing command arguments, and text segment extraction.",
     "example": "import ori.string as str\nimport ori.io as io\n\nfunc main()\n    const items = str.split(\"apple,banana,cherry\", \",\")\n    // items contains [\"apple\", \"banana\", \"cherry\"]\nend"
+  },
+  "float": {
+    "description": "Built-in float conversion primitive. Converts an integer to its floating-point representation."
+  },
+  "int": {
+    "description": "Built-in integer identity/conversion primitive. Returns the integer value unchanged."
+  },
+  "len": {
+    "description": "Built-in length primitive. Returns the number of elements in a collection or characters in a string."
+  },
+  "string": {
+    "description": "Built-in string conversion primitive. Converts a value to its string representation."
+  },
+  "ori": {
+    "description": "Core language runtime module. Provides fundamental runtime operations."
+  },
+  "ori.Error": {
+    "description": "Core error type for the Ori runtime. Represents structured error values with code and message."
+  },
+  "ori.atomic": {
+    "description": "Atomic operations for lock-free concurrent value access. Provides atomic load, store, and add operations."
+  },
+  "ori.bytes.algorithms": {
+    "description": "Byte buffer comparison and prefix-checking algorithms."
+  },
+  "ori.bytes.utils": {
+    "description": "Byte buffer utility helpers. Provides convenience wrappers for common byte operations."
+  },
+  "ori.channel": {
+    "description": "Channel-based message passing for concurrent communication between tasks."
+  },
+  "ori.concurrent": {
+    "description": "Concurrency primitives for shared-state coordination between tasks."
+  },
+  "ori.concurrent.utils": {
+    "description": "Concurrency utility helpers. Provides typed copy and transfer operations for concurrent-safe values."
+  },
+  "ori.convert": {
+    "description": "Type conversion primitives between basic types (bool, float, string, int)."
+  },
+  "ori.convert.utils": {
+    "description": "Safe type conversion utilities with fallback default values."
+  },
+  "ori.core": {
+    "description": "Core runtime internals. Low-level primitives used by the language runtime."
+  },
+  "ori.deque": {
+    "description": "Double-ended queue (deque) data structure. Supports efficient insertion and removal from both ends."
+  },
+  "ori.deque.utils": {
+    "description": "Deque utility helpers with typed convenience wrappers for int-typed deques."
+  },
+  "ori.doubly_linked_list": {
+    "description": "Doubly-linked list data structure. Supports bidirectional traversal, cursor-based navigation, and O(1) insertion/removal at known positions."
+  },
+  "ori.doubly_linked_list.utils": {
+    "description": "Doubly-linked list utility helpers with typed wrappers for int-typed lists."
+  },
+  "ori.files": {
+    "description": "Low-level file descriptor operations. Internal module for file handle management."
+  },
+  "ori.format": {
+    "description": "Value formatting primitives for rendering numbers, dates, bytes, and other types as human-readable strings."
+  },
+  "ori.format.utils": {
+    "description": "Format utility helpers. Provides additional formatting functions with custom parameters."
+  },
+  "ori.fs.utils": {
+    "description": "File system utility helpers. Provides convenience wrappers with fallback defaults for common file operations."
+  },
+  "ori.graph.utils": {
+    "description": "Graph utility helpers."
+  },
+  "ori.hash_table.utils": {
+    "description": "Hash table utility helpers with typed convenience wrappers for string-keyed integer-value maps."
+  },
+  "ori.heap.utils": {
+    "description": "Heap utility helpers with typed convenience wrappers for int-typed heaps."
+  },
+  "ori.io.utils": {
+    "description": "I/O utility helpers. Provides convenience wrappers for printing and reading with fallback defaults."
+  },
+  "ori.iter": {
+    "description": "Iterator functional operations. Provides map, filter, reduce, sort, and other higher-order functions for sequences."
+  },
+  "ori.iter.utils": {
+    "description": "Iterator utility helpers. Provides convenience functions for common iterator patterns on int sequences."
+  },
+  "ori.json.utils": {
+    "description": "JSON utility helpers. Provides convenience wrappers for reading and writing JSON files."
+  },
+  "ori.lazy": {
+    "description": "Lazy evaluation primitives. Defers computation until the value is first accessed."
+  },
+  "ori.linked_list": {
+    "description": "Singly-linked list data structure. Supports O(1) insertion at head, cursor-based traversal, and sequential access patterns."
+  },
+  "ori.linked_list.utils": {
+    "description": "Linked list utility helpers with typed wrappers for int-typed lists."
+  },
+  "ori.list.algorithms": {
+    "description": "List algorithms. Provides specialized operations like binary search, equality checks, and aggregation on int-typed lists."
+  },
+  "ori.list.utils": {
+    "description": "List utility helpers. Provides convenience accessors with fallback defaults."
+  },
+  "ori.map.algorithms": {
+    "description": "Map algorithms. Provides batch operations like merging, inversion, key counting, and value aggregation on typed maps."
+  },
+  "ori.map.utils": {
+    "description": "Map utility helpers. Provides convenience accessors with fallback defaults for map lookups."
+  },
+  "ori.math.algorithms": {
+    "description": "Mathematical algorithms. Provides advanced numeric operations like clamping, interpolation, and approximation."
+  },
+  "ori.math.utils": {
+    "description": "Math utility helpers. Provides additional numeric functions with type-specific variants."
+  },
+  "ori.mem": {
+    "description": "Memory management primitives. Provides low-level allocation and deallocation operations."
+  },
+  "ori.net.utils": {
+    "description": "Network utility helpers. Provides convenience wrappers for connection management with fallback defaults."
+  },
+  "ori.os": {
+    "description": "Operating system interaction primitives. Provides access to environment variables, process info, platform detection, and directory navigation."
+  },
+  "ori.os.utils": {
+    "description": "OS utility helpers. Provides convenience wrappers with fallback defaults for platform and environment queries."
+  },
+  "ori.process.utils": {
+    "description": "Process utility helpers. Provides convenience accessors for process execution results."
+  },
+  "ori.queue.utils": {
+    "description": "Queue utility helpers with typed convenience wrappers for int and string queues."
+  },
+  "ori.random.utils": {
+    "description": "Random utility helpers. Provides additional random generation functions including seeded generators and collection shuffling."
+  },
+  "ori.set.algorithms": {
+    "description": "Set algorithms. Provides batch operations like union, intersection, difference, and disjoint checks on typed sets."
+  },
+  "ori.set.utils": {
+    "description": "Set utility helpers. Provides convenience functions for set membership testing and construction."
+  },
+  "ori.stack.utils": {
+    "description": "Stack utility helpers with typed convenience wrappers for int and string stacks."
+  },
+  "ori.string.algorithms": {
+    "description": "String algorithms. Provides comparison, joining, repetition, and truncation operations."
+  },
+  "ori.string.utils": {
+    "description": "String utility helpers. Provides additional string operations for case conversion, counting, padding, and text analysis."
+  },
+  "ori.task": {
+    "description": "Async task management. Provides spawning, joining, cancellation, and coordination of asynchronous computations."
+  },
+  "ori.test": {
+    "description": "Test assertion primitives. Provides functions for comparing values, checking allocations, and managing test execution."
+  },
+  "ori.test.utils": {
+    "description": "Test utility helpers. Provides convenience assertion wrappers for common equality and boolean checks."
+  },
+  "ori.time.utils": {
+    "description": "Time utility helpers. Provides arithmetic operations on durations and convenience functions for time conversion."
+  },
+  "ori.tree": {
+    "description": "Tree data structure. Supports hierarchical node management with pre-order, post-order, and breadth-first traversals."
+  },
+  "ori.tree.algorithms": {
+    "description": "Tree algorithms. Provides queries for leaf detection, leaf counting, depth calculation, and value collection."
+  },
+  "ori.validate": {
+    "description": "Input validation primitives. Provides predicates for checking ranges, emptiness, lengths, and custom conditions."
+  },
+  "ori.atomic.add": {
+    "description": "Adds an element to the set. Returns true if the element was newly inserted."
+  },
+  "ori.atomic.load": {
+    "description": "Atomically reads the current value."
+  },
+  "ori.atomic.new": {
+    "description": "Creates a new empty instance of the atomic collection."
+  },
+  "ori.atomic.store": {
+    "description": "Atomically replaces the stored value."
+  },
+  "ori.bytes.algorithms.compare_lex": {
+    "description": "Performs the compare lex operation on algorithms."
+  },
+  "ori.bytes.algorithms.is_prefix_of": {
+    "description": "Performs the is prefix of operation on algorithms."
+  },
+  "ori.bytes.concat": {
+    "description": "Concatenates two strings into one."
+  },
+  "ori.bytes.decode_utf8": {
+    "description": "Decodes the byte buffer as a UTF-8 string."
+  },
+  "ori.bytes.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.bytes.get": {
+    "description": "Returns the element at the specified index without removing it."
+  },
+  "ori.bytes.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.bytes.slice": {
+    "description": "Returns a new collection containing elements from the specified start to end index."
+  },
+  "ori.bytes.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.bytes.utils.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.bytes.utils.empty_bytes": {
+    "description": "Performs the empty bytes operation on utils."
+  },
+  "ori.bytes.utils.ends_with": {
+    "description": "Returns true if the string ends with the given suffix."
+  },
+  "ori.bytes.utils.equals": {
+    "description": "Performs the equals operation on utils."
+  },
+  "ori.bytes.utils.from_hex_or": {
+    "description": "Performs the from hex or operation on utils."
+  },
+  "ori.bytes.utils.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.bytes.utils.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.bytes.utils.join": {
+    "description": "Joins a list of strings with the given separator."
+  },
+  "ori.bytes.utils.starts_with": {
+    "description": "Returns true if the string starts with the given prefix."
+  },
+  "ori.bytes.utils.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.channel.close": {
+    "description": "Closes an open file handle, releasing the associated resources."
+  },
+  "ori.channel.create": {
+    "description": "Creates a new channel for message passing between tasks."
+  },
+  "ori.channel.receive": {
+    "description": "Receives a value from the channel, blocking until one is available."
+  },
+  "ori.channel.send": {
+    "description": "Sends a value through the channel."
+  },
+  "ori.concurrent.utils.copy_bool": {
+    "description": "Performs the copy bool operation on utils."
+  },
+  "ori.concurrent.utils.copy_bytes": {
+    "description": "Performs the copy bytes operation on utils."
+  },
+  "ori.concurrent.utils.copy_float": {
+    "description": "Performs the copy float operation on utils."
+  },
+  "ori.concurrent.utils.copy_int": {
+    "description": "Performs the copy int operation on utils."
+  },
+  "ori.concurrent.utils.copy_list_int": {
+    "description": "Performs the copy list int operation on utils."
+  },
+  "ori.concurrent.utils.copy_list_string": {
+    "description": "Performs the copy list string operation on utils."
+  },
+  "ori.concurrent.utils.copy_map_string_string": {
+    "description": "Performs the copy map string string operation on utils."
+  },
+  "ori.concurrent.utils.copy_set_string": {
+    "description": "Performs the copy set string operation on utils."
+  },
+  "ori.concurrent.utils.copy_string": {
+    "description": "Performs the copy string operation on utils."
+  },
+  "ori.concurrent.utils.transfer_int": {
+    "description": "Performs the transfer int operation on utils."
+  },
+  "ori.concurrent.utils.transfer_list_string": {
+    "description": "Performs the transfer list string operation on utils."
+  },
+  "ori.concurrent.utils.transfer_string": {
+    "description": "Performs the transfer string operation on utils."
+  },
+  "ori.convert.bool_to_string": {
+    "description": "Converts a boolean to its string representation (\"true\" or \"false\")."
+  },
+  "ori.convert.float_to_string": {
+    "description": "Converts a float to its string representation."
+  },
+  "ori.convert.string_to_float": {
+    "description": "Parses a string as a floating-point number."
+  },
+  "ori.convert.string_to_int": {
+    "description": "Parses a string as an integer."
+  },
+  "ori.convert.utils.parse_bool_or": {
+    "description": "Performs the parse bool or operation on utils."
+  },
+  "ori.convert.utils.parse_float_or": {
+    "description": "Performs the parse float or operation on utils."
+  },
+  "ori.convert.utils.parse_int_or": {
+    "description": "Performs the parse int or operation on utils."
+  },
+  "ori.deque.back": {
+    "description": "Returns the element at the back without removing it."
+  },
+  "ori.deque.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.deque.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.deque.front": {
+    "description": "Returns the element at the front without removing it."
+  },
+  "ori.deque.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.deque.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.deque.new": {
+    "description": "Creates a new empty instance of the deque collection."
+  },
+  "ori.deque.pop_back": {
+    "description": "Removes and returns the element at the back of the deque."
+  },
+  "ori.deque.pop_front": {
+    "description": "Removes and returns the element at the front of the deque."
+  },
+  "ori.deque.push_back": {
+    "description": "Adds an element to the back of the deque."
+  },
+  "ori.deque.push_front": {
+    "description": "Adds an element to the front of the deque."
+  },
+  "ori.deque.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.deque.utils.back_or_int": {
+    "description": "Performs the back or int operation on utils."
+  },
+  "ori.deque.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.deque.utils.front_or_int": {
+    "description": "Performs the front or int operation on utils."
+  },
+  "ori.deque.utils.push_all_int": {
+    "description": "Performs the push all int operation on utils."
+  },
+  "ori.deque.utils.to_list_int": {
+    "description": "Performs the to list int operation on utils."
+  },
+  "ori.doubly_linked_list.back": {
+    "description": "Returns the element at the back without removing it."
+  },
+  "ori.doubly_linked_list.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.doubly_linked_list.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.doubly_linked_list.cursor_back": {
+    "description": "Creates a cursor positioned at the back of the list."
+  },
+  "ori.doubly_linked_list.cursor_front": {
+    "description": "Creates a cursor positioned at the front of the list."
+  },
+  "ori.doubly_linked_list.find": {
+    "description": "Searches for a node matching the predicate and returns its value."
+  },
+  "ori.doubly_linked_list.front": {
+    "description": "Returns the element at the front without removing it."
+  },
+  "ori.doubly_linked_list.insert_after": {
+    "description": "Inserts a new element after the node at the given cursor position."
+  },
+  "ori.doubly_linked_list.insert_before": {
+    "description": "Inserts a new element before the node at the given cursor position."
+  },
+  "ori.doubly_linked_list.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.doubly_linked_list.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.doubly_linked_list.new": {
+    "description": "Creates a new empty instance of the doubly_linked_list collection."
+  },
+  "ori.doubly_linked_list.pop_back": {
+    "description": "Removes and returns the element at the back of the deque."
+  },
+  "ori.doubly_linked_list.pop_front": {
+    "description": "Removes and returns the element at the front of the deque."
+  },
+  "ori.doubly_linked_list.push_back": {
+    "description": "Adds an element to the back of the deque."
+  },
+  "ori.doubly_linked_list.push_front": {
+    "description": "Adds an element to the front of the deque."
+  },
+  "ori.doubly_linked_list.remove_at": {
+    "description": "Removes the element at the specified node index."
+  },
+  "ori.doubly_linked_list.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.doubly_linked_list.utils.back_or_int": {
+    "description": "Performs the back or int operation on utils."
+  },
+  "ori.doubly_linked_list.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.doubly_linked_list.utils.front_or_int": {
+    "description": "Performs the front or int operation on utils."
+  },
+  "ori.doubly_linked_list.utils.len_int": {
+    "description": "Performs the len int operation on utils."
+  },
+  "ori.doubly_linked_list.utils.to_list_int": {
+    "description": "Performs the to list int operation on utils."
+  },
+  "ori.doubly_linked_list.value_at": {
+    "description": "Returns the value at the specified node index."
+  },
+  "ori.format.binary": {
+    "description": "Formats a number as a binary (base-2) string."
+  },
+  "ori.format.bytes_size": {
+    "description": "Formats a byte count as a human-readable size string (e.g., \"1.5 MB\")."
+  },
+  "ori.format.date": {
+    "description": "Formats a timestamp as a date string."
+  },
+  "ori.format.datetime": {
+    "description": "Formats a timestamp as a date-time string."
+  },
+  "ori.format.hex": {
+    "description": "Formats a number as a hexadecimal string."
+  },
+  "ori.format.number": {
+    "description": "Formats a number with locale-aware separators."
+  },
+  "ori.format.percent": {
+    "description": "Formats a float as a percentage string."
+  },
+  "ori.format.utils.binary": {
+    "description": "Formats a number as a binary (base-2) string."
+  },
+  "ori.format.utils.bytes_size": {
+    "description": "Formats a byte count as a human-readable size string (e.g., \"1.5 MB\")."
+  },
+  "ori.format.utils.bytes_size_unit": {
+    "description": "Performs the bytes size unit operation on utils."
+  },
+  "ori.format.utils.date": {
+    "description": "Formats a timestamp as a date string."
+  },
+  "ori.format.utils.datetime": {
+    "description": "Formats a timestamp as a date-time string."
+  },
+  "ori.format.utils.hex": {
+    "description": "Formats a number as a hexadecimal string."
+  },
+  "ori.format.utils.number": {
+    "description": "Formats a number with locale-aware separators."
+  },
+  "ori.format.utils.number_int": {
+    "description": "Performs the number int operation on utils."
+  },
+  "ori.format.utils.number_with": {
+    "description": "Performs the number with operation on utils."
+  },
+  "ori.format.utils.percent": {
+    "description": "Formats a float as a percentage string."
+  },
+  "ori.format.utils.percent_with": {
+    "description": "Performs the percent with operation on utils."
+  },
+  "ori.fs.append_text": {
+    "description": "Appends a string to the end of a file."
+  },
+  "ori.fs.close": {
+    "description": "Closes an open file handle, releasing the associated resources."
+  },
+  "ori.fs.copy": {
+    "description": "Copies a file from source path to destination path."
+  },
+  "ori.fs.create_dir": {
+    "description": "Creates a new directory at the specified path."
+  },
+  "ori.fs.create_dir_all": {
+    "description": "Creates a directory and all necessary parent directories."
+  },
+  "ori.fs.created_at": {
+    "description": "Returns the creation timestamp of the file."
+  },
+  "ori.fs.delete": {
+    "description": "Deletes the file at the specified path."
+  },
+  "ori.fs.exists": {
+    "description": "Returns true if the file or directory exists at the given path."
+  },
+  "ori.fs.file_size": {
+    "description": "Returns the size of the file in bytes."
+  },
+  "ori.fs.is_dir": {
+    "description": "Returns true if the path points to a directory."
+  },
+  "ori.fs.is_file": {
+    "description": "Returns true if the path points to a regular file."
+  },
+  "ori.fs.list_dir": {
+    "description": "Lists all entries in the specified directory."
+  },
+  "ori.fs.modified_at": {
+    "description": "Returns the last modification timestamp of the file."
+  },
+  "ori.fs.open_read": {
+    "description": "Opens a file for reading and returns a file handle."
+  },
+  "ori.fs.open_write": {
+    "description": "Opens a file for writing and returns a file handle."
+  },
+  "ori.fs.read": {
+    "description": "Reads the contents of a file into a bytes buffer."
+  },
+  "ori.fs.read_all": {
+    "description": "Reads the entire contents of a file into a bytes buffer."
+  },
+  "ori.fs.read_bytes": {
+    "description": "Reads a specific number of bytes from the file."
+  },
+  "ori.fs.read_text": {
+    "description": "Reads the entire contents of a file as a string."
+  },
+  "ori.fs.read_text_async": {
+    "description": "Reads the entire contents of a file as a string asynchronously."
+  },
+  "ori.fs.rename": {
+    "description": "Renames or moves a file from one path to another."
+  },
+  "ori.fs.utils.create_dir_all": {
+    "description": "Creates a directory and all necessary parent directories."
+  },
+  "ori.fs.utils.exists_result": {
+    "description": "Performs the exists result operation on utils."
+  },
+  "ori.fs.utils.move_path": {
+    "description": "Performs the move path operation on utils."
+  },
+  "ori.fs.utils.read_text_or": {
+    "description": "Performs the read text or operation on utils."
+  },
+  "ori.fs.utils.remove_file": {
+    "description": "Performs the remove file operation on utils."
+  },
+  "ori.fs.utils.write_text_result": {
+    "description": "Performs the write text result operation on utils."
+  },
+  "ori.fs.write": {
+    "description": "Writes a bytes buffer to a file."
+  },
+  "ori.fs.write_bytes": {
+    "description": "Writes raw bytes to a file at the current position."
+  },
+  "ori.fs.write_text": {
+    "description": "Writes a string to a file, creating it if it doesn't exist."
+  },
+  "ori.fs.write_text_async": {
+    "description": "Writes a string to a file asynchronously."
+  },
+  "ori.graph.add_edge": {
+    "description": "Adds a directed edge between two nodes."
+  },
+  "ori.graph.add_node": {
+    "description": "Adds a new node to the graph."
+  },
+  "ori.graph.add_weighted_edge": {
+    "description": "Adds a weighted directed edge between two nodes."
+  },
+  "ori.graph.algorithms.has_path": {
+    "description": "Performs the has path operation on algorithms."
+  },
+  "ori.graph.algorithms.has_path_int": {
+    "description": "Performs the has path int operation on algorithms."
+  },
+  "ori.graph.algorithms.is_reachable": {
+    "description": "Performs the is reachable operation on algorithms."
+  },
+  "ori.graph.algorithms.reachable_count": {
+    "description": "Performs the reachable count operation on algorithms."
+  },
+  "ori.graph.bfs": {
+    "description": "Performs a breadth-first traversal starting from the given node."
+  },
+  "ori.graph.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.graph.components": {
+    "description": "Returns the connected components of the graph."
+  },
+  "ori.graph.dfs": {
+    "description": "Performs a depth-first traversal starting from the given node."
+  },
+  "ori.graph.edge_len": {
+    "description": "Returns the number of edges in the graph."
+  },
+  "ori.graph.edge_weight": {
+    "description": "Returns the weight of the edge between two nodes."
+  },
+  "ori.graph.edges": {
+    "description": "Returns all edges in the graph as source-target pairs."
+  },
+  "ori.graph.has_cycle": {
+    "description": "Returns true if the graph contains at least one cycle."
+  },
+  "ori.graph.has_edge": {
+    "description": "Returns true if a direct edge exists between the two nodes."
+  },
+  "ori.graph.has_node": {
+    "description": "Returns true if the graph contains the specified node."
+  },
+  "ori.graph.is_directed": {
+    "description": "Returns true if the graph is directed."
+  },
+  "ori.graph.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.graph.neighbors": {
+    "description": "Returns the list of nodes directly reachable from the given node."
+  },
+  "ori.graph.new": {
+    "description": "Creates a new empty instance of the graph collection."
+  },
+  "ori.graph.nodes": {
+    "description": "Returns all nodes in the graph."
+  },
+  "ori.graph.remove_edge": {
+    "description": "Removes the edge between two nodes."
+  },
+  "ori.graph.remove_node": {
+    "description": "Removes a node and all its connected edges from the graph."
+  },
+  "ori.graph.shortest_path": {
+    "description": "Computes the shortest unweighted path between two nodes."
+  },
+  "ori.graph.shortest_weighted_path": {
+    "description": "Computes the shortest weighted path between two nodes using Dijkstra's algorithm."
+  },
+  "ori.graph.strongly_connected_components": {
+    "description": "Finds all strongly connected components in the graph."
+  },
+  "ori.graph.topological_sort": {
+    "description": "Returns a topological ordering of the graph nodes."
+  },
+  "ori.graph.transitive_closure": {
+    "description": "Computes the transitive closure — for each pair (A, B), stores whether B is reachable from A."
+  },
+  "ori.graph.try_topological_sort": {
+    "description": "Attempts a topological sort, returning an error if the graph has cycles."
+  },
+  "ori.hash_table.capacity": {
+    "description": "Returns the current allocated capacity of the collection."
+  },
+  "ori.hash_table.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.hash_table.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.hash_table.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.hash_table.entries": {
+    "description": "Returns all key-value pairs (or index-value pairs) as a list of tuples."
+  },
+  "ori.hash_table.from_entries": {
+    "description": "Creates a new collection from a list of key-value pairs."
+  },
+  "ori.hash_table.get": {
+    "description": "Returns the element at the specified index without removing it."
+  },
+  "ori.hash_table.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.hash_table.keys": {
+    "description": "Returns a list of all keys in the collection."
+  },
+  "ori.hash_table.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.hash_table.new": {
+    "description": "Creates a new empty instance of the hash_table collection."
+  },
+  "ori.hash_table.remove": {
+    "description": "Removes and returns the element at the specified index."
+  },
+  "ori.hash_table.reserve": {
+    "description": "Ensures the collection has capacity for at least the specified number of elements."
+  },
+  "ori.hash_table.set": {
+    "description": "Replaces the element at the specified index with a new value."
+  },
+  "ori.hash_table.utils.from_map_string_int": {
+    "description": "Performs the from map string int operation on utils."
+  },
+  "ori.hash_table.utils.get_or_string_int": {
+    "description": "Performs the get or string int operation on utils."
+  },
+  "ori.hash_table.utils.is_empty_string_int": {
+    "description": "Performs the is empty string int operation on utils."
+  },
+  "ori.hash_table.utils.key_count_string_int": {
+    "description": "Performs the key count string int operation on utils."
+  },
+  "ori.hash_table.utils.keys_string_int": {
+    "description": "Performs the keys string int operation on utils."
+  },
+  "ori.hash_table.utils.set_if_absent_string_int": {
+    "description": "Performs the set if absent string int operation on utils."
+  },
+  "ori.hash_table.values": {
+    "description": "Returns a list of all values in the collection."
+  },
+  "ori.hash_table.with_capacity": {
+    "description": "Performs the with capacity operation on hash table."
+  },
+  "ori.heap.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.heap.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.heap.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.heap.into_sorted_list": {
+    "description": "Drains the heap and returns all elements as a sorted list."
+  },
+  "ori.heap.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.heap.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.heap.merge": {
+    "description": "Merges another heap into this one, combining all elements."
+  },
+  "ori.heap.new": {
+    "description": "Creates a new empty instance of the heap collection."
+  },
+  "ori.heap.peek": {
+    "description": "Returns the highest-priority element without removing it."
+  },
+  "ori.heap.pop": {
+    "description": "Removes and returns the last element from the collection."
+  },
+  "ori.heap.push": {
+    "description": "Adds an element to the collection."
+  },
+  "ori.heap.remove": {
+    "description": "Removes and returns the element at the specified index."
+  },
+  "ori.heap.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.heap.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.heap.utils.into_sorted_int": {
+    "description": "Performs the into sorted int operation on utils."
+  },
+  "ori.heap.utils.is_singleton_int": {
+    "description": "Performs the is singleton int operation on utils."
+  },
+  "ori.heap.utils.peek_or_int": {
+    "description": "Performs the peek or int operation on utils."
+  },
+  "ori.heap.utils.pop_or_int": {
+    "description": "Performs the pop or int operation on utils."
+  },
+  "ori.io.eprint": {
+    "description": "Writes a string to the standard error output without a newline."
+  },
+  "ori.io.eprintln": {
+    "description": "Writes a string to the standard error output, followed by a newline."
+  },
+  "ori.io.read_line": {
+    "description": "Reads a single line of input from standard input."
+  },
+  "ori.io.utils.print_line": {
+    "description": "Performs the print line operation on utils."
+  },
+  "ori.io.utils.try_read_line": {
+    "description": "Performs the try read line operation on utils."
+  },
+  "ori.io.utils.write": {
+    "description": "Writes a bytes buffer to a file."
+  },
+  "ori.iter.all": {
+    "description": "Returns true if all elements satisfy the given predicate."
+  },
+  "ori.iter.any": {
+    "description": "Returns true if at least one element satisfies the predicate."
+  },
+  "ori.iter.count_where": {
+    "description": "Returns the number of elements that satisfy the predicate."
+  },
+  "ori.iter.filter": {
+    "description": "Returns a new collection containing only elements that satisfy the given predicate."
+  },
+  "ori.iter.find": {
+    "description": "Searches for a node matching the predicate and returns its value."
+  },
+  "ori.iter.flat_map": {
+    "description": "Applies a function that returns a list to each element, then flattens the results."
+  },
+  "ori.iter.flatten": {
+    "description": "Flattens a list of lists into a single list."
+  },
+  "ori.iter.group_by": {
+    "description": "Groups elements by a key function into a map of lists."
+  },
+  "ori.iter.map": {
+    "description": "Returns a new collection by applying a transformation function to each element."
+  },
+  "ori.iter.partition": {
+    "description": "Splits elements into two groups based on a predicate."
+  },
+  "ori.iter.reduce": {
+    "description": "Reduces all elements to a single value using an accumulator function."
+  },
+  "ori.iter.reverse": {
+    "description": "Returns a new collection with elements in reversed order."
+  },
+  "ori.iter.skip": {
+    "description": "Skips the current test."
+  },
+  "ori.iter.sort": {
+    "description": "Returns a new collection with elements sorted in ascending order."
+  },
+  "ori.iter.sort_by": {
+    "description": "Returns a new collection with elements sorted by the given key function."
+  },
+  "ori.iter.take": {
+    "description": "Returns a new collection with at most N elements from the start."
+  },
+  "ori.iter.unique": {
+    "description": "Returns a new collection with duplicate elements removed."
+  },
+  "ori.iter.utils.all_equal_int": {
+    "description": "Performs the all equal int operation on utils."
+  },
+  "ori.iter.utils.contains_int": {
+    "description": "Performs the contains int operation on utils."
+  },
+  "ori.iter.utils.count": {
+    "description": "Performs the count operation on utils."
+  },
+  "ori.iter.utils.first": {
+    "description": "Performs the first operation on utils."
+  },
+  "ori.iter.utils.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.iter.utils.reversed_copy": {
+    "description": "Performs the reversed copy operation on utils."
+  },
+  "ori.iter.utils.sum_int": {
+    "description": "Performs the sum int operation on utils."
+  },
+  "ori.iter.utils.unique_count_int": {
+    "description": "Performs the unique count int operation on utils."
+  },
+  "ori.iter.zip": {
+    "description": "Combines two collections into a list of paired tuples."
+  },
+  "ori.json.parse": {
+    "description": "Parses a JSON string into an Ori value."
+  },
+  "ori.json.stringify": {
+    "description": "Serializes a value to a compact JSON string."
+  },
+  "ori.json.stringify_pretty": {
+    "description": "Serializes a value to a pretty-printed JSON string with indentation."
+  },
+  "ori.json.utils.read": {
+    "description": "Reads the contents of a file into a bytes buffer."
+  },
+  "ori.json.utils.write": {
+    "description": "Writes a bytes buffer to a file."
+  },
+  "ori.json.utils.write_pretty": {
+    "description": "Performs the write pretty operation on utils."
+  },
+  "ori.lazy.force": {
+    "description": "Forces evaluation of the lazy value and returns the computed result."
+  },
+  "ori.lazy.is_consumed": {
+    "description": "Returns true if the lazy value has already been evaluated."
+  },
+  "ori.lazy.once": {
+    "description": "Creates a lazy value that computes its result on first access and caches it."
+  },
+  "ori.linked_list.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.linked_list.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.linked_list.cursor_back": {
+    "description": "Creates a cursor positioned at the back of the list."
+  },
+  "ori.linked_list.cursor_front": {
+    "description": "Creates a cursor positioned at the front of the list."
+  },
+  "ori.linked_list.find": {
+    "description": "Searches for a node matching the predicate and returns its value."
+  },
+  "ori.linked_list.front": {
+    "description": "Returns the element at the front without removing it."
+  },
+  "ori.linked_list.insert_after": {
+    "description": "Inserts a new element after the node at the given cursor position."
+  },
+  "ori.linked_list.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.linked_list.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.linked_list.new": {
+    "description": "Creates a new empty instance of the linked_list collection."
+  },
+  "ori.linked_list.pop_front": {
+    "description": "Removes and returns the element at the front of the deque."
+  },
+  "ori.linked_list.push_back": {
+    "description": "Adds an element to the back of the deque."
+  },
+  "ori.linked_list.push_front": {
+    "description": "Adds an element to the front of the deque."
+  },
+  "ori.linked_list.remove_at": {
+    "description": "Removes the element at the specified node index."
+  },
+  "ori.linked_list.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.linked_list.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.linked_list.utils.front_or_int": {
+    "description": "Performs the front or int operation on utils."
+  },
+  "ori.linked_list.utils.is_empty_int": {
+    "description": "Performs the is empty int operation on utils."
+  },
+  "ori.linked_list.utils.len_int": {
+    "description": "Performs the len int operation on utils."
+  },
+  "ori.linked_list.utils.to_list_int": {
+    "description": "Performs the to list int operation on utils."
+  },
+  "ori.linked_list.value_at": {
+    "description": "Returns the value at the specified node index."
+  },
+  "ori.list.algorithms.all_equal_int": {
+    "description": "Performs the all equal int operation on algorithms."
+  },
+  "ori.list.algorithms.binary_search_int": {
+    "description": "Performs the binary search int operation on algorithms."
+  },
+  "ori.list.algorithms.sum_int": {
+    "description": "Performs the sum int operation on algorithms."
+  },
+  "ori.list.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.list.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.list.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.list.filter": {
+    "description": "Returns a new collection containing only elements that satisfy the given predicate."
+  },
+  "ori.list.free": {
+    "description": "Releases the underlying memory allocated by the collection."
+  },
+  "ori.list.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.list.get": {
+    "description": "Returns the element at the specified index without removing it."
+  },
+  "ori.list.index_of": {
+    "description": "Returns the index of the first occurrence of the given element, or -1 if not found."
+  },
+  "ori.list.insert": {
+    "description": "Inserts an element at the specified index, shifting subsequent elements."
+  },
+  "ori.list.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.list.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.list.map": {
+    "description": "Returns a new collection by applying a transformation function to each element."
+  },
+  "ori.list.new": {
+    "description": "Creates a new empty instance of the list collection."
+  },
+  "ori.list.pop": {
+    "description": "Removes and returns the last element from the collection."
+  },
+  "ori.list.push": {
+    "description": "Adds an element to the collection."
+  },
+  "ori.list.remove": {
+    "description": "Removes and returns the element at the specified index."
+  },
+  "ori.list.reverse": {
+    "description": "Returns a new collection with elements in reversed order."
+  },
+  "ori.list.set": {
+    "description": "Replaces the element at the specified index with a new value."
+  },
+  "ori.list.slice": {
+    "description": "Returns a new collection containing elements from the specified start to end index."
+  },
+  "ori.list.sort": {
+    "description": "Returns a new collection with elements sorted in ascending order."
+  },
+  "ori.list.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.list.try_get": {
+    "description": "Returns the element at the specified index, or an error if the index is out of bounds."
+  },
+  "ori.list.try_pop": {
+    "description": "Removes and returns the last element, or returns an error if empty."
+  },
+  "ori.list.try_remove": {
+    "description": "Removes the element at the specified index, or returns an error if out of bounds."
+  },
+  "ori.list.utils.first_or": {
+    "description": "Performs the first or operation on utils."
+  },
+  "ori.list.utils.get_or": {
+    "description": "Performs the get or operation on utils."
+  },
+  "ori.list.utils.last_or": {
+    "description": "Performs the last or operation on utils."
+  },
+  "ori.list.utils.singleton": {
+    "description": "Performs the singleton operation on utils."
+  },
+  "ori.map.algorithms.has_all_keys": {
+    "description": "Performs the has all keys operation on algorithms."
+  },
+  "ori.map.algorithms.invert_string_int": {
+    "description": "Performs the invert string int operation on algorithms."
+  },
+  "ori.map.algorithms.key_count_string_int": {
+    "description": "Performs the key count string int operation on algorithms."
+  },
+  "ori.map.algorithms.merge_string_int": {
+    "description": "Performs the merge string int operation on algorithms."
+  },
+  "ori.map.algorithms.values_sum_int": {
+    "description": "Performs the values sum int operation on algorithms."
+  },
+  "ori.map.capacity": {
+    "description": "Returns the current allocated capacity of the collection."
+  },
+  "ori.map.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.map.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.map.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.map.entries": {
+    "description": "Returns all key-value pairs (or index-value pairs) as a list of tuples."
+  },
+  "ori.map.free": {
+    "description": "Releases the underlying memory allocated by the collection."
+  },
+  "ori.map.from_entries": {
+    "description": "Creates a new collection from a list of key-value pairs."
+  },
+  "ori.map.get": {
+    "description": "Returns the element at the specified index without removing it."
+  },
+  "ori.map.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.map.keys": {
+    "description": "Returns a list of all keys in the collection."
+  },
+  "ori.map.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.map.new": {
+    "description": "Creates a new empty instance of the map collection."
+  },
+  "ori.map.remove": {
+    "description": "Removes and returns the element at the specified index."
+  },
+  "ori.map.reserve": {
+    "description": "Ensures the collection has capacity for at least the specified number of elements."
+  },
+  "ori.map.set": {
+    "description": "Replaces the element at the specified index with a new value."
+  },
+  "ori.map.try_get": {
+    "description": "Returns the element at the specified index, or an error if the index is out of bounds."
+  },
+  "ori.map.try_remove": {
+    "description": "Removes the element at the specified index, or returns an error if out of bounds."
+  },
+  "ori.map.utils.contains_key": {
+    "description": "Performs the contains key operation on utils."
+  },
+  "ori.map.utils.get_or": {
+    "description": "Performs the get or operation on utils."
+  },
+  "ori.map.utils.get_or_string": {
+    "description": "Performs the get or string operation on utils."
+  },
+  "ori.map.utils.has_key": {
+    "description": "Performs the has key operation on utils."
+  },
+  "ori.map.utils.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.map.values": {
+    "description": "Returns a list of all values in the collection."
+  },
+  "ori.math.abs": {
+    "description": "Returns the absolute value of the number."
+  },
+  "ori.math.acos": {
+    "description": "Returns the arc cosine (inverse cosine) of the value."
+  },
+  "ori.math.algorithms.clamp_float": {
+    "description": "Performs the clamp float operation on algorithms."
+  },
+  "ori.math.algorithms.hypot": {
+    "description": "Performs the hypot operation on algorithms."
+  },
+  "ori.math.algorithms.is_approx_zero": {
+    "description": "Performs the is approx zero operation on algorithms."
+  },
+  "ori.math.algorithms.lerp_float": {
+    "description": "Performs the lerp float operation on algorithms."
+  },
+  "ori.math.algorithms.sign_float": {
+    "description": "Performs the sign float operation on algorithms."
+  },
+  "ori.math.asin": {
+    "description": "Returns the arc sine (inverse sine) of the value."
+  },
+  "ori.math.atan": {
+    "description": "Returns the arc tangent (inverse tangent) of the value."
+  },
+  "ori.math.atan2": {
+    "description": "Returns the arc tangent of y/x using the signs of both arguments."
+  },
+  "ori.math.ceil": {
+    "description": "Rounds the number up to the nearest integer."
+  },
+  "ori.math.clamp": {
+    "description": "Restricts the value to the specified minimum and maximum range."
+  },
+  "ori.math.cos": {
+    "description": "Returns the cosine of the given angle in radians."
+  },
+  "ori.math.exp": {
+    "description": "Returns e raised to the given power."
+  },
+  "ori.math.floor": {
+    "description": "Rounds the number down to the nearest integer."
+  },
+  "ori.math.is_finite": {
+    "description": "Returns true if the value is a finite number (not NaN or infinity)."
+  },
+  "ori.math.is_infinite": {
+    "description": "Returns true if the value is positive or negative infinity."
+  },
+  "ori.math.is_nan": {
+    "description": "Returns true if the value is NaN (Not a Number)."
+  },
+  "ori.math.ln": {
+    "description": "Returns the natural logarithm of the number."
+  },
+  "ori.math.log": {
+    "description": "Returns the logarithm of the number with the given base."
+  },
+  "ori.math.log10": {
+    "description": "Returns the base-10 logarithm of the number."
+  },
+  "ori.math.log2": {
+    "description": "Returns the base-2 logarithm of the number."
+  },
+  "ori.math.max": {
+    "description": "Returns the larger of the two values."
+  },
+  "ori.math.min": {
+    "description": "Returns the smaller of the two values."
+  },
+  "ori.math.pow": {
+    "description": "Returns the base raised to the given exponent."
+  },
+  "ori.math.round": {
+    "description": "Rounds the number to the nearest integer."
+  },
+  "ori.math.sin": {
+    "description": "Returns the sine of the given angle in radians."
+  },
+  "ori.math.sqrt": {
+    "description": "Returns the square root of the number."
+  },
+  "ori.math.tan": {
+    "description": "Returns the tangent of the given angle in radians."
+  },
+  "ori.math.trunc": {
+    "description": "Truncates the decimal part, returning the integer portion."
+  },
+  "ori.math.utils.abs_float": {
+    "description": "Performs the abs float operation on utils."
+  },
+  "ori.math.utils.approx_eq": {
+    "description": "Performs the approx eq operation on utils."
+  },
+  "ori.math.utils.deg_to_rad": {
+    "description": "Performs the deg to rad operation on utils."
+  },
+  "ori.math.utils.log10": {
+    "description": "Returns the base-10 logarithm of the number."
+  },
+  "ori.math.utils.rad_to_deg": {
+    "description": "Performs the rad to deg operation on utils."
+  },
+  "ori.math.utils.sign": {
+    "description": "Performs the sign operation on utils."
+  },
+  "ori.math.utils.trunc_float": {
+    "description": "Performs the trunc float operation on utils."
+  },
+  "ori.net.close": {
+    "description": "Closes an open file handle, releasing the associated resources."
+  },
+  "ori.net.connect": {
+    "description": "Establishes a TCP connection to the specified host and port."
+  },
+  "ori.net.is_closed": {
+    "description": "Returns true if the network connection has been closed."
+  },
+  "ori.net.read_some": {
+    "description": "Reads some bytes from the network stream."
+  },
+  "ori.net.utils.close": {
+    "description": "Closes an open file handle, releasing the associated resources."
+  },
+  "ori.net.utils.connect": {
+    "description": "Establishes a TCP connection to the specified host and port."
+  },
+  "ori.net.utils.is_open": {
+    "description": "Performs the is open operation on utils."
+  },
+  "ori.net.utils.read_bytes": {
+    "description": "Reads a specific number of bytes from the file."
+  },
+  "ori.net.utils.read_text": {
+    "description": "Reads the entire contents of a file as a string."
+  },
+  "ori.net.utils.write_bytes": {
+    "description": "Writes raw bytes to a file at the current position."
+  },
+  "ori.net.utils.write_text": {
+    "description": "Writes a string to a file, creating it if it doesn't exist."
+  },
+  "ori.net.write_all": {
+    "description": "Writes all bytes to the network stream."
+  },
+  "ori.os.arch": {
+    "description": "Returns the CPU architecture (e.g., x86_64, aarch64)."
+  },
+  "ori.os.args": {
+    "description": "Returns the command-line arguments passed to the program."
+  },
+  "ori.os.change_dir": {
+    "description": "Changes the current working directory to the specified path."
+  },
+  "ori.os.current_dir": {
+    "description": "Returns the current working directory path."
+  },
+  "ori.os.env": {
+    "description": "Returns the value of an environment variable."
+  },
+  "ori.os.exit": {
+    "description": "Terminates the process with the specified exit code."
+  },
+  "ori.os.pid": {
+    "description": "Returns the current process ID."
+  },
+  "ori.os.platform": {
+    "description": "Returns the current operating system platform name."
+  },
+  "ori.os.utils.arch": {
+    "description": "Returns the CPU architecture (e.g., x86_64, aarch64)."
+  },
+  "ori.os.utils.args": {
+    "description": "Returns the command-line arguments passed to the program."
+  },
+  "ori.os.utils.current_dir_or": {
+    "description": "Performs the current dir or operation on utils."
+  },
+  "ori.os.utils.env_or": {
+    "description": "Performs the env or operation on utils."
+  },
+  "ori.os.utils.has_env": {
+    "description": "Performs the has env operation on utils."
+  },
+  "ori.os.utils.is_linux": {
+    "description": "Performs the is linux operation on utils."
+  },
+  "ori.os.utils.is_macos": {
+    "description": "Performs the is macos operation on utils."
+  },
+  "ori.os.utils.is_windows": {
+    "description": "Performs the is windows operation on utils."
+  },
+  "ori.os.utils.pid": {
+    "description": "Returns the current process ID."
+  },
+  "ori.os.utils.platform": {
+    "description": "Returns the current operating system platform name."
+  },
+  "ori.panic": {
+    "description": "Terminates the program with a panic message."
+  },
+  "ori.path.absolute": {
+    "description": "Returns the absolute path, resolving relative segments."
+  },
+  "ori.path.base_name": {
+    "description": "Returns the final component of the path (file or directory name)."
+  },
+  "ori.path.change_extension": {
+    "description": "Returns a new path with the extension replaced."
+  },
+  "ori.path.extension": {
+    "description": "Returns the file extension (including the dot)."
+  },
+  "ori.path.has_extension": {
+    "description": "Returns true if the path has the specified extension."
+  },
+  "ori.path.is_absolute": {
+    "description": "Returns true if the path is absolute."
+  },
+  "ori.path.is_relative": {
+    "description": "Returns true if the path is relative."
+  },
+  "ori.path.name_without_extension": {
+    "description": "Returns the file name without its extension."
+  },
+  "ori.path.normalize": {
+    "description": "Returns the path with normalized separators and resolved dot/dotdot segments."
+  },
+  "ori.path.parent": {
+    "description": "Returns the parent node of the specified node."
+  },
+  "ori.path.relative": {
+    "description": "Returns the relative path from the current directory."
+  },
+  "ori.process.run": {
+    "description": "Executes a system command and waits for it to complete."
+  },
+  "ori.process.run_capture": {
+    "description": "Executes a system command and captures its stdout and stderr output."
+  },
+  "ori.process.utils.exit_code": {
+    "description": "Performs the exit code operation on utils."
+  },
+  "ori.process.utils.stderr": {
+    "description": "Performs the stderr operation on utils."
+  },
+  "ori.process.utils.stdout": {
+    "description": "Performs the stdout operation on utils."
+  },
+  "ori.queue.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.queue.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.queue.dequeue": {
+    "description": "Removes and returns the front element from the queue."
+  },
+  "ori.queue.enqueue": {
+    "description": "Adds an element to the back of the queue."
+  },
+  "ori.queue.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.queue.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.queue.new": {
+    "description": "Creates a new empty instance of the queue collection."
+  },
+  "ori.queue.peek": {
+    "description": "Returns the highest-priority element without removing it."
+  },
+  "ori.queue.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.queue.utils.drain_count_int": {
+    "description": "Performs the drain count int operation on utils."
+  },
+  "ori.queue.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.queue.utils.from_list_string": {
+    "description": "Performs the from list string operation on utils."
+  },
+  "ori.queue.utils.peek_or_int": {
+    "description": "Performs the peek or int operation on utils."
+  },
+  "ori.queue.utils.to_list_int": {
+    "description": "Performs the to list int operation on utils."
+  },
+  "ori.random.bool": {
+    "description": "Performs the bool operation on random."
+  },
+  "ori.random.choice": {
+    "description": "Performs the choice operation on random."
+  },
+  "ori.random.int": {
+    "description": "Performs the int operation on random."
+  },
+  "ori.random.seed": {
+    "description": "Performs the seed operation on random."
+  },
+  "ori.random.shuffle": {
+    "description": "Performs the shuffle operation on random."
+  },
+  "ori.random.utils.coin": {
+    "description": "Performs the coin operation on utils."
+  },
+  "ori.random.utils.float_range": {
+    "description": "Performs the float range operation on utils."
+  },
+  "ori.random.utils.int_range": {
+    "description": "Performs the int range operation on utils."
+  },
+  "ori.random.utils.is_empty_choice": {
+    "description": "Performs the is empty choice operation on utils."
+  },
+  "ori.random.utils.pick_int": {
+    "description": "Performs the pick int operation on utils."
+  },
+  "ori.random.utils.pick_string": {
+    "description": "Performs the pick string operation on utils."
+  },
+  "ori.random.utils.seeded_int": {
+    "description": "Performs the seeded int operation on utils."
+  },
+  "ori.random.utils.seeded_pick_string": {
+    "description": "Performs the seeded pick string operation on utils."
+  },
+  "ori.random.utils.shuffle_ints": {
+    "description": "Performs the shuffle ints operation on utils."
+  },
+  "ori.random.utils.shuffle_strings": {
+    "description": "Performs the shuffle strings operation on utils."
+  },
+  "ori.set.add": {
+    "description": "Adds an element to the set. Returns true if the element was newly inserted."
+  },
+  "ori.set.algorithms.difference_string": {
+    "description": "Performs the difference string operation on algorithms."
+  },
+  "ori.set.algorithms.intersection_int": {
+    "description": "Performs the intersection int operation on algorithms."
+  },
+  "ori.set.algorithms.intersection_size_string": {
+    "description": "Performs the intersection size string operation on algorithms."
+  },
+  "ori.set.algorithms.intersection_string": {
+    "description": "Performs the intersection string operation on algorithms."
+  },
+  "ori.set.algorithms.is_disjoint_string": {
+    "description": "Performs the is disjoint string operation on algorithms."
+  },
+  "ori.set.algorithms.union_int": {
+    "description": "Performs the union int operation on algorithms."
+  },
+  "ori.set.algorithms.union_string": {
+    "description": "Performs the union string operation on algorithms."
+  },
+  "ori.set.capacity": {
+    "description": "Returns the current allocated capacity of the collection."
+  },
+  "ori.set.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.set.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.set.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.set.difference": {
+    "description": "Returns a new set with elements in the first set but not in the second."
+  },
+  "ori.set.free": {
+    "description": "Releases the underlying memory allocated by the collection."
+  },
+  "ori.set.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.set.intersection": {
+    "description": "Returns a new set containing only elements present in both sets."
+  },
+  "ori.set.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.set.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.set.new": {
+    "description": "Creates a new empty instance of the set collection."
+  },
+  "ori.set.remove": {
+    "description": "Removes and returns the element at the specified index."
+  },
+  "ori.set.reserve": {
+    "description": "Ensures the collection has capacity for at least the specified number of elements."
+  },
+  "ori.set.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.set.try_remove": {
+    "description": "Removes the element at the specified index, or returns an error if out of bounds."
+  },
+  "ori.set.union": {
+    "description": "Returns a new set containing all elements from both sets."
+  },
+  "ori.set.utils.contains_all": {
+    "description": "Performs the contains all operation on utils."
+  },
+  "ori.set.utils.contains_all_int": {
+    "description": "Performs the contains all int operation on utils."
+  },
+  "ori.set.utils.from_list": {
+    "description": "Creates a new collection initialized with the elements from the given list."
+  },
+  "ori.set.utils.is_subset": {
+    "description": "Performs the is subset operation on utils."
+  },
+  "ori.stack.clear": {
+    "description": "Removes all elements from the collection, resetting it to empty."
+  },
+  "ori.stack.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.stack.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.stack.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.stack.new": {
+    "description": "Creates a new empty instance of the stack collection."
+  },
+  "ori.stack.peek": {
+    "description": "Returns the highest-priority element without removing it."
+  },
+  "ori.stack.pop": {
+    "description": "Removes and returns the last element from the collection."
+  },
+  "ori.stack.push": {
+    "description": "Adds an element to the collection."
+  },
+  "ori.stack.to_list": {
+    "description": "Converts the collection into a plain list."
+  },
+  "ori.stack.utils.from_list_int": {
+    "description": "Performs the from list int operation on utils."
+  },
+  "ori.stack.utils.from_list_string": {
+    "description": "Performs the from list string operation on utils."
+  },
+  "ori.stack.utils.is_singleton_int": {
+    "description": "Performs the is singleton int operation on utils."
+  },
+  "ori.stack.utils.peek_or_int": {
+    "description": "Performs the peek or int operation on utils."
+  },
+  "ori.stack.utils.to_list_int": {
+    "description": "Performs the to list int operation on utils."
+  },
+  "ori.string.algorithms.equals_any": {
+    "description": "Performs the equals any operation on algorithms."
+  },
+  "ori.string.algorithms.join_non_empty": {
+    "description": "Performs the join non empty operation on algorithms."
+  },
+  "ori.string.algorithms.repeated": {
+    "description": "Performs the repeated operation on algorithms."
+  },
+  "ori.string.algorithms.truncate": {
+    "description": "Performs the truncate operation on algorithms."
+  },
+  "ori.string.chars": {
+    "description": "Returns the individual characters of the string as a list."
+  },
+  "ori.string.concat": {
+    "description": "Concatenates two strings into one."
+  },
+  "ori.string.contains": {
+    "description": "Returns true if the collection contains the specified element."
+  },
+  "ori.string.ends_with": {
+    "description": "Returns true if the string ends with the given suffix."
+  },
+  "ori.string.from_bytes": {
+    "description": "Converts a byte buffer to a string, interpreting bytes as UTF-8."
+  },
+  "ori.string.index_of": {
+    "description": "Returns the index of the first occurrence of the given element, or -1 if not found."
+  },
+  "ori.string.join": {
+    "description": "Joins a list of strings with the given separator."
+  },
+  "ori.string.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.string.pad_left": {
+    "description": "Pads the string on the left to the target length with the given character."
+  },
+  "ori.string.pad_right": {
+    "description": "Pads the string on the right to the target length with the given character."
+  },
+  "ori.string.parse_float": {
+    "description": "Parses the string as a floating-point number."
+  },
+  "ori.string.parse_int": {
+    "description": "Parses the string as an integer."
+  },
+  "ori.string.repeat": {
+    "description": "Returns a new string formed by repeating the string N times."
+  },
+  "ori.string.replace": {
+    "description": "Replaces the first occurrence of a substring with a new value."
+  },
+  "ori.string.slice": {
+    "description": "Returns a new collection containing elements from the specified start to end index."
+  },
+  "ori.string.starts_with": {
+    "description": "Returns true if the string starts with the given prefix."
+  },
+  "ori.string.to_bytes": {
+    "description": "Converts the string to a UTF-8 encoded byte buffer."
+  },
+  "ori.string.to_lower": {
+    "description": "Returns a lowercase copy of the string."
+  },
+  "ori.string.to_upper": {
+    "description": "Returns an uppercase copy of the string."
+  },
+  "ori.string.trim": {
+    "description": "Removes leading and trailing whitespace from the string."
+  },
+  "ori.string.trim_end": {
+    "description": "Removes trailing whitespace from the string."
+  },
+  "ori.string.trim_start": {
+    "description": "Removes leading whitespace from the string."
+  },
+  "ori.string.utils.blank": {
+    "description": "Returns true if the string is empty or contains only whitespace."
+  },
+  "ori.string.utils.capitalize": {
+    "description": "Performs the capitalize operation on utils."
+  },
+  "ori.string.utils.center": {
+    "description": "Performs the center operation on utils."
+  },
+  "ori.string.utils.count": {
+    "description": "Performs the count operation on utils."
+  },
+  "ori.string.utils.default": {
+    "description": "Performs the default operation on utils."
+  },
+  "ori.string.utils.equals_ignore_case": {
+    "description": "Performs the equals ignore case operation on utils."
+  },
+  "ori.string.utils.has_prefix": {
+    "description": "Performs the has prefix operation on utils."
+  },
+  "ori.string.utils.has_suffix": {
+    "description": "Performs the has suffix operation on utils."
+  },
+  "ori.string.utils.has_whitespace": {
+    "description": "Performs the has whitespace operation on utils."
+  },
+  "ori.string.utils.is_digits": {
+    "description": "Performs the is digits operation on utils."
+  },
+  "ori.string.utils.is_empty": {
+    "description": "Returns true if the collection contains no elements."
+  },
+  "ori.string.utils.last_index_of": {
+    "description": "Performs the last index of operation on utils."
+  },
+  "ori.string.utils.left": {
+    "description": "Performs the left operation on utils."
+  },
+  "ori.string.utils.limit": {
+    "description": "Performs the limit operation on utils."
+  },
+  "ori.string.utils.lines": {
+    "description": "Performs the lines operation on utils."
+  },
+  "ori.string.utils.replace_all": {
+    "description": "Performs the replace all operation on utils."
+  },
+  "ori.string.utils.replicate": {
+    "description": "Performs the replicate operation on utils."
+  },
+  "ori.string.utils.reverse": {
+    "description": "Returns a new collection with elements in reversed order."
+  },
+  "ori.string.utils.right": {
+    "description": "Performs the right operation on utils."
+  },
+  "ori.string.utils.swap_case": {
+    "description": "Performs the swap case operation on utils."
+  },
+  "ori.string.utils.title": {
+    "description": "Performs the title operation on utils."
+  },
+  "ori.string.utils.trim_all": {
+    "description": "Performs the trim all operation on utils."
+  },
+  "ori.string.utils.words": {
+    "description": "Performs the words operation on utils."
+  },
+  "ori.task.associate": {
+    "description": "Associates the task with a cancellation token for cooperative cancellation."
+  },
+  "ori.task.block_on": {
+    "description": "Blocks the current thread until the given async operation completes."
+  },
+  "ori.task.cancel": {
+    "description": "Cancels the running task."
+  },
+  "ori.task.create_token": {
+    "description": "Creates a cancellation token that can be shared across tasks."
+  },
+  "ori.task.detach": {
+    "description": "Detaches the task so it runs independently without a join handle."
+  },
+  "ori.task.is_cancelled": {
+    "description": "Returns true if the task has been cancelled."
+  },
+  "ori.task.join": {
+    "description": "Joins a list of strings with the given separator."
+  },
+  "ori.task.sleep": {
+    "description": "Suspends the current task for the specified duration in milliseconds."
+  },
+  "ori.task.spawn": {
+    "description": "Spawns a new async task that runs concurrently."
+  },
+  "ori.test.assert": {
+    "description": "Asserts that a condition is true. Fails the test if false."
+  },
+  "ori.test.assert_eq": {
+    "description": "Asserts that two values are equal. Fails the test if they differ."
+  },
+  "ori.test.assert_ne": {
+    "description": "Asserts that two values are not equal. Fails the test if they are equal."
+  },
+  "ori.test.assert_no_leaks": {
+    "description": "Asserts that no memory leaks occurred during the test."
+  },
+  "ori.test.collect_cycles": {
+    "description": "Triggers cycle collection and returns the number of cycles collected."
+  },
+  "ori.test.fail": {
+    "description": "Immediately fails the current test with a message."
+  },
+  "ori.test.live_allocations": {
+    "description": "Returns the number of currently live memory allocations."
+  },
+  "ori.test.skip": {
+    "description": "Skips the current test."
+  },
+  "ori.test.utils.equal_int": {
+    "description": "Performs the equal int operation on utils."
+  },
+  "ori.test.utils.equal_text": {
+    "description": "Performs the equal text operation on utils."
+  },
+  "ori.test.utils.is_false": {
+    "description": "Performs the is false operation on utils."
+  },
+  "ori.test.utils.is_true": {
+    "description": "Performs the is true operation on utils."
+  },
+  "ori.test.utils.not_equal_int": {
+    "description": "Performs the not equal int operation on utils."
+  },
+  "ori.test.utils.not_equal_text": {
+    "description": "Performs the not equal text operation on utils."
+  },
+  "ori.time.duration_ms": {
+    "description": "Returns the elapsed time in milliseconds since a reference point."
+  },
+  "ori.time.utils.add": {
+    "description": "Adds an element to the set. Returns true if the element was newly inserted."
+  },
+  "ori.time.utils.diff": {
+    "description": "Performs the diff operation on utils."
+  },
+  "ori.time.utils.from_unix_ms": {
+    "description": "Performs the from unix ms operation on utils."
+  },
+  "ori.time.utils.hours": {
+    "description": "Performs the hours operation on utils."
+  },
+  "ori.time.utils.milliseconds": {
+    "description": "Performs the milliseconds operation on utils."
+  },
+  "ori.time.utils.minutes": {
+    "description": "Performs the minutes operation on utils."
+  },
+  "ori.time.utils.seconds": {
+    "description": "Performs the seconds operation on utils."
+  },
+  "ori.time.utils.since": {
+    "description": "Performs the since operation on utils."
+  },
+  "ori.time.utils.sleep_ms": {
+    "description": "Performs the sleep ms operation on utils."
+  },
+  "ori.time.utils.sub": {
+    "description": "Performs the sub operation on utils."
+  },
+  "ori.time.utils.to_unix_ms": {
+    "description": "Performs the to unix ms operation on utils."
+  },
+  "ori.time.utils.until": {
+    "description": "Performs the until operation on utils."
+  },
+  "ori.tree.add_child": {
+    "description": "Adds a child node to the specified parent node."
+  },
+  "ori.tree.algorithms.is_leaf": {
+    "description": "Performs the is leaf operation on algorithms."
+  },
+  "ori.tree.algorithms.leaf_count": {
+    "description": "Performs the leaf count operation on algorithms."
+  },
+  "ori.tree.algorithms.max_depth_from": {
+    "description": "Performs the max depth from operation on algorithms."
+  },
+  "ori.tree.algorithms.values_preorder": {
+    "description": "Performs the values preorder operation on algorithms."
+  },
+  "ori.tree.breadth_first": {
+    "description": "Traverses the tree level by level and returns node values."
+  },
+  "ori.tree.children": {
+    "description": "Returns the direct children of the specified node."
+  },
+  "ori.tree.clone": {
+    "description": "Returns a deep copy of the collection, independent of the original."
+  },
+  "ori.tree.clone_subtree": {
+    "description": "Creates a deep copy of the subtree rooted at the given node."
+  },
+  "ori.tree.contains_node": {
+    "description": "Returns true if the tree contains the specified node."
+  },
+  "ori.tree.depth": {
+    "description": "Returns the depth of the specified node from the root."
+  },
+  "ori.tree.find": {
+    "description": "Searches for a node matching the predicate and returns its value."
+  },
+  "ori.tree.len": {
+    "description": "Returns the number of elements in the collection."
+  },
+  "ori.tree.move_subtree": {
+    "description": "Moves a subtree to become a child of a new parent node."
+  },
+  "ori.tree.new": {
+    "description": "Creates a new empty instance of the tree collection."
+  },
+  "ori.tree.parent": {
+    "description": "Returns the parent node of the specified node."
+  },
+  "ori.tree.post_order": {
+    "description": "Traverses the tree in post-order (children, root) and returns node values."
+  },
+  "ori.tree.pre_order": {
+    "description": "Traverses the tree in pre-order (root, children) and returns node values."
+  },
+  "ori.tree.remove_subtree": {
+    "description": "Removes the subtree rooted at the specified node."
+  },
+  "ori.tree.root": {
+    "description": "Returns the root node of the tree."
+  },
+  "ori.tree.set_value": {
+    "description": "Replaces the value stored at the specified node."
+  },
+  "ori.tree.try_value": {
+    "description": "Returns the value at the node, or an error if the node is not found."
+  },
+  "ori.tree.value": {
+    "description": "Returns the value stored at the specified node."
+  },
+  "ori.validate.all_digits": {
+    "description": "Returns true if the string contains only digit characters."
+  },
+  "ori.validate.between": {
+    "description": "Returns true if the value is between the specified min and max (exclusive)."
+  },
+  "ori.validate.blank": {
+    "description": "Returns true if the string is empty or contains only whitespace."
+  },
+  "ori.validate.even": {
+    "description": "Returns true if the integer is even."
+  },
+  "ori.validate.in_range": {
+    "description": "Returns true if the value is within the specified range (inclusive)."
+  },
+  "ori.validate.int_in_range": {
+    "description": "Returns true if the integer is within the specified range (inclusive)."
+  },
+  "ori.validate.length_between": {
+    "description": "Returns true if the string length is between the specified min and max."
+  },
+  "ori.validate.length_equal": {
+    "description": "Returns true if the string length equals the specified value."
+  },
+  "ori.validate.matches_length": {
+    "description": "Returns true if the string length matches the specified value."
+  },
+  "ori.validate.max_len": {
+    "description": "Returns true if the string has at most the maximum length."
+  },
+  "ori.validate.max_length": {
+    "description": "Returns true if the string has at most the maximum length."
+  },
+  "ori.validate.min_len": {
+    "description": "Returns true if the string has at least the minimum length."
+  },
+  "ori.validate.min_length": {
+    "description": "Returns true if the string has at least the minimum length."
+  },
+  "ori.validate.negative": {
+    "description": "Returns true if the number is less than zero."
+  },
+  "ori.validate.non_negative": {
+    "description": "Returns true if the number is greater than or equal to zero."
+  },
+  "ori.validate.non_zero": {
+    "description": "Returns true if the number is not zero."
+  },
+  "ori.validate.not_empty": {
+    "description": "Returns true if the collection is not empty."
+  },
+  "ori.validate.not_empty_text": {
+    "description": "Returns true if the string is not empty."
+  },
+  "ori.validate.odd": {
+    "description": "Returns true if the integer is odd."
+  },
+  "ori.validate.one_of": {
+    "description": "Returns true if the value matches one of the allowed values."
+  },
+  "ori.validate.one_of_string": {
+    "description": "Returns true if the string equals one of the allowed values."
+  },
+  "ori.validate.positive": {
+    "description": "Returns true if the number is greater than zero."
+  },
+  "ori.validate.string_not_blank": {
+    "description": "Returns true if the string is not blank."
+  },
+  "ori.graph": {
+    "description": "Graph data structure. Supports directed and weighted graphs with BFS, DFS, shortest path, topological sort, and cycle detection."
+  },
+  "ori.graph.algorithms": {
+    "description": "Graph algorithms. Provides path reachability, connectivity checks, and reachability counting."
+  },
+  "ori.hash_table": {
+    "description": "Hash table (key-value store) data structure. Provides O(1) average-case insertion, lookup, and deletion of key-value pairs."
+  },
+  "ori.heap": {
+    "description": "Binary heap (priority queue) data structure. Supports efficient insertion and extraction of the highest-priority element."
+  },
+  "ori.process": {
+    "description": "System process execution. Provides functions to run shell commands and capture their output."
+  },
+  "ori.queue": {
+    "description": "FIFO queue data structure. Supports enqueue, dequeue, and peek operations."
+  },
+  "ori.stack": {
+    "description": "LIFO stack data structure. Supports push, pop, and peek operations."
   }
 }

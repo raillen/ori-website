@@ -1,9 +1,9 @@
 ---
 title: "ori.random.utils"
-description: "Standard library module `ori.random.utils`."
+description: "Random utility helpers. Provides additional random generation functions including seeded generators and collection shuffling."
 ---
 
-Standard library module `ori.random.utils`.
+Random utility helpers. Provides additional random generation functions including seeded generators and collection shuffling.
 
 ### `coin`
 
@@ -13,6 +13,8 @@ func coin() -> bool
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
 
+Performs the coin operation on utils.
+
 ### `float_range`
 
 ```ori
@@ -20,6 +22,8 @@ func float_range(min_val: float, max_val: float) -> float
 ```
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
+
+Performs the float range operation on utils.
 
 ### `int_range`
 
@@ -29,6 +33,8 @@ func int_range(min_val: int, max_val: int) -> int
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
 
+Performs the int range operation on utils.
+
 ### `is_empty_choice`
 
 ```ori
@@ -36,6 +42,8 @@ func is_empty_choice(items: list<string>) -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
+
+Performs the is empty choice operation on utils.
 
 ### `pick_int`
 
@@ -45,6 +53,8 @@ func pick_int(items: list<int>) -> optional<int>
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
 
+Performs the pick int operation on utils.
+
 ### `pick_string`
 
 ```ori
@@ -52,6 +62,8 @@ func pick_string(items: list<string>) -> optional<string>
 ```
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
+
+Performs the pick string operation on utils.
 
 ### `seeded_int`
 
@@ -61,6 +73,8 @@ func seeded_int(seed: int, min_val: int, max_val: int) -> int
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
 
+Performs the seeded int operation on utils.
+
 ### `seeded_pick_string`
 
 ```ori
@@ -68,6 +82,8 @@ func seeded_pick_string(seed: int, items: list<string>) -> optional<string>
 ```
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
+
+Performs the seeded pick string operation on utils.
 
 ### `shuffle_ints`
 
@@ -77,6 +93,8 @@ func shuffle_ints(items: list<int>) -> list<int>
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
 
+Performs the shuffle ints operation on utils.
+
 ### `shuffle_strings`
 
 ```ori
@@ -84,4 +102,6 @@ func shuffle_strings(items: list<string>) -> list<string>
 ```
 
 *Layer 2 · .orl* · **Source:** `random/utils.orl`
+
+Performs the shuffle strings operation on utils.
 

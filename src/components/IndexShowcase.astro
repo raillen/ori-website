@@ -1,0 +1,280 @@
+---
+/**
+ * Code showcase + feature highlights for the Ori landing page.
+ * Replaces the generic CardGrid with a structured, visual layout.
+ */
+const codeHtml = `<span class="kw">namespace</span> app.main
+
+<span class="kw">import</span> ori.io <span class="kw">as</span> io
+
+<span class="kw">func</span> <span class="fn">main</span>()
+    <span class="kw">const</span> label: <span class="ty">string</span> = <span class="kw">if</span> <span class="lit">true</span> <span class="kw">then</span> <span class="str">"Ori"</span> <span class="kw">else</span> <span class="str">"world"</span>
+    io.<span class="fn">println</span>(<span class="str">"Hello, "</span> + label + <span class="str">"!"</span>)
+<span class="kw">end</span>`;
+---
+
+<section class="showcase">
+  <div class="showcase-inner">
+    <!-- Code example -->
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-dot red"></span>
+        <span class="code-dot yellow"></span>
+        <span class="code-dot green"></span>
+        <span class="code-filename">main.orl</span>
+      </div>
+      <pre><code set:html={codeHtml}></code></pre>
+      <div class="code-footer">
+        <code class="run-cmd">ori run main.orl</code>
+        <span class="code-note">JIT execution — no compile step needed</span>
+      </div>
+    </div>
+
+    <!-- Feature highlights -->
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <h3>Reading-first</h3>
+          <p>Blocks use <code>end</code> instead of braces. No hidden control flow.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3>Explicit types</h3>
+          <p>Annotations required at declarations. Zero coercion surprises.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div>
+          <h3>JIT + AOT</h3>
+          <p>Run instantly with Cranelift JIT or compile to native binaries.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h3>Readable errors</h3>
+          <p>Diagnostics point to the exact cause with suggested fixes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase {
+    padding: 2.5rem 0;
+  }
+
+  .showcase-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* ── Code block ── */
+  .code-block {
+    border: 1px solid var(--border, #e3e8f0);
+    border-radius: var(--radius-lg, 1rem);
+    overflow: hidden;
+    background: var(--bg-surface, #fff);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1rem;
+    background: var(--bg-surface-muted, #eef2f7);
+    border-bottom: 1px solid var(--border, #e3e8f0);
+  }
+
+  .code-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .code-dot.red { background: #ef4444; }
+  .code-dot.yellow { background: #eab308; }
+  .code-dot.green { background: #22c55e; }
+
+  .code-filename {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    font-family: var(--sl-font-mono, monospace);
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .code-block pre {
+    margin: 0;
+    padding: 1.25rem 1.25rem;
+    border: none;
+    border-radius: 0;
+    background: var(--bg-surface, #fff);
+    font-size: 0.82rem;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: var(--sl-font-mono, monospace);
+    color: var(--text, #0d1526);
+  }
+
+  /* Syntax highlighting */
+  .kw { color: var(--accent, #1d4ed8); font-weight: 500; }
+  .fn { color: #7c3aed; }
+  .ty { color: #0891b2; }
+  .str { color: #059669; }
+  .lit { color: #d97706; }
+
+  .code-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border, #e3e8f0);
+    background: var(--bg-surface-muted, #eef2f7);
+  }
+
+  .run-cmd {
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm, 0.5rem);
+    background: var(--accent-soft, rgba(29, 78, 216, 0.12));
+    color: var(--accent, #1d4ed8);
+  }
+
+  .code-note {
+    font-size: 0.72rem;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  /* ── Features grid ── */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border, #e3e8f0);
+    border: 1px solid var(--border, #e3e8f0);
+    border-radius: var(--radius-lg, 1rem);
+    overflow: hidden;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--bg-surface, #fff);
+    transition: background var(--duration-fast, 120ms) var(--ease-out, ease);
+  }
+
+  .feature:hover {
+    background: var(--bg-surface-muted, #eef2f7);
+  }
+
+  .feature-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md, 0.75rem);
+    background: var(--accent-soft, rgba(29, 78, 216, 0.12));
+    color: var(--accent, #1d4ed8);
+  }
+
+  .feature h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0 0 0.15rem;
+    color: var(--text, #0d1526);
+    letter-spacing: -0.01em;
+  }
+
+  .feature p {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin: 0;
+    color: var(--text-secondary, #5b6678);
+  }
+
+  .feature code {
+    font-size: 0.78rem;
+    padding: 0.05em 0.3em;
+    background: var(--accent-soft, rgba(29, 78, 216, 0.12));
+    color: var(--accent, #1d4ed8);
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  /* ── Dark theme ── */
+  :root[data-theme="dark"] .code-block pre {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+  :root[data-theme="dark"] .code-block code {
+    color: #e2e8f0;
+  }
+  :root[data-theme="dark"] .kw { color: #60a5fa; }
+  :root[data-theme="dark"] .fn { color: #a78bfa; }
+  :root[data-theme="dark"] .ty { color: #22d3ee; }
+  :root[data-theme="dark"] .str { color: #34d399; }
+  :root[data-theme="dark"] .lit { color: #fbbf24; }
+  :root[data-theme="dark"] .code-block {
+    border-color: var(--border, #243049);
+    background: var(--bg-surface, #131b2d);
+  }
+  :root[data-theme="dark"] .code-header,
+  :root[data-theme="dark"] .code-footer {
+    background: var(--bg-surface-muted, #161f33);
+    border-color: var(--border, #243049);
+  }
+  :root[data-theme="dark"] .features {
+    border-color: var(--border, #243049);
+    background: var(--border, #243049);
+  }
+  :root[data-theme="dark"] .feature {
+    background: var(--bg-surface, #131b2d);
+  }
+  :root[data-theme="dark"] .feature:hover {
+    background: var(--bg-surface-muted, #161f33);
+  }
+  :root[data-theme="dark"] .feature-icon {
+    background: color-mix(in srgb, var(--accent, #4f87ff) 15%, transparent);
+    color: var(--accent, #4f87ff);
+  }
+  :root[data-theme="dark"] .feature code {
+    background: color-mix(in srgb, var(--accent, #4f87ff) 15%, transparent);
+    color: var(--accent, #4f87ff);
+  }
+  :root[data-theme="dark"] .run-cmd {
+    background: color-mix(in srgb, var(--accent, #4f87ff) 15%, transparent);
+    color: var(--accent, #4f87ff);
+  }
+
+  /* ── Desktop: side by side ── */
+  @media (min-width: 50rem) {
+    .showcase-inner {
+      grid-template-columns: 5fr 4fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

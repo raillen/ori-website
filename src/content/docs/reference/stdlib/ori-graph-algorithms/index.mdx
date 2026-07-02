@@ -1,9 +1,9 @@
 ---
 title: "ori.graph.algorithms"
-description: "Standard library module `ori.graph.algorithms`."
+description: "Graph algorithms. Provides path reachability, connectivity checks, and reachability counting."
 ---
 
-Standard library module `ori.graph.algorithms`.
+Graph algorithms. Provides path reachability, connectivity checks, and reachability counting.
 
 ### `has_path`
 
@@ -13,6 +13,8 @@ func has_path(g: Generic { name: QualifiedName { parts: [Name { text: "graph", s
 
 *Layer 2 · .orl* · **Source:** `graph/algorithms.orl`
 
+Performs the has path operation on algorithms.
+
 ### `has_path_int`
 
 ```ori
@@ -20,6 +22,8 @@ func has_path_int(g: Generic { name: QualifiedName { parts: [Name { text: "graph
 ```
 
 *Layer 2 · .orl* · **Source:** `graph/algorithms.orl`
+
+Performs the has path int operation on algorithms.
 
 ### `is_reachable`
 
@@ -29,6 +33,8 @@ func is_reachable(g: Generic { name: QualifiedName { parts: [Name { text: "graph
 
 *Layer 2 · .orl* · **Source:** `graph/algorithms.orl`
 
+Performs the is reachable operation on algorithms.
+
 ### `reachable_count`
 
 ```ori
@@ -36,4 +42,6 @@ func reachable_count(g: Generic { name: QualifiedName { parts: [Name { text: "gr
 ```
 
 *Layer 2 · .orl* · **Source:** `graph/algorithms.orl`
+
+Performs the reachable count operation on algorithms.
 

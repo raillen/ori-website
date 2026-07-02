@@ -1,9 +1,9 @@
 ---
 title: "ori.doubly_linked_list"
-description: "Standard library module `ori.doubly_linked_list`."
+description: "Doubly-linked list data structure. Supports bidirectional traversal, cursor-based navigation, and O(1) insertion/removal at known positions."
 ---
 
-Standard library module `ori.doubly_linked_list`.
+Doubly-linked list data structure. Supports bidirectional traversal, cursor-based navigation, and O(1) insertion/removal at known positions.
 
 ### `back`
 
@@ -13,6 +13,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.back`
 
+Returns the element at the back without removing it.
+
 ### `clear`
 
 ```ori
@@ -20,6 +22,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.clear`
+
+Removes all elements from the collection, resetting it to empty.
 
 ### `clone`
 
@@ -29,6 +33,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.clone`
 
+Returns a deep copy of the collection, independent of the original.
+
 ### `cursor_back`
 
 ```ori
@@ -36,6 +42,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.cursor_back`
+
+Creates a cursor positioned at the back of the list.
 
 ### `cursor_front`
 
@@ -45,6 +53,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.cursor_front`
 
+Creates a cursor positioned at the front of the list.
+
 ### `find`
 
 ```ori
@@ -52,6 +62,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.find`
+
+Searches for a node matching the predicate and returns its value.
 
 ### `front`
 
@@ -61,6 +73,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.front`
 
+Returns the element at the front without removing it.
+
 ### `insert_after`
 
 ```ori
@@ -68,6 +82,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.insert_after`
+
+Inserts a new element after the node at the given cursor position.
 
 ### `insert_before`
 
@@ -77,6 +93,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.insert_before`
 
+Inserts a new element before the node at the given cursor position.
+
 ### `is_empty`
 
 ```ori
@@ -84,6 +102,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.is_empty`
+
+Returns true if the collection contains no elements.
 
 ### `len`
 
@@ -93,6 +113,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.len`
 
+Returns the number of elements in the collection.
+
 ### `new`
 
 ```ori
@@ -100,6 +122,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.new`
+
+Creates a new empty instance of the doubly_linked_list collection.
 
 ### `pop_back`
 
@@ -109,6 +133,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.pop_back`
 
+Removes and returns the element at the back of the deque.
+
 ### `pop_front`
 
 ```ori
@@ -116,6 +142,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.pop_front`
+
+Removes and returns the element at the front of the deque.
 
 ### `push_back`
 
@@ -125,6 +153,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.push_back`
 
+Adds an element to the back of the deque.
+
 ### `push_front`
 
 ```ori
@@ -132,6 +162,8 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.push_front`
+
+Adds an element to the front of the deque.
 
 ### `remove_at`
 
@@ -141,6 +173,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.remove_at`
 
+Removes the element at the specified node index.
+
 ### `to_list`
 
 ```ori
@@ -149,6 +183,8 @@ Standard library module `ori.doubly_linked_list`.
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.to_list`
 
+Converts the collection into a plain list.
+
 ### `value_at`
 
 ```ori
@@ -156,4 +192,6 @@ Standard library module `ori.doubly_linked_list`.
 ```
 
 *Layer 1 · runtime* · **Aliases:** `doubly_linked_list.value_at`
+
+Returns the value at the specified node index.
 

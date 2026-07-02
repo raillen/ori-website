@@ -13,6 +13,8 @@ func absolute(value: string, base: string) -> string
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns the absolute path, resolving relative segments.
+
 ### `base_name`
 
 ```ori
@@ -20,6 +22,8 @@ func base_name(value: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `path.orl`
+
+Returns the final component of the path (file or directory name).
 
 ### `change_extension`
 
@@ -29,6 +33,8 @@ func change_extension(value: string, new_ext: string) -> string
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns a new path with the extension replaced.
+
 ### `extension`
 
 ```ori
@@ -36,6 +42,8 @@ func extension(value: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `path.orl`
+
+Returns the file extension (including the dot).
 
 ### `has_extension`
 
@@ -45,6 +53,8 @@ func has_extension(value: string, expected: string) -> bool
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns true if the path has the specified extension.
+
 ### `is_absolute`
 
 ```ori
@@ -53,6 +63,8 @@ func is_absolute(value: string) -> bool
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns true if the path is absolute.
+
 ### `is_relative`
 
 ```ori
@@ -60,6 +72,8 @@ func is_relative(value: string) -> bool
 ```
 
 *Layer 2 · .orl* · **Source:** `path.orl`
+
+Returns true if the path is relative.
 
 ### `join`
 
@@ -92,6 +106,8 @@ func name_without_extension(value: string) -> string
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns the file name without its extension.
+
 ### `normalize`
 
 ```ori
@@ -99,6 +115,8 @@ func normalize(value: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `path.orl`
+
+Returns the path with normalized separators and resolved dot/dotdot segments.
 
 ### `parent`
 
@@ -108,6 +126,8 @@ func parent(value: string) -> string
 
 *Layer 2 · .orl* · **Source:** `path.orl`
 
+Returns the parent node of the specified node.
+
 ### `relative`
 
 ```ori
@@ -115,4 +135,6 @@ func relative(value: string, from: string) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `path.orl`
+
+Returns the relative path from the current directory.
 

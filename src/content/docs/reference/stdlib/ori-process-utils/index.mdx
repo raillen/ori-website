@@ -1,9 +1,9 @@
 ---
 title: "ori.process.utils"
-description: "Standard library module `ori.process.utils`."
+description: "Process utility helpers. Provides convenience accessors for process execution results."
 ---
 
-Standard library module `ori.process.utils`.
+Process utility helpers. Provides convenience accessors for process execution results.
 
 ### `exit_code`
 
@@ -13,6 +13,8 @@ func exit_code(capture: map<string, string>) -> int
 
 *Layer 2 · .orl* · **Source:** `process/utils.orl`
 
+Performs the exit code operation on utils.
+
 ### `stderr`
 
 ```ori
@@ -21,6 +23,8 @@ func stderr(capture: map<string, string>) -> string
 
 *Layer 2 · .orl* · **Source:** `process/utils.orl`
 
+Performs the stderr operation on utils.
+
 ### `stdout`
 
 ```ori
@@ -28,4 +32,6 @@ func stdout(capture: map<string, string>) -> string
 ```
 
 *Layer 2 · .orl* · **Source:** `process/utils.orl`
+
+Performs the stdout operation on utils.
 
